@@ -23,13 +23,6 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: 'main'
           TO_BRANCH: 'develop'
-
-      - name: Checkout 2
-        uses: actions/checkout@v2
-      - name: Set up Node 2
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
       - name: Opening pull request 2
         id: pull2
         uses: tretuna/sync-branches@1.2.0
