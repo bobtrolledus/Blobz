@@ -8,18 +8,25 @@ on:
 jobs:
   sync-branches:
     runs-on: ubuntu-latest
-    name: Syncing branches
+    name: Syncing develop
     steps:
-      - name: Checkout
+      - name: Checkout 1
         uses: actions/checkout@v2
-      - name: Set up Node
+      - name: Set up Node 1
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: Opening pull request
-        id: pull
+      - name: Opening pull request 1
+        id: pull1
         uses: tretuna/sync-branches@1.2.0
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: 'main'
           TO_BRANCH: 'develop'
+      - name: Opening pull request 2
+        id: pull2
+        uses: tretuna/sync-branches@1.2.0
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          FROM_BRANCH: 'main'
+          TO_BRANCH: 'Machines'
