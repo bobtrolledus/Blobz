@@ -22,7 +22,7 @@ jobs:
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: 'main'
-          TO_BRANCH: 'develop'
+          TO_BRANCH: 'UI'
       - name: Opening pull request 2
         id: pull2
         uses: tretuna/sync-branches@1.2.0
@@ -30,3 +30,17 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: 'main'
           TO_BRANCH: 'Machines'
+      - name: Opening pull request 3
+        id: pull3
+        uses: tretuna/sync-branches@1.2.0
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          FROM_BRANCH: 'main'
+          TO_BRANCH: 'Resources'
+      - name: Opening pull request 4
+        id: pull4
+        uses: tretuna/sync-branches@1.2.0
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          FROM_BRANCH: 'main'
+          TO_BRANCH: 'Save-System'
