@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.Arrays;
 
 /**
  * Write a description of class Utils here.
@@ -8,12 +9,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Utils extends Actor
 {
-    /**
-     * Act - do whatever the Utils wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
+    private static Machines[][] map = new Machines[20][20]; 
+    
+    public static boolean spaceIsEmpty(int x, int y)
     {
-        // Add your action code here.
+        if(map[x][y] == null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    public static void fillSpace(int x, int y, Machines object)
+    {
+        map[x][y] = object;
     }
 }
