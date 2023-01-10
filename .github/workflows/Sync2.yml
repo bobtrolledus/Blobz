@@ -8,7 +8,7 @@ on:
 jobs:
   sync-branches:
     runs-on: ubuntu-latest
-    name: Syncing develop
+    name: Syncing Machines
     steps:
       - name: Checkout 1
         uses: actions/checkout@v2
