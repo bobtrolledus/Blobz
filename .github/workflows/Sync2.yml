@@ -22,4 +22,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: 'Machines'
-          TO_BRANCH: 'Main'
+          TO_BRANCH: 'main'
