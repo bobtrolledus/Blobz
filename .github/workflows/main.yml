@@ -1,0 +1,25 @@
+name: Sync Back to Main from Machines
+
+on:
+  push:
+    branches:
+      - Machines
+
+jobs:
+  sync-branches:
+    runs-on: ubuntu-latest
+    name: Syncing develop
+    steps:
+      - name: Checkout 1
+        uses: actions/checkout@v2
+      - name: Set up Node 1
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Opening pull request 1
+        id: pull1
+        uses: tretuna/sync-branches@1.2.0
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          FROM_BRANCH: 'Machines'
+          TO_BRANCH: 'Main'
