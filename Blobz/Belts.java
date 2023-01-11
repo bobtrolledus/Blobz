@@ -13,13 +13,13 @@ public class Belts extends Machines
     private Resources assignedResource;
     public Belts()
     {
-        getImage().scale(45, 45);
+        getImage().scale(Utils.gridSize, Utils.gridSize);
         real = true;
     }
     
     public Belts(boolean spawner)
     {
-        getImage().scale(45, 45);
+        getImage().scale(Utils.gridSize, Utils.gridSize);
         this.spawner = spawner;
     }
         
@@ -44,7 +44,7 @@ public class Belts extends Machines
                 place(Belts.class);
                 if(Greenfoot.isKeyDown("escape"))
                 {
-                    if(Utils.getMouseX() > 200 && Utils.getMouseY() < 1100)
+                    if(Utils.getMouseX() > 200 && Utils.getMouseY() < 1000)
                     {
                         for(Arrows arrow : getWorld().getObjects(Arrows.class))
                         {
