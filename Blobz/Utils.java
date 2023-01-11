@@ -10,6 +10,34 @@ import java.util.Arrays;
 public class Utils extends Actor
 {
     private static Machines[][] map = new Machines[20][20]; 
+    private static int rotation = 0;
+    private static int arrowXCoord, arrowYCoord;
+    private static MouseInfo mouse = Greenfoot.getMouseInfo();
+    
+    public void act()
+    {
+        mouse = Greenfoot.getMouseInfo();
+    }
+    
+    public static int getMouseX()
+    {
+        return mouse.getX();
+    }
+    
+    public static int getMouseY()
+    {
+        return mouse.getY();
+    }
+    
+    public static int getMouseButton()
+    {
+        return mouse.getButton();
+    }
+    
+    public static MouseInfo getMouse()
+    {
+        return mouse;
+    }
     
     public static boolean spaceIsEmpty(int x, int y)
     {
@@ -21,6 +49,20 @@ public class Utils extends Actor
         {
             return false;
         }
+    }
+    
+    public static void addRotation()
+    {
+        rotation++;
+        if(rotation == 4)
+        {
+            rotation = 0;
+        }
+    }
+    
+    public static int getDirection()
+    {
+        return rotation;
     }
     
     public static void fillSpace(int x, int y, Machines object)
