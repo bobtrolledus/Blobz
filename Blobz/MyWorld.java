@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
+    MouseInfo mouse = Greenfoot.getMouseInfo();
 
     /**
      * Constructor for objects of class MyWorld.
@@ -36,8 +37,42 @@ public class MyWorld extends World
         prepare();
     }
     
+    public void act()
+    {
+        mouse = Greenfoot.getMouseInfo();
+        delete();
+        String key = Greenfoot.getKey();
+        if(key != null)
+        {
+            if(key.equals("r"))
+            {
+                Utils.addRotation();
+            }
+        }
+    }
+    
     public void prepare()
     {
         addObject(new Belts(true), 100, 100);
+        addObject(new shape(), 245, 68);
+        addObject(new Utils(), 0, 0);
+    }
+    
+    public void delete()
+    {
+        if(mouse != null)
+        {
+            int gridPositionX = (int) (mouse.getX() - 200) / 45;
+            int gridPositionY = (int) mouse.getY() / 45;
+            int buttonNumber = mouse.getButton();
+            if(buttonNumber == 3)
+            {
+                if(!Utils.spaceIsEmpty(gridPositionX, gridPositionY))
+                {
+                    removeObjects(getObjectsAt(mouse.getX(), mouse.getY(), Machines.class));
+                    Utils.fillSpace(gridPositionX, gridPositionY, null);
+                }
+            }    
+        }
     }
 }

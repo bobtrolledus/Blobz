@@ -5,6 +5,6 @@ comment1.params=
 comment1.target=void\ followMouse()
 comment2.params=
 comment2.target=void\ gridSnap()
-comment3.params=passedClass
+comment3.params=cls
 comment3.target=void\ place(java.lang.Class)
 numComments=4

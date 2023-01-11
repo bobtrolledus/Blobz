@@ -8,8 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Belts extends Machines
 {
-    private boolean spawner = false, real = false;
-    
+    private boolean spawner = false, real = false, foundResource = false;
+    private int inputXCoord, inputYCoord, outputXCoord, outputYCoord;
+    private Resources assignedResource;
     public Belts()
     {
         getImage().scale(45, 45);
@@ -28,13 +29,12 @@ public class Belts extends Machines
      */
     public void act()
     {
-        mouse = Greenfoot.getMouseInfo();
         if(!real)
         {
             if(spawner && Greenfoot.mouseClicked(this))
             {
                 Belts mouseBelt = new Belts(false);
-                getWorld().addObject(mouseBelt, mouse.getX(), mouse.getY());
+                getWorld().addObject(mouseBelt, Utils.getMouseX(), Utils.getMouseY());
             }
             
             if(!spawner)
@@ -44,6 +44,13 @@ public class Belts extends Machines
                 place(Belts.class);
                 if(Greenfoot.isKeyDown("escape"))
                 {
+                    if(Utils.getMouseX() > 200 && Utils.getMouseY() < 1100)
+                    {
+                        for(Arrows arrow : getWorld().getObjects(Arrows.class))
+                        {
+                            getWorld().removeObject(arrow);
+                        }
+                    }
                     getWorld().removeObject(block);
                     getWorld().removeObject(this);
                 }
