@@ -54,7 +54,6 @@ public class MyWorld extends World
     public void prepare()
     {
         addObject(new Belts(true), 100, 100);
-        addObject(new shape(), 260, 60);
         addObject(new Utils(), 0, 0);
     }
     
@@ -62,8 +61,8 @@ public class MyWorld extends World
     {
         if(mouse != null)
         {
-            int gridPositionX = (int) (mouse.getX() - 200) / 45;
-            int gridPositionY = (int) mouse.getY() / 45;
+            int gridPositionX = (int) (mouse.getX() - 200) / 40;
+            int gridPositionY = (int) mouse.getY() / 40;
             int buttonNumber = mouse.getButton();
             if(buttonNumber == 3)
             {

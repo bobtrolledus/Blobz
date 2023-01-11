@@ -20,11 +20,12 @@ public class ghostBlock extends Utils
     
     public void act()
     {
-        updateArrowImage();
+        updateRotationImage();
         if(!addedArrows)
         {
             lastRotation = Utils.getDirection();
             spawnArrows(lastRotation);
+            updateImage(lastRotation);
             addedArrows = true;
         }
     }
@@ -65,7 +66,7 @@ public class ghostBlock extends Utils
             }
     }
     
-    public void updateArrowImage()
+    public void updateRotationImage()
     {
         if(Utils.getDirection() != lastRotation)
         {
@@ -78,6 +79,25 @@ public class ghostBlock extends Utils
             }
             addedArrows = false;
         }
+    }
+    
+    public void updateImage(int direction)
+    {
+        switch (direction)
+            {
+                case 0:
+                    setRotation(180);
+                    break;
+                case 1:
+                    setRotation(-90);
+                    break;
+                case 2:
+                    setRotation(0);
+                    break;
+                case 3:
+                    setRotation(90);
+                    break;
+            }
     }
     
     public void setXGridCoord(int coord)
