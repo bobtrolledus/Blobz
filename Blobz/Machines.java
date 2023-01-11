@@ -8,61 +8,64 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public abstract class Machines extends Actor
 {
-    MouseInfo mouse = Greenfoot.getMouseInfo();
     ghostBlock block = new ghostBlock();
-    
-    int gridPositionX, gridPositionY;
+    int gridPositionX, gridPositionY;  
     
     public void followMouse()
     {
-        if(mouse != null)
+        if(Utils.getMouse() != null)
         {
-            setLocation(mouse.getX() + getImage().getWidth() / 2 - 45 / 2, mouse.getY() + getImage().getHeight() / 2 - 45 / 2);
+            setLocation(Utils.getMouseX() + getImage().getWidth() / 2 - Utils.gridSize / 2, Utils.getMouseY() + getImage().getHeight() / 2 - Utils.gridSize / 2);
         } 
     }
     
     public void gridSnap()
     {
-        if(mouse != null)
+        if(Utils.getMouse() != null)
         {
-            if(mouse.getX() > 200 && mouse.getX() < 1100)
+            if(Utils.getMouseX() > 200 && Utils.getMouseX() < 1000)
             {
-                gridPositionX = (int) (mouse.getX() - 200) / 45;
-                gridPositionY = (int) mouse.getY() / 45;
+                gridPositionX = (int) (Utils.getMouseX() - 200) / Utils.gridSize;
+                gridPositionY = (int) Utils.getMouseY() / Utils.gridSize;
                 
                 if(getWorld().getObjects(ghostBlock.class).isEmpty() == true)
                 {
-                    getWorld().addObject(block, (gridPositionX * 45) + (200 + getImage().getWidth() / 2), (gridPositionY * 45) + (getImage().getHeight() / 2));
+                    getWorld().addObject(block, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
                 }
                 
                 if(gridPositionX != block.getXCoord() || gridPositionY != block.getYCoord())
                 {
+                    for(Arrows arrow : getWorld().getObjects(Arrows.class))
+                    {
+                        getWorld().removeObject(arrow);
+                    }
                     getWorld().removeObject(block);
-                    getWorld().addObject(block, (gridPositionX * 45) + (200 + getImage().getWidth() / 2), (gridPositionY * 45) + (getImage().getHeight() / 2));
+                    getWorld().addObject(block, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
                 }
                 
                 block.setXGridCoord(gridPositionX);
                 block.setYGridCoord(gridPositionY);
             }
-            if(mouse.getX() < 200 || mouse.getX() > 1100)
+            
+            if(Utils.getMouseX() < 200 || Utils.getMouseX() > 1000)
             {
                 getWorld().removeObject(block);
             }
         }
     }
     
-    public void place(Class passedClass)
+    public void place(Class cls)
     {
-        if(mouse != null)
+        if(Utils.getMouse() != null)
         {
-            if(mouse.getX() > 200 && mouse.getX() < 1100)
+            if(Utils.getMouseX() > 200 && Utils.getMouseX() < 1000)
             {
-                int buttonNumber = mouse.getButton();
+                int buttonNumber = Utils.getMouseButton();
                 if(buttonNumber == 1 && Utils.spaceIsEmpty(gridPositionX, gridPositionY))
                 {
                     try{ 
-                        Machines temp = (Machines) passedClass.newInstance();
-                        getWorld().addObject(temp, (gridPositionX * 45) + (200 + getImage().getWidth() / 2), (gridPositionY * 45) + (getImage().getHeight() / 2));
+                        Machines temp = (Machines) cls.newInstance();
+                        getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
                         Utils.fillSpace(gridPositionX, gridPositionY, temp);
                     }
                     catch(Exception e){

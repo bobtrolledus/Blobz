@@ -1,8 +1,22 @@
 #BlueJ class context
 comment0.target=Utils
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Utils\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=x\ y
-comment1.target=boolean\ spaceIsEmpty(int,\ int)
-comment2.params=x\ y\ object
-comment2.target=void\ fillSpace(int,\ int,\ Machines)
-numComments=3
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=int\ getMouseX()
+comment3.params=
+comment3.target=int\ getMouseY()
+comment4.params=
+comment4.target=int\ getMouseButton()
+comment5.params=
+comment5.target=greenfoot.MouseInfo\ getMouse()
+comment6.params=x\ y
+comment6.target=boolean\ spaceIsEmpty(int,\ int)
+comment7.params=
+comment7.target=void\ addRotation()
+comment8.params=
+comment8.target=int\ getDirection()
+comment9.params=x\ y\ object
+comment9.target=void\ fillSpace(int,\ int,\ Machines)
+numComments=10
