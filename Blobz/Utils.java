@@ -9,7 +9,7 @@ import java.util.Arrays;
  */
 public class Utils extends Actor
 {
-    private static Machines[][] map = new Machines[20][20]; 
+    private static Actor[][] map = new Actor[20][20];
     
     public static boolean spaceIsEmpty(int x, int y)
     {

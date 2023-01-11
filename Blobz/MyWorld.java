@@ -8,7 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -34,10 +33,25 @@ public class MyWorld extends World
             }
         }
         prepare();
+        addDeposits();
     }
     
     public void prepare()
     {
         addObject(new Belts(true), 100, 100);
+    }
+        
+    public void addDeposits()
+    {
+        addObject(new Deposits(new shape1(true), 2, 2), 0, 0);
+        addObject(new Deposits(new shape1(true), 3, 2), 0, 0);
+        addObject(new Deposits(new shape1(true), 4, 2), 0, 0);
+        addObject(new Deposits(new shape1(true), 3, 3), 0, 0);
+        addObject(new Deposits(new shape1(true), 4, 3), 0, 0);
+        addObject(new Deposits(new shape1(true), 5, 3), 0, 0);
+        addObject(new Deposits(new shape1(true), 3, 4), 0, 0);
+        addObject(new Deposits(new shape1(true), 4, 4), 0, 0);
+        addObject(new Deposits(new shape1(true), 5, 4), 0, 0);
+        addObject(new Deposits(new shape1(true), 6, 4), 0, 0);
     }
 }
