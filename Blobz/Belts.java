@@ -8,9 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Belts extends Machines
 {
-    private boolean spawner = false, real = false, foundResource = false;
-    private int inputXCoord, inputYCoord, outputXCoord, outputYCoord;
-    private Resources assignedResource;
+    private boolean spawner = false, real = false, updatedImage = false;
+    private int lastRotation;
     public Belts()
     {
         getImage().scale(Utils.gridSize, Utils.gridSize);
@@ -41,7 +40,14 @@ public class Belts extends Machines
             {
                 followMouse();
                 gridSnap();
+                updateRotation();
                 place(Belts.class);
+                if(!updatedImage)
+                {
+                    lastRotation = Utils.getDirection();
+                    updateImage(lastRotation);
+                    updatedImage = true;
+                }
                 if(Greenfoot.isKeyDown("escape"))
                 {
                     if(Utils.getMouseX() > 200 && Utils.getMouseY() < 1000)
@@ -54,6 +60,63 @@ public class Belts extends Machines
                     getWorld().removeObject(block);
                     getWorld().removeObject(this);
                 }
+            }
+        }
+    }
+    
+    public void updateRotation()
+    {
+        if(Utils.getDirection() != lastRotation)
+        {
+            updatedImage = false;
+        }
+    }
+    
+    public void updateImage(int direction)
+    {
+        switch (direction)
+            {
+                case 0:
+                    setRotation(180);
+                    break;
+                case 1:
+                    setRotation(-90);
+                    break;
+                case 2:
+                    setRotation(0);
+                    break;
+                case 3:
+                    setRotation(90);
+                    break;
+            }
+    }
+    
+    protected void addedToWorld(World world)
+    {
+        if(real)
+        {
+                switch (Utils.getDirection())
+            {
+                case 0:
+                    world.addObject(new RotationPoint(0), getX(), getY() - 20);
+                    world.addObject(new RotationPoint(0), getX(), getY());
+                    setRotation(180);
+                    break;
+                case 1:
+                    world.addObject(new RotationPoint(1), getX() + 20, getY());
+                    world.addObject(new RotationPoint(1), getX(), getY());
+                    setRotation(-90);
+                    break;
+                case 2:
+                    world.addObject(new RotationPoint(2), getX(), getY() + 20);
+                    world.addObject(new RotationPoint(2), getX(), getY());
+                    setRotation(0);
+                    break;
+                case 3:
+                    world.addObject(new RotationPoint(3), getX() - 20, getY());
+                    world.addObject(new RotationPoint(3), getX(), getY());
+                    setRotation(90);
+                    break;
             }
         }
     }
