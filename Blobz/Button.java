@@ -18,9 +18,6 @@ public class Button extends UI
     }
     
     
-    
-    
-    
     // Mr.Cohen's button methods
     /**
      * <h3>Finally, draw centered text in Greenfoot!</h3>

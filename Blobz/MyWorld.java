@@ -9,7 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     MouseInfo mouse = Greenfoot.getMouseInfo();
-
+    private Font comicFontMid = new Font ("Comic Sans MS", true, false, 24);
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -53,8 +54,34 @@ public class MyWorld extends World
     
     public void prepare()
     {
-        addObject(new Belts(true), 100, 100);
-        addObject(new shape(), 260, 60);
+        // spawns left side bar UI stuff
+        int width = 200;
+        int height = 800; 
+        int offset = 27;
+        getBackground().setFont(comicFontMid);
+        getBackground().setColor(Color.GRAY);
+        
+        Button.drawCenteredText (getBackground(), "belt", width / 2, (int) ((height / 9.5) * 1 - offset));       
+        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 1)); // tool 1:
+        Button.drawCenteredText (getBackground(), "cutter", width / 2, (int) ((height / 9.5) * 2 - offset));       
+        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 2)); // tool 2:
+        Button.drawCenteredText (getBackground(), "extractor", width / 2, (int) ((height / 9.5) * 3 - offset)); 
+        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 3)); // tool 3:
+        Button.drawCenteredText (getBackground(), "tunnel", width / 2, (int) ((height / 9.5) * 4 - offset)); 
+        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 4)); // tool 4:
+        Button.drawCenteredText (getBackground(), "balancer", width / 2, (int) ((height / 9.5) * 5 - offset)); 
+        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 5)); // tool 5:
+        Button.drawCenteredText (getBackground(), "rotate cw", width / 2, (int) ((height / 9.5) * 6 - offset)); 
+        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 6)); // tool 6:
+        Button.drawCenteredText (getBackground(), "rotate ccw", width / 2, (int) ((height / 9.5) * 7 - offset)); 
+        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 7)); // tool 7:
+        Button.drawCenteredText (getBackground(), "painter", width / 2, (int) ((height / 9.5) * 8 - offset)); 
+        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 8)); // tool 8:
+        Button.drawCenteredText (getBackground(), "stacker", width / 2, (int) ((height / 9.5) * 9 - offset)); 
+        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 9)); // tool 9:
+        
+        
+        
         addObject(new Utils(), 0, 0);
     }
     
@@ -62,8 +89,8 @@ public class MyWorld extends World
     {
         if(mouse != null)
         {
-            int gridPositionX = (int) (mouse.getX() - 200) / 45;
-            int gridPositionY = (int) mouse.getY() / 45;
+            int gridPositionX = (int) (mouse.getX() - 200) / 40;
+            int gridPositionY = (int) mouse.getY() / 40;
             int buttonNumber = mouse.getButton();
             if(buttonNumber == 3)
             {
