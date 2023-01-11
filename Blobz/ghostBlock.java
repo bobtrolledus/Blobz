@@ -15,7 +15,7 @@ public class ghostBlock extends Utils
     Arrows arrow2 = new Arrows();
     public ghostBlock()
     {
-        getImage().scale(45, 45);
+        getImage().scale(Utils.gridSize, Utils.gridSize);
     }
     
     public void act()
@@ -39,27 +39,27 @@ public class ghostBlock extends Utils
         switch (direction)
             {
                 case 0:
-                    getWorld().addObject(arrow1, getX(), getY() - 45);
+                    getWorld().addObject(arrow1, getX(), getY() - Utils.gridSize);
                     arrow1.setRotation(90);
-                    getWorld().addObject(arrow2, getX(), getY() + 45);    
+                    getWorld().addObject(arrow2, getX(), getY() + Utils.gridSize);    
                     arrow2.setRotation(90);
                     break;
                 case 1:
-                    getWorld().addObject(arrow1, getX() - 45, getY());
+                    getWorld().addObject(arrow1, getX() - Utils.gridSize, getY());
                     arrow1.setRotation(180);
-                    getWorld().addObject(arrow2, getX() + 45, getY());    
+                    getWorld().addObject(arrow2, getX() + Utils.gridSize, getY());    
                     arrow2.setRotation(180);
                     break;
                 case 2:
-                    getWorld().addObject(arrow1, getX(), getY() - 45);
+                    getWorld().addObject(arrow1, getX(), getY() - Utils.gridSize);
                     arrow1.setRotation(-90);
-                    getWorld().addObject(arrow2, getX(), getY() + 45);    
+                    getWorld().addObject(arrow2, getX(), getY() + Utils.gridSize);    
                     arrow2.setRotation(-90);
                     break;
                 case 3:
-                    getWorld().addObject(arrow1, getX() - 45, getY());
+                    getWorld().addObject(arrow1, getX() - Utils.gridSize, getY());
                     arrow1.setRotation(0);
-                    getWorld().addObject(arrow2, getX() + 45, getY());    
+                    getWorld().addObject(arrow2, getX() + Utils.gridSize, getY());    
                     arrow2.setRotation(0);
                     break;
             }
@@ -69,7 +69,7 @@ public class ghostBlock extends Utils
     {
         if(Utils.getDirection() != lastRotation)
         {
-            if(Utils.getMouseX() > 200 && Utils.getMouseX() < 1100)
+            if(Utils.getMouseX() > 200 && Utils.getMouseX() < 1000)
             {
                 for(Arrows arrow : getWorld().getObjects(Arrows.class))
                 {

@@ -54,7 +54,7 @@ public class MyWorld extends World
     public void prepare()
     {
         addObject(new Belts(true), 100, 100);
-        addObject(new shape(), 245, 68);
+        addObject(new shape(), 260, 60);
         addObject(new Utils(), 0, 0);
     }
     

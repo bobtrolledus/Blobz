@@ -14,6 +14,8 @@ public class Utils extends Actor
     private static int arrowXCoord, arrowYCoord;
     private static MouseInfo mouse = Greenfoot.getMouseInfo();
     
+    public static int gridSize = 40;
+    
     public void act()
     {
         mouse = Greenfoot.getMouseInfo();
