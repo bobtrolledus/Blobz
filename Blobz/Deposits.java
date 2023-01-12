@@ -17,13 +17,13 @@ public class Deposits extends Resources
         this.deposit = deposit;
         this.xPos = xPos;
         this.yPos = yPos;
-        this.getImage().scale(45, 45);
+        this.getImage().scale(Utils.gridSize, Utils.gridSize);
         deposit.getImage().scale(20, 20);
     }
     
     public void act(){
         if (firstSpawn){
-            this.setLocation(xPos * 45 + 200 - (this.getImage().getWidth() / 2), yPos * 45 - (this.getImage().getHeight() / 2));
+            this.setLocation(xPos * Utils.gridSize + 200 - (this.getImage().getWidth() / 2), yPos * Utils.gridSize - (this.getImage().getHeight() / 2));
             getWorld().addObject(deposit, this.getX(), this.getY());
             firstSpawn = false;
         }

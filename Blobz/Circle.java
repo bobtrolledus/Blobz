@@ -6,9 +6,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class shape1 extends Shapes
+public class Circle extends Shapes
 {
-    public shape1 (Boolean isLabel){
+    public Circle (Boolean isLabel){
         super(isLabel);
     }
 }
