@@ -8,8 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-    MouseInfo mouse = Greenfoot.getMouseInfo();
-
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -38,8 +36,7 @@ public class MyWorld extends World
     }
     
     public void act()
-    {
-        mouse = Greenfoot.getMouseInfo();
+    {        
         delete();
         String key = Greenfoot.getKey();
         if(key != null)
@@ -54,21 +51,27 @@ public class MyWorld extends World
     public void prepare()
     {
         addObject(new Belts(true), 100, 100);
+        addObject(new Extractor(true), 100, 180);
         addObject(new Utils(), 0, 0);
     }
     
     public void delete()
     {
-        if(mouse != null)
+        if(Utils.getMouse() != null)
         {
-            int gridPositionX = (int) (mouse.getX() - 200) / 40;
-            int gridPositionY = (int) mouse.getY() / 40;
-            int buttonNumber = mouse.getButton();
+            int gridPositionX = (int) (Utils.getMouseX() - 200) / 40;
+            int gridPositionY = (int) Utils.getMouseY() / 40;
+            int buttonNumber = Utils.getMouseButton();
             if(buttonNumber == 3)
             {
                 if(!Utils.spaceIsEmpty(gridPositionX, gridPositionY))
                 {
-                    removeObjects(getObjectsAt(mouse.getX(), mouse.getY(), Machines.class));
+                    if(Utils.getSpace(gridPositionX, gridPositionY).getClass() == Belts.class)
+                    {
+                        Belts temp = (Belts) this.getObjectsAt((gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + 20, Belts.class).get(0);
+                        temp.deletePoints();
+                    }
+                    removeObjects(getObjectsAt((gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + 20, Machines.class));
                     Utils.fillSpace(gridPositionX, gridPositionY, null);
                 }
             }    
