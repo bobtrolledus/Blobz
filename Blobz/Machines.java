@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public abstract class Machines extends Actor
 {
-    ghostBlock block = new ghostBlock();
+    ghostBlock block;
     int gridPositionX, gridPositionY;  
     
     public void followMouse()
@@ -19,7 +19,7 @@ public abstract class Machines extends Actor
         } 
     }
     
-    public void gridSnap()
+    public void gridSnap(GreenfootImage image)
     {
         if(Utils.getMouse() != null)
         {
@@ -30,6 +30,7 @@ public abstract class Machines extends Actor
                 
                 if(getWorld().getObjects(ghostBlock.class).isEmpty() == true)
                 {
+                    block = new ghostBlock(image);
                     getWorld().addObject(block, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
                 }
                 
@@ -61,17 +62,36 @@ public abstract class Machines extends Actor
             if(Utils.getMouseX() > 200 && Utils.getMouseX() < 1000)
             {
                 int buttonNumber = Utils.getMouseButton();
-                if(buttonNumber == 1 && Utils.spaceIsEmpty(gridPositionX, gridPositionY))
+                if(buttonNumber == 1 && Utils.getSpace(gridPositionY, gridPositionX) == null)
                 {
                     try{ 
                         Machines temp = (Machines) cls.newInstance();
                         getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
-                        Utils.fillSpace(gridPositionX, gridPositionY, temp);
+                        Utils.fillSpace(gridPositionY, gridPositionX, temp);
                     }
                     catch(Exception e){
                     }
                 }
             }
+        }
+    }
+    
+    public void updateImage(int direction)
+    {
+        switch (direction)
+        {
+            case 0:
+                setRotation(180);
+                break;
+            case 1:
+                setRotation(-90);
+                break;
+            case 2:
+                setRotation(0);
+                break;
+            case 3:
+                setRotation(90);
+                break;
         }
     }
 }

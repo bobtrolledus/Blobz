@@ -40,4 +40,3 @@ public class StartScreen extends World
         }
     }
 }
-

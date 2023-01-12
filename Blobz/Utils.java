@@ -4,21 +4,38 @@ import java.util.Arrays;
 /**
  * Write a description of class Utils here.
  * 
- * @author (your name) 
+ * @author Anson
  * @version (a version number or a date)
  */
 public class Utils extends Actor
 {
-    private static Machines[][] map = new Machines[20][20]; 
-    private static int rotation = 0;
+    private static Actor[][] map;
+    private static int rotation;
     private static int arrowXCoord, arrowYCoord;
     private static MouseInfo mouse = Greenfoot.getMouseInfo();
+    private static int extractorDelay;
     
     public static int gridSize = 40;
+    
+    public Utils()
+    {
+        map = new Actor[20][20];
+        rotation = 0;
+    }
     
     public void act()
     {
         mouse = Greenfoot.getMouseInfo();
+    }
+    
+    public static int getExtractorDelay()
+    {
+        return extractorDelay;
+    }
+    
+    public static void setExtractorDelay(int delay)
+    {
+        extractorDelay = delay;
     }
     
     public static int getMouseX()
@@ -70,5 +87,10 @@ public class Utils extends Actor
     public static void fillSpace(int x, int y, Machines object)
     {
         map[x][y] = object;
+    }
+    
+    public static Actor getSpace(int x, int y)
+    {
+        return map[x][y];
     }
 }
