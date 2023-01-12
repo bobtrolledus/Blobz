@@ -62,12 +62,12 @@ public abstract class Machines extends Actor
             if(Utils.getMouseX() > 200 && Utils.getMouseX() < 1000)
             {
                 int buttonNumber = Utils.getMouseButton();
-                if(buttonNumber == 1 && Utils.spaceIsEmpty(gridPositionX, gridPositionY))
+                if(buttonNumber == 1 && Utils.getSpace(gridPositionY, gridPositionX) == null)
                 {
                     try{ 
                         Machines temp = (Machines) cls.newInstance();
                         getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
-                        Utils.fillSpace(gridPositionX, gridPositionY, temp);
+                        Utils.fillSpace(gridPositionY, gridPositionX, temp);
                     }
                     catch(Exception e){
                     }

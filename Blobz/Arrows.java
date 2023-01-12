@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Arrows extends Utils
+public class Arrows extends UtilsBlocks
 {
     /**
      * Act - do whatever the Arrows wants to do. This method is called whenever

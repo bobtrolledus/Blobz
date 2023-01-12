@@ -6,13 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Anson 
  * @version (a version number or a date)
  */
-public class ghostBlock extends Utils
+public class ghostBlock extends UtilsBlocks
 {
     private int xCoord, yCoord;
     private int lastRotation;
     private boolean addedArrows = false;    
     Arrows arrow1 = new Arrows();
     Arrows arrow2 = new Arrows();
+    
     public ghostBlock(GreenfootImage image)
     {
         setImage(image);

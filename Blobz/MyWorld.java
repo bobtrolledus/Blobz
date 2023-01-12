@@ -59,20 +59,20 @@ public class MyWorld extends World
     {
         if(Utils.getMouse() != null)
         {
-            int gridPositionX = (int) (Utils.getMouseX() - 200) / 40;
-            int gridPositionY = (int) Utils.getMouseY() / 40;
+            int gridPositionX = (int) (Utils.getMouseX() - 200) /  Utils.gridSize;
+            int gridPositionY = (int) Utils.getMouseY() /  Utils.gridSize;
             int buttonNumber = Utils.getMouseButton();
             if(buttonNumber == 3)
             {
-                if(!Utils.spaceIsEmpty(gridPositionX, gridPositionY))
+                if(Utils.getSpace(gridPositionY, gridPositionX) != null)
                 {
-                    if(Utils.getSpace(gridPositionX, gridPositionY).getClass() == Belts.class)
+                    if(Utils.getSpace(gridPositionY, gridPositionX).getClass() == Belts.class)
                     {
-                        Belts temp = (Belts) this.getObjectsAt((gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + 20, Belts.class).get(0);
+                        Belts temp = (Belts) Utils.getSpace(gridPositionY, gridPositionX);
                         temp.deletePoints();
                     }
                     removeObjects(getObjectsAt((gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + 20, Machines.class));
-                    Utils.fillSpace(gridPositionX, gridPositionY, null);
+                    Utils.fillSpace(gridPositionY, gridPositionX, null);
                 }
             }    
         }
