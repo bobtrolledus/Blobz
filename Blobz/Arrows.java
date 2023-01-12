@@ -14,9 +14,12 @@ public class Arrows extends Utils
      */
     public void act()
     {
-        if(Utils.getMouseX() < 200 || Utils.getMouseX() > 1000)
+        if(Utils.getMouse() != null)
         {
-            getWorld().removeObject(this);
+            if(Utils.getMouseX() < 200 || Utils.getMouseX() > 1000)
+            {
+                getWorld().removeObject(this);
+            }    
         }
     }
 }

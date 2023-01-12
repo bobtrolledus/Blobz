@@ -23,8 +23,8 @@ public class Deposits extends Resources
     
     public void act(){
         if (firstSpawn){
-            this.setLocation(xPos * 45 + 200 - (this.getImage().getWidth() / 2), yPos * 45 - (this.getImage().getHeight() / 2));
-            getWorld().addObject(deposit, this.getX(), this.getY());
+            //this.setLocation(xPos * 40 + 200 - (this.getImage().getWidth() / 2), yPos * 40 - (this.getImage().getHeight() / 2));
+            //getWorld().addObject(deposit, this.getX(), this.getY());
             firstSpawn = false;
         }
     }
