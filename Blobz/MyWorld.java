@@ -61,7 +61,7 @@ public class MyWorld extends World
         Button.drawCenteredText (getBackground(), "belt", width / 2, (int) ((height / 9.5) * 1 - offset));       
         addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 1)); // tool 1:
         Button.drawCenteredText (getBackground(), "cutter", width / 2, (int) ((height / 9.5) * 2 - offset));       
-        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 2)); // tool 2:
+        addObject(new Extractor(true), width / 2, (int) ((height / 9.5) * 2)); // tool 2:
         Button.drawCenteredText (getBackground(), "extractor", width / 2, (int) ((height / 9.5) * 3 - offset)); 
         addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 3)); // tool 3:
         Button.drawCenteredText (getBackground(), "tunnel", width / 2, (int) ((height / 9.5) * 4 - offset)); 
@@ -76,7 +76,6 @@ public class MyWorld extends World
         addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 8)); // tool 8:
         Button.drawCenteredText (getBackground(), "stacker", width / 2, (int) ((height / 9.5) * 9 - offset)); 
         addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 9)); // tool 9:
-        addObject(new Extractor(true), 100, 180);
         addObject(new Utils(), 0, 0);
     }
     

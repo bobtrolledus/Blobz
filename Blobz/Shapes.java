@@ -12,6 +12,7 @@ public class Shapes extends Material
     
     public Shapes (Boolean isLabel, Class shape){
         super(isLabel);
-        this.shape = shape;
+        //this.shape = shape;
     }
+    
 }

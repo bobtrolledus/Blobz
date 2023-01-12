@@ -9,6 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Star extends Shapes
 {
     public Star (Boolean isLabel){
-        //super(isLabel);
+        super(isLabel);
     }
 }
