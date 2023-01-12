@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=ghostBlock
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ ghostBlock\ here.\r\n\ \r\n\ @author\ Anson\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ ghostBlock\ here.\n\ \n\ @author\ Anson\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=image
 comment1.target=ghostBlock(greenfoot.GreenfootImage)
 comment10.params=
