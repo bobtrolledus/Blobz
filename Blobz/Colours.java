@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Colours extends Material
 {
-    public Colours (Boolean isLabel){
-        super(isLabel);
+    public Colours (Boolean isLabel, int q){
+        super(isLabel, q);
     }
 }
