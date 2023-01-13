@@ -14,10 +14,10 @@ public class ghostBlock extends UtilsBlocks
     Arrows arrow1 = new Arrows();
     Arrows arrow2 = new Arrows();
     
-    public ghostBlock(GreenfootImage image)
+    public ghostBlock(GreenfootImage image, int xSize)
     {
         setImage(image);
-        getImage().scale(Utils.gridSize, Utils.gridSize);
+        getImage().scale(Utils.gridSize * xSize, Utils.gridSize);
         getImage().setTransparency(150);
     }
     

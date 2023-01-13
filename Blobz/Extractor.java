@@ -41,8 +41,8 @@ public class Extractor extends Machines
             
             if(!spawner)
             {
-                followMouse();
-                gridSnap(this.getImage());
+                followMouse(1);
+                gridSnap(this.getImage(), 1);
                 updateRotation();
                 /*
                 if(Utils.getSpace(gridPositionX, gridPositionY) != null)
@@ -53,7 +53,7 @@ public class Extractor extends Machines
                     }
                 }
                 */
-                place(Extractor.class);
+                place(Extractor.class, 1);
                 if(!updatedImage)
                 {
                     lastRotation = Utils.getDirection();

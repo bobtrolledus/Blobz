@@ -61,21 +61,21 @@ public class MyWorld extends World
         Button.drawCenteredText (getBackground(), "belt", width / 2, (int) ((height / 9.5) * 1 - offset));       
         addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 1)); // tool 1:
         Button.drawCenteredText (getBackground(), "cutter", width / 2, (int) ((height / 9.5) * 2 - offset));       
-        addObject(new Extractor(true), width / 2, (int) ((height / 9.5) * 2)); // tool 2:
+        addObject(new Cutter(true), width / 2, (int) ((height / 9.5) * 2)); // tool 2:
         Button.drawCenteredText (getBackground(), "extractor", width / 2, (int) ((height / 9.5) * 3 - offset)); 
-        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 3)); // tool 3:
+        addObject(new Extractor(true), width / 2, (int) ((height / 9.5) * 3)); // tool 3:
         Button.drawCenteredText (getBackground(), "tunnel", width / 2, (int) ((height / 9.5) * 4 - offset)); 
         addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 4)); // tool 4:
         Button.drawCenteredText (getBackground(), "balancer", width / 2, (int) ((height / 9.5) * 5 - offset)); 
-        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 5)); // tool 5:
+        addObject(new Balancer(true), width / 2, (int) ((height / 9.5) * 5)); // tool 5:
         Button.drawCenteredText (getBackground(), "rotate cw", width / 2, (int) ((height / 9.5) * 6 - offset)); 
-        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 6)); // tool 6:
+        addObject(new RotateRight(true), width / 2, (int) ((height / 9.5) * 6)); // tool 6:
         Button.drawCenteredText (getBackground(), "rotate ccw", width / 2, (int) ((height / 9.5) * 7 - offset)); 
-        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 7)); // tool 7:
+        addObject(new RotateLeft(true), width / 2, (int) ((height / 9.5) * 7)); // tool 7:
         Button.drawCenteredText (getBackground(), "painter", width / 2, (int) ((height / 9.5) * 8 - offset)); 
         addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 8)); // tool 8:
         Button.drawCenteredText (getBackground(), "stacker", width / 2, (int) ((height / 9.5) * 9 - offset)); 
-        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 9)); // tool 9:
+        addObject(new Stacker(true), width / 2, (int) ((height / 9.5) * 9)); // tool 9:
         addObject(new Utils(), 0, 0);
     }
     

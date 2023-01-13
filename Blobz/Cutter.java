@@ -1,31 +1,32 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Belts here.
+ * Write a description of class Cutter here.
  * 
- * @author Anson
+ * @author (your name) 
  * @version (a version number or a date)
  */
-public class Belts extends Machines
+public class Cutter extends Machines
 {
     private boolean spawner = false, real = false, updatedImage = false;
     private int lastRotation;
-    private RotationPoint point1, point2;
-    
-    public Belts()
+    private int spawnXCoord, spawnYCoord;
+    private SimpleTimer timer = new SimpleTimer();
+    private Shapes shape;
+    public Cutter()
     {
-        getImage().scale(Utils.gridSize, Utils.gridSize);
+        getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         real = true;
     }
     
-    public Belts(boolean spawner)
+    public Cutter(boolean spawner)
     {
-        getImage().scale(Utils.gridSize, Utils.gridSize);
+        getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         this.spawner = spawner;
     }
-        
+    
     /**
-     * Act - do whatever the Belts wants to do. This method is called whenever
+     * Act - do whatever the Extractor wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
@@ -34,16 +35,16 @@ public class Belts extends Machines
         {
             if(spawner && Greenfoot.mouseClicked(this))
             {
-                Belts mouseBelt = new Belts(false);
-                getWorld().addObject(mouseBelt, Utils.getMouseX(), Utils.getMouseY());
+                Cutter mouseCutter = new Cutter(false);
+                getWorld().addObject(mouseCutter, Utils.getMouseX(), Utils.getMouseY());
             }
             
             if(!spawner)
             {
-                followMouse(1);
-                gridSnap(this.getImage(), 1);
+                followMouse(2);
+                gridSnap(this.getImage(), 2);
                 updateRotation();
-                place(Belts.class, 1);
+                place(Cutter.class, 2);
                 if(!updatedImage)
                 {
                     lastRotation = Utils.getDirection();
@@ -74,44 +75,45 @@ public class Belts extends Machines
         }
     }
     
-    public void deletePoints()
+    public void getShape()
     {
-        getWorld().removeObject(point1);
-        getWorld().removeObject(point2);
+        
+    }
+    
+    public void spawnShape()
+    {
+        if(timer.millisElapsed() > Utils.getExtractorDelay())
+        {
+            
+        }
     }
     
     protected void addedToWorld(World world)
     {
+        getShape();
+        timer.mark();
         if(real)
         {
             switch (Utils.getDirection())
             {
                 case 0:
-                    point1 = new RotationPoint(0);
-                    point2 = new RotationPoint(0);
-                    world.addObject(point1, getX(), getY() - 20);
-                    world.addObject(point2, getX(), getY());
+                    spawnXCoord = getX();
+                    spawnYCoord = getY() + 20;
                     setRotation(180);
                     break;
                 case 1:
-                    point1 = new RotationPoint(1);
-                    point2 = new RotationPoint(1);
-                    world.addObject(point1, getX() + 20, getY());
-                    world.addObject(point2, getX(), getY());
+                    spawnXCoord = getX() - 20;
+                    spawnYCoord = getY();
                     setRotation(-90);
                     break;
                 case 2:
-                    point1 = new RotationPoint(2);
-                    point2 = new RotationPoint(2);
-                    world.addObject(point1, getX(), getY() + 20);
-                    world.addObject(point2, getX(), getY());
+                    spawnXCoord = getX();
+                    spawnYCoord = getY() - 20;
                     setRotation(0);
                     break;
                 case 3:
-                    point1 = new RotationPoint(3);
-                    point2 = new RotationPoint(3);
-                    world.addObject(point1, getX() - 20, getY());
-                    world.addObject(point2, getX(), getY());
+                    spawnXCoord = getX() + 20;
+                    spawnYCoord = getY() - 20;
                     setRotation(90);
                     break;
             }

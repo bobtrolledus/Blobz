@@ -1,12 +1,12 @@
 #BlueJ class context
 comment0.target=Machines
-comment0.text=\n\ Write\ a\ description\ of\ class\ Machines\ here.\n\ \n\ @author\ Anson\ \ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=
-comment1.target=void\ followMouse()
-comment2.params=image
-comment2.target=void\ gridSnap(greenfoot.GreenfootImage)
-comment3.params=cls
-comment3.target=void\ place(java.lang.Class)
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Machines\ here.\r\n\ \r\n\ @author\ Anson\ \ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=xSize
+comment1.target=void\ followMouse(int)
+comment2.params=image\ xSize
+comment2.target=void\ gridSnap(greenfoot.GreenfootImage,\ int)
+comment3.params=cls\ xSize
+comment3.target=void\ place(java.lang.Class,\ int)
 comment4.params=direction
 comment4.target=void\ updateImage(int)
 numComments=5
