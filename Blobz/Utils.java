@@ -14,7 +14,7 @@ public class Utils extends Actor
     private static int arrowXCoord, arrowYCoord;
     private static MouseInfo mouse = Greenfoot.getMouseInfo();
     private static int extractorDelay;
-    
+    private static int level;
     public static int gridSize = 40;
     
     public Utils()
@@ -92,5 +92,10 @@ public class Utils extends Actor
     public static Actor getSpace(int x, int y)
     {
         return map[x][y];
+    }
+    
+    public static int getLevel()
+    {
+        return level;
     }
 }

@@ -34,6 +34,7 @@ public class MyWorld extends World
             }
         }
         prepare();
+        
     }
     
     public void act()
@@ -77,6 +78,8 @@ public class MyWorld extends World
         Button.drawCenteredText (getBackground(), "stacker", width / 2, (int) ((height / 9.5) * 9 - offset)); 
         addObject(new Stacker(true), width / 2, (int) ((height / 9.5) * 9)); // tool 9:
         addObject(new Utils(), 0, 0);
+        addObject(new Hub(), 600,400);
+        addObject(new Label("Level " + Utils.getLevel(), 20), 600,400);
     }
     
     public void delete()
