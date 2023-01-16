@@ -16,7 +16,7 @@ public class Utils extends Actor
     private static int extractorDelay = 5000;
     
     public static int gridSize = 40;
-    
+    private static int level;
     public Utils()
     {
         map = new Actor[20][20];
@@ -93,4 +93,21 @@ public class Utils extends Actor
     {
         return map[x][y];
     }
+    
+    public static int getLevel()
+    {
+        return level;
+    }
+    
+    public static void increaseLevel()
+    {
+        level++;
+    }
+    
+    public static void decreaseLevel()
+    {
+        level--;
+    }
+
+
 }
