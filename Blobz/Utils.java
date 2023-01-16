@@ -98,4 +98,14 @@ public class Utils extends Actor
     {
         return level;
     }
+    
+    public static void increaseLevel()
+    {
+        level++;
+    }
+    
+    public static void decreaseLevel()
+    {
+        level--;
+    }
 }
