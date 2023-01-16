@@ -13,6 +13,7 @@ public class RotationPoint extends UtilsBlocks
     public RotationPoint(int degree)
     {
         degreeOfMovement = degree;
+        getImage().scale(1, 1);
     }
     
     public int getRotation()
