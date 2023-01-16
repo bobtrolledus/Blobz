@@ -17,7 +17,7 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1); 
-        setPaintOrder(Belts.class, ghostBlock.class);
+        setPaintOrder(Shapes.class, Belts.class, ghostBlock.class);
         Color lightGray = new Color(228, 228, 226);
         Color gray = new Color(171, 171, 171);
         getBackground().setColor(lightGray);
@@ -34,6 +34,7 @@ public class MyWorld extends World
             }
         }
         prepare();
+        
     }
     
     public void act()

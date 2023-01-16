@@ -13,6 +13,9 @@ public class Extractor extends Machines
     private int spawnXCoord, spawnYCoord;
     private SimpleTimer timer = new SimpleTimer();
     private Shapes shape;
+    
+    private int[] corners = {1, 2, 3, 2, -1, -1, -1, -1};
+    
     public Extractor()
     {
         getImage().scale(Utils.gridSize, Utils.gridSize);
@@ -74,6 +77,10 @@ public class Extractor extends Machines
                 }
             }
         }
+        
+        if (real) {
+            spawnShape();
+        }
     }
     
     public void updateRotation()
@@ -93,7 +100,8 @@ public class Extractor extends Machines
     {
         if(timer.millisElapsed() > Utils.getExtractorDelay())
         {
-            
+            getWorld().addObject(new ShapeGenerator(corners, this), spawnXCoord, spawnYCoord);
+            timer.mark();
         }
     }
     
@@ -127,5 +135,13 @@ public class Extractor extends Machines
                     break;
             }
         }
+    }
+    
+    public int getSpawnXCoord(){
+        return spawnXCoord;
+    }
+    
+    public int getSpawnYCoord(){
+        return spawnYCoord;
     }
 }
