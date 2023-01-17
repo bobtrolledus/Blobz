@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Square
 comment0.text=\n\ Write\ a\ description\ of\ class\ Square\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=isLabel\ q\ guide
-comment1.target=Square(java.lang.Boolean,\ int,\ FollowPoint)
+comment1.params=isLabel
+comment1.target=Square(java.lang.Boolean)
 numComments=2
