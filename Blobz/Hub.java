@@ -1,4 +1,3 @@
-
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Hub here.
@@ -19,13 +18,15 @@ public class Hub extends Actor
      */
     public Hub()
     {
+        setImage("images/hub.png");
         getImage().scale(Utils.gridSize*4, Utils.gridSize*4);
 
     }
 
     public void act()
     {
-        // Add your action code here.
+        collecting();
+        upgrade();
     }
 
     public void collecting()
@@ -33,10 +34,11 @@ public class Hub extends Actor
         Resources resource = (Resources)getOneIntersectingObject(Resources.class);
         if(resource != null)
         {
+            getWorld().removeObject(resource);
             if(isObj)
             {
                 obj--;
-                getWorld().removeObject(resource);
+                
             }
 
         }
@@ -46,8 +48,7 @@ public class Hub extends Actor
     {
         if(obj == 0)
         {
-            level++;
+            Utils.increaseLevel();
         }
     }
 }
-

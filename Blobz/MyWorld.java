@@ -25,18 +25,18 @@ public class MyWorld extends World
         getBackground().setColor(gray);        
         for(int x = 0; x <= 800; x++){
             if(x % 40 == 0){
-                    getBackground().drawLine(x + 200, 0, x + 200, 1000);
+                getBackground().drawLine(x + 200, 0, x + 200, 1000);
             }
         }
         for(int x = 0; x < 1000; x++){
             if(x % 40 == 0){
-                    getBackground().drawLine(200, x, 1000, x);
+                getBackground().drawLine(200, x, 1000, x);
             }
         }
         prepare();
-        
+
     }
-    
+
     public void act()
     {        
         delete();
@@ -49,7 +49,7 @@ public class MyWorld extends World
             }
         }
     }
-    
+
     public void prepare()
     {
         // spawns left side bar UI stuff
@@ -58,7 +58,7 @@ public class MyWorld extends World
         int offset = 27;
         getBackground().setFont(comicFontMid);
         getBackground().setColor(Color.GRAY);
-        
+
         Button.drawCenteredText (getBackground(), "belt", width / 2, (int) ((height / 9) * 1 - offset));       
         addObject(new Belts(true), width / 2, (int) ((height / 9) * 1)); // tool 1:
         Button.drawCenteredText (getBackground(), "cutter", width / 2, (int) ((height / 9) * 2 - offset));       
@@ -79,8 +79,12 @@ public class MyWorld extends World
         
         //Button.drawCenteredText (getBackground(), "money: ", width / 2, (int) ((height / 9) * 1 - offset));  
         addObject(new Utils(), 0, 0);
+
+        addObject(new Hub(), 600,400);
+        addObject(new Label("Level " + Utils.getLevel(), 20), 600,400);
+
     }
-    
+
     public void delete()
     {
         if(Utils.getMouse() != null)
@@ -103,6 +107,5 @@ public class MyWorld extends World
             }    
         }
     }
-    
-    
+
 }
