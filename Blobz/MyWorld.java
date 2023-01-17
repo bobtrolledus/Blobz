@@ -75,6 +75,9 @@ public class MyWorld extends World
         addObject(new Belts(true), width / 2, (int) ((height / 9) * 7)); // tool 8:
         Button.drawCenteredText (getBackground(), "stacker", width / 2, (int) ((height / 9) * 8 - offset)); 
         addObject(new Stacker(true), width / 2, (int) ((height / 9) * 8)); // tool 9:
+        
+        
+        //Button.drawCenteredText (getBackground(), "money: ", width / 2, (int) ((height / 9) * 1 - offset));  
         addObject(new Utils(), 0, 0);
     }
     

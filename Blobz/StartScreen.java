@@ -11,11 +11,13 @@ public class StartScreen extends World
 {
     private GreenfootImage background;
     private boolean clicked = false;
+    private boolean hover = false;
     private Font comicFontLarge = new Font ("Comic Sans MS", true, false, 77);
     
     public StartScreen() {    
         super(1200, 800, 1);
-                
+        addObject(new Utils(), 0, 0);
+        
         background = new GreenfootImage("start_screen.png");
         setBackground(background);
         
@@ -27,16 +29,18 @@ public class StartScreen extends World
     }
 
     public void act() {
-        checkClicked();
+        checkMouse();
+        
         if (clicked || Greenfoot.isKeyDown("enter")) {
             Greenfoot.setWorld(new MyWorld());
         }
     }
     
-    public void checkClicked() {
+    public void checkMouse() {
         ArrayList<StartButton> button = (ArrayList<StartButton>)getObjects(StartButton.class);
         for (StartButton b : button) {
             clicked = b.getClicked();
+            hover = b.getHover();
         }
     }
 }
