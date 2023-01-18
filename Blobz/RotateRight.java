@@ -3,7 +3,7 @@ import java.util.Arrays;
 /**
  * Write a description of class RotateRight here.
  * 
- * @author (your name) 
+ * @author Anson 
  * @version (a version number or a date)
  */
 public class RotateRight extends Machines
@@ -11,7 +11,6 @@ public class RotateRight extends Machines
     private boolean spawner = false, real = false, updatedImage = false;
     private int lastRotation, direction;
     private int inputXCoord, inputYCoord, spawnXCoord, spawnYCoord;
-    private int lastIndex, newIndex;
     private int[] outputShape;
     private SimpleTimer timer = new SimpleTimer();
     private Shapes shape;
@@ -133,33 +132,33 @@ public class RotateRight extends Machines
             {
                 case 0:
                     inputXCoord = getX();
-                    inputYCoord = getY() - 20;
+                    inputYCoord = getY() - (Utils.gridSize / 2);
                     spawnXCoord = getX();
-                    spawnYCoord = getY() + 20;
+                    spawnYCoord = getY() + (Utils.gridSize / 2);
                     direction = 0;
                     setRotation(180);
                     break;
                 case 1:
-                    inputXCoord = getX() + 20;
+                    inputXCoord = getX() + (Utils.gridSize / 2);
                     inputYCoord = getY();
-                    spawnXCoord = getX() - 20;
+                    spawnXCoord = getX() - (Utils.gridSize / 2);
                     spawnYCoord = getY();
                     direction = 1;
                     setRotation(-90);
                     break;
                 case 2:
                     inputXCoord = getX();
-                    inputYCoord = getY() + 20;
+                    inputYCoord = getY() + (Utils.gridSize / 2);
                     spawnXCoord = getX();
-                    spawnYCoord = getY() - 20;
+                    spawnYCoord = getY() - (Utils.gridSize / 2);
                     direction = 2;
                     setRotation(0);
                     
                     break;
                 case 3:
-                    inputXCoord = getX() - 20;
+                    inputXCoord = getX() - (Utils.gridSize / 2);
                     inputYCoord = getY();
-                    spawnXCoord = getX() + 20;
+                    spawnXCoord = getX() + (Utils.gridSize / 2);
                     spawnYCoord = getY();
                     direction = 3;
                     setRotation(90);
