@@ -13,7 +13,8 @@ public class Utils extends Actor
     private static int rotation;
     private static int arrowXCoord, arrowYCoord;
     private static MouseInfo mouse = Greenfoot.getMouseInfo();
-    private static int extractorDelay = 5000;
+    private static int extractorDelay = 1000;
+    private static int balancerDelay = 1000;
     
     public static int gridSize = 40;
     
@@ -36,6 +37,16 @@ public class Utils extends Actor
     public static void setExtractorDelay(int delay)
     {
         extractorDelay = delay;
+    }
+    
+    public static int getBalancerDelay()
+    {
+        return balancerDelay;
+    }
+    
+    public static void setBalancerDelay(int delay)
+    {
+        balancerDelay = delay;
     }
     
     public static int getMouseX()

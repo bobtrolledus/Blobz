@@ -6,5 +6,5 @@ comment1.target=Shapes(java.lang.Boolean,\ int,\ FollowPoint)
 comment2.params=q
 comment2.target=void\ setRotation(int)
 comment3.params=
-comment3.target=void\ act()
+comment3.target=void\ move()
 numComments=4

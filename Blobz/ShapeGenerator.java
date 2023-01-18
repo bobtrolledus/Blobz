@@ -8,16 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ShapeGenerator extends Resources
 {
-    private int x = 0, y = 0, quadrant = 1;
+    private int x = 0, y = 0, quadrant = 1, spawnX, spawnY, dir;
     private int[] corners = new int[8];
-    private Extractor extractor;
-    private FollowPoint point, guider;
+    private FollowPoint point;
     
-    public ShapeGenerator (int[] values, Extractor extractor){
+    public ShapeGenerator (int[] values, int dir){
         for(int i = 0; i < corners.length; i++){
             corners[i] = values[i];
         }
-        this.extractor = extractor;
+        this.dir = dir;
     }
     
     public void act(){
@@ -25,28 +24,32 @@ public class ShapeGenerator extends Resources
         
         for(int i = 0; i < corners.length; i++){
             if(i == 0 || i == 1 || i == 4 || i == 5){
-                x = extractor.getSpawnXCoord() + (this.getImage().getWidth() / 2) - 1;
+                x = getX() + (this.getImage().getWidth() / 2) - 1;
             } else {
-                x = extractor.getSpawnXCoord() - (this.getImage().getWidth() / 2) + 1;
+                x = getX() - (this.getImage().getWidth() / 2) + 1;
             }
             
             if(i == 0 || i == 3 || i == 4 || i == 7){
-                y = extractor.getSpawnYCoord() - (this.getImage().getHeight() / 2) + 1;
+                y = getY() - (this.getImage().getHeight() / 2) + 1;
             } else {
-                y = extractor.getSpawnYCoord() + (this.getImage().getHeight() / 2) - 1;
+                y = getY() + (this.getImage().getHeight() / 2) - 1;
             }
             
             switch(corners[i]){
                 case -1:
+                    point.setID(i, -1);
                     break;
                 case 1:
                     getWorld().addObject(new Circle(false, quadrant, point), x, y);
+                    point.setID(i, 1);
                     break;
                 case 2:
                     getWorld().addObject(new Square(false, quadrant, point), x, y);
+                    point.setID(i, 2);
                     break;
                 case 3:
                     getWorld().addObject(new Star(false, quadrant, point), x, y);
+                    point.setID(i, 3);
                     break;
             }
             
@@ -61,7 +64,7 @@ public class ShapeGenerator extends Resources
     }
     
     public void spawnPoint(){
-        point = new FollowPoint();
+        point = new FollowPoint(dir);
         getWorld().addObject(point, this.getX(), this.getY());
     }
 }

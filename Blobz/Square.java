@@ -13,4 +13,16 @@ public class Square extends Shapes
         getImage().scale(15, 15);
         setRotation(q);
     }
+    
+    public void act()
+    {
+        if(guide.getWorld() == null)
+        {
+            getWorld().removeObject(this);
+        }
+        else
+        {
+            move();
+        }
+    }
 }

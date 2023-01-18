@@ -10,7 +10,7 @@ public class Extractor extends Machines
 {
     private boolean spawner = false, real = false, updatedImage = false;
     private int lastRotation;
-    private int spawnXCoord, spawnYCoord;
+    private int spawnXCoord, spawnYCoord, direction;
     private SimpleTimer timer = new SimpleTimer();
     private Shapes shape;
     
@@ -78,7 +78,7 @@ public class Extractor extends Machines
             }
         }
         
-        if (real) {
+        if(real) {
             spawnShape();
         }
     }
@@ -100,7 +100,7 @@ public class Extractor extends Machines
     {
         if(timer.millisElapsed() > Utils.getExtractorDelay())
         {
-            getWorld().addObject(new ShapeGenerator(corners, this), spawnXCoord, spawnYCoord);
+            getWorld().addObject(new ShapeGenerator(corners, direction), spawnXCoord, spawnYCoord);
             timer.mark();
         }
     }
@@ -116,21 +116,25 @@ public class Extractor extends Machines
                 case 0:
                     spawnXCoord = getX();
                     spawnYCoord = getY() + 20;
+                    direction = 0;
                     setRotation(180);
                     break;
                 case 1:
                     spawnXCoord = getX() - 20;
                     spawnYCoord = getY();
+                    direction = 1;
                     setRotation(-90);
                     break;
                 case 2:
                     spawnXCoord = getX();
                     spawnYCoord = getY() - 20;
+                    direction = 2;
                     setRotation(0);
                     break;
                 case 3:
                     spawnXCoord = getX() + 20;
-                    spawnYCoord = getY() - 20;
+                    spawnYCoord = getY();
+                    direction = 3;
                     setRotation(90);
                     break;
             }

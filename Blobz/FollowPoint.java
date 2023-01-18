@@ -10,9 +10,11 @@ public class FollowPoint extends UtilsBlocks
 {
     private int dir = 0, x, y;
     private RotationPoint rotation;
+    private int[] shapeID = new int[8];
     
-    public FollowPoint() {
+    public FollowPoint(int dir) {
         getImage().scale(1, 1);
+        this.dir = dir;
     }
     
     public void act() {
@@ -39,6 +41,21 @@ public class FollowPoint extends UtilsBlocks
         setLocation(x, y);
     }
     
+    public void setID(int index, int shapeNum)
+    {
+        shapeID[index] = shapeNum;
+    }
+    
+    public int[] getShape()
+    {
+        return shapeID;
+    }
+    
+    public int getRotation()
+    {
+        return dir;
+    }
+
     public void setRotation(){
         rotation = (RotationPoint) getOneIntersectingObject(RotationPoint.class);
         if(rotation != null){
