@@ -8,9 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Balancer extends Machines
 {
-    private boolean spawner = false, real = false, updatedImage = false;
+    private boolean spawner = false, real = false, updatedImage = false, outputSide = false;
     private int lastRotation;
-    private int spawnXCoord, spawnYCoord;
+    private int spawnX1Coord, spawnY1Coord, spawnX2Coord, spawnY2Coord, inputX1Coord, inputY1Coord, inputX2Coord, inputY2Coord;
+    private int direction;
+    private int[] outputShape;
     private SimpleTimer timer = new SimpleTimer();
     private Shapes shape;
     public Balancer()
@@ -65,6 +67,15 @@ public class Balancer extends Machines
                 }
             }
         }
+        
+        if(real)
+        {
+            getShape();
+            if(outputShape != null)
+            {
+                spawnShape();
+            }
+        }
     }
     
     public void updateRotation()
@@ -76,15 +87,40 @@ public class Balancer extends Machines
     }
     
     public void getShape()
-    {
-        
+    {       
+        if(getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).size() > 0)
+        {
+            FollowPoint tempPoint = getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).get(0);
+            outputShape = tempPoint.getShape();
+            direction = tempPoint.getRotation();
+            getWorld().removeObject(tempPoint);
+        }
+        if(getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).size() > 0)
+        {
+            FollowPoint tempPoint = getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).get(0);
+            outputShape = tempPoint.getShape();
+            direction = tempPoint.getRotation();
+            getWorld().removeObject(tempPoint);
+        }
     }
     
     public void spawnShape()
     {
-        if(timer.millisElapsed() > Utils.getExtractorDelay())
+        if(timer.millisElapsed() > Utils.getBalancerDelay())
         {
-            
+            if(!outputSide)
+            {
+                getWorld().addObject(new ShapeGenerator(outputShape, direction), spawnX1Coord, spawnY1Coord);
+                outputShape = null;
+                outputSide = true;
+            }
+            else
+            {
+                getWorld().addObject(new ShapeGenerator(outputShape, direction), spawnX2Coord, spawnY2Coord);
+                outputShape = null;
+                outputSide = false;
+            }
+            timer.mark();
         }
     }
     
@@ -97,23 +133,51 @@ public class Balancer extends Machines
             switch (Utils.getDirection())
             {
                 case 0:
-                    spawnXCoord = getX();
-                    spawnYCoord = getY() + 20;
+                    spawnX1Coord = getX() - (Utils.gridSize / 2);
+                    spawnX2Coord = getX() + (Utils.gridSize / 2);
+                    spawnY1Coord = getY() + (Utils.gridSize / 2);
+                    spawnY2Coord = getY() + (Utils.gridSize / 2);
+                    inputX1Coord = spawnX1Coord;
+                    inputX2Coord = spawnX2Coord;
+                    inputY1Coord = getY() - (Utils.gridSize / 2);
+                    inputY2Coord = getY() - (Utils.gridSize / 2);
+                    
                     setRotation(180);
                     break;
                 case 1:
-                    spawnXCoord = getX() - 20;
-                    spawnYCoord = getY();
+                    spawnX1Coord = getX() - (Utils.gridSize / 2);
+                    spawnX2Coord = getX() - (Utils.gridSize / 2);
+                    spawnY1Coord = getY() - (Utils.gridSize / 2);
+                    spawnY2Coord = getY() + (Utils.gridSize / 2);
+                    inputX1Coord = getX() + (Utils.gridSize / 2);
+                    inputX2Coord = getX() + (Utils.gridSize / 2);
+                    inputY1Coord = spawnY1Coord;
+                    inputY2Coord = spawnY2Coord;
+                    
                     setRotation(-90);
                     break;
                 case 2:
-                    spawnXCoord = getX();
-                    spawnYCoord = getY() - 20;
+                    spawnX1Coord = getX() + (Utils.gridSize / 2);
+                    spawnX2Coord = getX() - (Utils.gridSize / 2);
+                    spawnY1Coord = getY() - (Utils.gridSize / 2);
+                    spawnY2Coord = getY() - (Utils.gridSize / 2);
+                    inputX1Coord = spawnX1Coord;
+                    inputX2Coord = spawnX2Coord;
+                    inputY1Coord = getY() + (Utils.gridSize / 2);
+                    inputY2Coord = getY() + (Utils.gridSize / 2);
+                    
                     setRotation(0);
                     break;
                 case 3:
-                    spawnXCoord = getX() + 20;
-                    spawnYCoord = getY() - 20;
+                    spawnX1Coord = getX() + (Utils.gridSize / 2);
+                    spawnX2Coord = getX() + (Utils.gridSize / 2);
+                    spawnY1Coord = getY() + (Utils.gridSize / 2);
+                    spawnY2Coord = getY() - (Utils.gridSize / 2);
+                    inputX1Coord = getX() - (Utils.gridSize / 2);
+                    inputX2Coord = getX() - (Utils.gridSize / 2);
+                    inputY1Coord = spawnY1Coord;
+                    inputY2Coord = spawnY2Coord;
+                    
                     setRotation(90);
                     break;
             }

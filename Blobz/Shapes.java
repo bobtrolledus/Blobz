@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Shapes extends Material
 {
-    private FollowPoint guide;
+    public FollowPoint guide;
     private int q, x, y;
     
     public Shapes(Boolean isLabel, int q, FollowPoint guide)
@@ -35,7 +35,7 @@ public class Shapes extends Material
         }
     }
     
-    public void act(){
+    public void move(){
         if(q == 1 || q == 2 || q == 5 || q == 6){
             x = guide.getX() + (this.getImage().getWidth() / 2);
         } else {

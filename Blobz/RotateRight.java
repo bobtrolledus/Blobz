@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.Arrays;
 /**
  * Write a description of class RotateRight here.
  * 
@@ -9,8 +9,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class RotateRight extends Machines
 {
     private boolean spawner = false, real = false, updatedImage = false;
-    private int lastRotation;
-    private int spawnXCoord, spawnYCoord;
+    private int lastRotation, direction;
+    private int inputXCoord, inputYCoord, spawnXCoord, spawnYCoord;
+    private int lastIndex, newIndex;
+    private int[] outputShape;
     private SimpleTimer timer = new SimpleTimer();
     private Shapes shape;
     public RotateRight()
@@ -65,6 +67,14 @@ public class RotateRight extends Machines
                 }
             }
         }
+        if(real)
+        {
+            getShape();
+            if(outputShape != null)
+            {
+                spawnShape();
+            }
+        }
     }
     
     public void updateRotation()
@@ -76,15 +86,40 @@ public class RotateRight extends Machines
     }
     
     public void getShape()
-    {
-        
+    {       
+        if(getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).size() > 0)
+        {
+            FollowPoint tempPoint = getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).get(0);
+            outputShape = tempPoint.getShape();
+            direction = tempPoint.getRotation();
+            getWorld().removeObject(tempPoint);
+            int i = 0, j = 3;
+            while(i != j)
+            {
+              int temp = outputShape[i];
+              outputShape[i] = outputShape[j];
+              outputShape[j] = temp;
+              i++;
+            }
+            i = 4;
+            j = outputShape.length - 1;
+            while(i != j)
+            {
+              int temp = outputShape[i];
+              outputShape[i] = outputShape[j];
+              outputShape[j] = temp;
+              i++;
+            }
+        }
     }
     
     public void spawnShape()
     {
-        if(timer.millisElapsed() > Utils.getExtractorDelay())
+        if(timer.millisElapsed() > Utils.getBalancerDelay())
         {
-            
+            getWorld().addObject(new ShapeGenerator(outputShape, direction), spawnXCoord, spawnYCoord);
+            outputShape = null;
+            timer.mark();
         }
     }
     
@@ -97,23 +132,36 @@ public class RotateRight extends Machines
             switch (Utils.getDirection())
             {
                 case 0:
+                    inputXCoord = getX();
+                    inputYCoord = getY() - 20;
                     spawnXCoord = getX();
                     spawnYCoord = getY() + 20;
+                    direction = 0;
                     setRotation(180);
                     break;
                 case 1:
+                    inputXCoord = getX() + 20;
+                    inputYCoord = getY();
                     spawnXCoord = getX() - 20;
                     spawnYCoord = getY();
+                    direction = 1;
                     setRotation(-90);
                     break;
                 case 2:
+                    inputXCoord = getX();
+                    inputYCoord = getY() + 20;
                     spawnXCoord = getX();
                     spawnYCoord = getY() - 20;
+                    direction = 2;
                     setRotation(0);
+                    
                     break;
                 case 3:
+                    inputXCoord = getX() - 20;
+                    inputYCoord = getY();
                     spawnXCoord = getX() + 20;
-                    spawnYCoord = getY() - 20;
+                    spawnYCoord = getY();
+                    direction = 3;
                     setRotation(90);
                     break;
             }
