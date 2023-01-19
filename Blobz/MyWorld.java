@@ -1,5 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.NoSuchElementException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 /**
  * Write a description of class MyWorld here.
  * 
@@ -111,6 +119,10 @@ public class MyWorld extends World
                 }
             }    
         }
+    }
+    public void read()
+    {
+        
     }
 
 }
