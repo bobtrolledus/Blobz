@@ -9,8 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public abstract class Machines extends Actor
 {
     ghostBlock block;
-    int gridPositionX, gridPositionY;  
-    
+    private int gridPositionX, gridPositionY;  
+    public int direction; 
     public void followMouse(int xSize)
     {
         if(Utils.getMouse() != null)
@@ -90,7 +90,7 @@ public abstract class Machines extends Actor
                 {
                     if(xSize > 1)
                     {
-                        if((Utils.getDirection() == 0 && Utils.getSpace(gridPositionY, gridPositionX + 1) == null) || (Utils.getDirection() == 1 && Utils.getSpace(gridPositionY + 1, gridPositionX) == null) || (Utils.getDirection() == 2 && Utils.getSpace(gridPositionY, gridPositionX - 1) == null) || (Utils.getDirection() == 3 && Utils.getSpace(gridPositionY - 1, gridPositionX) == null))
+                        if((Utils.getDirection() == 0 && Utils.getSpace(gridPositionY, gridPositionX + 1) == null) || (Utils.getDirection() == 1 && Utils.getSpace(gridPositionY - 1, gridPositionX) == null) || (Utils.getDirection() == 2 && Utils.getSpace(gridPositionY, gridPositionX - 1) == null) || (Utils.getDirection() == 3 && Utils.getSpace(gridPositionY - 1, gridPositionX) == null))
                         {
                             try{ 
                                 Machines temp = (Machines) cls.newInstance();
@@ -103,11 +103,11 @@ public abstract class Machines extends Actor
                                         break;
                                     case 1:
                                         getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (180 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2 - 20));
-                                        Utils.fillSpace(gridPositionY + 1, gridPositionX, temp);
+                                        Utils.fillSpace(gridPositionY - 1, gridPositionX, temp);
                                         break;
                                     case 2:
                                         getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
-                                        Utils.fillSpace(gridPositionY, gridPositionX - 1, temp);
+                                        Utils.fillSpace(gridPositionY, gridPositionX + 1, temp);
                                         break;
                                     case 3:
                                         getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (180 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2 - 20));
@@ -130,6 +130,13 @@ public abstract class Machines extends Actor
                 }
             }
         }
+    }
+    
+    
+    
+    public void setDirection(int direction)
+    {
+        this.direction = direction;
     }
     
     public void updateImage(int direction)

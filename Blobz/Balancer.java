@@ -6,9 +6,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Anson 
  * @version (a version number or a date)
  */
-public class Balancer extends Machines
+public class Balancer extends WideMachines
 {
-    private boolean spawner = false, real = false, updatedImage = false, outputSide = false;
+    private boolean spawner = false, real = false, updatedImage = false, outputSide = false, inProgress = false;
     private int lastRotation;
     private int spawnX1Coord, spawnY1Coord, spawnX2Coord, spawnY2Coord, inputX1Coord, inputY1Coord, inputX2Coord, inputY2Coord;
     private int direction;
@@ -70,7 +70,10 @@ public class Balancer extends Machines
         
         if(real)
         {
-            getShape();
+            if(!inProgress)
+            {
+                getShape();
+            }
             if(outputShape != null)
             {
                 spawnShape();
@@ -94,6 +97,7 @@ public class Balancer extends Machines
             outputShape = tempPoint.getShape();
             direction = tempPoint.getRotation();
             getWorld().removeObject(tempPoint);
+            inProgress = true;
         }
         if(getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).size() > 0)
         {
@@ -101,6 +105,7 @@ public class Balancer extends Machines
             outputShape = tempPoint.getShape();
             direction = tempPoint.getRotation();
             getWorld().removeObject(tempPoint);
+            inProgress = true;
         }
     }
     
@@ -121,12 +126,12 @@ public class Balancer extends Machines
                 outputSide = false;
             }
             timer.mark();
+            inProgress = false;
         }
     }
     
     protected void addedToWorld(World world)
     {
-        getShape();
         timer.mark();
         if(real)
         {
@@ -141,7 +146,7 @@ public class Balancer extends Machines
                     inputX2Coord = spawnX2Coord;
                     inputY1Coord = getY() - (Utils.gridSize / 2);
                     inputY2Coord = getY() - (Utils.gridSize / 2);
-                    
+                    setDirection(0);
                     setRotation(180);
                     break;
                 case 1:
@@ -153,7 +158,7 @@ public class Balancer extends Machines
                     inputX2Coord = getX() + (Utils.gridSize / 2);
                     inputY1Coord = spawnY1Coord;
                     inputY2Coord = spawnY2Coord;
-                    
+                    setDirection(1);
                     setRotation(-90);
                     break;
                 case 2:
@@ -165,7 +170,7 @@ public class Balancer extends Machines
                     inputX2Coord = spawnX2Coord;
                     inputY1Coord = getY() + (Utils.gridSize / 2);
                     inputY2Coord = getY() + (Utils.gridSize / 2);
-                    
+                    setDirection(2);
                     setRotation(0);
                     break;
                 case 3:
@@ -177,7 +182,7 @@ public class Balancer extends Machines
                     inputX2Coord = getX() - (Utils.gridSize / 2);
                     inputY1Coord = spawnY1Coord;
                     inputY2Coord = spawnY2Coord;
-                    
+                    setDirection(3);
                     setRotation(90);
                     break;
             }

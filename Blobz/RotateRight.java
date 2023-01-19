@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author Anson 
  * @version (a version number or a date)
  */
-public class RotateRight extends Machines
+public class RotateRight extends NarrowMachines
 {
     private boolean spawner = false, real = false, updatedImage = false;
     private int lastRotation, direction;

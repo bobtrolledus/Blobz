@@ -36,6 +36,7 @@ public class Utils extends Actor
         list = new ArrayList<Integer>();
         map = new Actor[20][20];
         rotation = 0;
+        getImage().scale(10, 10);
     }
 
     public void act()

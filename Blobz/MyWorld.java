@@ -101,6 +101,11 @@ public class MyWorld extends World
                         Belts temp = (Belts) Utils.getSpace(gridPositionY, gridPositionX);
                         temp.deletePoints();
                     }
+                    if(Utils.getSpace(gridPositionY, gridPositionX).getClass() == Balancer.class || Utils.getSpace(gridPositionY, gridPositionX).getClass() == Cutter.class || Utils.getSpace(gridPositionY, gridPositionX).getClass() == Stacker.class)
+                    {
+                        WideMachines temp = (WideMachines) Utils.getSpace(gridPositionY, gridPositionX);
+                        temp.delete();
+                    }
                     removeObjects(getObjectsAt((gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + 20, Machines.class));
                     Utils.fillSpace(gridPositionY, gridPositionX, null);
                 }
