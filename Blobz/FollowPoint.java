@@ -11,6 +11,9 @@ public class FollowPoint extends UtilsBlocks
     private int dir = 0, x, y;
     private RotationPoint rotation;
     private int[] shapeID = new int[8];
+    private Belts belt;
+    private Boolean stopped = false;
+    private Shapes nearbyShape;
     
     public FollowPoint(int dir) {
         getImage().scale(1, 1);
@@ -18,6 +21,8 @@ public class FollowPoint extends UtilsBlocks
     }
     
     public void act() {
+        belt = (Belts) getOneIntersectingObject(Belts.class);
+        
         setRotation();
         
         y = this.getY();
@@ -26,19 +31,25 @@ public class FollowPoint extends UtilsBlocks
         switch (dir){
             case 0:
                 y++;
+                nearbyShape = (Shapes) getOneObjectAtOffset(0, 16, Shapes.class);
                 break;
             case 1:
                 x--;
+                nearbyShape = (Shapes) getOneObjectAtOffset(-16, 0, Shapes.class);
                 break;
             case 2:
                 y--;
+                nearbyShape = (Shapes) getOneObjectAtOffset(0, -16, Shapes.class);
                 break;
             case 3:
                 x++;
+                nearbyShape = (Shapes) getOneObjectAtOffset(16, 0, Shapes.class);
                 break;
         }
         
-        setLocation(x, y);
+        if(belt != null && belt.getReal() && nearbyShape == null){
+            setLocation(x, y);
+        }
     }
     
     public void setID(int index, int shapeNum)

@@ -116,7 +116,7 @@ public class RotateRight extends Machines
     {
         if(timer.millisElapsed() > Utils.getBalancerDelay())
         {
-            getWorld().addObject(new ShapeGenerator(outputShape, direction), spawnXCoord, spawnYCoord);
+            //getWorld().addObject(new ShapeGenerator(outputShape, direction), spawnXCoord, spawnYCoord);
             outputShape = null;
             timer.mark();
         }

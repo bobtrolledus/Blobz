@@ -110,13 +110,13 @@ public class Balancer extends Machines
         {
             if(!outputSide)
             {
-                getWorld().addObject(new ShapeGenerator(outputShape, direction), spawnX1Coord, spawnY1Coord);
+                //getWorld().addObject(new ShapeGenerator(outputShape, direction), spawnX1Coord, spawnY1Coord);
                 outputShape = null;
                 outputSide = true;
             }
             else
             {
-                getWorld().addObject(new ShapeGenerator(outputShape, direction), spawnX2Coord, spawnY2Coord);
+                //getWorld().addObject(new ShapeGenerator(outputShape, direction), spawnX2Coord, spawnY2Coord);
                 outputShape = null;
                 outputSide = false;
             }

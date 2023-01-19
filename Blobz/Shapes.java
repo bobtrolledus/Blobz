@@ -9,13 +9,27 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Shapes extends Material
 {
     public FollowPoint guide;
-    private int q, x, y;
+    private int q, x, y, layer, colour;
+    private Color red, blue, yellow, green, purple, orange;
     
-    public Shapes(Boolean isLabel, int q, FollowPoint guide)
+    public Shapes(int q, FollowPoint guide, int layer, int colour)
     {
-        super(isLabel, q);
         this.q = q;
         this.guide = guide;
+        this.layer = layer;
+        this.colour = colour;
+    }
+    
+    public void act()
+    {
+        if(guide.getWorld() == null)
+        {
+            getWorld().removeObject(this);
+        }
+        else
+        {
+            move();
+        }
     }
     
     public void setRotation (int q) {
@@ -49,5 +63,46 @@ public class Shapes extends Material
         }
         
         this.setLocation(x, y);
+    }
+    
+    public void layerScale(){
+        if (layer == 1){
+            getImage().scale(15, 15);
+        } else {
+            getImage().scale(11, 11);
+        }
+    }
+    
+    public void setColour(){
+        switch (colour){
+            case -1:
+                break;
+            case 1:
+                red = new Color(255, 179, 186);
+                getImage().setColor(red);
+                break;
+            case 2:
+                blue = new Color(186, 255, 255);
+                getImage().setColor(blue);
+                break;
+            case 3:
+                yellow = new Color(255, 255, 186);
+                getImage().setColor(yellow);
+                break;
+            case 4:
+                green = new Color(221, 240, 221);
+                getImage().setColor(green);
+                break;
+            case 5:
+                purple = new Color(221, 202, 221);
+                getImage().setColor(purple);
+                break;
+            case 6:
+                orange = new Color(255, 217, 186);
+                getImage().setColor(orange);
+                break;
+        }
+        
+        getImage().fill();
     }
 }

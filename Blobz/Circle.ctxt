@@ -1,8 +1,6 @@
 #BlueJ class context
 comment0.target=Circle
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Circle\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=isLabel\ q\ guide
-comment1.target=Circle(java.lang.Boolean,\ int,\ FollowPoint)
-comment2.params=
-comment2.target=void\ act()
-numComments=3
+comment1.params=q\ guide\ layer\ colour
+comment1.target=Circle(int,\ FollowPoint,\ int,\ int)
+numComments=2

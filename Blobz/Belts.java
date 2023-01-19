@@ -117,4 +117,8 @@ public class Belts extends Machines
             }
         }
     }
+    
+    public Boolean getReal(){
+        return real;
+    }
 }

@@ -8,21 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Circle extends Shapes
 {
-    public Circle (Boolean isLabel, int q, FollowPoint guide){
-        super(isLabel, q, guide);
-        getImage().scale(15, 15);
+    public Circle (int q, FollowPoint guide, int layer, int colour){
+        super(q, guide, layer, colour);
+        layerScale();
         setRotation(q);
-    }
-    
-    public void act()
-    {
-        if(guide.getWorld() == null)
-        {
-            getWorld().removeObject(this);
-        }
-        else
-        {
-            move();
-        }
     }
 }
