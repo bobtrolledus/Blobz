@@ -48,7 +48,7 @@ public class Hub extends Actor
     {
         if(obj == 0)
         {
-            Utils.increaseLevel();
+            //Utils.increaseLevel();
         }
     }
 }

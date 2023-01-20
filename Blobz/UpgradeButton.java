@@ -1,20 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * used in title screen to create a clickable button
- * (borrows code from Mr. Cohen's Button class to draw centered text)
+ * Write a description of class UpgradeButton here.
  * 
- * @author yuebai 
- * @version 11/24/2022
+ * @author (your name) 
+ * @version (a version number or a date)
  */
-public class StartButton extends Button {
-    private String string;
+public class UpgradeButton extends Button
+{
+    private String upgradeType;
+    private int upgradeLvl = 0;
+    private int moneyReq = 100;
     
-    public StartButton(int width, int height, String string, int size) {
-        this.width = width;
-        this.height = height;
-        this.string = string;
-        this.size = size;
+    
+    public UpgradeButton(String upgradeType) {
+        this.width = 160;
+        this.height = 100;
+        this.size = 20;
+        this.upgradeType = upgradeType;
         comicFont = new Font ("Comic Sans MS", true, false, size);
     
         // draws purple background
@@ -23,6 +26,7 @@ public class StartButton extends Button {
     }
     
     public void act() {
+        //add edge case for max button level
         mouse();
     }
     
@@ -32,7 +36,8 @@ public class StartButton extends Button {
         background.setFont(comicFont);
         background.setColor(Color.WHITE);
         setImage(background);
-        Button.drawCenteredText(background, string, width/2, height/2 + size/3);
+        Button.drawCenteredText(background, "LVL: " + upgradeLvl + " -> " + (upgradeLvl + 1), width/2, height/2 + size/3 - size);
+        Button.drawCenteredText(background, "$" + moneyReq, width/2, height/2 + size/3 + size);
     }
     
     public void drawFaintButton() {
@@ -41,7 +46,8 @@ public class StartButton extends Button {
         background.setFont(comicFont);
         background.setColor(Color.CYAN);
         setImage(background);
-        Button.drawCenteredText(background, string, width/2, height/2 + size/3);
+        Button.drawCenteredText(background, "LVL: " + upgradeLvl + " -> " + (upgradeLvl + 1), width/2, height/2 + size/3 - size);
+        Button.drawCenteredText(background, "$" + moneyReq, width/2, height/2 + size/3 + size);
     }
     
     public boolean getClicked() {
