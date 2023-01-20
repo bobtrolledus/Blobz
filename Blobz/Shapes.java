@@ -10,7 +10,7 @@ public class Shapes extends Material
 {
     public FollowPoint guide;
     private int q, x, y, layer, colour;
-    private Color red, blue, yellow, green, purple, orange;
+    protected GreenfootImage red, blue, yellow, orange, purple, green, grey;
     
     public Shapes(int q, FollowPoint guide, int layer, int colour)
     {
@@ -67,42 +67,35 @@ public class Shapes extends Material
     
     public void layerScale(){
         if (layer == 1){
-            getImage().scale(15, 15);
+            getImage().scale(19, 19);
         } else {
-            getImage().scale(11, 11);
+            getImage().scale(13, 13);
         }
     }
     
-    public void setColour(){
-        switch (colour){
+    public void setColour(int colour){
+        switch(colour){
             case -1:
+                setImage(grey);
                 break;
             case 1:
-                red = new Color(255, 179, 186);
-                getImage().setColor(red);
+                setImage(red);
                 break;
             case 2:
-                blue = new Color(186, 255, 255);
-                getImage().setColor(blue);
+                setImage(blue);
                 break;
             case 3:
-                yellow = new Color(255, 255, 186);
-                getImage().setColor(yellow);
+                setImage(yellow);
                 break;
             case 4:
-                green = new Color(221, 240, 221);
-                getImage().setColor(green);
+                setImage(orange);
                 break;
             case 5:
-                purple = new Color(221, 202, 221);
-                getImage().setColor(purple);
+                setImage(purple);
                 break;
             case 6:
-                orange = new Color(255, 217, 186);
-                getImage().setColor(orange);
+                setImage(green);
                 break;
         }
-        
-        getImage().fill();
     }
 }

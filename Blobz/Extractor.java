@@ -14,7 +14,7 @@ public class Extractor extends Machines
     private SimpleTimer timer = new SimpleTimer();
     private Shapes shape;
     
-    private int[] corners = {1, 1, 1, 1, 1, 1, 1, 1};
+    private int[] corners = {1, 2, 3, 1, 3, 2, 1, 2};
     private int[] colours = {-1, 1, 2, 3, 4, 5, 6, -1};
     
     public Extractor()

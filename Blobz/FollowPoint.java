@@ -31,19 +31,19 @@ public class FollowPoint extends UtilsBlocks
         switch (dir){
             case 0:
                 y++;
-                nearbyShape = (Shapes) getOneObjectAtOffset(0, 16, Shapes.class);
+                nearbyShape = (Shapes) getOneObjectAtOffset(0, 20, Shapes.class);
                 break;
             case 1:
                 x--;
-                nearbyShape = (Shapes) getOneObjectAtOffset(-16, 0, Shapes.class);
+                nearbyShape = (Shapes) getOneObjectAtOffset(-20, 0, Shapes.class);
                 break;
             case 2:
                 y--;
-                nearbyShape = (Shapes) getOneObjectAtOffset(0, -16, Shapes.class);
+                nearbyShape = (Shapes) getOneObjectAtOffset(0, -20, Shapes.class);
                 break;
             case 3:
                 x++;
-                nearbyShape = (Shapes) getOneObjectAtOffset(16, 0, Shapes.class);
+                nearbyShape = (Shapes) getOneObjectAtOffset(20, 0, Shapes.class);
                 break;
         }
         
