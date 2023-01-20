@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Cutter extends Machines
+public class Cutter extends WideMachines
 {
     private boolean spawner = false, real = false, updatedImage = false;
     private int lastRotation, direction;
@@ -123,7 +123,6 @@ public class Cutter extends Machines
     
     protected void addedToWorld(World world)
     {
-        getShape();
         timer.mark();
         if(real)
         {
@@ -136,7 +135,7 @@ public class Cutter extends Machines
                     spawnY1Coord = getY() + (Utils.gridSize / 2);
                     spawnX2Coord = getX() + (Utils.gridSize / 2);
                     spawnY2Coord = getY() + (Utils.gridSize / 2);
-                    direction = 180;
+                    setDirection(0);
                     setRotation(180);
                     break;
                 case 1:
@@ -146,7 +145,7 @@ public class Cutter extends Machines
                     spawnY1Coord = getY() - (Utils.gridSize / 2);
                     spawnX2Coord = getX() - (Utils.gridSize / 2);
                     spawnY2Coord = getY() + (Utils.gridSize / 2);
-                    direction = 270;
+                    setDirection(1);
                     setRotation(-90);
                     break;
                 case 2:
@@ -156,7 +155,7 @@ public class Cutter extends Machines
                     spawnY1Coord = getY() - (Utils.gridSize / 2);
                     spawnX2Coord = getX() + (Utils.gridSize / 2);
                     spawnY2Coord = getY() - (Utils.gridSize / 2);
-                    direction = 0;
+                    setDirection(2);
                     setRotation(0);
                     break;
                 case 3:
@@ -166,7 +165,7 @@ public class Cutter extends Machines
                     spawnY1Coord = getY() - (Utils.gridSize / 2);
                     spawnX2Coord = getX() + (Utils.gridSize / 2);
                     spawnY2Coord = getY() + (Utils.gridSize / 2);
-                    direction = 90;
+                    setDirection(3);
                     setRotation(90);
                     break;
             }

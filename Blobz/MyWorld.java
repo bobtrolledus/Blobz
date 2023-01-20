@@ -1,5 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.NoSuchElementException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 /**
  * Write a description of class MyWorld here.
  * 
@@ -116,11 +124,20 @@ public class MyWorld extends World
                         Belts temp = (Belts) Utils.getSpace(gridPositionY, gridPositionX);
                         temp.deletePoints();
                     }
+                    if(Utils.getSpace(gridPositionY, gridPositionX).getClass() == Balancer.class || Utils.getSpace(gridPositionY, gridPositionX).getClass() == Cutter.class || Utils.getSpace(gridPositionY, gridPositionX).getClass() == Stacker.class)
+                    {
+                        WideMachines temp = (WideMachines) Utils.getSpace(gridPositionY, gridPositionX);
+                        temp.delete();
+                    }
                     removeObjects(getObjectsAt((gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + 20, Machines.class));
                     Utils.fillSpace(gridPositionY, gridPositionX, null);
                 }
             }    
         }
+    }
+    public void read()
+    {
+        
     }
 
 }
