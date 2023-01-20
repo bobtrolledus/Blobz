@@ -100,11 +100,11 @@ public class MyWorld extends World
         Button.drawCenteredText (getBackground(), "cut/rotate/stack", 1200 - width / 2, (int) ((height / 5) * 1 - rightLabelOffset)); 
         addObject(new UpgradeButton("crs"), 1200 - width / 2, (int) ((height / 5) * 1) + rightButtonOffset); 
         Button.drawCenteredText (getBackground(), "belts/distributors", 1200 - width / 2, (int) ((height / 5) * 2 - rightLabelOffset)); 
-        addObject(new UpgradeButton("crs"), 1200 - width / 2, (int) ((height / 5) * 2) + rightButtonOffset); 
+        addObject(new UpgradeButton("bd"), 1200 - width / 2, (int) ((height / 5) * 2) + rightButtonOffset); 
         Button.drawCenteredText (getBackground(), "painting speed", 1200 - width / 2, (int) ((height / 5) * 3 - rightLabelOffset)); 
-        addObject(new UpgradeButton("crs"), 1200 - width / 2, (int) ((height / 5) * 3) + rightButtonOffset); 
+        addObject(new UpgradeButton("paint"), 1200 - width / 2, (int) ((height / 5) * 3) + rightButtonOffset); 
         Button.drawCenteredText (getBackground(), "extraction speed", 1200 - width / 2, (int) ((height / 5) * 4 - rightLabelOffset)); 
-        addObject(new UpgradeButton("crs"), 1200 - width / 2, (int) ((height / 5) * 4) + rightButtonOffset); 
+        addObject(new UpgradeButton("extract"), 1200 - width / 2, (int) ((height / 5) * 4) + rightButtonOffset); 
 
     }
 
