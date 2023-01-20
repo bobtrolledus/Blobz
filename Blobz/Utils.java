@@ -24,7 +24,7 @@ public class Utils extends Actor
     private static int balancerDelay = 500;
 
     public static int gridSize = 40;
-    private static int level=0;
+    private static int level= 0;
     private static Scanner fileScan;
     private static Scanner scan;
     private static int mapNumber=0;
@@ -42,7 +42,6 @@ public class Utils extends Actor
     public void act()
     {
         mouse = Greenfoot.getMouseInfo();
-        save();
     }
 
     public static int getExtractorDelay()
@@ -128,6 +127,7 @@ public class Utils extends Actor
 
     public static void increaseLevel()
     {
+        
         level++;
     }
 
@@ -138,6 +138,7 @@ public class Utils extends Actor
 
     private static void save()
     {
+        
         try{
             list.add(level);
             list.add(mapNumber);
@@ -148,10 +149,34 @@ public class Utils extends Actor
             output.println(list);
             out.close();
             output.close();
+            list.clear();
         }
         catch(IOException e)
         {
             System.out.println("Exception" +  e);
         }
     }
+    
+    public static void setLevel(int x)
+    {
+        
+        level = x;
+    }
+    
+    public static void setMap(int x)
+    {
+        mapNumber = x;
+    }
+    
+    public static void setUpgrade(int x)
+    {
+        upgradeLevel = x;
+    }
+    
+    public static void setMoney(int x)
+    {
+        money = x;
+    }
+    
+    
 }

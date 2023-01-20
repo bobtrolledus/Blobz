@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Hub extends Actor
 {
     private static int level;
-    private static int obj;
+    private static int obj = -1;
     private boolean isObj;
     private static int x;
     private static int y;

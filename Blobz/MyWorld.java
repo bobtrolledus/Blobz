@@ -17,6 +17,9 @@ import java.util.ArrayList;
 public class MyWorld extends World
 {
     private Font comicFontMid = new Font ("Comic Sans MS", true, false, 24);
+    private static Scanner fileScan;
+    private static Scanner scan;
+    private static ArrayList<Integer> lines;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -83,8 +86,7 @@ public class MyWorld extends World
         addObject(new Belts(true), width / 2, (int) ((height / 9) * 7)); // tool 8:
         Button.drawCenteredText (getBackground(), "stacker", width / 2, (int) ((height / 9) * 8 - offset)); 
         addObject(new Stacker(true), width / 2, (int) ((height / 9) * 8)); // tool 9:
-        
-        
+
         //Button.drawCenteredText (getBackground(), "money: ", width / 2, (int) ((height / 9) * 1 - offset));  
         addObject(new Utils(), 0, 0);
 
@@ -120,9 +122,35 @@ public class MyWorld extends World
             }    
         }
     }
+
     public void read()
     {
-        
+        scan = new Scanner (System.in);
+        lines = new ArrayList<Integer>();
+        try{
+            fileScan = new Scanner (new File("save.txt"));
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("there is no such file");
+            System.exit(1);
+        }
+        boolean moreLines = true;
+        while (moreLines)
+        {
+            try{
+                int a = fileScan.nextInt();
+                lines.add(a);
+            }
+            catch(NoSuchElementException e)
+            {
+                moreLines = false;
+            }
+        }
+        Utils.setLevel(lines.get(0));
+        Utils.setMap(lines.get(1));
+        Utils.setUpgrade(lines.get(2));
+        Utils.setMoney(lines.get(3));
+        lines.clear();
     }
-
 }
