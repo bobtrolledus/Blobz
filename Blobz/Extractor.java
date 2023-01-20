@@ -6,13 +6,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Anson
  * @version (a version number or a date)
  */
-public class Extractor extends Machines
+public class Extractor extends NarrowMachines
 {
     private boolean spawner = false, real = false, updatedImage = false;
     private int lastRotation;
-    private int spawnXCoord, spawnYCoord;
+    private int spawnXCoord, spawnYCoord, direction;
     private SimpleTimer timer = new SimpleTimer();
     private Shapes shape;
+    
+    private int[] corners = {1, 2, 3, 2, -1, -1, -1, -1};
+    
     public Extractor()
     {
         getImage().scale(Utils.gridSize, Utils.gridSize);
@@ -74,6 +77,10 @@ public class Extractor extends Machines
                 }
             }
         }
+        
+        if(real) {
+            spawnShape();
+        }
     }
     
     public void updateRotation()
@@ -93,7 +100,8 @@ public class Extractor extends Machines
     {
         if(timer.millisElapsed() > Utils.getExtractorDelay())
         {
-            
+            getWorld().addObject(new ShapeGenerator(corners, direction), spawnXCoord, spawnYCoord);
+            timer.mark();
         }
     }
     
@@ -108,24 +116,36 @@ public class Extractor extends Machines
                 case 0:
                     spawnXCoord = getX();
                     spawnYCoord = getY() + 20;
+                    direction = 0;
                     setRotation(180);
                     break;
                 case 1:
                     spawnXCoord = getX() - 20;
                     spawnYCoord = getY();
+                    direction = 1;
                     setRotation(-90);
                     break;
                 case 2:
                     spawnXCoord = getX();
                     spawnYCoord = getY() - 20;
+                    direction = 2;
                     setRotation(0);
                     break;
                 case 3:
                     spawnXCoord = getX() + 20;
-                    spawnYCoord = getY() - 20;
+                    spawnYCoord = getY();
+                    direction = 3;
                     setRotation(90);
                     break;
             }
         }
+    }
+    
+    public int getSpawnXCoord(){
+        return spawnXCoord;
+    }
+    
+    public int getSpawnYCoord(){
+        return spawnYCoord;
     }
 }

@@ -1,5 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.NoSuchElementException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 /**
  * Write a description of class MyWorld here.
  * 
@@ -9,6 +17,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     private Font comicFontMid = new Font ("Comic Sans MS", true, false, 24);
+    private static Scanner fileScan;
+    private static Scanner scan;
+    private static ArrayList<Integer> lines;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -17,7 +28,7 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1); 
-        setPaintOrder(Belts.class, ghostBlock.class);
+        setPaintOrder(Shapes.class, Belts.class, ghostBlock.class);
         Color lightGray = new Color(228, 228, 226);
         Color gray = new Color(171, 171, 171);
         getBackground().setColor(lightGray);
@@ -25,18 +36,18 @@ public class MyWorld extends World
         getBackground().setColor(gray);        
         for(int x = 0; x <= 800; x++){
             if(x % 40 == 0){
-                    getBackground().drawLine(x + 200, 0, x + 200, 1000);
+                getBackground().drawLine(x + 200, 0, x + 200, 1000);
             }
         }
         for(int x = 0; x < 1000; x++){
             if(x % 40 == 0){
-                    getBackground().drawLine(200, x, 1000, x);
+                getBackground().drawLine(200, x, 1000, x);
             }
         }
         prepare();
-        
+
     }
-    
+
     public void act()
     {        
         delete();
@@ -49,7 +60,7 @@ public class MyWorld extends World
             }
         }
     }
-    
+
     public void prepare()
     {
         // spawns left side bar UI stuff
@@ -58,30 +69,32 @@ public class MyWorld extends World
         int offset = 27;
         getBackground().setFont(comicFontMid);
         getBackground().setColor(Color.GRAY);
-        
-        Button.drawCenteredText (getBackground(), "belt", width / 2, (int) ((height / 9.5) * 1 - offset));       
-        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 1)); // tool 1:
-        Button.drawCenteredText (getBackground(), "cutter", width / 2, (int) ((height / 9.5) * 2 - offset));       
-        addObject(new Cutter(true), width / 2, (int) ((height / 9.5) * 2)); // tool 2:
-        Button.drawCenteredText (getBackground(), "extractor", width / 2, (int) ((height / 9.5) * 3 - offset)); 
-        addObject(new Extractor(true), width / 2, (int) ((height / 9.5) * 3)); // tool 3:
-        Button.drawCenteredText (getBackground(), "tunnel", width / 2, (int) ((height / 9.5) * 4 - offset)); 
-        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 4)); // tool 4:
-        Button.drawCenteredText (getBackground(), "balancer", width / 2, (int) ((height / 9.5) * 5 - offset)); 
-        addObject(new Balancer(true), width / 2, (int) ((height / 9.5) * 5)); // tool 5:
-        Button.drawCenteredText (getBackground(), "rotate cw", width / 2, (int) ((height / 9.5) * 6 - offset)); 
-        addObject(new RotateRight(true), width / 2, (int) ((height / 9.5) * 6)); // tool 6:
-        Button.drawCenteredText (getBackground(), "rotate ccw", width / 2, (int) ((height / 9.5) * 7 - offset)); 
-        addObject(new RotateLeft(true), width / 2, (int) ((height / 9.5) * 7)); // tool 7:
-        Button.drawCenteredText (getBackground(), "painter", width / 2, (int) ((height / 9.5) * 8 - offset)); 
-        addObject(new Belts(true), width / 2, (int) ((height / 9.5) * 8)); // tool 8:
-        Button.drawCenteredText (getBackground(), "stacker", width / 2, (int) ((height / 9.5) * 9 - offset)); 
-        addObject(new Stacker(true), width / 2, (int) ((height / 9.5) * 9)); // tool 9:
+
+        Button.drawCenteredText (getBackground(), "belt", width / 2, (int) ((height / 9) * 1 - offset));       
+        addObject(new Belts(true), width / 2, (int) ((height / 9) * 1)); // tool 1:
+        Button.drawCenteredText (getBackground(), "cutter", width / 2, (int) ((height / 9) * 2 - offset));       
+        addObject(new Cutter(true), width / 2, (int) ((height / 9) * 2)); // tool 2:
+        Button.drawCenteredText (getBackground(), "extractor", width / 2, (int) ((height / 9) * 3 - offset)); 
+        addObject(new Extractor(true), width / 2, (int) ((height / 9) * 3)); // tool 3:
+        Button.drawCenteredText (getBackground(), "balancer", width / 2, (int) ((height / 9) * 4 - offset)); 
+        addObject(new Balancer(true), width / 2, (int) ((height / 9) * 4)); // tool 5:
+        Button.drawCenteredText (getBackground(), "rotate cw", width / 2, (int) ((height / 9) * 5 - offset)); 
+        addObject(new RotateRight(true), width / 2, (int) ((height / 9) * 5)); // tool 6:
+        Button.drawCenteredText (getBackground(), "rotate ccw", width / 2, (int) ((height / 9) * 6 - offset)); 
+        addObject(new RotateLeft(true), width / 2, (int) ((height / 9) * 6)); // tool 7:
+        Button.drawCenteredText (getBackground(), "painter", width / 2, (int) ((height / 9) * 7 - offset)); 
+        addObject(new Belts(true), width / 2, (int) ((height / 9) * 7)); // tool 8:
+        Button.drawCenteredText (getBackground(), "stacker", width / 2, (int) ((height / 9) * 8 - offset)); 
+        addObject(new Stacker(true), width / 2, (int) ((height / 9) * 8)); // tool 9:
+
+        //Button.drawCenteredText (getBackground(), "money: ", width / 2, (int) ((height / 9) * 1 - offset));  
         addObject(new Utils(), 0, 0);
+
         addObject(new Hub(), 600,400);
         addObject(new Label("Level " + Utils.getLevel(), 20), 600,400);
+
     }
-    
+
     public void delete()
     {
         if(Utils.getMouse() != null)
@@ -98,10 +111,46 @@ public class MyWorld extends World
                         Belts temp = (Belts) Utils.getSpace(gridPositionY, gridPositionX);
                         temp.deletePoints();
                     }
+                    if(Utils.getSpace(gridPositionY, gridPositionX).getClass() == Balancer.class || Utils.getSpace(gridPositionY, gridPositionX).getClass() == Cutter.class || Utils.getSpace(gridPositionY, gridPositionX).getClass() == Stacker.class)
+                    {
+                        WideMachines temp = (WideMachines) Utils.getSpace(gridPositionY, gridPositionX);
+                        temp.delete();
+                    }
                     removeObjects(getObjectsAt((gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + 20, Machines.class));
                     Utils.fillSpace(gridPositionY, gridPositionX, null);
                 }
             }    
         }
+    }
+
+    public void read()
+    {
+        scan = new Scanner (System.in);
+        lines = new ArrayList<Integer>();
+        try{
+            fileScan = new Scanner (new File("save.txt"));
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("there is no such file");
+            System.exit(1);
+        }
+        boolean moreLines = true;
+        while (moreLines)
+        {
+            try{
+                int a = fileScan.nextInt();
+                lines.add(a);
+            }
+            catch(NoSuchElementException e)
+            {
+                moreLines = false;
+            }
+        }
+        Utils.setLevel(lines.get(0));
+        Utils.setMap(lines.get(1));
+        Utils.setUpgrade(lines.get(2));
+        Utils.setMoney(lines.get(3));
+        lines.clear();
     }
 }

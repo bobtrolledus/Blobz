@@ -6,12 +6,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Cutter extends Machines
+public class Cutter extends WideMachines
 {
     private boolean spawner = false, real = false, updatedImage = false;
-    private int lastRotation;
-    private int spawnXCoord, spawnYCoord;
+    private int lastRotation, direction;
+    private int inputXCoord, inputYCoord, spawnX1Coord, spawnY1Coord, spawnX2Coord, spawnY2Coord;
     private SimpleTimer timer = new SimpleTimer();
+    private int[] outputShape;
+    private int[] cut1 = new int[8];
+    private int[] cut2 = new int[8];
     private Shapes shape;
     public Cutter()
     {
@@ -65,6 +68,14 @@ public class Cutter extends Machines
                 }
             }
         }
+        if(real)
+        {
+            getShape();
+            if(outputShape != null)
+            {
+                spawnShape();
+            }
+        }
     }
     
     public void updateRotation()
@@ -76,44 +87,85 @@ public class Cutter extends Machines
     }
     
     public void getShape()
-    {
-        
+    {       
+        if(getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).size() > 0)
+        {
+            FollowPoint tempPoint = getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).get(0);
+            outputShape = tempPoint.getShape();
+            direction = tempPoint.getRotation();
+            getWorld().removeObject(tempPoint);
+            for(int i = 0; i < cut1.length; i++)
+            {
+                cut1[i] = -1;
+                cut2[i] = -1;
+            }
+        }
     }
     
     public void spawnShape()
     {
-        if(timer.millisElapsed() > Utils.getExtractorDelay())
+        if(timer.millisElapsed() > Utils.getBalancerDelay())
         {
-            
+            cut1[2] = outputShape[2];
+            cut1[3] = outputShape[3];
+            cut1[6] = outputShape[6];
+            cut1[7] = outputShape[7];
+            cut2[0] = outputShape[0];
+            cut2[1] = outputShape[1];
+            cut2[4] = outputShape[4];
+            cut2[5] = outputShape[5];
+            getWorld().addObject(new ShapeGenerator(cut1, direction), spawnX1Coord, spawnY1Coord);
+            getWorld().addObject(new ShapeGenerator(cut2, direction), spawnX2Coord, spawnY2Coord);
+            outputShape = null;
+            timer.mark();
         }
     }
     
     protected void addedToWorld(World world)
     {
-        getShape();
         timer.mark();
         if(real)
         {
             switch (Utils.getDirection())
             {
                 case 0:
-                    spawnXCoord = getX();
-                    spawnYCoord = getY() + 20;
+                    inputXCoord = getX() + (Utils.gridSize / 2);
+                    inputYCoord = getY() - (Utils.gridSize / 2);
+                    spawnX1Coord = getX() - (Utils.gridSize / 2);
+                    spawnY1Coord = getY() + (Utils.gridSize / 2);
+                    spawnX2Coord = getX() + (Utils.gridSize / 2);
+                    spawnY2Coord = getY() + (Utils.gridSize / 2);
+                    setDirection(0);
                     setRotation(180);
                     break;
                 case 1:
-                    spawnXCoord = getX() - 20;
-                    spawnYCoord = getY();
+                    inputXCoord = getX() + (Utils.gridSize / 2);
+                    inputYCoord = getY() + (Utils.gridSize / 2);
+                    spawnX1Coord = getX() - (Utils.gridSize / 2);
+                    spawnY1Coord = getY() - (Utils.gridSize / 2);
+                    spawnX2Coord = getX() - (Utils.gridSize / 2);
+                    spawnY2Coord = getY() + (Utils.gridSize / 2);
+                    setDirection(1);
                     setRotation(-90);
                     break;
                 case 2:
-                    spawnXCoord = getX();
-                    spawnYCoord = getY() - 20;
+                    inputXCoord = getX() - (Utils.gridSize / 2);
+                    inputYCoord = getY() + (Utils.gridSize / 2);
+                    spawnX1Coord = getX() - (Utils.gridSize / 2);
+                    spawnY1Coord = getY() - (Utils.gridSize / 2);
+                    spawnX2Coord = getX() + (Utils.gridSize / 2);
+                    spawnY2Coord = getY() - (Utils.gridSize / 2);
+                    setDirection(2);
                     setRotation(0);
                     break;
                 case 3:
-                    spawnXCoord = getX() + 20;
-                    spawnYCoord = getY() - 20;
+                    inputXCoord = getX() - (Utils.gridSize / 2);
+                    inputYCoord = getY() - (Utils.gridSize / 2);
+                    spawnX1Coord = getX() + (Utils.gridSize / 2);
+                    spawnY1Coord = getY() - (Utils.gridSize / 2);
+                    spawnX2Coord = getX() + (Utils.gridSize / 2);
+                    spawnY2Coord = getY() + (Utils.gridSize / 2);
+                    setDirection(3);
                     setRotation(90);
                     break;
             }

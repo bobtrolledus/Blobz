@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class RotateLeft extends Machines
+public class RotateLeft extends NarrowMachines
 {
     private boolean spawner = false, real = false, updatedImage = false;
     private int lastRotation;

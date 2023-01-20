@@ -8,7 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Star extends Shapes
 {
-    public Star (Boolean isLabel){
-        super(isLabel);
+    public Star (Boolean isLabel, int q, FollowPoint guide){
+        super(isLabel, q, guide);
+        getImage().scale(15, 15);
+        setRotation(q);
+    }
+    
+    public void act()
+    {
+        if(guide.getWorld() == null)
+        {
+            getWorld().removeObject(this);
+        }
+        else
+        {
+            move();
+        }
     }
 }
