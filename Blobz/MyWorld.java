@@ -9,6 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     private Font comicFontMid = new Font ("Comic Sans MS", true, false, 24);
+    private Font comicFontSmoll = new Font ("Comic Sans MS", true, false, 20);
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -55,33 +57,46 @@ public class MyWorld extends World
         // spawns left side bar UI stuff
         int width = 200;
         int height = 800; 
-        int offset = 27;
+        int leftOffset = 27;
         getBackground().setFont(comicFontMid);
         getBackground().setColor(Color.GRAY);
 
-        Button.drawCenteredText (getBackground(), "belt", width / 2, (int) ((height / 9) * 1 - offset));       
+        Button.drawCenteredText (getBackground(), "belt", width / 2, (int) ((height / 9) * 1 - leftOffset));       
         addObject(new Belts(true), width / 2, (int) ((height / 9) * 1)); // tool 1:
-        Button.drawCenteredText (getBackground(), "cutter", width / 2, (int) ((height / 9) * 2 - offset));       
+        Button.drawCenteredText (getBackground(), "cutter", width / 2, (int) ((height / 9) * 2 - leftOffset));       
         addObject(new Cutter(true), width / 2, (int) ((height / 9) * 2)); // tool 2:
-        Button.drawCenteredText (getBackground(), "extractor", width / 2, (int) ((height / 9) * 3 - offset)); 
+        Button.drawCenteredText (getBackground(), "extractor", width / 2, (int) ((height / 9) * 3 - leftOffset)); 
         addObject(new Extractor(true), width / 2, (int) ((height / 9) * 3)); // tool 3:
-        Button.drawCenteredText (getBackground(), "balancer", width / 2, (int) ((height / 9) * 4 - offset)); 
+        Button.drawCenteredText (getBackground(), "balancer", width / 2, (int) ((height / 9) * 4 - leftOffset)); 
         addObject(new Balancer(true), width / 2, (int) ((height / 9) * 4)); // tool 5:
-        Button.drawCenteredText (getBackground(), "rotate cw", width / 2, (int) ((height / 9) * 5 - offset)); 
+        Button.drawCenteredText (getBackground(), "rotate cw", width / 2, (int) ((height / 9) * 5 - leftOffset)); 
         addObject(new RotateRight(true), width / 2, (int) ((height / 9) * 5)); // tool 6:
-        Button.drawCenteredText (getBackground(), "rotate ccw", width / 2, (int) ((height / 9) * 6 - offset)); 
+        Button.drawCenteredText (getBackground(), "rotate ccw", width / 2, (int) ((height / 9) * 6 - leftOffset)); 
         addObject(new RotateLeft(true), width / 2, (int) ((height / 9) * 6)); // tool 7:
-        Button.drawCenteredText (getBackground(), "painter", width / 2, (int) ((height / 9) * 7 - offset)); 
+        Button.drawCenteredText (getBackground(), "painter", width / 2, (int) ((height / 9) * 7 - leftOffset)); 
         addObject(new Belts(true), width / 2, (int) ((height / 9) * 7)); // tool 8:
-        Button.drawCenteredText (getBackground(), "stacker", width / 2, (int) ((height / 9) * 8 - offset)); 
+        Button.drawCenteredText (getBackground(), "stacker", width / 2, (int) ((height / 9) * 8 - leftOffset)); 
         addObject(new Stacker(true), width / 2, (int) ((height / 9) * 8)); // tool 9:
         
         
-        //Button.drawCenteredText (getBackground(), "money: ", width / 2, (int) ((height / 9) * 1 - offset));  
+        //Button.drawCenteredText (getBackground(), "money: ", width / 2, (int) ((height / 9) * 1 - leftOffset));  
         addObject(new Utils(), 0, 0);
 
         addObject(new Hub(), 600,400);
-        addObject(new Label("Level " + Utils.getLevel(), 20), 600,400);
+        //addObject(new Label("Level " + Utils.getLevel(), 20), 600,400);
+        
+        int rightButtonOffset = 20;
+        int rightLabelOffset = 40;
+        Button.drawCenteredText (getBackground(), "upgrades:", 1200 - width / 2, (int) ((height / 5) * 1 - rightLabelOffset - 40));
+        getBackground().setFont(comicFontSmoll);
+        Button.drawCenteredText (getBackground(), "cut/rotate/stack", 1200 - width / 2, (int) ((height / 5) * 1 - rightLabelOffset)); 
+        addObject(new UpgradeButton("crs"), 1200 - width / 2, (int) ((height / 5) * 1) + rightButtonOffset); 
+        Button.drawCenteredText (getBackground(), "belts/distributors", 1200 - width / 2, (int) ((height / 5) * 2 - rightLabelOffset)); 
+        addObject(new UpgradeButton("crs"), 1200 - width / 2, (int) ((height / 5) * 2) + rightButtonOffset); 
+        Button.drawCenteredText (getBackground(), "painting speed", 1200 - width / 2, (int) ((height / 5) * 3 - rightLabelOffset)); 
+        addObject(new UpgradeButton("crs"), 1200 - width / 2, (int) ((height / 5) * 3) + rightButtonOffset); 
+        Button.drawCenteredText (getBackground(), "extraction speed", 1200 - width / 2, (int) ((height / 5) * 4 - rightLabelOffset)); 
+        addObject(new UpgradeButton("crs"), 1200 - width / 2, (int) ((height / 5) * 4) + rightButtonOffset); 
 
     }
 

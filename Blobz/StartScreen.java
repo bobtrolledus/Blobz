@@ -40,7 +40,6 @@ public class StartScreen extends World
         ArrayList<StartButton> button = (ArrayList<StartButton>)getObjects(StartButton.class);
         for (StartButton b : button) {
             clicked = b.getClicked();
-            hover = b.getHover();
         }
     }
 }
