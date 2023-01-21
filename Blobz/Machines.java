@@ -9,8 +9,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public abstract class Machines extends Actor
 {
     ghostBlock block;
+    public boolean spawner = false, real = false, updatedImage = false, occupied = false;
     private int gridPositionX, gridPositionY;  
-    public int direction; 
+    public int direction, lastRotation; 
+    public int[] outputShape;
+    public int[] outputColour;
+    public Shapes shape;
+    public SimpleTimer timer = new SimpleTimer();
     public void followMouse(int xSize)
     {
         if(Utils.getMouse() != null)
@@ -132,11 +137,22 @@ public abstract class Machines extends Actor
         }
     }
     
-    
+    public void updateRotation()
+    {
+        if(Utils.getDirection() != lastRotation)
+        {
+            updatedImage = false;
+        }
+    }
     
     public void setDirection(int direction)
     {
         this.direction = direction;
+    }
+    
+    public boolean isOccupied()
+    {
+        return occupied;
     }
     
     public void updateImage(int direction)

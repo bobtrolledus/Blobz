@@ -8,13 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Balancer extends WideMachines
 {
-    private boolean spawner = false, real = false, updatedImage = false, outputSide = false, inProgress = false;
-    private int lastRotation;
+    private boolean outputSide = false, inputSide = false;
     private int spawnX1Coord, spawnY1Coord, spawnX2Coord, spawnY2Coord, inputX1Coord, inputY1Coord, inputX2Coord, inputY2Coord;
-    private int direction;
-    private int[] outputShape;
-    private SimpleTimer timer = new SimpleTimer();
-    private Shapes shape;
     public Balancer()
     {
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
@@ -70,22 +65,16 @@ public class Balancer extends WideMachines
         
         if(real)
         {
-            if(!inProgress)
+            if(!occupied)
             {
                 getShape();
+                getColour();
             }
+            
             if(outputShape != null)
             {
                 spawnShape();
             }
-        }
-    }
-    
-    public void updateRotation()
-    {
-        if(Utils.getDirection() != lastRotation)
-        {
-            updatedImage = false;
         }
     }
     
@@ -96,16 +85,30 @@ public class Balancer extends WideMachines
             FollowPoint tempPoint = getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).get(0);
             outputShape = tempPoint.getShape();
             direction = tempPoint.getRotation();
-            getWorld().removeObject(tempPoint);
-            inProgress = true;
         }
         if(getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).size() > 0)
         {
             FollowPoint tempPoint = getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).get(0);
             outputShape = tempPoint.getShape();
             direction = tempPoint.getRotation();
+        }
+    }
+    
+    public void getColour()
+    {
+        if(getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).size() > 0)
+        {
+            FollowPoint tempPoint = getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).get(0);
+            outputColour = tempPoint.getColour();
             getWorld().removeObject(tempPoint);
-            inProgress = true;
+            occupied = true;
+        }
+        if(getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).size() > 0)
+        {
+            FollowPoint tempPoint = getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).get(0);
+            outputColour = tempPoint.getColour();
+            getWorld().removeObject(tempPoint);
+            occupied = true;
         }
     }
     
@@ -113,20 +116,20 @@ public class Balancer extends WideMachines
     {
         if(timer.millisElapsed() > Utils.getBalancerDelay())
         {
-            if(!outputSide)
+            if(!outputSide && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1)
             {
-                //getWorld().addObject(new ShapeGenerator(outputShape, direction), spawnX1Coord, spawnY1Coord);
+                getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction), spawnX1Coord, spawnY1Coord);
                 outputShape = null;
                 outputSide = true;
             }
-            else
+            else if(outputSide && getWorld().getObjectsAt(spawnX2Coord, spawnY2Coord, Shapes.class).size() < 1)
             {
-                //getWorld().addObject(new ShapeGenerator(outputShape, direction), spawnX2Coord, spawnY2Coord);
+                getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction), spawnX2Coord, spawnY2Coord);
                 outputShape = null;
                 outputSide = false;
             }
             timer.mark();
-            inProgress = false;
+            occupied = false;
         }
     }
     
