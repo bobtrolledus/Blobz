@@ -18,9 +18,13 @@ public class MyWorld extends World
 {
     private Font comicFontMid = new Font ("Comic Sans MS", true, false, 24);
     private Font comicFontSmoll = new Font ("Comic Sans MS", true, false, 20);
+    private Label levelLabel;
     private static Scanner fileScan;
     private static Scanner scan;
     private static ArrayList<Integer> lines;
+    private Color lightGray = new Color(228, 228, 226);
+    private Color gray = new Color(171, 171, 171);
+    private Color yellow = new Color(255, 255, 186);
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -29,9 +33,7 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1); 
-        setPaintOrder(Shapes.class, Belts.class, ghostBlock.class);
-        Color lightGray = new Color(228, 228, 226);
-        Color gray = new Color(171, 171, 171);
+        setPaintOrder(Label.class, Hub.class, Shapes.class, Belts.class, ghostBlock.class);
         getBackground().setColor(lightGray);
         getBackground().fill();
         getBackground().setColor(gray);        
@@ -53,6 +55,7 @@ public class MyWorld extends World
     {        
         delete();
         String key = Greenfoot.getKey();
+        levelLabel.setValue(Utils.getLevel());
         if(key != null)
         {
             if(key.equals("r"))
@@ -92,7 +95,10 @@ public class MyWorld extends World
         addObject(new Utils(), 0, 0);
 
         addObject(new Hub(), 600,400);
-        addObject(new Label("Level " + Utils.getLevel(), 20), 600,400);
+        levelLabel = new Label(Utils.getLevel(), 50);
+        addObject(levelLabel, 656, 339);
+        levelLabel.setLineColor(yellow);
+        levelLabel.setFillColor(yellow);
         
         int rightButtonOffset = 20;
         int rightLabelOffset = 40;
