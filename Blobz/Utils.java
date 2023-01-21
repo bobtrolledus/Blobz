@@ -32,10 +32,10 @@ public class Utils extends Actor
     private static Scanner scan;
     private static int mapNumber = 0;
     private static int money = 0;
-    private static int crsUpgradeLevel = 1;
-    private static int bdUpgradeLevel = 1;
-    private static int paintUpgradeLevel = 1;
-    private static int extractUpgradeLevel = 1;
+    private static int crsUpgradeLevel;
+    private static int bdUpgradeLevel;
+    private static int paintUpgradeLevel;
+    private static int extractUpgradeLevel;
     
     private static ArrayList<Integer> list;
     public Utils()
@@ -44,6 +44,10 @@ public class Utils extends Actor
         map = new Actor[20][20];
         rotation = 0;
         getImage().scale(10, 10);
+        crsUpgradeLevel = 1;
+        bdUpgradeLevel = 1;
+        paintUpgradeLevel = 1;
+        extractUpgradeLevel = 1;
     }
 
     public void act()

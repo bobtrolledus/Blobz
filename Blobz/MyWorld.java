@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class MyWorld extends World
 {
     private Font comicFontMid = new Font ("Comic Sans MS", true, false, 24);
+    private Font comicFontSmoll = new Font ("Comic Sans MS", true, false, 20);
     private static Scanner fileScan;
     private static Scanner scan;
     private static ArrayList<Integer> lines;
@@ -92,6 +93,20 @@ public class MyWorld extends World
 
         addObject(new Hub(), 600,400);
         addObject(new Label("Level " + Utils.getLevel(), 20), 600,400);
+        
+        int rightButtonOffset = 20;
+        int rightLabelOffset = 40;
+        Button.drawCenteredText (getBackground(), "upgrades:", 1200 - width / 2, (int) ((height / 5) * 1 - rightLabelOffset - 40));
+        getBackground().setFont(comicFontSmoll);
+        Button.drawCenteredText (getBackground(), "cut/rotate/stack", 1200 - width / 2, (int) ((height / 5) * 1 - rightLabelOffset)); 
+        addObject(new UpgradeButton("crs"), 1200 - width / 2, (int) ((height / 5) * 1) + rightButtonOffset); 
+        Button.drawCenteredText (getBackground(), "belts/distributors", 1200 - width / 2, (int) ((height / 5) * 2 - rightLabelOffset)); 
+        addObject(new UpgradeButton("bd"), 1200 - width / 2, (int) ((height / 5) * 2) + rightButtonOffset); 
+        Button.drawCenteredText (getBackground(), "painting speed", 1200 - width / 2, (int) ((height / 5) * 3 - rightLabelOffset)); 
+        addObject(new UpgradeButton("paint"), 1200 - width / 2, (int) ((height / 5) * 3) + rightButtonOffset); 
+        Button.drawCenteredText (getBackground(), "extraction speed", 1200 - width / 2, (int) ((height / 5) * 4 - rightLabelOffset)); 
+        addObject(new UpgradeButton("extract"), 1200 - width / 2, (int) ((height / 5) * 4) + rightButtonOffset); 
+
 
     }
 
