@@ -19,7 +19,7 @@ public class Hub extends Actor
     public Hub()
     {
         setImage("images/hub.png");
-        getImage().scale(Utils.gridSize*4, Utils.gridSize*4);
+        getImage().scale(Utils.gridSize*4 + 20, Utils.gridSize*4 + 20);
 
     }
 
