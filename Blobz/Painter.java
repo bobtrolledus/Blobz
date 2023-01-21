@@ -1,30 +1,27 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Extractor here.
+ * Write a description of class Painter here.
  * 
- * @author Anson
+ * @author (your name) 
  * @version (a version number or a date)
  */
-public class Extractor extends NarrowMachines
+public class Painter extends WideMachines
 {
     private boolean spawner = false, real = false, updatedImage = false;
     private int lastRotation;
-    private int spawnXCoord, spawnYCoord, direction;
+    private int spawnX1Coord, spawnY1Coord, inputX1Coord, inputY1Coord, inputX2Coord, inputY2Coord;
     private SimpleTimer timer = new SimpleTimer();
     private Shapes shape;
-    
-    private int[] corners = {1, 2, 3, 2, -1, -1, -1, -1};
-    
-    public Extractor()
+    public Painter()
     {
-        getImage().scale(Utils.gridSize, Utils.gridSize);
+        getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         real = true;
     }
     
-    public Extractor(boolean spawner)
+    public Painter(boolean spawner)
     {
-        getImage().scale(Utils.gridSize, Utils.gridSize);
+        getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         this.spawner = spawner;
     }
     
@@ -38,25 +35,16 @@ public class Extractor extends NarrowMachines
         {
             if(spawner && Greenfoot.mouseClicked(this))
             {
-                Extractor mouseExtractor = new Extractor(false);
-                getWorld().addObject(mouseExtractor, Utils.getMouseX(), Utils.getMouseY());
+                Painter mousePainter = new Painter(false);
+                getWorld().addObject(mousePainter, Utils.getMouseX(), Utils.getMouseY());
             }
             
             if(!spawner)
             {
                 followMouse(1);
-                gridSnap(this.getImage(), 1);
+                gridSnap(this.getImage(), 2);
                 updateRotation();
-                /*
-                if(Utils.getSpace(gridPositionX, gridPositionY) != null)
-                {
-                    if(Utils.getSpace(gridPositionX, gridPositionY).getClass() == Deposits.class)
-                    {
-                        place(Extractor.class);
-                    }
-                }
-                */
-                place(Extractor.class, 1);
+                place(Painter.class, 2);
                 if(!updatedImage)
                 {
                     lastRotation = Utils.getDirection();
@@ -77,10 +65,6 @@ public class Extractor extends NarrowMachines
                 }
             }
         }
-        
-        if(real) {
-            spawnShape();
-        }
     }
     
     public void updateRotation()
@@ -96,12 +80,16 @@ public class Extractor extends NarrowMachines
         
     }
     
+    public void getColour()
+    {
+        
+    }
+    
     public void spawnShape()
     {
-        if(timer.millisElapsed() > Utils.getExtractorDelay() && !this.isTouching(Shapes.class))
+        if(timer.millisElapsed() > Utils.getExtractorDelay())
         {
-            getWorld().addObject(new ShapeGenerator(corners, direction), spawnXCoord, spawnYCoord);
-            timer.mark();
+            
         }
     }
     
@@ -114,38 +102,46 @@ public class Extractor extends NarrowMachines
             switch (Utils.getDirection())
             {
                 case 0:
-                    spawnXCoord = getX();
-                    spawnYCoord = getY() + 20;
-                    direction = 0;
+                    spawnX1Coord = getX() - (Utils.gridSize / 2);
+                    spawnY1Coord = getY() + (Utils.gridSize / 2);
+                    inputX1Coord = spawnX1Coord;
+                    inputY1Coord = getY() - (Utils.gridSize / 2);
+                    inputX2Coord = getX() + (Utils.gridSize / 2);
+                    inputY2Coord = getY() - (Utils.gridSize / 2);
+                    setDirection(0);
                     setRotation(180);
                     break;
                 case 1:
-                    spawnXCoord = getX() - 20;
-                    spawnYCoord = getY();
-                    direction = 1;
+                    spawnX1Coord = getX() - (Utils.gridSize / 2);
+                    spawnY1Coord = getY() - (Utils.gridSize / 2);
+                    inputX1Coord = getX() + (Utils.gridSize / 2);
+                    inputY1Coord = spawnY1Coord;
+                    inputX2Coord = inputX1Coord;
+                    inputY2Coord = getY() + (Utils.gridSize / 2);
+                    setDirection(1);
                     setRotation(-90);
                     break;
                 case 2:
-                    spawnXCoord = getX();
-                    spawnYCoord = getY() - 20;
-                    direction = 2;
+                    spawnX1Coord = getX() + (Utils.gridSize / 2);
+                    spawnY1Coord = getY() - (Utils.gridSize / 2);
+                    inputX1Coord = spawnX1Coord;
+                    inputY1Coord = getY() + (Utils.gridSize / 2);
+                    inputX2Coord = getX() - (Utils.gridSize / 2);
+                    inputY2Coord = getY() + (Utils.gridSize / 2);
+                    setDirection(2);
                     setRotation(0);
                     break;
                 case 3:
-                    spawnXCoord = getX() + 20;
-                    spawnYCoord = getY();
-                    direction = 3;
+                    spawnX1Coord = getX() + (Utils.gridSize / 2);
+                    spawnY1Coord = getY() + (Utils.gridSize / 2);
+                    inputX1Coord = getX() - (Utils.gridSize / 2);
+                    inputY1Coord = spawnY1Coord;
+                    inputX2Coord = inputX1Coord;
+                    inputY2Coord = getY() - (Utils.gridSize / 2);
+                    setDirection(3);
                     setRotation(90);
                     break;
             }
         }
-    }
-    
-    public int getSpawnXCoord(){
-        return spawnXCoord;
-    }
-    
-    public int getSpawnYCoord(){
-        return spawnYCoord;
     }
 }
