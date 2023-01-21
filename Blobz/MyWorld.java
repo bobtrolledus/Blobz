@@ -81,9 +81,9 @@ public class MyWorld extends World
         Button.drawCenteredText (getBackground(), "rotate cw", width / 2, (int) ((height / 9) * 5 - offset)); 
         addObject(new RotateRight(true), width / 2, (int) ((height / 9) * 5)); // tool 6:
         Button.drawCenteredText (getBackground(), "rotate ccw", width / 2, (int) ((height / 9) * 6 - offset)); 
-        addObject(new Painter(true), width / 2, (int) ((height / 9) * 6)); // tool 7:
+        addObject(new RotateLeft(true), width / 2, (int) ((height / 9) * 6)); // tool 7:
         Button.drawCenteredText (getBackground(), "painter", width / 2, (int) ((height / 9) * 7 - offset)); 
-        addObject(new Belts(true), width / 2, (int) ((height / 9) * 7)); // tool 8:
+        addObject(new Painter(true), width / 2, (int) ((height / 9) * 7)); // tool 8:
         Button.drawCenteredText (getBackground(), "stacker", width / 2, (int) ((height / 9) * 8 - offset)); 
         addObject(new Stacker(true), width / 2, (int) ((height / 9) * 8)); // tool 9:
 

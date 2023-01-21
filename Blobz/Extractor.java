@@ -8,11 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Extractor extends NarrowMachines
 {
-    private boolean spawner = false, real = false, updatedImage = false;
-    private int lastRotation;
-    private int spawnXCoord, spawnYCoord, direction;
-    private SimpleTimer timer = new SimpleTimer();
-    private Shapes shape;
+    private int spawnXCoord, spawnYCoord;
     
     private int[] corners = {1, 2, 3, 1, 3, 2, 1, 2};
     private int[] colours = {-1, 1, 2, 3, 4, 5, 6, -1};
@@ -84,14 +80,6 @@ public class Extractor extends NarrowMachines
         }
     }
     
-    public void updateRotation()
-    {
-        if(Utils.getDirection() != lastRotation)
-        {
-            updatedImage = false;
-        }
-    }
-    
     public void getShape()
     {
         
@@ -121,14 +109,14 @@ public class Extractor extends NarrowMachines
                     setRotation(180);
                     break;
                 case 1:
-                    spawnXCoord = getX() - 20;
+                    spawnXCoord = getX() - 21;
                     spawnYCoord = getY();
                     direction = 1;
                     setRotation(-90);
                     break;
                 case 2:
                     spawnXCoord = getX();
-                    spawnYCoord = getY() - 20;
+                    spawnYCoord = getY() - 21;
                     direction = 2;
                     setRotation(0);
                     break;
@@ -140,13 +128,5 @@ public class Extractor extends NarrowMachines
                     break;
             }
         }
-    }
-    
-    public int getSpawnXCoord(){
-        return spawnXCoord;
-    }
-    
-    public int getSpawnYCoord(){
-        return spawnYCoord;
     }
 }

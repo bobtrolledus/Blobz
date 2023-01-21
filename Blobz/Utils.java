@@ -21,7 +21,10 @@ public class Utils extends Actor
     private static int arrowXCoord, arrowYCoord;
     private static MouseInfo mouse = Greenfoot.getMouseInfo();
     private static int extractorDelay = 1000;
-    private static int balancerDelay = 500;
+    private static int balancerDelay = 1000;
+    private static int cutterDelay = 1000;
+    private static int rotationDelay = 1000;
+    private static int paintingDelay = 1000;
 
     public static int gridSize = 40;
     private static int level= 0;
@@ -66,6 +69,36 @@ public class Utils extends Actor
     public static void setBalancerDelay(int delay)
     {
         balancerDelay = delay;
+    }
+    
+    public static int getCutterDelay()
+    {
+        return balancerDelay;
+    }
+
+    public static void setCutterDelay(int delay)
+    {
+        cutterDelay = delay;
+    }
+    
+    public static int getRotationDelay()
+    {
+        return rotationDelay;
+    }
+
+    public static void setRotationDelay(int delay)
+    {
+        rotationDelay = delay;
+    }
+    
+    public static int getPainterDelay()
+    {
+        return paintingDelay;
+    }
+
+    public static void setPainterDelay(int delay)
+    {
+        paintingDelay = delay;
     }
 
     public static int getMouseX()
@@ -198,7 +231,6 @@ public class Utils extends Actor
     
     public static void setLevel(int x)
     {
-        
         level = x;
     }
     
@@ -209,7 +241,7 @@ public class Utils extends Actor
     
     public static void setUpgrade(int x)
     {
-        upgradeLevel = x;
+        //upgradeLevel = x;
     }
     
     public static void setMoney(int x)

@@ -54,7 +54,7 @@ public class ShapeGenerator extends Resources
                     point.setID(i, 3);
                     break;
             }
-            
+            point.setColour(i, colours[i]);
             quadrant++;
             
             if(quadrant > 4){

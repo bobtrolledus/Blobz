@@ -3,16 +3,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Painter here.
  * 
- * @author (your name) 
+ * @author Anson
  * @version (a version number or a date)
  */
 public class Painter extends WideMachines
 {
-    private boolean spawner = false, real = false, updatedImage = false;
-    private int lastRotation;
     private int spawnX1Coord, spawnY1Coord, inputX1Coord, inputY1Coord, inputX2Coord, inputY2Coord;
-    private SimpleTimer timer = new SimpleTimer();
-    private Shapes shape;
+    private int colour;
     public Painter()
     {
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
@@ -65,31 +62,70 @@ public class Painter extends WideMachines
                 }
             }
         }
-    }
-    
-    public void updateRotation()
-    {
-        if(Utils.getDirection() != lastRotation)
+        if(real)
         {
-            updatedImage = false;
+            if(!occupied)
+            {
+                getShape();
+                getColourShape();
+                getColourPigment();
+            }
+
+            if(outputShape != null)
+            {
+                spawnShape();
+            }
         }
     }
     
     public void getShape()
     {
-        
+        if(getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).size() > 0)
+        {
+            FollowPoint tempPoint = getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).get(0);
+            outputShape = tempPoint.getShape();
+            direction = tempPoint.getRotation();
+        }
     }
     
-    public void getColour()
+    public void getColourShape()
     {
-        
+        if(getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).size() > 0)
+        {
+            FollowPoint tempPoint = getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).get(0);
+            outputColour = tempPoint.getColour();
+            getWorld().removeObject(tempPoint);
+        }
+    }
+    
+    public void getColourPigment()
+    {
+        if(getWorld().getObjectsAt(inputX2Coord, inputY2Coord, Material.class).size() > 0)
+        {
+            Material tempPoint = getWorld().getObjectsAt(inputX2Coord, inputY2Coord, Material.class).get(0);
+            //colour = tempPoint.getColour();
+        }
+        for(int i = 0; i < outputColour.length - 1; i++)
+        {
+            if(i == -1)
+            {
+                outputColour[i] = colour;
+            }
+            else if(outputColour[i] != colour && (outputColour[i] != 3 || outputColour[i] != 5 || outputColour[i] != 6))
+            {
+                outputColour[i] += colour;
+            }
+        }
     }
     
     public void spawnShape()
     {
-        if(timer.millisElapsed() > Utils.getExtractorDelay())
+        if(timer.millisElapsed() > Utils.getPainterDelay())
         {
-            
+            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction), spawnX1Coord, spawnY1Coord);
+            outputShape = null; 
+            timer.mark();
+            occupied = false;
         }
     }
     
@@ -112,7 +148,7 @@ public class Painter extends WideMachines
                     setRotation(180);
                     break;
                 case 1:
-                    spawnX1Coord = getX() - (Utils.gridSize / 2);
+                    spawnX1Coord = getX() - (Utils.gridSize / 2) - 1;
                     spawnY1Coord = getY() - (Utils.gridSize / 2);
                     inputX1Coord = getX() + (Utils.gridSize / 2);
                     inputY1Coord = spawnY1Coord;
@@ -123,7 +159,7 @@ public class Painter extends WideMachines
                     break;
                 case 2:
                     spawnX1Coord = getX() + (Utils.gridSize / 2);
-                    spawnY1Coord = getY() - (Utils.gridSize / 2);
+                    spawnY1Coord = getY() - (Utils.gridSize / 2) - 1;
                     inputX1Coord = spawnX1Coord;
                     inputY1Coord = getY() + (Utils.gridSize / 2);
                     inputX2Coord = getX() - (Utils.gridSize / 2);
