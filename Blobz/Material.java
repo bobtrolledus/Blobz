@@ -8,8 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Material extends Resources
 {
-    public Material(Boolean isLabel, int q)
+    public Material()
     {
-    
     }
 }

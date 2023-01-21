@@ -114,8 +114,8 @@ public class Cutter extends WideMachines
             cut2[1] = outputShape[1];
             cut2[4] = outputShape[4];
             cut2[5] = outputShape[5];
-            getWorld().addObject(new ShapeGenerator(cut1, direction), spawnX1Coord, spawnY1Coord);
-            getWorld().addObject(new ShapeGenerator(cut2, direction), spawnX2Coord, spawnY2Coord);
+            //getWorld().addObject(new ShapeGenerator(cut1, direction), spawnX1Coord, spawnY1Coord);
+            //getWorld().addObject(new ShapeGenerator(cut2, direction), spawnX2Coord, spawnY2Coord);
             outputShape = null;
             timer.mark();
         }

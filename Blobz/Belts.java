@@ -117,4 +117,8 @@ public class Belts extends NarrowMachines
             }
         }
     }
+    
+    public Boolean getReal(){
+        return real;
+    }
 }

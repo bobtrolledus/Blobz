@@ -8,13 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ShapeGenerator extends Resources
 {
-    private int x = 0, y = 0, quadrant = 1, spawnX, spawnY, dir;
+    private int x = 0, y = 0, quadrant = 1, spawnX, spawnY, dir, layer = 1;
     private int[] corners = new int[8];
+    private int[] colours = new int[8];
     private FollowPoint point;
     
-    public ShapeGenerator (int[] values, int dir){
+    public ShapeGenerator (int[] values, int[] colours, int dir){
         for(int i = 0; i < corners.length; i++){
             corners[i] = values[i];
+            this.colours[i] = colours[i];
         }
         this.dir = dir;
     }
@@ -40,15 +42,15 @@ public class ShapeGenerator extends Resources
                     point.setID(i, -1);
                     break;
                 case 1:
-                    getWorld().addObject(new Circle(false, quadrant, point), x, y);
+                    getWorld().addObject(new Circle(quadrant, point, layer, colours[i]), x, y);
                     point.setID(i, 1);
                     break;
                 case 2:
-                    getWorld().addObject(new Square(false, quadrant, point), x, y);
+                    getWorld().addObject(new Square(quadrant, point, layer, colours[i]), x, y);
                     point.setID(i, 2);
                     break;
                 case 3:
-                    getWorld().addObject(new Star(false, quadrant, point), x, y);
+                    getWorld().addObject(new Star(quadrant, point, layer, colours[i]), x, y);
                     point.setID(i, 3);
                     break;
             }
@@ -57,6 +59,7 @@ public class ShapeGenerator extends Resources
             
             if(quadrant > 4){
                 quadrant = 1;
+                layer = 2;
             }
         }
         
