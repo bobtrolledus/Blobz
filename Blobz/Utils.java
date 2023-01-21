@@ -27,9 +27,13 @@ public class Utils extends Actor
     private static int level= 0;
     private static Scanner fileScan;
     private static Scanner scan;
-    private static int mapNumber=0;
-    private static int money=0;
-    private static int upgradeLevel = 0;
+    private static int mapNumber = 0;
+    private static int money = 0;
+    private static int crsUpgradeLevel = 1;
+    private static int bdUpgradeLevel = 1;
+    private static int paintUpgradeLevel = 1;
+    private static int extractUpgradeLevel = 1;
+    
     private static ArrayList<Integer> list;
     public Utils()
     {
@@ -135,14 +139,49 @@ public class Utils extends Actor
     {
         level--;
     }
-
+    
+    public static int getCRSlevel() {
+        return crsUpgradeLevel;
+    }
+    
+    public static void increaseCRSlevel() {
+        crsUpgradeLevel++;
+    }
+    
+    public static int getBDlevel() {
+        return bdUpgradeLevel;
+    }
+    
+    public static void increaseBDlevel() {
+        bdUpgradeLevel++;
+    }
+    
+    public static int getPAINTlevel() {
+        return paintUpgradeLevel;
+    }
+    
+    public static void increasePAINTlevel() {
+        paintUpgradeLevel++;
+    }
+    
+    public static int getEXTRACTlevel() {
+        return extractUpgradeLevel;
+    }
+    
+    public static void increaseEXTRACTlevel() {
+        extractUpgradeLevel++;
+    }
+    
     private static void save()
     {
         
         try{
             list.add(level);
             list.add(mapNumber);
-            list.add(upgradeLevel);
+            list.add(crsUpgradeLevel);
+            list.add(bdUpgradeLevel);
+            list.add(paintUpgradeLevel);
+            list.add(extractUpgradeLevel);
             list.add(money);
             FileWriter out = new FileWriter("save.txt",false);
             PrintWriter output = new PrintWriter(out);

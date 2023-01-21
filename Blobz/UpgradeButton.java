@@ -12,7 +12,6 @@ public class UpgradeButton extends Button
     private int upgradeLvl = 0;
     private int moneyReq = 100;
     
-    
     public UpgradeButton(String upgradeType) {
         this.width = 160;
         this.height = 100;
@@ -22,12 +21,43 @@ public class UpgradeButton extends Button
     
         // draws purple background
         background = new GreenfootImage(width, height);
-        drawNormalButton();
+        
     }
     
     public void act() {
         //add edge case for max button level
-        mouse();
+        upgrade();
+        refreshLevel();
+        redraw();
+    }
+    
+    public void upgrade() {
+        if (clicked) {
+            if (upgradeLvl < 8) {
+                if (upgradeType.equals("crs")) {
+                    Utils.increaseCRSlevel();
+                } else if (upgradeType.equals("bd")) {
+                    Utils.increaseBDlevel();
+                } else if (upgradeType.equals("paint")) {
+                    Utils.increasePAINTlevel();
+                } else if (upgradeType.equals("extract")) {
+                    Utils.increaseEXTRACTlevel();
+                }
+            }
+        }
+    }
+    
+    public void refreshLevel() {
+        if (upgradeType.equals("crs")) {
+            upgradeLvl = Utils.getCRSlevel();
+        } else if (upgradeType.equals("bd")) {
+            upgradeLvl = Utils.getBDlevel();
+        } else if (upgradeType.equals("paint")) {
+            upgradeLvl = Utils.getPAINTlevel();
+        } else if (upgradeType.equals("extract")) {
+            upgradeLvl = Utils.getEXTRACTlevel();
+        }
+        moneyReq = (int) Math.round((Math.pow(2, upgradeLvl) * 25 + 60) / 100) * 100;
     }
     
     public void drawNormalButton() {
@@ -36,8 +66,12 @@ public class UpgradeButton extends Button
         background.setFont(comicFont);
         background.setColor(Color.WHITE);
         setImage(background);
-        Button.drawCenteredText(background, "LVL: " + upgradeLvl + " -> " + (upgradeLvl + 1), width/2, height/2 + size/3 - size);
-        Button.drawCenteredText(background, "$" + moneyReq, width/2, height/2 + size/3 + size);
+        if (upgradeLvl < 8) {
+            Button.drawCenteredText(background, "LVL: " + upgradeLvl + " -> " + (upgradeLvl + 1), width/2, height/2 + size/3 - size);
+            Button.drawCenteredText(background, "$" + moneyReq, width/2, height/2 + size/3 + size);
+        } else {
+            Button.drawCenteredText(background, "LVL: MAX (8)", width/2, height/2 + size/3);
+        }
     }
     
     public void drawFaintButton() {
@@ -46,11 +80,11 @@ public class UpgradeButton extends Button
         background.setFont(comicFont);
         background.setColor(Color.CYAN);
         setImage(background);
-        Button.drawCenteredText(background, "LVL: " + upgradeLvl + " -> " + (upgradeLvl + 1), width/2, height/2 + size/3 - size);
-        Button.drawCenteredText(background, "$" + moneyReq, width/2, height/2 + size/3 + size);
-    }
-    
-    public boolean getClicked() {
-        return clicked;
+        if (upgradeLvl < 8) {
+            Button.drawCenteredText(background, "LVL: " + upgradeLvl + " -> " + (upgradeLvl + 1), width/2, height/2 + size/3 - size);
+            Button.drawCenteredText(background, "$" + moneyReq, width/2, height/2 + size/3 + size);
+        } else {
+            Button.drawCenteredText(background, "LVL: MAX (8)", width/2, height/2 + size/3);
+        }
     }
 }
