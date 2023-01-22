@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class FollowPoint here.
  * 
- * @author (your name) 
+ * @author Andy/Anson
  * @version (a version number or a date)
  */
 public class FollowPoint extends UtilsBlocks

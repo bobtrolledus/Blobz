@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Arrows here.
  * 
- * @author (your name) 
+ * @author Anson
  * @version (a version number or a date)
  */
 public class Arrows extends UtilsBlocks

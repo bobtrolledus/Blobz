@@ -25,6 +25,9 @@ public class MyWorld extends World
     private Color lightGray = new Color(228, 228, 226);
     private Color gray = new Color(171, 171, 171);
     private Color yellow = new Color(255, 255, 186);
+    
+    private int[] corners = {1, 2, 3, 1, 3, 2, 3, 2};
+    private int[] colours = {-1, 1, 2, 3, 4, 5, 6, -1};
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -33,7 +36,7 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1); 
-        setPaintOrder(Label.class, Hub.class, Shapes.class, Belts.class, ghostBlock.class);
+        setPaintOrder(Label.class, Shapes.class, Hub.class, Belts.class, ghostBlock.class);
         getBackground().setColor(lightGray);
         getBackground().fill();
         getBackground().setColor(gray);        
@@ -113,7 +116,7 @@ public class MyWorld extends World
         Button.drawCenteredText (getBackground(), "extraction speed", 1200 - width / 2, (int) ((height / 5) * 4 - rightLabelOffset)); 
         addObject(new UpgradeButton("extract"), 1200 - width / 2, (int) ((height / 5) * 4) + rightButtonOffset); 
 
-
+        addObject(new ShapeGenerator(corners, colours, 1), 600, 430);
     }
 
     public void delete()

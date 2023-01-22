@@ -42,7 +42,7 @@ public abstract class Machines extends Actor
                     if(getWorld().getObjects(ghostBlock.class).isEmpty() == true)
                     {
                         block = new ghostBlock(image, xSize);
-                        getWorld().addObject(block, (gridPositionX * Utils.gridSize) + (180 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2) - 20);
+                        getWorld().addObject(block, (gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2) - 20);
                     }
                     
                     if(gridPositionX != block.getXCoord() || gridPositionY != block.getYCoord())
@@ -52,7 +52,7 @@ public abstract class Machines extends Actor
                             getWorld().removeObject(arrow);
                         }
                         getWorld().removeObject(block);
-                        getWorld().addObject(block, (gridPositionX * Utils.gridSize) + (180 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2) - 20);
+                        getWorld().addObject(block, (gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2) - 20);
                     }
                 } else {
                     if(getWorld().getObjects(ghostBlock.class).isEmpty() == true)
