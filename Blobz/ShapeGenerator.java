@@ -12,19 +12,28 @@ public class ShapeGenerator extends Resources
     private int[] corners = new int[8];
     private int[] colours = new int[8];
     private FollowPoint point;
+    private boolean isLabel;
     
-    public ShapeGenerator (int[] values, int[] colours, int dir){
+    public ShapeGenerator (int[] values, int[] colours, int dir, boolean label){
         for(int i = 0; i < corners.length; i++){
             corners[i] = values[i];
             this.colours[i] = colours[i];
         }
         this.dir = dir;
+        isLabel = label;
     }
     
     public void act(){
         spawnPoint();
         
         for(int i = 0; i < corners.length; i++){
+            if(isLabel){
+                layer = 3;
+            } else if(quadrant > 4){
+                quadrant = 1;
+                layer = 2;
+            }
+            
             if(i == 0 || i == 1 || i == 4 || i == 5){
                 x = getX() + (this.getImage().getWidth() / 2) - 1;
             } else {
@@ -56,18 +65,18 @@ public class ShapeGenerator extends Resources
             }
             point.setColour(i, colours[i]);
             quadrant++;
-            
-            if(quadrant > 4){
-                quadrant = 1;
-                layer = 2;
-            }
         }
         
         getWorld().removeObject(this);
     }
     
     public void spawnPoint(){
-        point = new FollowPoint(dir);
+        if(isLabel){
+            point = new FollowPoint(dir, true);
+        } else {
+            point = new FollowPoint(dir, false);
+        }
+
         getWorld().addObject(point, this.getX(), this.getY());
     }
 }

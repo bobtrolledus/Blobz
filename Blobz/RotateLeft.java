@@ -137,7 +137,7 @@ public class RotateLeft extends NarrowMachines
     {
         if(timer.millisElapsed() > Utils.getRotationDelay() && getWorld().getObjectsAt(spawnXCoord, spawnYCoord, Shapes.class).size() < 1) 
         {
-            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction), spawnXCoord, spawnYCoord);
+            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, false), spawnXCoord, spawnYCoord);
             outputShape = null; 
             timer.mark();
             occupied = false;

@@ -68,6 +68,8 @@ public class Shapes extends Material
     public void layerScale(){
         if (layer == 1){
             getImage().scale(19, 19);
+        } else if (layer == 2){
+            getImage().scale(15, 15);
         } else {
             getImage().scale(13, 13);
         }

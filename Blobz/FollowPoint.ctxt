@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=FollowPoint
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ FollowPoint\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=dir
-comment1.target=FollowPoint(int)
+comment1.params=dir\ isLabel
+comment1.target=FollowPoint(int,\ boolean)
+comment10.params=
+comment10.target=boolean\ checkIfLabel()
 comment2.params=
 comment2.target=void\ act()
 comment3.params=index\ shapeNum
@@ -19,4 +21,4 @@ comment8.params=machine
 comment8.target=boolean\ touchingMachine(Machines)
 comment9.params=
 comment9.target=void\ setRotation()
-numComments=10
+numComments=11

@@ -8,24 +8,36 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Deposits extends Resources
 {
-    private int xPos, yPos;
-    private Boolean firstSpawn = true;
+    private String deposit;
+    private int[] circle = {1, 1, 1, 1, -1, -1, -1, -1};
+    private int[] square = {2, 2, 2, 2, -1, -1, -1, -1};
+    private int[] star = {3, 3, 3, 3, -1, -1, -1, -1};
+    private int[] grey = {-1, -1, -1, -1, -1, -1, -1, -1};
+    private boolean isLabeled = false;
+    private FollowPoint point;
     
-    private Material deposit;
-    
-    public Deposits(Material deposit, int xPos, int yPos){
+    public Deposits(String deposit){
         this.deposit = deposit;
-        this.xPos = xPos;
-        this.yPos = yPos;
-        this.getImage().scale(45, 45);
-        deposit.getImage().scale(20, 20);
+        getImage().scale(40, 40);
     }
     
     public void act(){
-        if (firstSpawn){
-            //this.setLocation(xPos * 40 + 200 - (this.getImage().getWidth() / 2), yPos * 40 - (this.getImage().getHeight() / 2));
-            //getWorld().addObject(deposit, this.getX(), this.getY());
-            firstSpawn = false;
+        if (!isLabeled){
+            if (deposit.equals("circle")){
+                getWorld().addObject(new ShapeGenerator(circle, grey, 0, true), getX(), getY());
+            } else if (deposit.equals("square")){
+                getWorld().addObject(new ShapeGenerator(square, grey, 0, true), getX(), getY());
+            } else if (deposit.equals("star")){
+                getWorld().addObject(new ShapeGenerator(star, grey, 0, true), getX(), getY());
+            } else if (deposit.equals("red")){
+                getWorld().addObject(new Red(true), getX(), getY());
+            } else if (deposit.equals("blue")){
+                getWorld().addObject(new Blue(true), getX(), getY());
+            } else if (deposit.equals("yellow")){
+                getWorld().addObject(new Yellow(true), getX(), getY());
+            }
+            
+            isLabeled = true;
         }
     }
 }

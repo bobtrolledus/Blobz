@@ -10,8 +10,10 @@ public class Extractor extends NarrowMachines
 {
     private int spawnXCoord, spawnYCoord;
     
-    private int[] corners = {1, 2, 3, 1, 3, 2, 3, 2};
-    private int[] colours = {-1, 1, 2, 3, 4, 5, 6, -1};
+    private int[] corners = {3, -1, 2, -1, 2, 1, 3, 1};
+    private int[] colours = {5, -1, 3, -1, 4, 6, 2, 6};
+    
+    private FollowPoint point;
     
     public Extractor()
     {
@@ -87,9 +89,11 @@ public class Extractor extends NarrowMachines
     
     public void spawnShape()
     {
-        if(timer.millisElapsed() > Utils.getExtractorDelay() && !this.isTouching(Shapes.class))
+        point = (FollowPoint)getOneIntersectingObject(FollowPoint.class);
+        
+        if(timer.millisElapsed() > Utils.getExtractorDelay() && point.checkIfLabel())
         {
-            getWorld().addObject(new ShapeGenerator(corners, colours, direction), spawnXCoord, spawnYCoord);
+            getWorld().addObject(new ShapeGenerator(corners, colours, direction, false), spawnXCoord, spawnYCoord);
             timer.mark();
         }
     }
@@ -104,12 +108,12 @@ public class Extractor extends NarrowMachines
             {
                 case 0:
                     spawnXCoord = getX();
-                    spawnYCoord = getY() + 20;
+                    spawnYCoord = getY() + 21;
                     direction = 0;
                     setRotation(180);
                     break;
                 case 1:
-                    spawnXCoord = getX() - 21;
+                    spawnXCoord = getX() - 20;
                     spawnYCoord = getY();
                     direction = 1;
                     setRotation(-90);
