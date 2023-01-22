@@ -118,13 +118,13 @@ public class Balancer extends WideMachines
         {
             if(!outputSide && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1)
             {
-                getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction), spawnX1Coord, spawnY1Coord);
+                getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, false), spawnX1Coord, spawnY1Coord);
                 outputShape = null;
                 outputSide = true;
             }
             else if(outputSide && getWorld().getObjectsAt(spawnX2Coord, spawnY2Coord, Shapes.class).size() < 1)
             {
-                getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction), spawnX2Coord, spawnY2Coord);
+                getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, false), spawnX2Coord, spawnY2Coord);
                 outputShape = null;
                 outputSide = false;
             }
