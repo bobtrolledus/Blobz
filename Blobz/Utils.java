@@ -27,7 +27,7 @@ public class Utils extends Actor
     private static int paintingDelay = 1000;
 
     public static int gridSize = 40;
-    private static int level= 0;
+    private static int level;
     private static Scanner fileScan;
     private static Scanner scan;
     private static int mapNumber = 0;
@@ -120,6 +120,7 @@ public class Utils extends Actor
         bdUpgradeLevel = 1;
         paintUpgradeLevel = 1;
         extractUpgradeLevel = 1;
+        level = 1;
     }
 
     public void act()

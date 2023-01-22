@@ -34,7 +34,7 @@ public class Hub extends Actor
         Resources resource = (Resources)getOneIntersectingObject(Resources.class);
         if(resource != null)
         {
-            getWorld().removeObject(resource);
+            //getWorld().removeObject(resource);
             if(isObj)
             {
                 obj--;
