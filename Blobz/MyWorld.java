@@ -127,6 +127,7 @@ public class MyWorld extends World
             {
                 if(Utils.getSpace(gridPositionY, gridPositionX) != null)
                 {
+                    Machines tempMachine = (Machines) Utils.getSpace(gridPositionY, gridPositionX);
                     if(Utils.getSpace(gridPositionY, gridPositionX).getClass() == Belts.class)
                     {
                         Belts temp = (Belts) Utils.getSpace(gridPositionY, gridPositionX);
@@ -136,7 +137,9 @@ public class MyWorld extends World
                     {
                         WideMachines temp = (WideMachines) Utils.getSpace(gridPositionY, gridPositionX);
                         temp.delete();
+                        temp.deleteShapesWide();
                     }
+                    tempMachine.deleteShapes();
                     removeObjects(getObjectsAt((gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + 20, Machines.class));
                     Utils.fillSpace(gridPositionY, gridPositionX, null);
                 }

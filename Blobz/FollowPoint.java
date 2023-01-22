@@ -77,7 +77,12 @@ public class FollowPoint extends UtilsBlocks
     {
         return dir;
     }
-
+    
+    public boolean touchingMachine(Machines machine)
+    {
+        return intersects(machine);
+    }
+    
     public void setRotation(){
         rotation = (RotationPoint) getOneIntersectingObject(RotationPoint.class);
         if(rotation != null){

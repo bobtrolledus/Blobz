@@ -35,10 +35,10 @@ public abstract class Machines extends Actor
         {
             if(Utils.getMouseX() > 200 && Utils.getMouseX() < 1000)
             {
+                gridPositionX = (int) (Utils.getMouseX() - 200) / Utils.gridSize;
+                gridPositionY = (int) (Utils.getMouseY()) / Utils.gridSize;
                 if(xSize > 1 && (Utils.getDirection() == 1 || Utils.getDirection() == 3))
                 {
-                    gridPositionX = (int) (Utils.getMouseX() - 200) / Utils.gridSize;
-                    gridPositionY = (int) (Utils.getMouseY()) / Utils.gridSize;
                     if(getWorld().getObjects(ghostBlock.class).isEmpty() == true)
                     {
                         block = new ghostBlock(image, xSize);
@@ -55,8 +55,6 @@ public abstract class Machines extends Actor
                         getWorld().addObject(block, (gridPositionX * Utils.gridSize) + (180 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2) - 20);
                     }
                 } else {
-                    gridPositionX = (int) (Utils.getMouseX() - 200) / Utils.gridSize;
-                    gridPositionY = (int) Utils.getMouseY() / Utils.gridSize;
                     if(getWorld().getObjects(ghostBlock.class).isEmpty() == true)
                     {
                         block = new ghostBlock(image, xSize);
@@ -134,6 +132,14 @@ public abstract class Machines extends Actor
                     }
                 }
             }
+        }
+    }
+    
+    public void deleteShapes()
+    {
+        for(FollowPoint point : getObjectsInRange(21, FollowPoint.class))
+        {
+            getWorld().removeObject(point);
         }
     }
     
