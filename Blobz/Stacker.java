@@ -3,16 +3,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Stacker here.
  * 
- * @author (your name) 
+ * @author Anson
  * @version (a version number or a date)
  */
-public class Stacker extends Machines
+public class Stacker extends WideMachines
 {
-    private boolean spawner = false, real = false, updatedImage = false;
-    private int lastRotation;
     private int spawnXCoord, spawnYCoord;
-    private SimpleTimer timer = new SimpleTimer();
-    private Shapes shape;
     public Stacker()
     {
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
@@ -64,14 +60,6 @@ public class Stacker extends Machines
                     getWorld().removeObject(this);
                 }
             }
-        }
-    }
-    
-    public void updateRotation()
-    {
-        if(Utils.getDirection() != lastRotation)
-        {
-            updatedImage = false;
         }
     }
     

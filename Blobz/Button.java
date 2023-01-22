@@ -6,8 +6,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Button extends UI
+public abstract class Button extends UI
 {
+    protected GreenfootImage background;
+    protected Font comicFont;
+    protected boolean clicked = false;
+    protected int width;
+    protected int height;
+    protected int size;
+
     /**
      * Act - do whatever the Buttons wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -17,6 +24,28 @@ public class Button extends UI
         // Add your action code here.
     }
     
+    public void redraw() {
+        if (Utils.getMouse() != null) {
+            if (Utils.getMouseX() > getX() - width/2 && Utils.getMouseX() < getX() + width/2 && Utils.getMouseY() > getY() - height/2 && Utils.getMouseY() < getY() + height/2) {
+                drawFaintButton();
+            } else {
+                drawNormalButton();
+            }
+            if (Greenfoot.mouseClicked(this) && clicked == false) {
+                clicked = true;
+            } else {
+                clicked = false;
+            }
+        }
+    }
+    
+    abstract void drawNormalButton();
+    
+    abstract void drawFaintButton();
+    
+    public boolean getClicked() {
+        return clicked;
+    }
     
     // Mr.Cohen's button methods
     /**

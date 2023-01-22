@@ -10,4 +10,6 @@ comment3.params=
 comment3.target=void\ prepare()
 comment4.params=
 comment4.target=void\ delete()
-numComments=5
+comment5.params=
+comment5.target=void\ read()
+numComments=6

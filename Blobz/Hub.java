@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Hub extends Actor
 {
     private static int level;
-    private static int obj;
+    private static int obj = -1;
     private boolean isObj;
     private static int x;
     private static int y;
@@ -19,7 +19,7 @@ public class Hub extends Actor
     public Hub()
     {
         setImage("images/hub.png");
-        getImage().scale(Utils.gridSize*4, Utils.gridSize*4);
+        getImage().scale(Utils.gridSize*4 + 20, Utils.gridSize*4 + 20);
 
     }
 
@@ -48,7 +48,7 @@ public class Hub extends Actor
     {
         if(obj == 0)
         {
-            Utils.increaseLevel();
+            //Utils.increaseLevel();
         }
     }
 }

@@ -6,10 +6,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Anson
  * @version (a version number or a date)
  */
-public class Belts extends Machines
+public class Belts extends NarrowMachines
 {
-    private boolean spawner = false, real = false, updatedImage = false;
-    private int lastRotation;
     private RotationPoint point1, point2;
     
     public Belts()
@@ -63,14 +61,6 @@ public class Belts extends Machines
                     getWorld().removeObject(this);
                 }
             }
-        }
-    }
-    
-    public void updateRotation()
-    {
-        if(Utils.getDirection() != lastRotation)
-        {
-            updatedImage = false;
         }
     }
     

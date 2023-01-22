@@ -11,6 +11,7 @@ public class FollowPoint extends UtilsBlocks
     private int dir = 0, x, y;
     private RotationPoint rotation;
     private int[] shapeID = new int[8];
+    private int[] shapeColour = new int[8];
     private Belts belt;
     private Boolean stopped = false;
     private Shapes nearbyShape;
@@ -57,6 +58,16 @@ public class FollowPoint extends UtilsBlocks
         shapeID[index] = shapeNum;
     }
     
+    public void setColour(int index, int colourNum)
+    {
+        shapeColour[index] = colourNum;
+    }
+    
+    public int[] getColour()
+    {
+        return shapeColour;
+    }
+    
     public int[] getShape()
     {
         return shapeID;
@@ -66,7 +77,12 @@ public class FollowPoint extends UtilsBlocks
     {
         return dir;
     }
-
+    
+    public boolean touchingMachine(Machines machine)
+    {
+        return intersects(machine);
+    }
+    
     public void setRotation(){
         rotation = (RotationPoint) getOneIntersectingObject(RotationPoint.class);
         if(rotation != null){

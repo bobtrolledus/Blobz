@@ -81,13 +81,13 @@ public class Shapes extends Material
                 setImage(red);
                 break;
             case 2:
-                setImage(blue);
-                break;
-            case 3:
                 setImage(yellow);
                 break;
-            case 4:
+            case 3:
                 setImage(orange);
+                break;
+            case 4:
+                setImage(blue);
                 break;
             case 5:
                 setImage(purple);
