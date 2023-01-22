@@ -9,6 +9,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public abstract class WideMachines extends Machines
 {
     int gridSpaceX1, gridSpaceX2, gridSpaceY1, gridSpaceY2;
+    
+    public void deleteShapesWide()
+    {
+        for(FollowPoint point : getObjectsInRange(50, FollowPoint.class))
+        {
+            getWorld().removeObject(point);
+        }
+    }
+    
     public void delete()
     {
         switch(direction)

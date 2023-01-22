@@ -10,7 +10,7 @@ public class Extractor extends NarrowMachines
 {
     private int spawnXCoord, spawnYCoord;
     
-    private int[] corners = {1, 2, 3, 1, 3, 2, 1, 2};
+    private int[] corners = {1, 2, 3, 1, 3, 2, 3, 2};
     private int[] colours = {-1, 1, 2, 3, 4, 5, 6, -1};
     
     public Extractor()
