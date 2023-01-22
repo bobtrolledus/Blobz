@@ -13,6 +13,10 @@ public class Extractor extends NarrowMachines
     private int[] corners = {3, -1, 2, -1, 2, 1, 3, 1};
     private int[] colours = {5, -1, 3, -1, 4, 6, 2, 6};
     
+    private int colour;
+    private int[] shapeID;
+    private int[] colourID;
+    private boolean isColour;
     private FollowPoint point;
     
     public Extractor()
@@ -46,15 +50,6 @@ public class Extractor extends NarrowMachines
                 followMouse(1);
                 gridSnap(this.getImage(), 1);
                 updateRotation();
-                /*
-                if(Utils.getSpace(gridPositionX, gridPositionY) != null)
-                {
-                    if(Utils.getSpace(gridPositionX, gridPositionY).getClass() == Deposits.class)
-                    {
-                        place(Extractor.class);
-                    }
-                }
-                */
                 place(Extractor.class, 1);
                 if(!updatedImage)
                 {
@@ -78,29 +73,62 @@ public class Extractor extends NarrowMachines
         }
         
         if(real) {
-            spawnShape();
+            if(!occupied)
+            {
+                getShape();
+            }
+            
+            if(shapeID != null || colour != -1)
+            {
+                spawnShape();
+            }
         }
     }
     
     public void getShape()
     {
-        
+        if(getWorld().getObjectsAt(getX(), getY(), Deposits.class).size() > 0)
+        {
+            Deposits temp = (Deposits) getWorld().getObjectsAt(getX(), getY(), Deposits.class).get(0);
+            if(temp.isColourDeposit())
+            {
+                colour = temp.getRawColour();
+                isColour = true;
+            }
+            else if (!temp.isColourDeposit())
+            {
+                isColour = false;
+                shapeID = temp.getDepositShape();
+                colourID = temp.getDepositShapeColour();
+            }  
+        }
+        occupied = true;
     }
     
     public void spawnShape()
     {
         point = (FollowPoint)getOneIntersectingObject(FollowPoint.class);
         
-        if(timer.millisElapsed() > Utils.getExtractorDelay() && point.checkIfLabel())
+        if(timer.millisElapsed() > Utils.getExtractorDelay() && getObjectsInRange(21, FollowPoint.class).size() < 2)
         {
-            getWorld().addObject(new ShapeGenerator(corners, colours, direction, false), spawnXCoord, spawnYCoord);
-            timer.mark();
+            if(isColour)
+            {
+                getWorld().addObject(new ShapeGenerator(colour, direction, false), spawnXCoord, spawnYCoord);
+                timer.mark();
+            }
+            if(!isColour)
+            {
+                getWorld().addObject(new ShapeGenerator(shapeID, colourID, direction, false), spawnXCoord, spawnYCoord);
+                timer.mark();
+            }
+            shapeID = null;
+            colour = -1;
+            occupied = false;
         }
     }
     
     protected void addedToWorld(World world)
     {
-        getShape();
         timer.mark();
         if(real)
         {

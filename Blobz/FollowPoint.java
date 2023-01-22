@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class FollowPoint extends UtilsBlocks
 {
-    private int dir = 0, x, y;
+    private int dir = 0, x, y, colour;
     private RotationPoint rotation;
     private int[] shapeID = new int[8];
     private int[] shapeColour = new int[8];
@@ -87,6 +87,11 @@ public class FollowPoint extends UtilsBlocks
         shapeColour[index] = colourNum;
     }
     
+    public void setRawColour(int colour)
+    {
+        this.colour = colour;
+    }
+    
     public int[] getColour()
     {
         return shapeColour;
@@ -95,6 +100,11 @@ public class FollowPoint extends UtilsBlocks
     public int[] getShape()
     {
         return shapeID;
+    }
+    
+    public int getRawColour()
+    {
+        return colour;
     }
     
     public int getRotation()

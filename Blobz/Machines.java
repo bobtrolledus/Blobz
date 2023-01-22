@@ -10,7 +10,7 @@ public abstract class Machines extends Actor
 {
     ghostBlock block;
     public boolean spawner = false, real = false, updatedImage = false, occupied = false;
-    private int gridPositionX, gridPositionY;  
+    public int gridPositionX, gridPositionY;  
     public int direction, lastRotation; 
     public int[] outputShape;
     public int[] outputColour;
@@ -89,43 +89,54 @@ public abstract class Machines extends Actor
             if(Utils.getMouseX() > 200 && Utils.getMouseX() < 1000)
             {
                 int buttonNumber = Utils.getMouseButton();
-                if(buttonNumber == 1 && Utils.getSpace(gridPositionY, gridPositionX) == null)
+                if(buttonNumber == 1 && Utils.getSpaceMachine(gridPositionY, gridPositionX) == null)
                 {
                     if(xSize > 1)
                     {
-                        if((Utils.getDirection() == 0 && Utils.getSpace(gridPositionY, gridPositionX + 1) == null) || (Utils.getDirection() == 1 && Utils.getSpace(gridPositionY - 1, gridPositionX) == null) || (Utils.getDirection() == 2 && Utils.getSpace(gridPositionY, gridPositionX - 1) == null) || (Utils.getDirection() == 3 && Utils.getSpace(gridPositionY - 1, gridPositionX) == null))
+                        if((Utils.getDirection() == 0 && Utils.getSpaceMachine(gridPositionY, gridPositionX + 1) == null) || (Utils.getDirection() == 1 && Utils.getSpaceMachine(gridPositionY - 1, gridPositionX) == null) || (Utils.getDirection() == 2 && Utils.getSpaceMachine(gridPositionY, gridPositionX - 1) == null) || (Utils.getDirection() == 3 && Utils.getSpaceMachine(gridPositionY - 1, gridPositionX) == null))
                         {
                             try{ 
                                 Machines temp = (Machines) cls.newInstance();
-                                Utils.fillSpace(gridPositionY, gridPositionX, temp);
+                                Utils.fillSpaceMachine(gridPositionY, gridPositionX, temp);
                                 switch(Utils.getDirection())
                                 {
                                     case 0:
                                         getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
-                                        Utils.fillSpace(gridPositionY, gridPositionX + 1, temp);
+                                        Utils.fillSpaceMachine(gridPositionY, gridPositionX + 1, temp);
                                         break;
                                     case 1:
                                         getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (180 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2 - 20));
-                                        Utils.fillSpace(gridPositionY - 1, gridPositionX, temp);
+                                        Utils.fillSpaceMachine(gridPositionY - 1, gridPositionX, temp);
                                         break;
                                     case 2:
                                         getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
-                                        Utils.fillSpace(gridPositionY, gridPositionX + 1, temp);
+                                        Utils.fillSpaceMachine(gridPositionY, gridPositionX + 1, temp);
                                         break;
                                     case 3:
                                         getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (180 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2 - 20));
-                                        Utils.fillSpace(gridPositionY - 1, gridPositionX, temp);
+                                        Utils.fillSpaceMachine(gridPositionY - 1, gridPositionX, temp);
                                         break;
                                 }
                             }
                                 catch(Exception e){
                             }
                         }
+                    } else if(cls == Extractor.class){
+                        if(Utils.getSpaceDeposit(gridPositionY, gridPositionX) != null)
+                        {
+                            try{
+                                Machines temp = (Machines) cls.newInstance();
+                                getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
+                                Utils.fillSpaceMachine(gridPositionY, gridPositionX, temp);
+                            }
+                                catch(Exception e){        
+                            }
+                        }
                     } else {
                         try{ 
                         Machines temp = (Machines) cls.newInstance();
                         getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
-                        Utils.fillSpace(gridPositionY, gridPositionX, temp);
+                        Utils.fillSpaceMachine(gridPositionY, gridPositionX, temp);
                         }
                             catch(Exception e){
                         }
@@ -139,7 +150,10 @@ public abstract class Machines extends Actor
     {
         for(FollowPoint point : getObjectsInRange(21, FollowPoint.class))
         {
-            getWorld().removeObject(point);
+            if(!point.checkIfLabel())
+            {
+                getWorld().removeObject(point);
+            }
         }
     }
     

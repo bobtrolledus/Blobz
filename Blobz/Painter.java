@@ -100,20 +100,20 @@ public class Painter extends WideMachines
     
     public void getColourPigment()
     {
-        if(getWorld().getObjectsAt(inputX2Coord, inputY2Coord, Material.class).size() > 0)
+        if(getWorld().getObjectsAt(inputX2Coord, inputY2Coord, Colours.class).size() > 0)
         {
-            Material tempPoint = getWorld().getObjectsAt(inputX2Coord, inputY2Coord, Material.class).get(0);
-            //colour = tempPoint.getColour();
-        }
-        for(int i = 0; i < outputColour.length - 1; i++)
-        {
-            if(i == -1)
+            FollowPoint tempPoint = getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).get(0);
+            colour = tempPoint.getRawColour();
+            for(int i = 0; i < outputColour.length - 1; i++)
             {
-                outputColour[i] = colour;
-            }
-            else if(outputColour[i] != colour && (outputColour[i] != 3 || outputColour[i] != 5 || outputColour[i] != 6))
-            {
-                outputColour[i] += colour;
+                if(i == -1)
+                {
+                    outputColour[i] = colour;
+                }
+                else if(outputColour[i] != colour && (outputColour[i] != 3 || outputColour[i] != 5 || outputColour[i] != 6))
+                {
+                    outputColour[i] += colour;
+                }
             }
         }
     }

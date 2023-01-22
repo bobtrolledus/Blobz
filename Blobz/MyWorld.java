@@ -33,7 +33,7 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1); 
-        setPaintOrder(Label.class, Hub.class, Shapes.class, Belts.class, ghostBlock.class);
+        setPaintOrder(Label.class, Hub.class, Colours.class, Shapes.class, Belts.class, ghostBlock.class);
         getBackground().setColor(lightGray);
         getBackground().fill();
         getBackground().setColor(gray);        
@@ -130,23 +130,23 @@ public class MyWorld extends World
             int buttonNumber = Utils.getMouseButton();
             if(buttonNumber == 3)
             {
-                if(Utils.getSpace(gridPositionY, gridPositionX) != null)
+                if(Utils.getSpaceMachine(gridPositionY, gridPositionX) != null)
                 {
-                    Machines tempMachine = (Machines) Utils.getSpace(gridPositionY, gridPositionX);
-                    if(Utils.getSpace(gridPositionY, gridPositionX).getClass() == Belts.class)
+                    Machines tempMachine = (Machines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
+                    if(Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Belts.class)
                     {
-                        Belts temp = (Belts) Utils.getSpace(gridPositionY, gridPositionX);
+                        Belts temp = (Belts) Utils.getSpaceMachine(gridPositionY, gridPositionX);
                         temp.deletePoints();
                     }
-                    if(Utils.getSpace(gridPositionY, gridPositionX).getClass() == Balancer.class || Utils.getSpace(gridPositionY, gridPositionX).getClass() == Cutter.class || Utils.getSpace(gridPositionY, gridPositionX).getClass() == Stacker.class || Utils.getSpace(gridPositionY, gridPositionX).getClass() == Painter.class)
+                    if(Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Balancer.class || Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Cutter.class || Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Stacker.class || Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Painter.class)
                     {
-                        WideMachines temp = (WideMachines) Utils.getSpace(gridPositionY, gridPositionX);
+                        WideMachines temp = (WideMachines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
                         temp.delete();
                         temp.deleteShapesWide();
                     }
                     tempMachine.deleteShapes();
                     removeObjects(getObjectsAt((gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + 20, Machines.class));
-                    Utils.fillSpace(gridPositionY, gridPositionX, null);
+                    Utils.fillSpaceMachine(gridPositionY, gridPositionX, null);
                 }
             }    
         }

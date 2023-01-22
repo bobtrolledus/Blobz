@@ -47,7 +47,7 @@ public abstract class WideMachines extends Machines
                 gridSpaceY2 = (int) (getY() + (Utils.gridSize / 2)) / Utils.gridSize;
                 break;
         }
-        Utils.fillSpace(gridSpaceY1, gridSpaceX1, null);
-        Utils.fillSpace(gridSpaceY2, gridSpaceX2, null);
+        Utils.fillSpaceMachine(gridSpaceY1, gridSpaceX1, null);
+        Utils.fillSpaceMachine(gridSpaceY2, gridSpaceX2, null);
     }
 }

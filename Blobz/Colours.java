@@ -9,13 +9,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Colours extends Material
 {
     private boolean isLabel;
-    private FollowPoint guide;
+    public FollowPoint guide;
     protected int colour;
     private boolean firstRun = true;
     
-    public Colours(boolean isLabel){
+    public Colours(boolean isLabel, FollowPoint guide){
         this.isLabel = isLabel;
-        
+        this.guide = guide;
         if (isLabel){
             getImage().scale(26, 26);
         } else {
@@ -24,29 +24,23 @@ public class Colours extends Material
     }
     
     public void act() {
-        if(firstRun){
-            spawnPoint();
-            firstRun = false;
+        if(isLabel)
+        {
+            if(firstRun){
+                firstRun = false;
+            }
         }
-        
-        if (guide.getWorld() == null){
-            getWorld().removeObject(this);
-        } else {
-            setLocation(guide.getX(), guide.getY());
+        if(!isLabel)
+        {
+            if (guide.getWorld() == null){
+                getWorld().removeObject(this);
+            } else {
+                move();
+            }
         }
     }
     
-    public int getColour(){
-        return colour;
-    }
-    
-    public void spawnPoint(){
-        if(isLabel){
-            guide = new FollowPoint(0, true);
-        } else {
-            guide = new FollowPoint(0, false);
-        }
-
-        getWorld().addObject(guide, this.getX(), this.getY());
+    public void move(){
+        this.setLocation(guide.getX(), guide.getY());
     }
 }

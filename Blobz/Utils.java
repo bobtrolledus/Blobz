@@ -16,7 +16,8 @@ import java.util.ArrayList;
  */
 public class Utils extends Actor
 {
-    private static Actor[][] map;
+    private static Actor[][] machineMap;
+    private static Deposits[][] depositMap;
     private static int rotation;
     private static int arrowXCoord, arrowYCoord;
     private static MouseInfo mouse = Greenfoot.getMouseInfo();
@@ -113,7 +114,8 @@ public class Utils extends Actor
     public Utils()
     {
         list = new ArrayList<Integer>();
-        map = new Actor[20][20];
+        machineMap = new Actor[20][20];
+        depositMap = new Deposits[20][20];
         rotation = 0;
         getImage().scale(10, 10);
         crsUpgradeLevel = 1;
@@ -200,7 +202,7 @@ public class Utils extends Actor
 
     public static boolean spaceIsEmpty(int x, int y)
     {
-        if(map[x][y] == null)
+        if(machineMap[x][y] == null)
         {
             return true;
         }
@@ -224,14 +226,24 @@ public class Utils extends Actor
         return rotation;
     }
 
-    public static void fillSpace(int x, int y, Machines object)
+    public static void fillSpaceMachine(int x, int y, Actor object)
     {
-        map[x][y] = object;
+        machineMap[x][y] = object;
     }
 
-    public static Actor getSpace(int x, int y)
+    public static Actor getSpaceMachine(int x, int y)
     {
-        return map[x][y];
+        return machineMap[x][y];
+    }
+    
+    public static void fillSpaceDeposit(int x, int y, Deposits object)
+    {
+        depositMap[x][y] = object;
+    }
+
+    public static Actor getSpaceDeposit(int x, int y)
+    {
+        return depositMap[x][y];
     }
 
     public static int getLevel()
