@@ -18,6 +18,13 @@ public class Utils extends Actor
     
     public static int gridSize = 40;
     private static int level;
+    
+    public static int[][][] targetShapes = {
+                                            {
+                                                {1, 1, 1, 1, -1, -1, -1, -1},
+                                            {-1, -1, -1, -1, -1, -1, -1, -1}}},
+                                            {{1, 1, 1, 1, -1, -1, -1, -1},
+                                            {-1, -1, -1, -1, -1, -1, -1, -1};
     public Utils()
     {
         map = new Actor[20][20];

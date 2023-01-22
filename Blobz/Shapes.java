@@ -10,7 +10,7 @@ public class Shapes extends Material
 {
     public FollowPoint guide;
     private int q, x, y, layer, colour;
-    protected GreenfootImage red, blue, yellow, orange, purple, green, grey;
+    protected GreenfootImage red, blue, yellow, orange, purple, green;
     
     public Shapes(int q, FollowPoint guide, int layer, int colour)
     {
@@ -76,7 +76,6 @@ public class Shapes extends Material
     public void setColour(int colour){
         switch(colour){
             case -1:
-                setImage(grey);
                 break;
             case 1:
                 setImage(red);
