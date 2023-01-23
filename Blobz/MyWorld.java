@@ -33,7 +33,7 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1); 
-        setPaintOrder(Label.class, Hub.class, Colours.class, Shapes.class, Belts.class, ghostBlock.class);
+        setPaintOrder(Label.class, Hub.class, Machines.class, Colours.class, Shapes.class, Belts.class, ghostBlock.class);
         getBackground().setColor(lightGray);
         getBackground().fill();
         getBackground().setColor(gray);        
@@ -113,12 +113,12 @@ public class MyWorld extends World
         Button.drawCenteredText (getBackground(), "extraction speed", 1200 - width / 2, (int) ((height / 5) * 4 - rightLabelOffset)); 
         addObject(new UpgradeButton("extract"), 1200 - width / 2, (int) ((height / 5) * 4) + rightButtonOffset); 
 
-        addObject(new Deposits("circle"), 220, 20);
-        addObject(new Deposits("square"), 40 + 220, 20);
-        addObject(new Deposits("star"), 2 * 40 + 220, 20);
-        addObject(new Deposits("red"), 220, 60);
-        addObject(new Deposits("blue"), 40 + 220, 60);
-        addObject(new Deposits("yellow"), 2 * 40 + 220, 60);
+        addObject(new Deposits("red"), 220, 20);
+        addObject(new Deposits("blue"), 40 + 220, 20);
+        addObject(new Deposits("yellow"), 2 * 40 + 220, 20);
+        addObject(new Deposits("circle"), 220, 60);
+        addObject(new Deposits("star"), 40 + 220, 60);
+        addObject(new Deposits("blue"), 2 * 40 + 220, 60);
     }
 
     public void delete()
