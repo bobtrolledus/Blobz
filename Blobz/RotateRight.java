@@ -13,12 +13,14 @@ public class RotateRight extends NarrowMachines
     private int inputXCoord, inputYCoord, spawnXCoord, spawnYCoord;
     public RotateRight()
     {
+        setImage("images/Machines/rotateRight.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         real = true;
     }
     
     public RotateRight(boolean spawner)
     {
+        setImage("images/Machines/rotateRight.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         this.spawner = spawner;
     }
@@ -31,10 +33,18 @@ public class RotateRight extends NarrowMachines
     {
         if(!real)
         {
-            if(spawner && Greenfoot.mouseClicked(this))
+            if(!spawned && spawner && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("5")))
             {
                 RotateRight mouseRotateRight = new RotateRight(false);
                 getWorld().addObject(mouseRotateRight, Utils.getMouseX(), Utils.getMouseY());
+                spawned = true;
+            }
+            if(spawner && spawned)
+            {
+                if(checkDeselectKey())
+                {
+                    spawned = false;
+                }
             }
             
             if(!spawner)
@@ -49,7 +59,7 @@ public class RotateRight extends NarrowMachines
                     updateImage(lastRotation);
                     updatedImage = true;
                 }
-                if(Greenfoot.isKeyDown("escape"))
+                if(checkDeselectKey())
                 {
                     if(Utils.getMouseX() > 200 && Utils.getMouseY() < 1000)
                     {
@@ -75,6 +85,20 @@ public class RotateRight extends NarrowMachines
             {
                 spawnShape();
             }
+            if(isDeletedNarrow())
+            {
+                getWorld().removeObject(this);
+            }
+        }
+    }
+    
+    public boolean checkDeselectKey()
+    {
+        if(Greenfoot.isKeyDown("escape") || Greenfoot.isKeyDown("1") || Greenfoot.isKeyDown("2") || Greenfoot.isKeyDown("3") || Greenfoot.isKeyDown("4") || Greenfoot.isKeyDown("6") || Greenfoot.isKeyDown("7") || Greenfoot.isKeyDown("8"))
+        {
+            return true;
+        } else {
+            return false;
         }
     }
     
@@ -174,7 +198,6 @@ public class RotateRight extends NarrowMachines
                     spawnYCoord = getY() - (Utils.gridSize / 2) - 1;
                     direction = 2;
                     setRotation(0);
-                    
                     break;
                 case 3:
                     inputXCoord = getX() - (Utils.gridSize / 2);

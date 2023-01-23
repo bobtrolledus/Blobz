@@ -63,6 +63,10 @@ public class MyWorld extends World
             {
                 Utils.addRotation();
             }
+            if(key.equals("m"))
+            {
+                Utils.changeMirrored();
+            }
         }
     }
 
@@ -123,7 +127,7 @@ public class MyWorld extends World
         addObject(new Deposits("blue"), 40 + 220, 20);
         addObject(new Deposits("yellow"), 2 * 40 + 220, 20);
         addObject(new Deposits("circle"), 220, 60);
-        addObject(new Deposits("star"), 40 + 220, 60);
+        addObject(new Deposits("square"), 40 + 220, 60);
         addObject(new Deposits("blue"), 2 * 40 + 220, 60);
     }
 
@@ -147,12 +151,13 @@ public class MyWorld extends World
                     if(Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Balancer.class || Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Cutter.class || Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Stacker.class || Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Painter.class)
                     {
                         WideMachines temp = (WideMachines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
-                        temp.delete();
+                        temp.deleteWide();
                         temp.deleteShapesWide();
+                    } else {
+                        NarrowMachines temp = (NarrowMachines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
+                        temp.deleteNarrow();
+                        tempMachine.deleteShapes();
                     }
-                    tempMachine.deleteShapes();
-                    removeObjects(getObjectsAt((gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + 20, Machines.class));
-                    Utils.fillSpaceMachine(gridPositionY, gridPositionX, null);
                 }
             }    
         }

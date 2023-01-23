@@ -40,7 +40,7 @@ public class Utils extends Actor
     private static int extractUpgradeLevel;
     private static int totalTargetShapes;
     private static ArrayList<Integer> list;
-    
+    private static boolean mirrored;
     public static int[][][] targetShapes = {
         {
             {1, 1, 1, 1, -1, -1, -1, -1},
@@ -113,6 +113,7 @@ public class Utils extends Actor
         list = new ArrayList<Integer>();
         machineMap = new Actor[20][20];
         depositMap = new Deposits[20][20];
+        mirrored = false;
         rotation = 0;
         money = 0;
         mapNumber = 0;
@@ -122,17 +123,32 @@ public class Utils extends Actor
         bdUpgradeLevel = 1;
         paintUpgradeLevel = 1;
         extractUpgradeLevel = 1;
-        level = 0;
+        level = 7;
     }
 
     public void act()
     {
         mouse = Greenfoot.getMouseInfo();
-        if(totalTargetShapes == 250)
+        if(totalTargetShapes == 5)
         {
             totalTargetShapes = 0;
             level++;
         }
+    }
+    
+    public static void changeMirrored()
+    {
+        if(!mirrored)
+        {
+            mirrored = true;
+        } else {
+            mirrored = false;
+        }
+    }
+    
+    public static boolean getMirrored()
+    {
+        return mirrored;
     }
     
     public static void addTargetShape()

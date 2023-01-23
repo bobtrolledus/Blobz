@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public abstract class WideMachines extends Machines
 {
-    int gridSpaceX1, gridSpaceX2, gridSpaceY1, gridSpaceY2;
-    
+    private int gridSpaceX1, gridSpaceX2, gridSpaceY1, gridSpaceY2;
+    public int mirrored;
     public void deleteShapesWide()
     {
         for(FollowPoint point : getObjectsInRange(50, FollowPoint.class))
@@ -18,7 +18,35 @@ public abstract class WideMachines extends Machines
         }
     }
     
-    public void delete()
+    public boolean isDeletedWide()
+    {
+        getGridSpace();
+        if(Utils.getSpaceMachine(gridSpaceY1, gridSpaceX1) == null || Utils.getSpaceMachine(gridSpaceY2, gridSpaceX2) == null)
+        {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public void deleteWide()
+    {
+        getGridSpace();
+        Utils.fillSpaceMachine(gridSpaceY1, gridSpaceX1, null);
+        Utils.fillSpaceMachine(gridSpaceY2, gridSpaceX2, null);
+    }
+    
+    public void checkMirrored()
+    {
+        if(Utils.getMirrored())
+        {
+            mirrored = -1;
+        } else {
+            mirrored = 1;
+        }
+    }
+    
+    public void getGridSpace()
     {
         switch(direction)
         {
@@ -47,7 +75,5 @@ public abstract class WideMachines extends Machines
                 gridSpaceY2 = (int) (getY() + (Utils.gridSize / 2)) / Utils.gridSize;
                 break;
         }
-        Utils.fillSpaceMachine(gridSpaceY1, gridSpaceX1, null);
-        Utils.fillSpaceMachine(gridSpaceY2, gridSpaceX2, null);
     }
 }

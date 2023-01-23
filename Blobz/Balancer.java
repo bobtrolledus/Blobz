@@ -9,15 +9,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Balancer extends WideMachines
 {
     private boolean outputSide = false, inputSide = false;
-    private int spawnX1Coord, spawnY1Coord, spawnX2Coord, spawnY2Coord, inputX1Coord, inputY1Coord, inputX2Coord, inputY2Coord;
+    private int spawnX1Coord, spawnY1Coord, spawnX2Coord, spawnY2Coord, inputXCoord, inputYCoord;
     public Balancer()
     {
+        setImage("images/Machines/balancer.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         real = true;
     }
     
     public Balancer(boolean spawner)
     {
+        setImage("images/Machines/balancer.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         this.spawner = spawner;
     }
@@ -30,10 +32,18 @@ public class Balancer extends WideMachines
     {
         if(!real)
         {
-            if(spawner && Greenfoot.mouseClicked(this))
+            if(!spawned && spawner && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("4")))
             {
                 Balancer mouseBalancer = new Balancer(false);
                 getWorld().addObject(mouseBalancer, Utils.getMouseX(), Utils.getMouseY());
+                spawned = true;
+            }
+            if(spawner && spawned)
+            {
+                if(checkDeselectKey())
+                {
+                    spawned = false;
+                }
             }
             
             if(!spawner)
@@ -48,7 +58,7 @@ public class Balancer extends WideMachines
                     updateImage(lastRotation);
                     updatedImage = true;
                 }
-                if(Greenfoot.isKeyDown("escape"))
+                if(checkDeselectKey())
                 {
                     if(Utils.getMouseX() > 200 && Utils.getMouseY() < 1000)
                     {
@@ -75,20 +85,28 @@ public class Balancer extends WideMachines
             {
                 spawnShape();
             }
+            if(isDeletedWide())
+            {
+                getWorld().removeObject(this);
+            }
+        }
+    }
+    
+    public boolean checkDeselectKey()
+    {
+        if(Greenfoot.isKeyDown("escape") || Greenfoot.isKeyDown("1") || Greenfoot.isKeyDown("2") || Greenfoot.isKeyDown("3") || Greenfoot.isKeyDown("5") || Greenfoot.isKeyDown("6") || Greenfoot.isKeyDown("7") || Greenfoot.isKeyDown("8"))
+        {
+            return true;
+        } else {
+            return false;
         }
     }
     
     public void getShape()
     {       
-        if(getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).size() > 0)
+        if(getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).size() > 0)
         {
-            FollowPoint tempPoint = getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).get(0);
-            outputShape = tempPoint.getShape();
-            direction = tempPoint.getRotation();
-        }
-        if(getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).size() > 0)
-        {
-            FollowPoint tempPoint = getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).get(0);
+            FollowPoint tempPoint = getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).get(0);
             outputShape = tempPoint.getShape();
             direction = tempPoint.getRotation();
         }
@@ -96,16 +114,9 @@ public class Balancer extends WideMachines
     
     public void getColour()
     {
-        if(getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).size() > 0)
+        if(getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).size() > 0)
         {
-            FollowPoint tempPoint = getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).get(0);
-            outputColour = tempPoint.getColour();
-            getWorld().removeObject(tempPoint);
-            occupied = true;
-        }
-        if(getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).size() > 0)
-        {
-            FollowPoint tempPoint = getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).get(0);
+            FollowPoint tempPoint = getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).get(0);
             outputColour = tempPoint.getColour();
             getWorld().removeObject(tempPoint);
             occupied = true;
@@ -121,70 +132,65 @@ public class Balancer extends WideMachines
                 getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, false), spawnX1Coord, spawnY1Coord);
                 outputShape = null;
                 outputSide = true;
+                occupied = false;
+                timer.mark();
             }
             else if(outputSide && getWorld().getObjectsAt(spawnX2Coord, spawnY2Coord, Shapes.class).size() < 1)
             {
                 getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, false), spawnX2Coord, spawnY2Coord);
                 outputShape = null;
                 outputSide = false;
+                occupied = false;
+                timer.mark();
             }
-            timer.mark();
-            occupied = false;
         }
     }
     
     protected void addedToWorld(World world)
     {
+        checkMirrored();
         timer.mark();
         if(real)
         {
             switch (Utils.getDirection())
             {
                 case 0:
-                    spawnX1Coord = getX() - (Utils.gridSize / 2);
-                    spawnX2Coord = getX() + (Utils.gridSize / 2);
+                    inputXCoord = getX() + ((Utils.gridSize / 2) * mirrored);
+                    inputYCoord = getY() - (Utils.gridSize / 2);
+                    spawnX1Coord = getX() - ((Utils.gridSize / 2) * mirrored);
                     spawnY1Coord = getY() + (Utils.gridSize / 2);
+                    spawnX2Coord = getX() + ((Utils.gridSize / 2) * mirrored);
                     spawnY2Coord = getY() + (Utils.gridSize / 2);
-                    inputX1Coord = spawnX1Coord;
-                    inputX2Coord = spawnX2Coord;
-                    inputY1Coord = getY() - (Utils.gridSize / 2);
-                    inputY2Coord = getY() - (Utils.gridSize / 2);
                     setDirection(0);
                     setRotation(180);
                     break;
                 case 1:
-                    spawnX1Coord = getX() - (Utils.gridSize / 2);
-                    spawnX2Coord = getX() - (Utils.gridSize / 2);
-                    spawnY1Coord = getY() - (Utils.gridSize / 2);
-                    spawnY2Coord = getY() + (Utils.gridSize / 2);
-                    inputX1Coord = getX() + (Utils.gridSize / 2);
-                    inputX2Coord = getX() + (Utils.gridSize / 2);
-                    inputY1Coord = spawnY1Coord;
-                    inputY2Coord = spawnY2Coord;
+                    inputXCoord = getX() + (Utils.gridSize / 2);
+                    inputYCoord = getY() + ((Utils.gridSize / 2) * mirrored);
+                    spawnX1Coord = getX() - (Utils.gridSize / 2) - 1;
+                    spawnY1Coord = getY() - ((Utils.gridSize / 2) * mirrored);
+                    spawnX2Coord = getX() - (Utils.gridSize / 2) - 1;
+                    spawnY2Coord = getY() + ((Utils.gridSize / 2) * mirrored);
                     setDirection(1);
                     setRotation(-90);
                     break;
                 case 2:
-                    spawnX1Coord = getX() + (Utils.gridSize / 2);
-                    spawnX2Coord = getX() - (Utils.gridSize / 2);
-                    spawnY1Coord = getY() - (Utils.gridSize / 2);
-                    spawnY2Coord = getY() - (Utils.gridSize / 2);
-                    inputX1Coord = spawnX1Coord;
-                    inputX2Coord = spawnX2Coord;
-                    inputY1Coord = getY() + (Utils.gridSize / 2);
-                    inputY2Coord = getY() + (Utils.gridSize / 2);
+                    inputXCoord = getX() - ((Utils.gridSize / 2) * mirrored);
+                    inputYCoord = getY() + (Utils.gridSize / 2) - 1;
+                    spawnX1Coord = getX() - ((Utils.gridSize / 2) * mirrored);
+                    spawnY1Coord = getY() - (Utils.gridSize / 2) - 1;
+                    spawnX2Coord = getX() + ((Utils.gridSize / 2) * mirrored);
+                    spawnY2Coord = getY() - (Utils.gridSize / 2) - 1;
                     setDirection(2);
                     setRotation(0);
                     break;
                 case 3:
+                    inputXCoord = getX() - (Utils.gridSize / 2);
+                    inputYCoord = getY() - ((Utils.gridSize / 2) * mirrored);
                     spawnX1Coord = getX() + (Utils.gridSize / 2);
+                    spawnY1Coord = getY() - ((Utils.gridSize / 2) * mirrored);
                     spawnX2Coord = getX() + (Utils.gridSize / 2);
-                    spawnY1Coord = getY() + (Utils.gridSize / 2);
-                    spawnY2Coord = getY() - (Utils.gridSize / 2);
-                    inputX1Coord = getX() - (Utils.gridSize / 2);
-                    inputX2Coord = getX() - (Utils.gridSize / 2);
-                    inputY1Coord = spawnY1Coord;
-                    inputY2Coord = spawnY2Coord;
+                    spawnY2Coord = getY() + ((Utils.gridSize / 2) * mirrored);
                     setDirection(3);
                     setRotation(90);
                     break;
