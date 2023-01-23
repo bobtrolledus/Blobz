@@ -145,7 +145,7 @@ public class Painter extends WideMachines
                     {
                         outputColour[i] = colour;
                     }
-                    else if(outputColour[i] != colour && (outputColour[i] != 3 || outputColour[i] != 5 || outputColour[i] != 6))
+                    else if(outputColour[i] != colour && (outputColour[i] != 3 && outputColour[i] != 5 && outputColour[i] != 6))
                     {
                         outputColour[i] += colour;
                     }

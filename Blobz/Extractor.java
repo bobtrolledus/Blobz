@@ -11,7 +11,7 @@ public class Extractor extends NarrowMachines
     private int spawnXCoord, spawnYCoord;
     
     private int[] corners = {3, -1, 2, -1, 2, 1, 3, 1};
-    private int[] colours = {5, -1, 3, -1, 4, 6, 2, 6};
+    private int[] colours = {1, -1, 2, -1, 2, 1, 4, 2};
     
     private int colour;
     private int[] shapeID;
@@ -144,7 +144,7 @@ public class Extractor extends NarrowMachines
             }
             if(!isColour)
             {
-                getWorld().addObject(new ShapeGenerator(shapeID, colourID, direction, false), spawnXCoord, spawnYCoord);
+                getWorld().addObject(new ShapeGenerator(corners, colours, direction, false), spawnXCoord, spawnYCoord);
                 timer.mark();
             }
             shapeID = null;

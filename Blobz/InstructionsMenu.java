@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class InstructionsMenu extends World
 {
     private GreenfootImage[] images = new GreenfootImage[10];
-    private Label continueLabel = new Label("Space to Continue", 30);
+    private Label continueLabel = new Label("Space to Continue", 40);
     private Color yellow = new Color(255, 255, 186);
     private int index = 0;
     /**
