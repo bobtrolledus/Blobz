@@ -23,6 +23,9 @@ public class MyWorld extends World
 =======
     private Label levelLabel;
     private Label timeLabel;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     private static Scanner fileScan;
     private static Scanner scan;
@@ -35,6 +38,9 @@ public class MyWorld extends World
     private int gameTimer;
     private int gameTime;
     private int gameTimeM;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     /**
      * Constructor for objects of class MyWorld.
@@ -60,12 +66,15 @@ public class MyWorld extends World
         }
         prepare();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
     }
 
     public void act()
     {        
 =======
+=======
+>>>>>>> Stashed changes
         timeLabel = new Label(gameTimeM + ": " + gameTime, 30);
         addObject(timeLabel,600,50);
     }
@@ -89,6 +98,10 @@ public class MyWorld extends World
             }
         }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -248,6 +261,9 @@ public class MyWorld extends World
             }
         }
     }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 

@@ -1,6 +1,7 @@
 #BlueJ class context
 comment0.target=NarrowMachines
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ NarrowMachines\ here.\r\n\ \r\n\ @author\ Anson\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=boolean\ isDeletedNarrow()
@@ -10,6 +11,8 @@ comment3.params=
 comment3.target=void\ getGridSpace()
 numComments=4
 =======
+=======
+>>>>>>> Stashed changes
 comment0.text=\n\ Write\ a\ description\ of\ class\ NarrowMachines\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=void\ act()
