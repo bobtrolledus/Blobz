@@ -80,7 +80,7 @@ public class Utils extends Actor
             {4, 4, -1, -1, -1, -1, -1, -1}
         },
         {
-            {-1, -1, 1, -1, -1, -1, -1, -1},
+            {-1, -1, 2, -1, -1, -1, -1, -1},
             {-1, -1, 1, -1, -1, -1, -1, -1}
         },
         {
@@ -124,7 +124,7 @@ public class Utils extends Actor
         bdUpgradeLevel = 1;
         paintUpgradeLevel = 1;
         extractUpgradeLevel = 1;
-        level = 7;
+        level = 15;
     }
 
     public void act()

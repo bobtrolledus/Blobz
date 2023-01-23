@@ -37,7 +37,8 @@ public class ShapeGenerator extends Resources
         if(!spawnColour)
         {
             for(int i = 0; i < corners.length; i++){
-                if(isLabel){
+                if(isLabel && quadrant > 4){
+                    quadrant = 1;
                     layer = 3;
                 } else if(quadrant > 4){
                     quadrant = 1;
