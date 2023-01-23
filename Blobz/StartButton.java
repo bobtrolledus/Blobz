@@ -23,7 +23,7 @@ public class StartButton extends Button {
     }
     
     public void act() {
-        mouse();
+        redraw();
     }
     
     public void drawNormalButton() {
@@ -42,9 +42,5 @@ public class StartButton extends Button {
         background.setColor(Color.CYAN);
         setImage(background);
         Button.drawCenteredText(background, string, width/2, height/2 + size/3);
-    }
-    
-    public boolean getClicked() {
-        return clicked;
     }
 }

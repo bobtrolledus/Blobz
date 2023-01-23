@@ -8,21 +8,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Square extends Shapes
 {
-    public Square (Boolean isLabel, int q, FollowPoint guide){
-        super(isLabel, q, guide);
-        getImage().scale(15, 15);
+    public Square (int q, FollowPoint guide, int layer, int colour){
+        super(q, guide, layer, colour);
+        
+        setImage("Shapes/Square/grey.png");
+        
+        red = new GreenfootImage("Shapes/Square/red.png");
+        blue = new GreenfootImage("Shapes/Square/blue.png");
+        yellow = new GreenfootImage("Shapes/Square/yellow.png");
+        orange = new GreenfootImage("Shapes/Square/orange.png");
+        purple = new GreenfootImage("Shapes/Square/purple.png");
+        green = new GreenfootImage("Shapes/Square/green.png");
+        
+        setColour(colour);
+        layerScale();
         setRotation(q);
-    }
-    
-    public void act()
-    {
-        if(guide.getWorld() == null)
-        {
-            getWorld().removeObject(this);
-        }
-        else
-        {
-            move();
-        }
     }
 }

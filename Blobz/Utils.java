@@ -16,27 +16,114 @@ import java.util.ArrayList;
  */
 public class Utils extends Actor
 {
-    private static Actor[][] map;
+    private static Actor[][] machineMap;
+    private static Deposits[][] depositMap;
     private static int rotation;
     private static int arrowXCoord, arrowYCoord;
     private static MouseInfo mouse = Greenfoot.getMouseInfo();
     private static int extractorDelay = 1000;
-    private static int balancerDelay = 500;
+    private static int balancerDelay = 1000;
+    private static int cutterDelay = 1000;
+    private static int rotationDelay = 1000;
+    private static int paintingDelay = 1000;
+    private static int stackingDelay = 1000;
 
     public static int gridSize = 40;
-    private static int level= 0;
+    private static int level;
     private static Scanner fileScan;
     private static Scanner scan;
-    private static int mapNumber=0;
-    private static int money=0;
-    private static int upgradeLevel = 0;
+    private static int mapNumber = 0;
+    private static int money = 0;
+    private static int crsUpgradeLevel;
+    private static int bdUpgradeLevel;
+    private static int paintUpgradeLevel;
+    private static int extractUpgradeLevel;
+    
     private static ArrayList<Integer> list;
+    
+    public static int[][][] targetShapes = {
+        {
+            {1, 1, 1, 1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {2, 2, 2, 2, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {-1, -1, 1, 1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {2, 2, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {1, -1, -1, 1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {-1, 2, 2, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {3, 3, 3, 3, -1, -1, -1, -1},
+            {2, 2, 2, 2, -1, -1, -1, -1}
+        },
+        {
+            {1, 1, 1, 1, -1, -1, -1, -1},
+            {3, 3, 3, 3, -1, -1, -1, -1}
+        },
+        {
+            {3, 3, -1, -1, -1, -1, -1, -1},
+            {4, 4, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {-1, -1, 1, -1, -1, -1, -1, -1},
+            {-1, -1, 1, -1, -1, -1, -1, -1}
+        },
+        {
+            {2, 2, 2, 2, 1, 1, 1, 1},
+            {-1, -1, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {-1, 1, 1, -1, -1, 1, 1, -1},
+            {-1, 6, 6, -1, -1, 1, 1, -1}
+        },
+        {
+            {1, 2, 2, 1, 2, 1, 1, 2},
+            {2, 4, 4, 2, 5, 1, 1, 5}
+        },
+        {
+            {1, 3, 3, 1, 3, 1, 1, 3},
+            {5, 6, 6, 5, 3, 3, 3, 3}
+        },
+        {
+            {-1, 2, -1, 2, 1, 2, 1, 2},
+            {-1, 4, -1, 4, 2, 5, 2, 5}
+        },
+        {
+            {3, -1, 2, -1, 2, 1, 3, 1},
+            {5, -1, 3, -1, 4, 6, 2, 6}
+        }
+    };
+                                            
+                                                
+                                        
+                                            
+    
     public Utils()
     {
         list = new ArrayList<Integer>();
-        map = new Actor[20][20];
+        machineMap = new Actor[20][20];
+        depositMap = new Deposits[20][20];
         rotation = 0;
         getImage().scale(10, 10);
+        crsUpgradeLevel = 1;
+        bdUpgradeLevel = 1;
+        paintUpgradeLevel = 1;
+        extractUpgradeLevel = 1;
+        level = 1;
     }
 
     public void act()
@@ -63,6 +150,46 @@ public class Utils extends Actor
     {
         balancerDelay = delay;
     }
+    
+    public static int getCutterDelay()
+    {
+        return balancerDelay;
+    }
+
+    public static void setCutterDelay(int delay)
+    {
+        cutterDelay = delay;
+    }
+    
+    public static int getRotationDelay()
+    {
+        return rotationDelay;
+    }
+
+    public static void setRotationDelay(int delay)
+    {
+        rotationDelay = delay;
+    }
+    
+    public static int getPainterDelay()
+    {
+        return paintingDelay;
+    }
+
+    public static void setPainterDelay(int delay)
+    {
+        paintingDelay = delay;
+    }
+    
+    public static int getStackingDelay()
+    {
+        return stackingDelay;
+    }
+
+    public static void setstackingDelay(int delay)
+    {
+        stackingDelay = delay;
+    }
 
     public static int getMouseX()
     {
@@ -86,7 +213,7 @@ public class Utils extends Actor
 
     public static boolean spaceIsEmpty(int x, int y)
     {
-        if(map[x][y] == null)
+        if(machineMap[x][y] == null)
         {
             return true;
         }
@@ -110,14 +237,24 @@ public class Utils extends Actor
         return rotation;
     }
 
-    public static void fillSpace(int x, int y, Machines object)
+    public static void fillSpaceMachine(int x, int y, Actor object)
     {
-        map[x][y] = object;
+        machineMap[x][y] = object;
     }
 
-    public static Actor getSpace(int x, int y)
+    public static Actor getSpaceMachine(int x, int y)
     {
-        return map[x][y];
+        return machineMap[x][y];
+    }
+    
+    public static void fillSpaceDeposit(int x, int y, Deposits object)
+    {
+        depositMap[x][y] = object;
+    }
+
+    public static Actor getSpaceDeposit(int x, int y)
+    {
+        return depositMap[x][y];
     }
 
     public static int getLevel()
@@ -135,14 +272,49 @@ public class Utils extends Actor
     {
         level--;
     }
-
+    
+    public static int getCRSlevel() {
+        return crsUpgradeLevel;
+    }
+    
+    public static void increaseCRSlevel() {
+        crsUpgradeLevel++;
+    }
+    
+    public static int getBDlevel() {
+        return bdUpgradeLevel;
+    }
+    
+    public static void increaseBDlevel() {
+        bdUpgradeLevel++;
+    }
+    
+    public static int getPAINTlevel() {
+        return paintUpgradeLevel;
+    }
+    
+    public static void increasePAINTlevel() {
+        paintUpgradeLevel++;
+    }
+    
+    public static int getEXTRACTlevel() {
+        return extractUpgradeLevel;
+    }
+    
+    public static void increaseEXTRACTlevel() {
+        extractUpgradeLevel++;
+    }
+    
     private static void save()
     {
         
         try{
             list.add(level);
             list.add(mapNumber);
-            list.add(upgradeLevel);
+            list.add(crsUpgradeLevel);
+            list.add(bdUpgradeLevel);
+            list.add(paintUpgradeLevel);
+            list.add(extractUpgradeLevel);
             list.add(money);
             FileWriter out = new FileWriter("save.txt",false);
             PrintWriter output = new PrintWriter(out);
@@ -159,7 +331,6 @@ public class Utils extends Actor
     
     public static void setLevel(int x)
     {
-        
         level = x;
     }
     
@@ -170,7 +341,7 @@ public class Utils extends Actor
     
     public static void setUpgrade(int x)
     {
-        upgradeLevel = x;
+        //upgradeLevel = x;
     }
     
     public static void setMoney(int x)

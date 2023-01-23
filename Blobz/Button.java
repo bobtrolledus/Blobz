@@ -11,7 +11,6 @@ public abstract class Button extends UI
     protected GreenfootImage background;
     protected Font comicFont;
     protected boolean clicked = false;
-    protected boolean hover = false;
     protected int width;
     protected int height;
     protected int size;
@@ -25,24 +24,28 @@ public abstract class Button extends UI
         // Add your action code here.
     }
     
-    public void mouse() {
+    public void redraw() {
         if (Utils.getMouse() != null) {
             if (Utils.getMouseX() > getX() - width/2 && Utils.getMouseX() < getX() + width/2 && Utils.getMouseY() > getY() - height/2 && Utils.getMouseY() < getY() + height/2) {
-                hover = true;
                 drawFaintButton();
             } else {
-                hover = false;
                 drawNormalButton();
             }
-            if (Greenfoot.mouseClicked(this)) {
+            if (Greenfoot.mouseClicked(this) && clicked == false) {
                 clicked = true;
-            } 
+            } else {
+                clicked = false;
+            }
         }
     }
     
     abstract void drawNormalButton();
     
     abstract void drawFaintButton();
+    
+    public boolean getClicked() {
+        return clicked;
+    }
     
     // Mr.Cohen's button methods
     /**

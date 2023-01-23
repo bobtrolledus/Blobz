@@ -8,12 +8,9 @@ import java.util.Arrays;
  */
 public class RotateRight extends NarrowMachines
 {
-    private boolean spawner = false, real = false, updatedImage = false;
-    private int lastRotation, direction;
+    private boolean occupied = false;
+    private int direction;
     private int inputXCoord, inputYCoord, spawnXCoord, spawnYCoord;
-    private int[] outputShape;
-    private SimpleTimer timer = new SimpleTimer();
-    private Shapes shape;
     public RotateRight()
     {
         getImage().scale(Utils.gridSize, Utils.gridSize);
@@ -68,19 +65,16 @@ public class RotateRight extends NarrowMachines
         }
         if(real)
         {
-            getShape();
+            if(!occupied)
+            {
+                getShape();
+                getColour();
+            }
+
             if(outputShape != null)
             {
                 spawnShape();
             }
-        }
-    }
-    
-    public void updateRotation()
-    {
-        if(Utils.getDirection() != lastRotation)
-        {
-            updatedImage = false;
         }
     }
     
@@ -91,7 +85,6 @@ public class RotateRight extends NarrowMachines
             FollowPoint tempPoint = getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).get(0);
             outputShape = tempPoint.getShape();
             direction = tempPoint.getRotation();
-            getWorld().removeObject(tempPoint);
             int i = 0, j = 3;
             while(i != j)
             {
@@ -112,19 +105,47 @@ public class RotateRight extends NarrowMachines
         }
     }
     
+    public void getColour()
+    {
+        if(getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).size() > 0)
+        {
+            FollowPoint tempPoint = getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).get(0);
+            outputColour = tempPoint.getColour();
+            getWorld().removeObject(tempPoint);
+            int i = 0, j = 3;
+            while(i != j)
+            {
+              int temp = outputColour[i];
+              outputColour[i] = outputColour[j];
+              outputColour[j] = temp;
+              i++;
+            }
+            i = 4;
+            j = outputColour.length - 1;
+            while(i != j)
+            {
+              int temp = outputColour[i];
+              outputColour[i] = outputColour[j];
+              outputColour[j] = temp;
+              i++;
+            }
+            occupied = true;
+        }
+    }
+    
     public void spawnShape()
     {
-        if(timer.millisElapsed() > Utils.getBalancerDelay())
+        if(timer.millisElapsed() > Utils.getRotationDelay() && getWorld().getObjectsAt(spawnXCoord, spawnYCoord, Shapes.class).size() < 1) 
         {
-            getWorld().addObject(new ShapeGenerator(outputShape, direction), spawnXCoord, spawnYCoord);
-            outputShape = null;
+            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, false), spawnXCoord, spawnYCoord);
+            outputShape = null; 
             timer.mark();
+            occupied = false;
         }
     }
     
     protected void addedToWorld(World world)
     {
-        getShape();
         timer.mark();
         if(real)
         {
@@ -139,18 +160,18 @@ public class RotateRight extends NarrowMachines
                     setRotation(180);
                     break;
                 case 1:
-                    inputXCoord = getX() + (Utils.gridSize / 2);
+                    inputXCoord = getX() + (Utils.gridSize / 2) - 1;
                     inputYCoord = getY();
-                    spawnXCoord = getX() - (Utils.gridSize / 2);
+                    spawnXCoord = getX() - (Utils.gridSize / 2) - 1;
                     spawnYCoord = getY();
                     direction = 1;
                     setRotation(-90);
                     break;
                 case 2:
                     inputXCoord = getX();
-                    inputYCoord = getY() + (Utils.gridSize / 2);
+                    inputYCoord = getY() + (Utils.gridSize / 2) - 1;
                     spawnXCoord = getX();
-                    spawnYCoord = getY() - (Utils.gridSize / 2);
+                    spawnYCoord = getY() - (Utils.gridSize / 2) - 1;
                     direction = 2;
                     setRotation(0);
                     

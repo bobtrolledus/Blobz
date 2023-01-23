@@ -19,7 +19,7 @@ public class Hub extends Actor
     public Hub()
     {
         setImage("images/hub.png");
-        getImage().scale(Utils.gridSize*4, Utils.gridSize*4);
+        getImage().scale(Utils.gridSize*4 + 20, Utils.gridSize*4 + 20);
 
     }
 
@@ -34,7 +34,7 @@ public class Hub extends Actor
         Resources resource = (Resources)getOneIntersectingObject(Resources.class);
         if(resource != null)
         {
-            getWorld().removeObject(resource);
+            //getWorld().removeObject(resource);
             if(isObj)
             {
                 obj--;

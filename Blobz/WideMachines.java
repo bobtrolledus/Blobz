@@ -9,6 +9,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public abstract class WideMachines extends Machines
 {
     int gridSpaceX1, gridSpaceX2, gridSpaceY1, gridSpaceY2;
+    
+    public void deleteShapesWide()
+    {
+        for(FollowPoint point : getObjectsInRange(50, FollowPoint.class))
+        {
+            getWorld().removeObject(point);
+        }
+    }
+    
     public void delete()
     {
         switch(direction)
@@ -38,7 +47,7 @@ public abstract class WideMachines extends Machines
                 gridSpaceY2 = (int) (getY() + (Utils.gridSize / 2)) / Utils.gridSize;
                 break;
         }
-        Utils.fillSpace(gridSpaceY1, gridSpaceX1, null);
-        Utils.fillSpace(gridSpaceY2, gridSpaceX2, null);
+        Utils.fillSpaceMachine(gridSpaceY1, gridSpaceX1, null);
+        Utils.fillSpaceMachine(gridSpaceY2, gridSpaceX2, null);
     }
 }

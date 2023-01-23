@@ -8,21 +8,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Star extends Shapes
 {
-    public Star (Boolean isLabel, int q, FollowPoint guide){
-        super(isLabel, q, guide);
-        getImage().scale(15, 15);
+    public Star (int q, FollowPoint guide, int layer, int colour){
+        super(q, guide, layer, colour);
+        
+        setImage("Shapes/Star/grey.png");
+        
+        red = new GreenfootImage("Shapes/Star/red.png");
+        blue = new GreenfootImage("Shapes/Star/blue.png");
+        yellow = new GreenfootImage("Shapes/Star/yellow.png");
+        orange = new GreenfootImage("Shapes/Star/orange.png");
+        purple = new GreenfootImage("Shapes/Star/purple.png");
+        green = new GreenfootImage("Shapes/Star/green.png");
+        
+        setColour(colour);
+        layerScale();
         setRotation(q);
-    }
-    
-    public void act()
-    {
-        if(guide.getWorld() == null)
-        {
-            getWorld().removeObject(this);
-        }
-        else
-        {
-            move();
-        }
     }
 }

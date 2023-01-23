@@ -8,8 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Belts extends NarrowMachines
 {
-    private boolean spawner = false, real = false, updatedImage = false;
-    private int lastRotation;
     private RotationPoint point1, point2;
     
     public Belts()
@@ -66,14 +64,6 @@ public class Belts extends NarrowMachines
         }
     }
     
-    public void updateRotation()
-    {
-        if(Utils.getDirection() != lastRotation)
-        {
-            updatedImage = false;
-        }
-    }
-    
     public void deletePoints()
     {
         getWorld().removeObject(point1);
@@ -116,5 +106,9 @@ public class Belts extends NarrowMachines
                     break;
             }
         }
+    }
+    
+    public Boolean getReal(){
+        return real;
     }
 }
