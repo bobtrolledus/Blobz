@@ -1,18 +1,6 @@
 #BlueJ class context
 comment0.target=Hub
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Hub\ here.\r\n\r\n\ @author\ Anson/Eric\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-=======
-comment0.text=\n\ Write\ a\ description\ of\ class\ Hub\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
->>>>>>> Stashed changes
-=======
-comment0.text=\n\ Write\ a\ description\ of\ class\ Hub\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
->>>>>>> Stashed changes
-=======
-comment0.text=\n\ Write\ a\ description\ of\ class\ Hub\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
->>>>>>> Stashed changes
+comment0.text=\n\ Write\ a\ description\ of\ class\ Hub\ here.\n\n\ @author\ Anson/Eric\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=Hub()
 comment1.text=\n\ Act\ -\ do\ whatever\ the\ Hub\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n

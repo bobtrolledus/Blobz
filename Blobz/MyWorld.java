@@ -18,36 +18,22 @@ public class MyWorld extends World
 {
     private Font comicFontMid = new Font ("Comic Sans MS", true, false, 24);
     private Font comicFontSmoll = new Font ("Comic Sans MS", true, false, 20);
-<<<<<<< Updated upstream
+
     private Label levelLabel, itemLabel;
-=======
-    private Label levelLabel;
+
+    
     private Label timeLabel;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     private static Scanner fileScan;
     private static Scanner scan;
     private static ArrayList<Integer> lines;
     private Color lightGray = new Color(228, 228, 226);
     private Color gray = new Color(171, 171, 171);
     private Color yellow = new Color(255, 255, 186);
-<<<<<<< Updated upstream
-=======
+
     private int gameTimer;
     private int gameTime;
     private int gameTimeM;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -71,27 +57,15 @@ public class MyWorld extends World
             }
         }
         prepare();
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
+        addTimeLabel();
+        //read();
     }
 
-    public void act()
-    {        
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-        timeLabel = new Label(gameTimeM + ": " + gameTime, 30);
-        addObject(timeLabel,600,50);
-    }
+    
 
     public void act()
     { 
         time();
->>>>>>> Stashed changes
         delete();
         levelLabel.setValue(Utils.getLevel() + 1);
         itemLabel.setValue(Utils.getTotalTargetShapes() + " / 250");
@@ -106,18 +80,11 @@ public class MyWorld extends World
                 Utils.changeMirrored();
             }
         }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
+        if(Greenfoot.isKeyDown("s"))
+        {
+            Utils.save();
+        }
 
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
     }
 
     public void prepare()
@@ -215,6 +182,7 @@ public class MyWorld extends World
 
     public void read()
     {
+        System.out.println("reading");
         scan = new Scanner (System.in);
         lines = new ArrayList<Integer>();
         try{
@@ -248,8 +216,6 @@ public class MyWorld extends World
         gameTimeM = lines.get(7);
         lines.clear();
     }
-<<<<<<< Updated upstream
-=======
 
     private void time()
     {
@@ -274,12 +240,11 @@ public class MyWorld extends World
             }
         }
     }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+        
+    public void addTimeLabel()
+    {
+        timeLabel = new Label(gameTimeM + ": " + gameTime, 30);
+        addObject(timeLabel,600,50);
+    }
 }
 

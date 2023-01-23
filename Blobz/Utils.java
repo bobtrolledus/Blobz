@@ -38,97 +38,12 @@ public class Utils extends Actor
     private static int bdUpgradeLevel;
     private static int paintUpgradeLevel;
     private static int extractUpgradeLevel;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
     private static int totalTargetShapes;
     private static String key;
     private static ArrayList<Integer> list;
     private static boolean mirrored;
     public static int[][][] targetShapes = {
-        {
-            {1, 1, 1, 1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {2, 2, 2, 2, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {-1, -1, 1, 1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {2, 2, -1, -1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {1, -1, -1, 1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {-1, 2, 2, -1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {3, 3, 3, 3, -1, -1, -1, -1},
-            {2, 2, 2, 2, -1, -1, -1, -1}
-        },
-        {
-            {1, 1, 1, 1, -1, -1, -1, -1},
-            {3, 3, 3, 3, -1, -1, -1, -1}
-        },
-        {
-            {3, 3, -1, -1, -1, -1, -1, -1},
-            {4, 4, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {-1, -1, 1, -1, -1, -1, -1, -1},
-            {-1, -1, 1, -1, -1, -1, -1, -1}
-        },
-        {
-            {2, 2, 2, 2, 1, 1, 1, 1},
-            {-1, -1, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {-1, 1, 1, -1, -1, 1, 1, -1},
-            {-1, 6, 6, -1, -1, 1, 1, -1}
-        },
-        {
-            {1, 2, 2, 1, 2, 1, 1, 2},
-            {2, 4, 4, 2, 5, 1, 1, 5}
-        },
-        {
-            {1, 3, 3, 1, 3, 1, 1, 3},
-            {5, 6, 6, 5, 3, 3, 3, 3}
-        },
-        {
-            {-1, 2, -1, 2, 1, 2, 1, 2},
-            {-1, 4, -1, 4, 2, 5, 2, 5}
-        },
-        {
-            {3, -1, 2, -1, 2, 1, 3, 1},
-            {5, -1, 3, -1, 4, 6, 2, 6}
-        }
-    };
-    
-=======
-
-    private static ArrayList<Integer> list;
-
-    public static int[][][] targetShapes = {
-=======
-
-    private static ArrayList<Integer> list;
-
-    public static int[][][] targetShapes = {
->>>>>>> Stashed changes
-=======
-
-    private static ArrayList<Integer> list;
-
-    public static int[][][] targetShapes = {
->>>>>>> Stashed changes
             {
                 {1, 1, 1, 1, -1, -1, -1, -1},
                 {-1, -1, -1, -1, -1, -1, -1, -1}
@@ -195,16 +110,14 @@ public class Utils extends Actor
             }
         };
 
+
+    
+
+    
+
     private static int time;
     private static int timeM;
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     public Utils()
     {
         list = new ArrayList<Integer>();
@@ -233,12 +146,12 @@ public class Utils extends Actor
             level++;
         }
     }
-    
+
     public static String getLastKey()
     {
         return key;
     }
-    
+
     public static void changeMirrored()
     {
         if(!mirrored)
@@ -248,27 +161,27 @@ public class Utils extends Actor
             mirrored = false;
         }
     }
-    
+
     public static boolean getMirrored()
     {
         return mirrored;
     }
-    
+
     public static void addTargetShape()
     {
         totalTargetShapes++;
     }
-    
+
     public static int getTotalTargetShapes()
     {
         return totalTargetShapes;
     }
-    
+
     public static int[] getTargetShape()
     {
         return targetShapes[level][0];
     }
-    
+
     public static int[] getTargetShapeColour()
     {
         return targetShapes[level][1];
@@ -407,18 +320,7 @@ public class Utils extends Actor
 
     public static void increaseLevel()
     {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
         level++;
     }
 
@@ -459,7 +361,7 @@ public class Utils extends Actor
         extractUpgradeLevel++;
     }
 
-    private static void save()
+    public static void save()
     {
 
         try{
@@ -524,7 +426,7 @@ public class Utils extends Actor
     {
         return timeM;
     }
-    
+
     public static void setCrsUpgradeLevel(int x)
     {
         crsUpgradeLevel = x;
@@ -565,5 +467,4 @@ public class Utils extends Actor
         return extractUpgradeLevel;
     }
 
-    
 }
