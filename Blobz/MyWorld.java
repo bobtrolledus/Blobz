@@ -24,6 +24,9 @@ public class MyWorld extends World
     private Label levelLabel;
     private Label timeLabel;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -39,6 +42,9 @@ public class MyWorld extends World
     private int gameTime;
     private int gameTimeM;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -67,12 +73,15 @@ public class MyWorld extends World
         prepare();
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
     }
 
     public void act()
     {        
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         timeLabel = new Label(gameTimeM + ": " + gameTime, 30);
@@ -99,6 +108,10 @@ public class MyWorld extends World
         }
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -262,6 +275,9 @@ public class MyWorld extends World
         }
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

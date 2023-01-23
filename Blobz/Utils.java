@@ -40,6 +40,7 @@ public class Utils extends Actor
     private static int extractUpgradeLevel;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     private static int totalTargetShapes;
     private static String key;
     private static ArrayList<Integer> list;
@@ -122,6 +123,12 @@ public class Utils extends Actor
 
     public static int[][][] targetShapes = {
 >>>>>>> Stashed changes
+=======
+
+    private static ArrayList<Integer> list;
+
+    public static int[][][] targetShapes = {
+>>>>>>> Stashed changes
             {
                 {1, 1, 1, 1, -1, -1, -1, -1},
                 {-1, -1, -1, -1, -1, -1, -1, -1}
@@ -192,6 +199,9 @@ public class Utils extends Actor
     private static int timeM;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -399,6 +409,10 @@ public class Utils extends Actor
     {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
