@@ -69,8 +69,11 @@ public class Cutter extends WideMachines
         {
             if(!occupied)
             {
-                getShape();
-                getColour();
+                if(getWorld().getObjectsAt(inputXCoord, inputYCoord, Shapes.class).size() > 0)
+                {
+                    getShape();
+                    getColour();
+                }
             }
             
             if(outputShape != null)

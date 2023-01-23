@@ -10,6 +10,7 @@ public class Painter extends WideMachines
 {
     private int spawnX1Coord, spawnY1Coord, inputX1Coord, inputY1Coord, inputX2Coord, inputY2Coord;
     private int colour;
+    private boolean grabbedShape, grabbedColour;
     public Painter()
     {
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
@@ -66,12 +67,18 @@ public class Painter extends WideMachines
         {
             if(!occupied)
             {
-                getShape();
-                getColourShape();
-                getColourPigment();
+                if(!grabbedShape)
+                {
+                    getShape();
+                    getColourShape();
+                }
+                if(!grabbedColour)
+                {
+                    getColourPigment();
+                }
             }
 
-            if(outputShape != null)
+            if(outputShape != null && grabbedShape && grabbedColour)
             {
                 spawnShape();
             }
@@ -85,6 +92,7 @@ public class Painter extends WideMachines
             FollowPoint tempPoint = getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).get(0);
             outputShape = tempPoint.getShape();
             direction = tempPoint.getRotation();
+            grabbedShape = true;
         }
     }
     
@@ -102,28 +110,37 @@ public class Painter extends WideMachines
     {
         if(getWorld().getObjectsAt(inputX2Coord, inputY2Coord, Colours.class).size() > 0)
         {
-            FollowPoint tempPoint = getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).get(0);
-            colour = tempPoint.getRawColour();
-            for(int i = 0; i < outputColour.length - 1; i++)
+            Colours temp = (Colours) getWorld().getObjectsAt(inputX2Coord, inputY2Coord, Colours.class).get(0);
+            if(temp.getX() == inputX2Coord && temp.getY() == inputY2Coord && outputColour != null)
             {
-                if(i == -1)
+                FollowPoint tempPoint = getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).get(0);
+                colour = tempPoint.getRawColour();
+                for(int i = 0; i < outputColour.length; i++)
                 {
-                    outputColour[i] = colour;
+                    if(outputColour[i] == -1)
+                    {
+                        outputColour[i] = colour;
+                    }
+                    else if(outputColour[i] != colour && (outputColour[i] != 3 || outputColour[i] != 5 || outputColour[i] != 6))
+                    {
+                        outputColour[i] += colour;
+                    }
                 }
-                else if(outputColour[i] != colour && (outputColour[i] != 3 || outputColour[i] != 5 || outputColour[i] != 6))
-                {
-                    outputColour[i] += colour;
-                }
+                grabbedColour = true;
+                getWorld().removeObject(tempPoint);
             }
         }
     }
     
     public void spawnShape()
     {
-        if(timer.millisElapsed() > Utils.getPainterDelay())
+        if(timer.millisElapsed() > Utils.getPainterDelay() && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1)
         {
             getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, false), spawnX1Coord, spawnY1Coord);
             outputShape = null; 
+            outputColour = null;
+            grabbedShape = false;
+            grabbedColour = false;
             timer.mark();
             occupied = false;
         }
@@ -150,7 +167,7 @@ public class Painter extends WideMachines
                 case 1:
                     spawnX1Coord = getX() - (Utils.gridSize / 2) - 1;
                     spawnY1Coord = getY() - (Utils.gridSize / 2);
-                    inputX1Coord = getX() + (Utils.gridSize / 2);
+                    inputX1Coord = getX() + (Utils.gridSize / 2) - 1;
                     inputY1Coord = spawnY1Coord;
                     inputX2Coord = inputX1Coord;
                     inputY2Coord = getY() + (Utils.gridSize / 2);
@@ -161,9 +178,9 @@ public class Painter extends WideMachines
                     spawnX1Coord = getX() + (Utils.gridSize / 2);
                     spawnY1Coord = getY() - (Utils.gridSize / 2) - 1;
                     inputX1Coord = spawnX1Coord;
-                    inputY1Coord = getY() + (Utils.gridSize / 2);
+                    inputY1Coord = getY() + (Utils.gridSize / 2) - 1;
                     inputX2Coord = getX() - (Utils.gridSize / 2);
-                    inputY2Coord = getY() + (Utils.gridSize / 2);
+                    inputY2Coord = getY() + (Utils.gridSize / 2) - 1;
                     setDirection(2);
                     setRotation(0);
                     break;

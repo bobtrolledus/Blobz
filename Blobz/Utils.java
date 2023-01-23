@@ -26,6 +26,7 @@ public class Utils extends Actor
     private static int cutterDelay = 1000;
     private static int rotationDelay = 1000;
     private static int paintingDelay = 1000;
+    private static int stackingDelay = 1000;
 
     public static int gridSize = 40;
     private static int level;
@@ -178,6 +179,16 @@ public class Utils extends Actor
     public static void setPainterDelay(int delay)
     {
         paintingDelay = delay;
+    }
+    
+    public static int getStackingDelay()
+    {
+        return stackingDelay;
+    }
+
+    public static void setstackingDelay(int delay)
+    {
+        stackingDelay = delay;
     }
 
     public static int getMouseX()
