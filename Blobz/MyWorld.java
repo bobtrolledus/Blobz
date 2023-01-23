@@ -58,7 +58,7 @@ public class MyWorld extends World
         }
         prepare();
         addTimeLabel();
-        //read();
+        read();
     }
 
     
