@@ -18,13 +18,24 @@ public class MyWorld extends World
 {
     private Font comicFontMid = new Font ("Comic Sans MS", true, false, 24);
     private Font comicFontSmoll = new Font ("Comic Sans MS", true, false, 20);
+<<<<<<< Updated upstream
     private Label levelLabel, itemLabel;
+=======
+    private Label levelLabel;
+    private Label timeLabel;
+>>>>>>> Stashed changes
     private static Scanner fileScan;
     private static Scanner scan;
     private static ArrayList<Integer> lines;
     private Color lightGray = new Color(228, 228, 226);
     private Color gray = new Color(171, 171, 171);
     private Color yellow = new Color(255, 255, 186);
+<<<<<<< Updated upstream
+=======
+    private int gameTimer;
+    private int gameTime;
+    private int gameTimeM;
+>>>>>>> Stashed changes
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -48,11 +59,21 @@ public class MyWorld extends World
             }
         }
         prepare();
+<<<<<<< Updated upstream
 
     }
 
     public void act()
     {        
+=======
+        timeLabel = new Label(gameTimeM + ": " + gameTime, 30);
+        addObject(timeLabel,600,50);
+    }
+
+    public void act()
+    { 
+        time();
+>>>>>>> Stashed changes
         delete();
         levelLabel.setValue(Utils.getLevel() + 1);
         itemLabel.setValue(Utils.getTotalTargetShapes() + " / 250");
@@ -67,6 +88,10 @@ public class MyWorld extends World
                 Utils.changeMirrored();
             }
         }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     }
 
     public void prepare()
@@ -188,8 +213,41 @@ public class MyWorld extends World
         }
         Utils.setLevel(lines.get(0));
         Utils.setMap(lines.get(1));
-        Utils.setUpgrade(lines.get(2));
-        Utils.setMoney(lines.get(3));
+        Utils.setMoney(lines.get(6));
+        Utils.setCrsUpgradeLevel(lines.get(2));
+        Utils.setBdUpgradeLevel(lines.get(3));
+        Utils.setPaintUpgradeLevel(lines.get(4));
+        Utils.setExtractUpgradeLevel(lines.get(5));
+        gameTime = lines.get(8);
+        gameTimeM = lines.get(7);
         lines.clear();
     }
+<<<<<<< Updated upstream
+=======
+
+    private void time()
+    {
+        gameTimer = (gameTimer + 1) % 60; 
+        if (gameTimer == 0) {
+            gameTime++;
+            Utils.setTime(gameTime);
+            if(gameTime<10)
+            {
+                timeLabel.setValue(gameTimeM + ": 0" + gameTime);
+            }
+            else if(gameTime>=10)
+            {
+                timeLabel.setValue(gameTimeM + ": " + gameTime);
+            }
+            if(gameTime == 59)
+            {
+                gameTime = 0;
+                gameTimeM ++;
+                Utils.setTime(gameTime);
+                Utils.setTimeM(gameTimeM);
+            }
+        }
+    }
+>>>>>>> Stashed changes
 }
+

@@ -38,6 +38,7 @@ public class Utils extends Actor
     private static int bdUpgradeLevel;
     private static int paintUpgradeLevel;
     private static int extractUpgradeLevel;
+<<<<<<< Updated upstream
     private static int totalTargetShapes;
     private static String key;
     private static ArrayList<Integer> list;
@@ -109,6 +110,81 @@ public class Utils extends Actor
         }
     };
     
+=======
+
+    private static ArrayList<Integer> list;
+
+    public static int[][][] targetShapes = {
+            {
+                {1, 1, 1, 1, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {2, 2, 2, 2, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {-1, -1, 1, 1, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {2, 2, -1, -1, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {1, -1, -1, 1, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {-1, 2, 2, -1, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {3, 3, 3, 3, -1, -1, -1, -1},
+                {2, 2, 2, 2, -1, -1, -1, -1}
+            },
+            {
+                {1, 1, 1, 1, -1, -1, -1, -1},
+                {3, 3, 3, 3, -1, -1, -1, -1}
+            },
+            {
+                {3, 3, -1, -1, -1, -1, -1, -1},
+                {4, 4, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {-1, -1, 1, -1, -1, -1, -1, -1},
+                {-1, -1, 1, -1, -1, -1, -1, -1}
+            },
+            {
+                {2, 2, 2, 2, 1, 1, 1, 1},
+                {-1, -1, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {-1, 1, 1, -1, -1, 1, 1, -1},
+                {-1, 6, 6, -1, -1, 1, 1, -1}
+            },
+            {
+                {1, 2, 2, 1, 2, 1, 1, 2},
+                {2, 4, 4, 2, 5, 1, 1, 5}
+            },
+            {
+                {1, 3, 3, 1, 3, 1, 1, 3},
+                {5, 6, 6, 5, 3, 3, 3, 3}
+            },
+            {
+                {-1, 2, -1, 2, 1, 2, 1, 2},
+                {-1, 4, -1, 4, 2, 5, 2, 5}
+            },
+            {
+                {3, -1, 2, -1, 2, 1, 3, 1},
+                {5, -1, 3, -1, 4, 6, 2, 6}
+            }
+        };
+
+    private static int time;
+    private static int timeM;
+
+>>>>>>> Stashed changes
     public Utils()
     {
         list = new ArrayList<Integer>();
@@ -197,7 +273,7 @@ public class Utils extends Actor
     {
         balancerDelay = delay;
     }
-    
+
     public static int getCutterDelay()
     {
         return balancerDelay;
@@ -207,7 +283,7 @@ public class Utils extends Actor
     {
         cutterDelay = delay;
     }
-    
+
     public static int getRotationDelay()
     {
         return rotationDelay;
@@ -217,7 +293,7 @@ public class Utils extends Actor
     {
         rotationDelay = delay;
     }
-    
+
     public static int getPainterDelay()
     {
         return paintingDelay;
@@ -227,7 +303,7 @@ public class Utils extends Actor
     {
         paintingDelay = delay;
     }
-    
+
     public static int getStackingDelay()
     {
         return stackingDelay;
@@ -293,7 +369,7 @@ public class Utils extends Actor
     {
         return machineMap[x][y];
     }
-    
+
     public static void fillSpaceDeposit(int x, int y, Deposits object)
     {
         depositMap[x][y] = object;
@@ -311,6 +387,10 @@ public class Utils extends Actor
 
     public static void increaseLevel()
     {
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         level++;
     }
 
@@ -318,42 +398,42 @@ public class Utils extends Actor
     {
         level--;
     }
-    
+
     public static int getCRSlevel() {
         return crsUpgradeLevel;
     }
-    
+
     public static void increaseCRSlevel() {
         crsUpgradeLevel++;
     }
-    
+
     public static int getBDlevel() {
         return bdUpgradeLevel;
     }
-    
+
     public static void increaseBDlevel() {
         bdUpgradeLevel++;
     }
-    
+
     public static int getPAINTlevel() {
         return paintUpgradeLevel;
     }
-    
+
     public static void increasePAINTlevel() {
         paintUpgradeLevel++;
     }
-    
+
     public static int getEXTRACTlevel() {
         return extractUpgradeLevel;
     }
-    
+
     public static void increaseEXTRACTlevel() {
         extractUpgradeLevel++;
     }
-    
+
     private static void save()
     {
-        
+
         try{
             list.add(level);
             list.add(mapNumber);
@@ -362,6 +442,8 @@ public class Utils extends Actor
             list.add(paintUpgradeLevel);
             list.add(extractUpgradeLevel);
             list.add(money);
+            list.add(timeM);
+            list.add(time);
             FileWriter out = new FileWriter("save.txt",false);
             PrintWriter output = new PrintWriter(out);
             output.println(list);
@@ -374,26 +456,86 @@ public class Utils extends Actor
             System.out.println("Exception" +  e);
         }
     }
-    
+
     public static void setLevel(int x)
     {
         level = x;
     }
-    
+
     public static void setMap(int x)
     {
         mapNumber = x;
     }
-    
+
     public static void setUpgrade(int x)
     {
         //upgradeLevel = x;
     }
-    
+
     public static void setMoney(int x)
     {
         money = x;
     }
+
+    public static void setTime(int x)
+    {
+        time = x;
+    }
+
+    public static void setTimeM(int x)
+    {
+        timeM = x;
+    }
+
+    public static int getTime()
+    {
+        return time;
+    }
+
+    public static int getTimeM()
+    {
+        return timeM;
+    }
     
+    public static void setCrsUpgradeLevel(int x)
+    {
+        crsUpgradeLevel = x;
+    }
+
+    public static void setBdUpgradeLevel(int x)
+    {
+        bdUpgradeLevel =x;
+    }
+
+    public static void setPaintUpgradeLevel(int x)
+    {
+        paintUpgradeLevel = x;
+    }
+
+    public static void setExtractUpgradeLevel(int x)
+    {
+        extractUpgradeLevel = x;
+    }
+
+    public static int getCrsUpgradeLevel()
+    {
+        return crsUpgradeLevel;
+    }
+
+    public static int getBdUpgradeLevel()
+    {
+        return bdUpgradeLevel;
+    }
+
+    public static int getPaintUpgradeLevel()
+    {
+        return paintUpgradeLevel;
+    }
+
+    public static int getExtractUpgradeLevel()
+    {
+        return extractUpgradeLevel;
+    }
+
     
 }

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Utils
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Utils\ here.\r\n\ \r\n\ @author\ Anson\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Utils\ here.\n\ \n\ @author\ Anson\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=Utils()
 comment10.params=
@@ -62,6 +62,7 @@ comment35.target=void\ decreaseLevel()
 comment36.params=
 comment36.target=int\ getCRSlevel()
 comment37.params=
+<<<<<<< Updated upstream
 comment37.target=void\ increaseCRSlevel()
 comment38.params=
 comment38.target=int\ getBDlevel()
@@ -91,10 +92,56 @@ comment5.params=
 comment5.target=boolean\ getMirrored()
 comment6.params=
 comment6.target=void\ addTargetShape()
+=======
+comment37.target=void\ save()
+comment38.params=x
+comment38.target=void\ setLevel(int)
+comment39.params=x
+comment39.target=void\ setMap(int)
+comment4.params=delay
+comment4.target=void\ setExtractorDelay(int)
+comment40.params=x
+comment40.target=void\ setUpgrade(int)
+comment41.params=x
+comment41.target=void\ setMoney(int)
+comment42.params=x
+comment42.target=void\ setTime(int)
+comment43.params=x
+comment43.target=void\ setTimeM(int)
+comment44.params=
+comment44.target=int\ getTime()
+comment45.params=
+comment45.target=int\ getTimeM()
+comment46.params=x
+comment46.target=void\ setCrsUpgradeLevel(int)
+comment47.params=x
+comment47.target=void\ setBdUpgradeLevel(int)
+comment48.params=x
+comment48.target=void\ setPaintUpgradeLevel(int)
+comment49.params=x
+comment49.target=void\ setExtractUpgradeLevel(int)
+comment5.params=
+comment5.target=int\ getBalancerDelay()
+comment50.params=
+comment50.target=int\ getCrsUpgradeLevel()
+comment51.params=
+comment51.target=int\ getBdUpgradeLevel()
+comment52.params=
+comment52.target=int\ getPaintUpgradeLevel()
+comment53.params=
+comment53.target=int\ getExtractUpgradeLevel()
+comment6.params=delay
+comment6.target=void\ setBalancerDelay(int)
+>>>>>>> Stashed changes
 comment7.params=
 comment7.target=int\ getTotalTargetShapes()
 comment8.params=
 comment8.target=int[]\ getTargetShape()
 comment9.params=
+<<<<<<< Updated upstream
 comment9.target=int[]\ getTargetShapeColour()
 numComments=49
+=======
+comment9.target=int\ getRotationDelay()
+numComments=54
+>>>>>>> Stashed changes
