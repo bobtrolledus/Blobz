@@ -54,16 +54,15 @@ public class MyWorld extends World
     public void act()
     {        
         delete();
-        String key = Greenfoot.getKey();
         levelLabel.setValue(Utils.getLevel() + 1);
         itemLabel.setValue(Utils.getTotalTargetShapes() + " / 250");
-        if(key != null)
+        if(Utils.getLastKey() != null)
         {
-            if(key.equals("r"))
+            if(Utils.getLastKey().equals("r"))
             {
                 Utils.addRotation();
             }
-            if(key.equals("m"))
+            if(Utils.getLastKey().equals("m"))
             {
                 Utils.changeMirrored();
             }

@@ -32,7 +32,7 @@ public class StartScreen extends World
         checkMouse();
         
         if (clicked || Greenfoot.isKeyDown("enter")) {
-            Greenfoot.setWorld(new MyWorld());
+            Greenfoot.setWorld(new InstructionsMenu());
         }
     }
     

@@ -39,6 +39,7 @@ public class Utils extends Actor
     private static int paintUpgradeLevel;
     private static int extractUpgradeLevel;
     private static int totalTargetShapes;
+    private static String key;
     private static ArrayList<Integer> list;
     private static boolean mirrored;
     public static int[][][] targetShapes = {
@@ -128,12 +129,18 @@ public class Utils extends Actor
 
     public void act()
     {
+        key = Greenfoot.getKey();
         mouse = Greenfoot.getMouseInfo();
         if(totalTargetShapes == 5)
         {
             totalTargetShapes = 0;
             level++;
         }
+    }
+    
+    public static String getLastKey()
+    {
+        return key;
     }
     
     public static void changeMirrored()
