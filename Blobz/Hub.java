@@ -1,17 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.Arrays;
 /**
  * Write a description of class Hub here.
  *
- * @author (your name)
+ * @author Anson/Eric
  * @version (a version number or a date)
  */
 public class Hub extends Actor
 {
-    private static int level;
-    private static int obj = -1;
-    private boolean isObj;
-    private static int x;
-    private static int y;
+    private int[] outputShape = new int[8];
+    private int[] outputColour = new int[8];
     /**
      * Act - do whatever the Hub wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -19,36 +17,53 @@ public class Hub extends Actor
     public Hub()
     {
         setImage("images/hub.png");
-        getImage().scale(Utils.gridSize*4 + 20, Utils.gridSize*4 + 20);
-
+        getImage().scale(Utils.gridSize * 4 + 20, Utils.gridSize * 4 + 20);
     }
 
     public void act()
     {
         collecting();
-        upgrade();
+        updateImage();
     }
 
     public void collecting()
     {
-        Resources resource = (Resources)getOneIntersectingObject(Resources.class);
-        if(resource != null)
+        for(FollowPoint point : getIntersectingObjects(FollowPoint.class))
         {
-            //getWorld().removeObject(resource);
-            if(isObj)
+            if(Arrays.equals(point.getShape(), Utils.getTargetShape()))
             {
-                obj--;
-                
+                if(!point.checkIfLabel())
+                {
+                    Utils.addTargetShape();
+                }
             }
-
+            if(!point.checkIfLabel())
+            {
+                getWorld().removeObject(point);
+            }
         }
     }
-
-    public void upgrade()
+    
+    public void setTargetShape()
     {
-        if(obj == 0)
+        outputShape = Utils.getTargetShape();
+        outputColour = Utils.getTargetShapeColour();
+    }
+    
+    public void updateImage()
+    {
+        if(Utils.getTargetShape() != outputShape)
         {
-            //Utils.increaseLevel();
+            setTargetShape();
+            FollowPoint tempPoint = getWorld().getObjectsAt(600, 420, FollowPoint.class).get(0);
+            getWorld().removeObject(tempPoint);
+            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 1, true), 600, 420);
         }
+    }
+    
+    protected void addedToWorld(World world)
+    {
+        setTargetShape();
+        getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 1, true), 600, 420);
     }
 }
