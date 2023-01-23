@@ -25,6 +25,8 @@ public class MyWorld extends World
     private Color lightGray = new Color(228, 228, 226);
     private Color gray = new Color(171, 171, 171);
     private Color yellow = new Color(255, 255, 186);
+    private int gameTimer;
+    private int gameTime;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -48,11 +50,13 @@ public class MyWorld extends World
             }
         }
         prepare();
-
+        addObject(new Label("" + gameTime, 20),600,400);
     }
 
     public void act()
-    {        
+    { 
+        
+        time();
         delete();
         String key = Greenfoot.getKey();
         levelLabel.setValue(Utils.getLevel());
@@ -63,6 +67,7 @@ public class MyWorld extends World
                 Utils.addRotation();
             }
         }
+            
     }
 
     public void prepare()
@@ -99,7 +104,7 @@ public class MyWorld extends World
         addObject(levelLabel, 656, 339);
         levelLabel.setLineColor(yellow);
         levelLabel.setFillColor(yellow);
-        
+
         int rightButtonOffset = 20;
         int rightLabelOffset = 40;
         Button.drawCenteredText (getBackground(), "upgrades:", 1200 - width / 2, (int) ((height / 5) * 1 - rightLabelOffset - 40));
@@ -181,5 +186,13 @@ public class MyWorld extends World
         Utils.setUpgrade(lines.get(2));
         Utils.setMoney(lines.get(3));
         lines.clear();
+    }
+
+    private void time()
+    {
+        gameTimer = (gameTimer + 1) % 60; 
+        if (gameTimer == 0) {gameTime++;
+        }
+    }
     }
 }
