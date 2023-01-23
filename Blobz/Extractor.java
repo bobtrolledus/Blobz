@@ -11,7 +11,7 @@ public class Extractor extends NarrowMachines
     private int spawnXCoord, spawnYCoord;
     
     private int[] corners = {3, -1, 2, -1, 2, 1, 3, 1};
-    private int[] colours = {5, -1, 3, -1, 4, 6, 2, 6};
+    private int[] colours = {1, -1, 2, -1, 2, 1, 4, 2};
     
     private int colour;
     private int[] shapeID;
@@ -21,12 +21,14 @@ public class Extractor extends NarrowMachines
     
     public Extractor()
     {
+        setImage("images/Machines/extractor.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         real = true;
     }
     
     public Extractor(boolean spawner)
     {
+        setImage("images/Machines/extractor.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         this.spawner = spawner;
     }
@@ -39,10 +41,18 @@ public class Extractor extends NarrowMachines
     {
         if(!real)
         {
-            if(spawner && Greenfoot.mouseClicked(this))
+            if(!spawned && spawner && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("3")))
             {
                 Extractor mouseExtractor = new Extractor(false);
                 getWorld().addObject(mouseExtractor, Utils.getMouseX(), Utils.getMouseY());
+                spawned = true;
+            }
+            if(spawner && spawned)
+            {
+                if(checkDeselectKey())
+                {
+                    spawned = false;
+                }
             }
             
             if(!spawner)
@@ -57,7 +67,7 @@ public class Extractor extends NarrowMachines
                     updateImage(lastRotation);
                     updatedImage = true;
                 }
-                if(Greenfoot.isKeyDown("escape"))
+                if(checkDeselectKey())
                 {
                     if(Utils.getMouseX() > 200 && Utils.getMouseY() < 1000)
                     {
@@ -82,6 +92,22 @@ public class Extractor extends NarrowMachines
             {
                 spawnShape();
             }
+            
+            if(isDeletedNarrow())
+            {
+                getWorld().removeObject(this);
+            }
+            
+        }
+    }
+    
+    public boolean checkDeselectKey()
+    {
+        if(Greenfoot.isKeyDown("escape") || Greenfoot.isKeyDown("1") || Greenfoot.isKeyDown("2") || Greenfoot.isKeyDown("4") || Greenfoot.isKeyDown("5") || Greenfoot.isKeyDown("6") || Greenfoot.isKeyDown("7") || Greenfoot.isKeyDown("8"))
+        {
+            return true;
+        } else {
+            return false;
         }
     }
     
@@ -118,7 +144,7 @@ public class Extractor extends NarrowMachines
             }
             if(!isColour)
             {
-                getWorld().addObject(new ShapeGenerator(shapeID, colourID, direction, false), spawnXCoord, spawnYCoord);
+                getWorld().addObject(new ShapeGenerator(corners, colours, direction, false), spawnXCoord, spawnYCoord);
                 timer.mark();
             }
             shapeID = null;

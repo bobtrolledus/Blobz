@@ -13,12 +13,14 @@ public class RotateLeft extends NarrowMachines
     private int inputXCoord, inputYCoord, spawnXCoord, spawnYCoord;
     public RotateLeft()
     {
+        setImage("images/Machines/rotateLeft.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         real = true;
     }
     
     public RotateLeft(boolean spawner)
     {
+        setImage("images/Machines/rotateLeft.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         this.spawner = spawner;
     }
@@ -31,10 +33,18 @@ public class RotateLeft extends NarrowMachines
     {
         if(!real)
         {
-            if(spawner && Greenfoot.mouseClicked(this))
+            if(!spawned && spawner && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("6")))
             {
                 RotateLeft mouseRotateLeft = new RotateLeft(false);
                 getWorld().addObject(mouseRotateLeft, Utils.getMouseX(), Utils.getMouseY());
+                spawned = true;
+            }
+            if(spawner && spawned)
+            {
+                if(checkDeselectKey())
+                {
+                    spawned = false;
+                }
             }
             
             if(!spawner)
@@ -49,7 +59,7 @@ public class RotateLeft extends NarrowMachines
                     updateImage(lastRotation);
                     updatedImage = true;
                 }
-                if(Greenfoot.isKeyDown("escape"))
+                if(checkDeselectKey())
                 {
                     if(Utils.getMouseX() > 200 && Utils.getMouseY() < 1000)
                     {
@@ -75,6 +85,20 @@ public class RotateLeft extends NarrowMachines
             {
                 spawnShape();
             }
+            if(isDeletedNarrow())
+            {
+                getWorld().removeObject(this);
+            }
+        }
+    }
+    
+    public boolean checkDeselectKey()
+    {
+        if(Greenfoot.isKeyDown("escape") || Greenfoot.isKeyDown("1") || Greenfoot.isKeyDown("2") || Greenfoot.isKeyDown("3") || Greenfoot.isKeyDown("4") || Greenfoot.isKeyDown("5") || Greenfoot.isKeyDown("7") || Greenfoot.isKeyDown("8"))
+        {
+            return true;
+        } else {
+            return false;
         }
     }
     

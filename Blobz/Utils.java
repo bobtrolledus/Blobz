@@ -32,15 +32,16 @@ public class Utils extends Actor
     private static int level;
     private static Scanner fileScan;
     private static Scanner scan;
-    private static int mapNumber = 0;
-    private static int money = 0;
+    private static int mapNumber;
+    private static int money;
     private static int crsUpgradeLevel;
     private static int bdUpgradeLevel;
     private static int paintUpgradeLevel;
     private static int extractUpgradeLevel;
-    
+    private static int totalTargetShapes;
+    private static String key;
     private static ArrayList<Integer> list;
-    
+    private static boolean mirrored;
     public static int[][][] targetShapes = {
         {
             {1, 1, 1, 1, -1, -1, -1, -1},
@@ -107,28 +108,74 @@ public class Utils extends Actor
             {5, -1, 3, -1, 4, 6, 2, 6}
         }
     };
-                                            
-                                                
-                                        
-                                            
     
     public Utils()
     {
         list = new ArrayList<Integer>();
         machineMap = new Actor[20][20];
         depositMap = new Deposits[20][20];
+        mirrored = false;
         rotation = 0;
+        money = 0;
+        mapNumber = 0;
+        totalTargetShapes = 0;
         getImage().scale(10, 10);
         crsUpgradeLevel = 1;
         bdUpgradeLevel = 1;
         paintUpgradeLevel = 1;
         extractUpgradeLevel = 1;
-        level = 1;
+        level = 7;
     }
 
     public void act()
     {
+        key = Greenfoot.getKey();
         mouse = Greenfoot.getMouseInfo();
+        if(totalTargetShapes == 5)
+        {
+            totalTargetShapes = 0;
+            level++;
+        }
+    }
+    
+    public static String getLastKey()
+    {
+        return key;
+    }
+    
+    public static void changeMirrored()
+    {
+        if(!mirrored)
+        {
+            mirrored = true;
+        } else {
+            mirrored = false;
+        }
+    }
+    
+    public static boolean getMirrored()
+    {
+        return mirrored;
+    }
+    
+    public static void addTargetShape()
+    {
+        totalTargetShapes++;
+    }
+    
+    public static int getTotalTargetShapes()
+    {
+        return totalTargetShapes;
+    }
+    
+    public static int[] getTargetShape()
+    {
+        return targetShapes[level][0];
+    }
+    
+    public static int[] getTargetShapeColour()
+    {
+        return targetShapes[level][1];
     }
 
     public static int getExtractorDelay()
@@ -264,7 +311,6 @@ public class Utils extends Actor
 
     public static void increaseLevel()
     {
-        
         level++;
     }
 

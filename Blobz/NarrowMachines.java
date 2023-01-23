@@ -3,17 +3,32 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class NarrowMachines here.
  * 
- * @author (your name) 
+ * @author Anson 
  * @version (a version number or a date)
  */
 public class NarrowMachines extends Machines
 {
-    /**
-     * Act - do whatever the NarrowMachines wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
+    int gridSpaceX, gridSpaceY;
+    public boolean isDeletedNarrow()
     {
-        // Add your action code here.
+        getGridSpace();
+        if(Utils.getSpaceMachine(gridSpaceY, gridSpaceX) == null)
+        {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public void deleteNarrow()
+    {
+        getGridSpace();
+        Utils.fillSpaceMachine(gridSpaceY, gridSpaceX, null);
+    }
+    
+    public void getGridSpace()
+    {
+        gridSpaceX = (int) (getX() - 200) / Utils.gridSize;
+        gridSpaceY = (int) (getY() / Utils.gridSize);
     }
 }

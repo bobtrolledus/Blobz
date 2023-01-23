@@ -18,15 +18,13 @@ public class MyWorld extends World
 {
     private Font comicFontMid = new Font ("Comic Sans MS", true, false, 24);
     private Font comicFontSmoll = new Font ("Comic Sans MS", true, false, 20);
-    private Label levelLabel;
+    private Label levelLabel, itemLabel;
     private static Scanner fileScan;
     private static Scanner scan;
     private static ArrayList<Integer> lines;
     private Color lightGray = new Color(228, 228, 226);
     private Color gray = new Color(171, 171, 171);
     private Color yellow = new Color(255, 255, 186);
-    private int gameTimer;
-    private int gameTime;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -35,7 +33,7 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1); 
-        setPaintOrder(Label.class, Hub.class, Machines.class, Colours.class, Shapes.class, Belts.class, ghostBlock.class);
+        setPaintOrder(Label.class, Machines.class, Colours.class, Shapes.class, Hub.class, Belts.class, ghostBlock.class);
         getBackground().setColor(lightGray);
         getBackground().fill();
         getBackground().setColor(gray);        
@@ -50,24 +48,25 @@ public class MyWorld extends World
             }
         }
         prepare();
-        addObject(new Label("" + gameTime, 20),600,400);
+
     }
 
     public void act()
-    { 
-        
-        time();
+    {        
         delete();
-        String key = Greenfoot.getKey();
-        levelLabel.setValue(Utils.getLevel());
-        if(key != null)
+        levelLabel.setValue(Utils.getLevel() + 1);
+        itemLabel.setValue(Utils.getTotalTargetShapes() + " / 250");
+        if(Utils.getLastKey() != null)
         {
-            if(key.equals("r"))
+            if(Utils.getLastKey().equals("r"))
             {
                 Utils.addRotation();
             }
+            if(Utils.getLastKey().equals("m"))
+            {
+                Utils.changeMirrored();
+            }
         }
-            
     }
 
     public void prepare()
@@ -100,11 +99,16 @@ public class MyWorld extends World
         addObject(new Utils(), 0, 0);
 
         addObject(new Hub(), 600,400);
-        levelLabel = new Label(Utils.getLevel(), 50);
+        levelLabel = new Label(Utils.getLevel() + 1, 50);
+        itemLabel = new Label(Utils.getTotalTargetShapes() + " / 250", 30);
         addObject(levelLabel, 656, 339);
+        addObject(itemLabel, 600, 460);
         levelLabel.setLineColor(yellow);
         levelLabel.setFillColor(yellow);
-
+        itemLabel.setLineColor(yellow);
+        itemLabel.setFillColor(yellow);
+        
+        
         int rightButtonOffset = 20;
         int rightLabelOffset = 40;
         Button.drawCenteredText (getBackground(), "upgrades:", 1200 - width / 2, (int) ((height / 5) * 1 - rightLabelOffset - 40));
@@ -122,7 +126,7 @@ public class MyWorld extends World
         addObject(new Deposits("blue"), 40 + 220, 20);
         addObject(new Deposits("yellow"), 2 * 40 + 220, 20);
         addObject(new Deposits("circle"), 220, 60);
-        addObject(new Deposits("star"), 40 + 220, 60);
+        addObject(new Deposits("square"), 40 + 220, 60);
         addObject(new Deposits("blue"), 2 * 40 + 220, 60);
     }
 
@@ -146,12 +150,13 @@ public class MyWorld extends World
                     if(Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Balancer.class || Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Cutter.class || Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Stacker.class || Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Painter.class)
                     {
                         WideMachines temp = (WideMachines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
-                        temp.delete();
+                        temp.deleteWide();
                         temp.deleteShapesWide();
+                    } else {
+                        NarrowMachines temp = (NarrowMachines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
+                        temp.deleteNarrow();
+                        tempMachine.deleteShapes();
                     }
-                    tempMachine.deleteShapes();
-                    removeObjects(getObjectsAt((gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + 20, Machines.class));
-                    Utils.fillSpaceMachine(gridPositionY, gridPositionX, null);
                 }
             }    
         }
@@ -186,13 +191,5 @@ public class MyWorld extends World
         Utils.setUpgrade(lines.get(2));
         Utils.setMoney(lines.get(3));
         lines.clear();
-    }
-
-    private void time()
-    {
-        gameTimer = (gameTimer + 1) % 60; 
-        if (gameTimer == 0) {gameTime++;
-        }
-    }
     }
 }

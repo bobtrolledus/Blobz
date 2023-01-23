@@ -12,16 +12,18 @@ public class Belts extends NarrowMachines
     
     public Belts()
     {
+        setImage("images/Machines/ConveyorBelt.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         real = true;
     }
     
     public Belts(boolean spawner)
     {
+        setImage("images/Machines/ConveyorBelt.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         this.spawner = spawner;
     }
-        
+       
     /**
      * Act - do whatever the Belts wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -30,12 +32,20 @@ public class Belts extends NarrowMachines
     {
         if(!real)
         {
-            if(spawner && Greenfoot.mouseClicked(this))
+            if(!spawned && spawner && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("1")))
             {
                 Belts mouseBelt = new Belts(false);
                 getWorld().addObject(mouseBelt, Utils.getMouseX(), Utils.getMouseY());
+                spawned = true;
             }
-            
+            if(spawner && spawned)
+            {
+                if(checkDeselectKey())
+                {
+                    spawned = false;
+                }
+            }
+        
             if(!spawner)
             {
                 followMouse(1);
@@ -48,7 +58,7 @@ public class Belts extends NarrowMachines
                     updateImage(lastRotation);
                     updatedImage = true;
                 }
-                if(Greenfoot.isKeyDown("escape"))
+                if(checkDeselectKey())
                 {
                     if(Utils.getMouseX() > 200 && Utils.getMouseY() < 1000)
                     {
@@ -61,6 +71,23 @@ public class Belts extends NarrowMachines
                     getWorld().removeObject(this);
                 }
             }
+        }
+        if(real)
+        {
+            if(isDeletedNarrow())
+            {
+                getWorld().removeObject(this);
+            }
+        }
+    }
+    
+    public boolean checkDeselectKey()
+    {
+        if(Greenfoot.isKeyDown("escape") || Greenfoot.isKeyDown("2") || Greenfoot.isKeyDown("3") || Greenfoot.isKeyDown("4") || Greenfoot.isKeyDown("5") || Greenfoot.isKeyDown("6") || Greenfoot.isKeyDown("7") || Greenfoot.isKeyDown("8"))
+        {
+            return true;
+        } else {
+            return false;
         }
     }
     

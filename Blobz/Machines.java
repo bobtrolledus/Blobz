@@ -9,13 +9,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public abstract class Machines extends Actor
 {
     ghostBlock block;
-    public boolean spawner = false, real = false, updatedImage = false, occupied = false;
+    public boolean spawner = false, real = false, updatedImage = false, occupied = false, spawned = false, lastMirror = false;
     public int gridPositionX, gridPositionY;  
     public int direction, lastRotation; 
     public int[] outputShape;
     public int[] outputColour;
     public Shapes shape;
     public SimpleTimer timer = new SimpleTimer();
+
     public void followMouse(int xSize)
     {
         if(Utils.getMouse() != null)
@@ -74,7 +75,11 @@ public abstract class Machines extends Actor
                 block.setXGridCoord(gridPositionX);
                 block.setYGridCoord(gridPositionY);
             }
-            
+            if(Utils.getMirrored() != lastMirror && xSize > 1 && block != null)
+            {
+                block.getImage().mirrorHorizontally();
+                lastMirror = Utils.getMirrored();
+            }
             if(Utils.getMouseX() < 200 || Utils.getMouseX() > 1000)
             {
                 getWorld().removeObject(block);
@@ -116,6 +121,10 @@ public abstract class Machines extends Actor
                                         getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (180 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2 - 20));
                                         Utils.fillSpaceMachine(gridPositionY - 1, gridPositionX, temp);
                                         break;
+                                }
+                                if(Utils.getMirrored())
+                                {
+                                    temp.getImage().mirrorHorizontally();
                                 }
                             }
                                 catch(Exception e){
