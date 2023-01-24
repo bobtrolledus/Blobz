@@ -144,7 +144,7 @@ public class MyWorld extends World
                             WideMachines temp = (WideMachines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
                             temp.deleteWide();
                             temp.deleteShapesWide();
-                        } else {
+                        } else if(Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() != Hub.class) {
                             NarrowMachines temp = (NarrowMachines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
                             temp.deleteNarrow();
                             tempMachine.deleteShapes();
