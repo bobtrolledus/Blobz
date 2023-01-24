@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class InstructionsMenu extends World
 {
-    private GreenfootImage[] images = new GreenfootImage[10];
+    private GreenfootImage[] images = new GreenfootImage[12];
     private Label continueLabel = new Label("Space to Continue", 40);
     private Color yellow = new Color(255, 255, 186);
     private int index = 0;
@@ -39,7 +39,7 @@ public class InstructionsMenu extends World
             if(Utils.getLastKey().equals("space"))
             {
                 index++;
-                if(index == 10)
+                if(index == 12)
                 {
                     Greenfoot.setWorld(new MyWorld());
                 } else {
