@@ -15,7 +15,7 @@ public class FollowPoint extends UtilsBlocks
     private ArrayList<Integer> shapeColour = new ArrayList<Integer>(8);
     private Belts belt;
     private Boolean stopped = false;
-    private Shapes nearbyShape;
+    private Material nearbyMaterial;
     private Machines nearbyMachine;
     private boolean occupied = false;
     private boolean isLabel;
@@ -45,31 +45,31 @@ public class FollowPoint extends UtilsBlocks
         switch (dir){
             case 0:
                 y++;
-                nearbyShape = (Shapes) getOneObjectAtOffset(0, 22, Shapes.class);
+                nearbyMaterial = (Material) getOneObjectAtOffset(0, 22, Material.class);
                 nearbyMachine = (Machines) getOneObjectAtOffset(0, 22, Machines.class);
                 break;
             case 1:
                 x--;
                 if(shapeID.get(2) == -1 && shapeID.get(3) == -1 && shapeID.get(6) == -1 && shapeID.get(7) == -1){
-                    nearbyShape = (Shapes) getOneObjectAtOffset(-3, 0, Shapes.class);
+                    nearbyMaterial = (Material) getOneObjectAtOffset(-3, 0, Material.class);
                     nearbyMachine = (Machines) getOneObjectAtOffset(-3, 0, Machines.class);
                 } else {
-                    nearbyShape = (Shapes) getOneObjectAtOffset(-22, 0, Shapes.class);
+                    nearbyMaterial = (Material) getOneObjectAtOffset(-22, 0, Material.class);
                     nearbyMachine = (Machines) getOneObjectAtOffset(-22, 0, Machines.class);
                 }
                 break;
             case 2:
                 y--;
-                nearbyShape = (Shapes) getOneObjectAtOffset(0, -22, Shapes.class);
+                nearbyMaterial = (Material) getOneObjectAtOffset(0, -22, Material.class);
                 nearbyMachine = (Machines) getOneObjectAtOffset(0, -22, Machines.class);
                 break;
             case 3:
                 x++;
                 if(shapeID.get(0) == -1 && shapeID.get(1) == -1 && shapeID.get(4) == -1 && shapeID.get(5) == -1){
-                    nearbyShape = (Shapes) getOneObjectAtOffset(3, 0, Shapes.class);
+                    nearbyMaterial = (Material) getOneObjectAtOffset(3, 0, Material.class);
                     nearbyMachine = (Machines) getOneObjectAtOffset(3, 0, Machines.class);
                 } else {
-                    nearbyShape = (Shapes) getOneObjectAtOffset(22, 0, Shapes.class);
+                    nearbyMaterial = (Material) getOneObjectAtOffset(22, 0, Material.class);
                     nearbyMachine = (Machines) getOneObjectAtOffset(22, 0, Machines.class);
                 }
                 break;
@@ -81,7 +81,7 @@ public class FollowPoint extends UtilsBlocks
             occupied = false;
         }
         
-        if(belt != null && belt.getReal() && nearbyShape == null && !isLabel){
+        if((belt != null && belt.getReal()) && nearbyMaterial == null && !occupied && !isLabel){
             setLocation(x, y);
         }
     }
