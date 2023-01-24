@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class ghostBlock here.
+ *  A class that creates semi-transparent images of a machine when hovering over the map
  * 
  * @author Anson 
- * @version (a version number or a date)
+ * @version Jan 24, 2023
  */
 public class ghostBlock extends UtilsBlocks
 {
@@ -33,6 +33,11 @@ public class ghostBlock extends UtilsBlocks
         }
     }
     
+    /**
+     * Rotates ghost image
+     *  
+     * @param direction Direction that the ghost image should face
+     */
     public void updateImage(int direction)
     {
         switch (direction)
@@ -57,6 +62,11 @@ public class ghostBlock extends UtilsBlocks
         spawnArrows(Utils.getDirection());
     }
     
+    /**
+     * Spawns arrows depending on direction that the machine is facing
+     * 
+     * @param direction Direction that the arrows should face
+     */
     public void spawnArrows(int direction)
     {
         switch (direction)
@@ -88,6 +98,9 @@ public class ghostBlock extends UtilsBlocks
         }
     }
     
+    /**
+     * Updates ghost image when iamge is rotated
+     */
     public void updateRotationImage()
     {
         if(Utils.getDirection() != lastRotation && Utils.getMouse() != null)
@@ -103,21 +116,37 @@ public class ghostBlock extends UtilsBlocks
         }
     }
     
+    /**
+     * Sets x coordinate of the ghost block
+     * @param coord Coordinate
+     */
     public void setXGridCoord(int coord)
     {
         xCoord = coord;
     }
     
+    /**
+     * Sets y coordinate of the ghost block
+     * @param coord Coordinate
+     */
     public void setYGridCoord(int coord)
     {
         yCoord = coord;
     }
     
+    /**
+     * Gets x coordinate of the ghost block
+     * @return xCoord Coordinate 
+     */
     public int getXCoord()
     {
         return xCoord;
     }
     
+    /**
+     * Gets y coordinate of the ghost block 
+     * @return yCoord Coordinate
+     */
     public int getYCoord()
     {
         return yCoord;

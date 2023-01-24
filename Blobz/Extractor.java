@@ -36,8 +36,10 @@ public class Extractor extends NarrowMachines
      */
     public void act()
     {
+        //Checks if machine is a placed machine
         if(!real)
         {
+            //Creates ghost block
             if(!spawned && spawner && Utils.getMouse() != null && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("3")))
             {
                 Extractor mouseExtractor = new Extractor(false);
@@ -51,7 +53,7 @@ public class Extractor extends NarrowMachines
                     spawned = false;
                 }
             }
-            
+            //Updates ghost block position based on mouse and checks if ghost block is clicked
             if(!spawner)
             {
                 followMouse(1);
@@ -64,6 +66,7 @@ public class Extractor extends NarrowMachines
                     updateImage(lastRotation);
                     updatedImage = true;
                 }
+                //Checks if machine has been deselected
                 if(checkDeselectKey())
                 {
                     if(Utils.getMouseX() > 200 && Utils.getMouseY() < 1000)
@@ -78,7 +81,7 @@ public class Extractor extends NarrowMachines
                 }
             }
         }
-        
+        //Checks if a machine is a placed machine
         if(real) {
             if(!occupied)
             {

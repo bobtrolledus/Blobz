@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=FollowPoint
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ FollowPoint\ here.\r\n\ \r\n\ @author\ Andy/Anson\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ A\ point\ that\ shapes\ and\ colours\ follow.\ Also\ contains\ information\ about\ shapes\ or\ colour\ that\ are\ following\ the\ point.\r\n\ \r\n\ @author\ Andy/Anson\r\n\ @version\ Jan\ 24,\ 2023\r\n
 comment1.params=dir\ isLabel
 comment1.target=FollowPoint(int,\ boolean)
 comment10.params=machine

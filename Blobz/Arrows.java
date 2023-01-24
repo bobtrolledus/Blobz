@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Arrows here.
+ * Arrow image to display which direction the machine is facing
  * 
  * @author Anson
- * @version (a version number or a date)
+ * @version Jan 24, 2023
  */
 public class Arrows extends UtilsBlocks
 {

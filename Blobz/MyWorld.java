@@ -9,10 +9,12 @@ import java.io.PrintWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 /**
- * Write a description of class MyWorld here.
+ * <h1>Factory Simulation Game finished by Group 1.</h1>
+ * <p> Group member: Peter Chen, Anson Ho, Andy Li, Eric Zheng</p>
+ * <h2>Credit:</h2>
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Group 1) 
+ * @version Jan 24, 2023
  */
 public class MyWorld extends World
 {

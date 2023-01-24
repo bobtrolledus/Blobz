@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class RotationPoint here.
+ * A point that is spawned in by the belt for followpoints to change direction
  * 
  * @author Anson 
- * @version (a version number or a date)
+ * @version Jan 24, 2023
  */
 public class RotationPoint extends UtilsBlocks
 {

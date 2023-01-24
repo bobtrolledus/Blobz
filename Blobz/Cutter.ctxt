@@ -13,6 +13,7 @@ comment4.target=boolean\ checkDeselectKey()
 comment4.text=\r\n\ Returns\ boolean\ true\ if\ another\ hotkey\ is\ pressed\r\n\ \r\n\ @return\ boolean\r\n
 comment5.params=
 comment5.target=void\ getShape()
+comment5.text=\r\n\ Gets\ shape\ arraylist\ from\ inputted\ follow\ point\ and\ edits\r\n
 comment6.params=
 comment6.target=void\ getColour()
 comment6.text=\r\n\ Gets\ colour\ arraylist\ of\ follow\ point\ and\ edits\ \r\n

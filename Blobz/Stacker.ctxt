@@ -10,6 +10,7 @@ comment3.target=void\ act()
 comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ Extractor\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment4.params=
 comment4.target=boolean\ checkDeselectKey()
+comment4.text=\r\n\ Returns\ boolean\ true\ if\ another\ hotkey\ is\ pressed\r\n\ \r\n\ @return\ boolean\r\n
 comment5.params=
 comment5.target=void\ getShape()
 comment5.text=\r\n\ Gets\ shapeID\ and\ colourID\ arraylists\ from\ inputted\ follow\ points\ and\ concatenates\ them\ together\r\n

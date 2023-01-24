@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class RotateRight here.
+ * Machine to delete all touching shapes and colours
  * 
  * @author Anson 
- * @version (a version number or a date)
+ * @version Jan 24, 2023
  */
 public class TrashCan extends NarrowMachines
 {
@@ -28,8 +28,10 @@ public class TrashCan extends NarrowMachines
      */
     public void act()
     {
+        //Checks if machine is a placed machine
         if(!real)
         {
+            //Creates ghost block
             if(!spawned && spawner && Utils.getMouse() != null && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("9")))
             {
                 TrashCan mouseRotateLeft = new TrashCan(false);
@@ -43,7 +45,7 @@ public class TrashCan extends NarrowMachines
                     spawned = false;
                 }
             }
-            
+            //Updates ghost block position based on mouse and checks if ghost block is clicked
             if(!spawner)
             {
                 followMouse(1);
@@ -56,6 +58,7 @@ public class TrashCan extends NarrowMachines
                     updateImage(lastRotation);
                     updatedImage = true;
                 }
+                //Checks if machine has been deselected
                 if(checkDeselectKey())
                 {
                     if(Utils.getMouseX() > 200 && Utils.getMouseY() < 1000)
@@ -70,6 +73,7 @@ public class TrashCan extends NarrowMachines
                 }
             }
         }
+        //Checks if a machine is a placed machine
         if(real)
         {
             deleteShape();
@@ -80,6 +84,9 @@ public class TrashCan extends NarrowMachines
         }
     }
     
+    /**
+     * Deletes all touching shapes
+     */
     public void deleteShape()
     {
         for(FollowPoint point : getIntersectingObjects(FollowPoint.class))
@@ -88,6 +95,10 @@ public class TrashCan extends NarrowMachines
         }
     }
     
+    /**
+     * Checks if machine has been deselected
+     * @return boolean Boolean
+     */
     public boolean checkDeselectKey()
     {
         if(Utils.getMouse() != null)

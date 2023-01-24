@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Write a description of class FollowPoint here.
+ * A point that shapes and colours follow. Also contains information about shapes or colour that are following the point.
  * 
  * @author Andy/Anson
- * @version (a version number or a date)
+ * @version Jan 24, 2023
  */
 public class FollowPoint extends UtilsBlocks
 {

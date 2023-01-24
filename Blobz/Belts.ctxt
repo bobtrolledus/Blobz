@@ -19,5 +19,5 @@ comment6.target=void\ addedToWorld(greenfoot.World)
 comment6.text=\r\n\ Sets\ coordinates\ for\ rotation\ points\r\n
 comment7.params=
 comment7.target=java.lang.Boolean\ getReal()
-comment7.text=\r\n\ Return\ boolean\ true\ if\ machine\ is\ placed\ on\ the\ map\r\n\ \r\n\ \r\n
+comment7.text=\r\n\ Return\ boolean\ true\ if\ machine\ is\ placed\ on\ the\ map\r\n\ \r\n\ @return\ boolean\r\n
 numComments=8

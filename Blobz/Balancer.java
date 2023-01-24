@@ -31,8 +31,10 @@ public class Balancer extends WideMachines
      */
     public void act()
     {
+        //Checks if machine is a placed machine
         if(!real)
         {
+            //Creates ghost block
             if(!spawned && spawner && Utils.getMouse() != null && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("4")))
             {
                 Balancer mouseBalancer = new Balancer(false);
@@ -46,7 +48,7 @@ public class Balancer extends WideMachines
                     spawned = false;
                 }
             }
-            
+            //Updates ghost block position based on mouse and checks if ghost block is clicked
             if(!spawner)
             {
                 followMouse(2);
@@ -59,6 +61,7 @@ public class Balancer extends WideMachines
                     updateImage(lastRotation);
                     updatedImage = true;
                 }
+                //Checks if machine has been deselected
                 if(checkDeselectKey())
                 {
                     if(Utils.getMouseX() > 200 && Utils.getMouseY() < 1000)
@@ -73,7 +76,7 @@ public class Balancer extends WideMachines
                 }
             }
         }
-        
+        //Checks if a machine is a placed machine
         if(real)
         {
             if(!occupied)
