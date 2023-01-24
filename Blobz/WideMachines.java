@@ -14,7 +14,10 @@ public abstract class WideMachines extends Machines
     {
         for(FollowPoint point : getObjectsInRange(50, FollowPoint.class))
         {
-            getWorld().removeObject(point);
+            if(!point.checkIfLabel())
+            {
+                getWorld().removeObject(point);
+            }
         }
     }
     
