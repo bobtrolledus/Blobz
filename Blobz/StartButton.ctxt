@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=StartButton
-comment0.text=\r\n\ used\ in\ title\ screen\ to\ create\ a\ clickable\ button\r\n\ (borrows\ code\ from\ Mr.\ Cohen's\ Button\ class\ to\ draw\ centered\ text)\r\n\ \r\n\ @author\ yuebai\ \r\n\ @version\ 11/24/2022\r\n
+comment0.text=\n\ used\ in\ title\ screen\ to\ create\ a\ clickable\ button\n\ (borrows\ code\ from\ Mr.\ Cohen's\ Button\ class\ to\ draw\ centered\ text)\n\ \n\ @author\ yuebai\ \n\ @version\ 11/24/2022\n
 comment1.params=width\ height\ string\ size
 comment1.target=StartButton(int,\ int,\ java.lang.String,\ int)
 comment2.params=
