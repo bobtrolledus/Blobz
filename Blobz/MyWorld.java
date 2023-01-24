@@ -21,13 +21,14 @@ public class MyWorld extends World
     private Font comicFontMid = new Font ("Comic Sans MS", true, false, 24);
     private Font comicFontSmoll = new Font ("Comic Sans MS", true, false, 20);
     private GreenfootImage background;
-    private Label levelLabel, itemLabel;
+    private Label levelLabel, itemLabel, timeLabel;
     private static Scanner fileScan;
     private static Scanner scan;
     private static ArrayList<Integer> lines;
     private Color lightGray = new Color(228, 228, 226);
     private Color gray = new Color(171, 171, 171);
     private Color yellow = new Color(255, 255, 186);
+    private int gameTimer, gameTimeM, gameTime;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -59,6 +60,7 @@ public class MyWorld extends World
     public void act()
     {        
         delete();
+        time();
         levelLabel.setValue(Utils.getLevel() + 1);
         itemLabel.setValue(Utils.getTotalTargetShapes() + " / 250");
         if(Utils.getLastKey() != null)
@@ -141,6 +143,8 @@ public class MyWorld extends World
         addObject(new Deposits("circle"), 820, 780);
         addObject(new Deposits("square"), 780, 780);
         addObject(new Deposits("star"), 740, 780);
+        
+        addTimeLabel();
     }
 
     public void delete()
@@ -207,5 +211,35 @@ public class MyWorld extends World
         Utils.setUpgrade(lines.get(2));
         Utils.setMoney(lines.get(3));
         lines.clear();
+    }
+    
+    private void time()
+    {
+        gameTimer = (gameTimer + 1) % 60; 
+        if (gameTimer == 0) {
+            gameTime++;
+            Utils.setTime(gameTime);
+            if(gameTime<10)
+            {
+                timeLabel.setValue(gameTimeM + ": 0" + gameTime);
+            }
+            else if(gameTime>=10)
+            {
+                timeLabel.setValue(gameTimeM + ": " + gameTime);
+            }
+            if(gameTime == 59)
+            {
+                gameTime = 0;
+                gameTimeM ++;
+                Utils.setTime(gameTime);
+                Utils.setTimeM(gameTimeM);
+            }
+        }
+    }
+        
+    public void addTimeLabel()
+    {
+        timeLabel = new Label(gameTimeM + ": " + gameTime, 30);
+        addObject(timeLabel,600,50);
     }
 }

@@ -9,5 +9,5 @@ comment2.target=void\ deleteNarrow()
 comment2.text=\r\n\ Updates\ machine\ 2D\ array\ when\ machine\ is\ deleted\r\n
 comment3.params=
 comment3.target=void\ getGridSpace()
-comment3.text=\r\n\ \r\n
+comment3.text=\r\n\ Gets\ current\ grid\ location\r\n
 numComments=4

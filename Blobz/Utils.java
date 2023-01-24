@@ -27,6 +27,7 @@ public class Utils extends Actor
     private static int rotationDelay = 2000;
     private static int paintingDelay = 2000;
     private static int stackingDelay = 2000;
+    private static int time, timeM;
 
     public static int gridSize = 40;
     private static int level;
@@ -383,6 +384,26 @@ public class Utils extends Actor
     public static void setMap(int x)
     {
         mapNumber = x;
+    }
+    
+    public static void setTime(int x)
+    {
+        time = x;
+    }
+
+    public static void setTimeM(int x)
+    {
+        timeM = x;
+    }
+
+    public static int getTime()
+    {
+        return time;
+    }
+
+    public static int getTimeM()
+    {
+        return timeM;
     }
     
     public static void setUpgrade(int x)
