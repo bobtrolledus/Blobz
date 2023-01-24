@@ -212,18 +212,18 @@ public class RotateRight extends NarrowMachines
                     setRotation(180);
                     break;
                 case 1:
-                    inputXCoord = getX() + (Utils.gridSize / 2);
+                    inputXCoord = getX() + (Utils.gridSize / 2) -1;
                     inputYCoord = getY();
-                    spawnXCoord = getX() - (Utils.gridSize / 2);
+                    spawnXCoord = getX() - (Utils.gridSize / 2) - 1;
                     spawnYCoord = getY();
                     direction = 1;
                     setRotation(-90);
                     break;
                 case 2:
                     inputXCoord = getX();
-                    inputYCoord = getY() + (Utils.gridSize / 2);
+                    inputYCoord = getY() + (Utils.gridSize / 2) - 1;
                     spawnXCoord = getX();
-                    spawnYCoord = getY() - (Utils.gridSize / 2);
+                    spawnYCoord = getY() - (Utils.gridSize / 2) - 1;
                     direction = 2;
                     setRotation(0);
                     break;

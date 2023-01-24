@@ -22,11 +22,11 @@ public class Utils extends Actor
     private static int arrowXCoord, arrowYCoord;
     private static MouseInfo mouse = Greenfoot.getMouseInfo();
     private static int extractorDelay = 1000;
-    private static int balancerDelay = 1000;
-    private static int cutterDelay = 1000;
-    private static int rotationDelay = 1000;
-    private static int paintingDelay = 1000;
-    private static int stackingDelay = 1000;
+    private static int balancerDelay = 2000;
+    private static int cutterDelay = 2000;
+    private static int rotationDelay = 2000;
+    private static int paintingDelay = 2000;
+    private static int stackingDelay = 2000;
 
     public static int gridSize = 40;
     private static int level;

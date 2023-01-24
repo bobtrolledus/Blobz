@@ -173,14 +173,14 @@ public class Extractor extends NarrowMachines
                     setRotation(180);
                     break;
                 case 1:
-                    spawnXCoord = getX() - 20;
+                    spawnXCoord = getX() - 21;
                     spawnYCoord = getY();
                     direction = 1;
                     setRotation(-90);
                     break;
                 case 2:
                     spawnXCoord = getX();
-                    spawnYCoord = getY() - 20;
+                    spawnYCoord = getY() - 21;
                     direction = 2;
                     setRotation(0);
                     break;

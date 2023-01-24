@@ -112,12 +112,33 @@ public class MyWorld extends World
         addObject(new UpgradeButton("paint"), 1200 - width / 2, (int) ((height / 5) * 3) + rightButtonOffset); 
         addObject(new UpgradeButton("extract"), 1200 - width / 2, (int) ((height / 5) * 4) + rightButtonOffset); 
 
-        addObject(new Deposits("red"), 220, 20);
-        addObject(new Deposits("blue"), 40 + 220, 20);
-        addObject(new Deposits("yellow"), 2 * 40 + 220, 20);
-        addObject(new Deposits("circle"), 220, 60);
-        addObject(new Deposits("square"), 40 + 220, 60);
-        addObject(new Deposits("blue"), 2 * 40 + 220, 60);
+        addObject(new Deposits("red"), 260, 20);
+        addObject(new Deposits("blue"), 300, 20);
+        addObject(new Deposits("yellow"), 340, 20);
+        addObject(new Deposits("circle"), 380, 20);
+        addObject(new Deposits("square"), 420, 20);
+        addObject(new Deposits("star"), 460, 20);
+        
+        addObject(new Deposits("red"), 220, 100);
+        addObject(new Deposits("blue"), 220, 140);
+        addObject(new Deposits("yellow"), 220, 180);
+        addObject(new Deposits("circle"), 220, 220);
+        addObject(new Deposits("square"), 220, 260);
+        addObject(new Deposits("star"), 220, 300);
+        
+        addObject(new Deposits("red"), 980, 100);
+        addObject(new Deposits("blue"), 980, 140);
+        addObject(new Deposits("yellow"), 980, 180);
+        addObject(new Deposits("circle"), 980, 220);
+        addObject(new Deposits("square"), 980, 260);
+        addObject(new Deposits("star"), 980, 300);
+        
+        addObject(new Deposits("red"), 940, 780);
+        addObject(new Deposits("blue"), 900, 780);
+        addObject(new Deposits("yellow"), 860, 780);
+        addObject(new Deposits("circle"), 820, 780);
+        addObject(new Deposits("square"), 780, 780);
+        addObject(new Deposits("star"), 740, 780);
     }
 
     public void delete()
