@@ -11,8 +11,6 @@ public class Stacker extends WideMachines
 {
     private int spawnX1Coord, spawnY1Coord, inputX1Coord, inputX2Coord, inputY1Coord, inputY2Coord;
     private ArrayList<Integer> shapeID1, shapeID2, colourID1, colourID2;
-    private ArrayList<Integer> outputShape = new ArrayList<Integer>(8);
-    private ArrayList<Integer> outputColour = new ArrayList<Integer>(8);
     private boolean grabbedShape1, grabbedShape2;
     public Stacker()
     {

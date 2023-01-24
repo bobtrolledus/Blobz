@@ -10,13 +10,10 @@ import java.util.ArrayList;
 public class Cutter extends WideMachines
 {
     private int inputXCoord, inputYCoord, spawnX1Coord, spawnY1Coord, spawnX2Coord, spawnY2Coord;
-    private ArrayList<Integer> outputShape = new ArrayList<Integer>(8);
-    private ArrayList<Integer> outputColour = new ArrayList<Integer>(8);
     private ArrayList<Integer> cut1 = new ArrayList<Integer>(8);
     private ArrayList<Integer> cut2 = new ArrayList<Integer>(8);
     private ArrayList<Integer> cutColour1 = new ArrayList<Integer>(8);
-    private ArrayList<Integer> cutColour2 = new ArrayList<Integer>(8);
-    
+    private ArrayList<Integer> cutColour2 = new ArrayList<Integer>(8);  
     public Cutter()
     {
         setImage("images/Machines/cutter.png");
