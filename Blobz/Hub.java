@@ -4,7 +4,7 @@ import java.util.Arrays;
 /**
  * Write a description of class Hub here.
  *
- * @author Anson/Eric
+ * @author Anson/Eric/Andy
  * @version (a version number or a date)
  */
 public class Hub extends Machines
@@ -86,6 +86,6 @@ public class Hub extends Machines
     {
         setTargetShape();
         fillGrid();
-        getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 1, true), 600, 420);
+        getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, true), 600, 420);
     }
 }
