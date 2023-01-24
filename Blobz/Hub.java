@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.util.Arrays;
 /**
- * Write a description of class Hub here.
+ * Machine acting like a center receptacle for all shapes, checks for target shapes 
  *
  * @author Anson/Eric/Andy
- * @version (a version number or a date)
+ * @version Jan 24, 2023
  */
 public class Hub extends Machines
 {

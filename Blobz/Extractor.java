@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.util.Arrays;
 /**
- * Write a description of class Extractor here.
+ * Machine to spawn in shapes or colours depending on deposit which this machine is placed on
  * 
  * @author Anson
- * @version (a version number or a date)
+ * @version Jan 24, 2023
  */
 public class Extractor extends NarrowMachines
 {
@@ -98,6 +98,11 @@ public class Extractor extends NarrowMachines
         }
     }
     
+    /**
+     * Returns boolean true if another hotkey is pressed
+     * 
+     * @return boolean
+     */
     public boolean checkDeselectKey()
     {
         if(Utils.getMouse() != null)
@@ -113,6 +118,9 @@ public class Extractor extends NarrowMachines
         }
     }
     
+    /**
+     * Gets current shape arraylist and shapeColour arraylist from deposit
+     */
     public void getShape()
     {
         if(getWorld().getObjectsAt(getX(), getY(), Deposits.class).size() > 0)
@@ -133,6 +141,9 @@ public class Extractor extends NarrowMachines
         occupied = true;
     }
     
+    /**
+     * Spawns in shape or colour with delay
+     */
     public void spawnShape()
     {
         point = (FollowPoint)getOneIntersectingObject(FollowPoint.class);
@@ -155,6 +166,9 @@ public class Extractor extends NarrowMachines
         }
     }
     
+    /**
+     * Sets coordinates for inputs, outputs and directions
+     */
     protected void addedToWorld(World world)
     {
         timer.mark();

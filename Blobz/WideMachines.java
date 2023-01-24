@@ -1,15 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class WideMachines here.
+ * Abstract class containing methods for wide machines. Includes shape deletion and coordinate locating methods
  * 
  * @author Anson
- * @version (a version number or a date)
+ * @version Jan 24, 2023
  */
 public abstract class WideMachines extends Machines
 {
     private int gridSpaceX1, gridSpaceX2, gridSpaceY1, gridSpaceY2;
     public int mirrored;
+    /**
+     * Removes all shapes and colours touching machine when deleted
+     */
     public void deleteShapesWide()
     {
         for(FollowPoint point : getObjectsInRange(50, FollowPoint.class))
@@ -21,6 +24,9 @@ public abstract class WideMachines extends Machines
         }
     }
     
+    /**
+     * Checks if machine 2D array contains machine. If not, it deletes itself.
+     */
     public boolean isDeletedWide()
     {
         getGridSpace();
@@ -32,13 +38,19 @@ public abstract class WideMachines extends Machines
         }
     }
     
+    /**
+     * Edits machine 2D array when wide machine is deleted
+     */
     public void deleteWide()
     {
         getGridSpace();
         Utils.fillSpaceMachine(gridSpaceY1, gridSpaceX1, null);
         Utils.fillSpaceMachine(gridSpaceY2, gridSpaceX2, null);
     }
-    
+
+    /**
+     * Checks if machine should be placed mirrored
+     */
     public void checkMirrored()
     {
         if(Utils.getMirrored())
@@ -49,6 +61,9 @@ public abstract class WideMachines extends Machines
         }
     }
     
+    /**
+     * Gets both grid spaces that wide machine occupies 
+     */
     public void getGridSpace()
     {
         switch(direction)

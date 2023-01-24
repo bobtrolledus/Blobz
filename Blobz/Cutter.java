@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Write a description of class Cutter here.
+ * Uses arraylist manipulation to cut shapes vertically in half
  * 
  * @author Anson 
- * @version (a version number or a date)
+ * @version Jan 24, 2023
  */
 public class Cutter extends WideMachines
 {
@@ -122,7 +122,12 @@ public class Cutter extends WideMachines
             }
         }
     }
-    
+
+    /**
+     * Returns boolean true if another hotkey is pressed
+     * 
+     * @return boolean
+     */
     public boolean checkDeselectKey()
     {
         if(Utils.getMouse() != null)
@@ -138,6 +143,10 @@ public class Cutter extends WideMachines
         }
     }
     
+    /**
+     * Gets shape arraylist from inputted follow point and edits
+     */
+
     public void getShape()
     {       
         if(getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).size() > 0)
@@ -153,6 +162,9 @@ public class Cutter extends WideMachines
         }
     }
     
+    /**
+     * Gets colour arraylist of follow point and edits 
+     */
     public void getColour()
     {
         if(getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).size() > 0)
@@ -169,6 +181,9 @@ public class Cutter extends WideMachines
         }
     }
     
+    /**
+     * Spawns in shape with edited colour and shape arraylists with delay
+     */
     public void spawnShape()
     {
         if(timer.millisElapsed() > Utils.getCutterDelay() && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1 && getWorld().getObjectsAt(spawnX2Coord, spawnY2Coord, Shapes.class).size() < 1)
@@ -227,6 +242,9 @@ public class Cutter extends WideMachines
         }
     }
     
+    /**
+     * Sets input and output coordinates, image direction and spawn direction
+     */
     protected void addedToWorld(World world)
     {
         checkMirrored();

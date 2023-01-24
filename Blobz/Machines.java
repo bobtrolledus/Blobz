@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Write a description of class Machines here.
+ * An abstract class for all machines. Contains methods for spawning, deletion, and ghost block.
  * 
  * @author Anson  
- * @version (a version number or a date)
+ * @version Jan 24, 2023
  */
 public abstract class Machines extends Actor
 {
@@ -17,6 +17,10 @@ public abstract class Machines extends Actor
     public ArrayList<Integer> outputShape = new ArrayList<Integer>(8);
     public ArrayList<Integer> outputColour = new ArrayList<Integer>(8);
 
+    /**
+     * Allows an image of the seleted machine to follow mouse cursor
+     * @param xSize Size of machine image
+     */
     public void followMouse(int xSize)
     {
         if(Utils.getMouse() != null)
@@ -30,6 +34,11 @@ public abstract class Machines extends Actor
         } 
     }
     
+    /**
+     * Creates a GhostBlock class of machine that snaps to grid
+     * @param image Image of machine
+     * @param xSize Size of machine
+     */
     public void gridSnap(GreenfootImage image, int xSize)
     {
         if(Utils.getMouse() != null)
@@ -91,7 +100,12 @@ public abstract class Machines extends Actor
             }
         }
     }
-    
+
+    /**
+     * Places an instance onto the map and updates the global 2D array of machines
+     * @param cls Class of machine to instantiate
+     * @param xSize Size of machine
+     */
     public void place(Class cls, int xSize)
     {
         if(Utils.getMouse() != null)
@@ -160,6 +174,9 @@ public abstract class Machines extends Actor
         }
     }
     
+    /**
+     * Deletes all shapes in surronding area when machine is deleted
+     */
     public void deleteShapes()
     {
         for(FollowPoint point : getObjectsInRange(25, FollowPoint.class))
@@ -171,6 +188,9 @@ public abstract class Machines extends Actor
         }
     }
     
+    /**
+     * Updates image of machine when rotated
+     */
     public void updateRotation()
     {
         if(Utils.getDirection() != lastRotation)
@@ -179,16 +199,32 @@ public abstract class Machines extends Actor
         }
     }
     
+    /**
+     * Sets spawn direction variable based on direction of machine placed
+     * @param direction
+     */
     public void setDirection(int direction)
     {
         this.direction = direction;
     }
     
+    /**
+     * Returns a boolean to check if machine is currently making a shape
+     * @return occupied Boolean
+     */
     public boolean isOccupied()
     {
         return occupied;
     }
     
+    /**
+     * Updates image rotation of machine <br>
+     * - 0 = Down <br>
+     * - 1 = Left <br>
+     * - 2 = Up <br>
+     * - 3 = Right <br>
+     * @param direction Direction that machine should face
+     */
     public void updateImage(int direction)
     {
         switch (direction)

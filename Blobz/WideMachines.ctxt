@@ -1,14 +1,19 @@
 #BlueJ class context
 comment0.target=WideMachines
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ WideMachines\ here.\r\n\ \r\n\ @author\ Anson\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Abstract\ class\ containing\ methods\ for\ wide\ machines.\ Includes\ shape\ deletion\ and\ coordinate\ locating\ methods\r\n\ \r\n\ @author\ Anson\r\n\ @version\ Jan\ 24,\ 2023\r\n
 comment1.params=
 comment1.target=void\ deleteShapesWide()
+comment1.text=\r\n\ \r\n
 comment2.params=
 comment2.target=boolean\ isDeletedWide()
+comment2.text=\r\n\ Checks\ if\ machine\ 2D\ array\ contains\ machine.\ If\ not,\ it\ deletes\ itself.\r\n
 comment3.params=
 comment3.target=void\ deleteWide()
+comment3.text=\r\n\ Edits\ machine\ 2D\ array\ when\ wide\ machine\ is\ deleted\r\n
 comment4.params=
 comment4.target=void\ checkMirrored()
+comment4.text=\r\n\ Checks\ if\ machine\ should\ be\ placed\ mirrored\r\n
 comment5.params=
 comment5.target=void\ getGridSpace()
+comment5.text=\r\n\ Gets\ both\ grid\ spaces\ that\ wide\ machine\ occupies\ \r\n
 numComments=6

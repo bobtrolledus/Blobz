@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Belts here.
+ * Machine that creates path for shapes to follow
  * 
  * @author Anson
- * @version (a version number or a date)
+ * @version Jan 24, 2023
  */
 public class Belts extends NarrowMachines
 {
@@ -81,6 +81,11 @@ public class Belts extends NarrowMachines
         }
     }
     
+    /**
+     * Returns boolean true if another hotkey is pressed
+     * 
+     * @return boolean
+     */
     public boolean checkDeselectKey()
     {
         if(Utils.getMouse() != null)
@@ -96,12 +101,18 @@ public class Belts extends NarrowMachines
         }
     }
     
+    /**
+     * Deletes rotation points of belt to remove pathfinding for shapes
+     */
     public void deletePoints()
     {
         getWorld().removeObject(point1);
         getWorld().removeObject(point2);
     }
     
+    /**
+     * Sets coordinates for rotation points
+     */
     protected void addedToWorld(World world)
     {
         if(real)
@@ -140,6 +151,11 @@ public class Belts extends NarrowMachines
         }
     }
     
+    /**
+     * Return boolean true if machine is placed on the map
+     * 
+     * @return boolean
+     */
     public Boolean getReal(){
         return real;
     }

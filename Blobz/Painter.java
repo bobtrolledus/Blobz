@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Write a description of class Painter here.
+ * Uses arraylist manipualtion to change colour of shapes
  * 
  * @author Anson
- * @version (a version number or a date)
+ * @version Jan 24, 2023
  */
 public class Painter extends WideMachines
 {
@@ -100,6 +100,11 @@ public class Painter extends WideMachines
         }
     }
     
+    /**
+     * Returns boolean true if another hotkey is pressed
+     * 
+     * @return boolean
+     */
     public boolean checkDeselectKey()
     {
         if(Utils.getMouse() != null)
@@ -115,6 +120,9 @@ public class Painter extends WideMachines
         }
     }
     
+    /**
+     * Gets shape arraylist from inputted follow point and edits
+     */
     public void getShape()
     {
         if(getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).size() > 0)
@@ -126,6 +134,9 @@ public class Painter extends WideMachines
         }
     }
     
+    /**
+     * Gets colour arraylist of follow point from shape
+     */
     public void getColourShape()
     {
         if(getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).size() > 0)
@@ -162,6 +173,9 @@ public class Painter extends WideMachines
         }
     }
     
+    /**
+     * Spawns in shape with edited colour and shape arraylists with delay
+     */
     public void spawnShape()
     {
         if(timer.millisElapsed() > Utils.getPainterDelay() && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1)
@@ -176,6 +190,9 @@ public class Painter extends WideMachines
         }
     }
     
+    /**
+     * Sets input and output coordinates, image direction and spawn direction
+     */
     protected void addedToWorld(World world)
     {
         checkMirrored();

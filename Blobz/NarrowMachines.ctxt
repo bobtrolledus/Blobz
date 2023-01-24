@@ -1,10 +1,13 @@
 #BlueJ class context
 comment0.target=NarrowMachines
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ NarrowMachines\ here.\r\n\ \r\n\ @author\ Anson\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Abstract\ class\ containing\ methods\ for\ small\ machines\r\n\ \r\n\ @author\ Anson\ \r\n\ @version\ Jan\ 24,\ 2023\r\n
 comment1.params=
 comment1.target=boolean\ isDeletedNarrow()
+comment1.text=\r\n\ Checks\ if\ machine\ 2D\ array\ is\ empty\ at\ current\ location.\ If\ true,\ it\ deletes\ itself.\r\n
 comment2.params=
 comment2.target=void\ deleteNarrow()
+comment2.text=\r\n\ Updates\ machine\ 2D\ array\ when\ machine\ is\ deleted\r\n
 comment3.params=
 comment3.target=void\ getGridSpace()
+comment3.text=\r\n\ \r\n
 numComments=4

@@ -103,6 +103,11 @@ public class Stacker extends WideMachines
         }
     }
     
+    /**
+     * Returns boolean true if another hotkey is pressed
+     * 
+     * @return boolean
+     */
     public boolean checkDeselectKey()
     {
         if(Utils.getMouse() != null)
@@ -118,6 +123,9 @@ public class Stacker extends WideMachines
         }
     }
     
+    /**
+     * Gets shapeID and colourID arraylists from inputted follow points and concatenates them together
+     */
     public void getShape()
     {
         if(getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).size() > 0)
@@ -174,6 +182,9 @@ public class Stacker extends WideMachines
         }
     }
     
+    /**
+     * Spawns in shape with edited colour and shape arraylists with delay
+     */
     public void spawnShape()
     {
         if(timer.millisElapsed() > Utils.getStackingDelay() && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1)
@@ -200,6 +211,9 @@ public class Stacker extends WideMachines
         }
     }
     
+    /**
+     * Sets input and output coordinates, image direction and spawn direction
+     */
     protected void addedToWorld(World world)
     {
         checkMirrored();

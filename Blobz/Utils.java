@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 /**
- * Write a description of class Utils here.
+ * Class for all global variables
  * 
  * @author Anson
  * @version (a version number or a date)

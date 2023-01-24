@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Write a description of class Balancer here.
+ * Machine to split 1 stream of materials into 2
  * 
  * @author Anson 
- * @version (a version number or a date)
+ * @version Jan 24, 2023
  */
 public class Balancer extends WideMachines
 {
@@ -93,6 +93,11 @@ public class Balancer extends WideMachines
         }
     }
     
+    /**
+     * Returns boolean true if another hotkey is pressed
+     * 
+     * @return boolean
+     */
     public boolean checkDeselectKey()
     {
         if(Utils.getMouse() != null)
@@ -108,6 +113,9 @@ public class Balancer extends WideMachines
         }
     }
     
+    /**
+     * Gets shape arraylist at input coordinates 
+     */
     public void getShape()
     {  
         if(getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).size() > 0)
@@ -129,6 +137,9 @@ public class Balancer extends WideMachines
         }
     }
     
+    /**
+     * Gets colour arrylist at input coordinates
+     */
     public void getColour()
     {
         if(getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).size() > 0)
@@ -140,6 +151,9 @@ public class Balancer extends WideMachines
         }
     }
     
+    /**
+     * Spawns shape at either output according to boolean
+     */
     public void spawnShape()
     {
         if(timer.millisElapsed() > Utils.getBalancerDelay())
@@ -177,6 +191,9 @@ public class Balancer extends WideMachines
         }
     }
     
+    /**
+     * Sets input and output coordinates, image direction and spawn direction
+     */
     protected void addedToWorld(World world)
     {
         checkMirrored();
