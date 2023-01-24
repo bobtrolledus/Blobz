@@ -21,7 +21,7 @@ public class FollowPoint extends UtilsBlocks
     private boolean isLabel;
     
     public FollowPoint(int dir, boolean isLabel) {
-        getImage().scale(3, 3);
+        getImage().scale(1, 1);
         getImage().setTransparency(0);
         this.dir = dir;
         this.isLabel = isLabel;

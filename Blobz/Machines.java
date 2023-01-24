@@ -96,7 +96,7 @@ public abstract class Machines extends Actor
                 {
                     if(xSize > 1)
                     {
-                        if((Utils.getDirection() == 0 && Utils.getSpaceMachine(gridPositionY, gridPositionX + 1) == null) || (Utils.getDirection() == 1 && Utils.getSpaceMachine(gridPositionY - 1, gridPositionX) == null) || (Utils.getDirection() == 2 && Utils.getSpaceMachine(gridPositionY, gridPositionX - 1) == null) || (Utils.getDirection() == 3 && Utils.getSpaceMachine(gridPositionY - 1, gridPositionX) == null))
+                        if((Utils.getDirection() == 0 && Utils.getSpaceMachine(gridPositionY, gridPositionX + 1) == null) || (Utils.getDirection() == 1 && Utils.getSpaceMachine(gridPositionY - 1, gridPositionX) == null) || (Utils.getDirection() == 2 && Utils.getSpaceMachine(gridPositionY, gridPositionX + 1) == null) || (Utils.getDirection() == 3 && Utils.getSpaceMachine(gridPositionY - 1, gridPositionX) == null))
                         {
                             try{ 
                                 Machines temp = (Machines) cls.newInstance();
