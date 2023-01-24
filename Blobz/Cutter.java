@@ -1,22 +1,50 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * Write a description of class Cutter here.
  * 
- * @author (your name) 
+ * @author Anson 
  * @version (a version number or a date)
  */
 public class Cutter extends WideMachines
 {
     private int inputXCoord, inputYCoord, spawnX1Coord, spawnY1Coord, spawnX2Coord, spawnY2Coord;
-    private int[] cut1 = new int[8];
-    private int[] cut2 = new int[8];
-    private int[] cutColour1 = new int[8];
-    private int[] cutColour2 = new int[8];
+    private ArrayList<Integer> outputShape = new ArrayList<Integer>(8);
+    private ArrayList<Integer> outputColour = new ArrayList<Integer>(8);
+    private ArrayList<Integer> cut1 = new ArrayList<Integer>(8);
+    private ArrayList<Integer> cut2 = new ArrayList<Integer>(8);
+    private ArrayList<Integer> cutColour1 = new ArrayList<Integer>(8);
+    private ArrayList<Integer> cutColour2 = new ArrayList<Integer>(8);
+    
     public Cutter()
     {
         setImage("images/Machines/cutter.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
+        for(int i = 0; i < 8; i++)
+            {
+                outputShape.add(0);
+            }
+        for(int i = 0; i < 8; i++)
+        {
+            outputColour.add(0);
+        }
+        for(int i = 0; i < 8; i++)
+        {
+            cut1.add(0);
+        }
+        for(int i = 0; i < 8; i++)
+        {
+            cut2.add(0);
+        }
+        for(int i = 0; i < 8; i++)
+        {
+            cutColour1.add(0);
+        }
+        for(int i = 0; i < 8; i++)
+        {
+            cutColour2.add(0);
+        }
         real = true;
     }
     
@@ -115,10 +143,10 @@ public class Cutter extends WideMachines
             FollowPoint tempPoint = getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).get(0);
             outputShape = tempPoint.getShape();
             direction = tempPoint.getRotation();
-            for(int i = 0; i < cut1.length; i++)
+            for(int i = 0; i < cut1.size(); i++)
             {
-                cut1[i] = -1;
-                cut2[i] = -1;
+                cut1.set(i, -1);
+                cut2.set(i, -1);
             }
         }
     }
@@ -130,10 +158,10 @@ public class Cutter extends WideMachines
             FollowPoint tempPoint = getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).get(0);
             outputColour = tempPoint.getColour();
             getWorld().removeObject(tempPoint);
-            for(int i = 0; i < cutColour1.length; i++)
+            for(int i = 0; i < cutColour1.size(); i++)
             {
-                cutColour1[i] = -1;
-                cutColour2[i] = -1;
+                cutColour1.set(i, -1);
+                cutColour2.set(i, -1);
             }
             occupied = true;
         }
@@ -143,24 +171,54 @@ public class Cutter extends WideMachines
     {
         if(timer.millisElapsed() > Utils.getCutterDelay() && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1 && getWorld().getObjectsAt(spawnX2Coord, spawnY2Coord, Shapes.class).size() < 1)
         {
-            cut1[2] = outputShape[2];
-            cut1[3] = outputShape[3];
-            cut1[6] = outputShape[6];
-            cut1[7] = outputShape[7];
-            cut2[0] = outputShape[0];
-            cut2[1] = outputShape[1];
-            cut2[4] = outputShape[4];
-            cut2[5] = outputShape[5];
-            cutColour1[2] = outputColour[2];
-            cutColour1[3] = outputColour[3];
-            cutColour1[6] = outputColour[6];
-            cutColour1[7] = outputColour[7];
-            cutColour2[0] = outputColour[0];
-            cutColour2[1] = outputColour[1];
-            cutColour2[4] = outputColour[4];
-            cutColour2[5] = outputColour[5];
+            cut1.set(2, outputShape.get(2));
+            cut1.set(3, outputShape.get(3));
+            cut1.set(6, outputShape.get(6));
+            cut1.set(7, outputShape.get(7));
+            cut2.set(0, outputShape.get(0));
+            cut2.set(1, outputShape.get(1));
+            cut2.set(4, outputShape.get(4));
+            cut2.set(5, outputShape.get(5));
+            cutColour1.set(2, outputColour.get(2));
+            cutColour1.set(3, outputColour.get(3));
+            cutColour1.set(6, outputColour.get(6));
+            cutColour1.set(7, outputColour.get(7));
+            cutColour2.set(0, outputColour.get(0));
+            cutColour2.set(1, outputColour.get(1));
+            cutColour2.set(4, outputColour.get(4));
+            cutColour2.set(5, outputColour.get(5));
             getWorld().addObject(new ShapeGenerator(cut1, cutColour1, direction, false), spawnX1Coord, spawnY1Coord);
             getWorld().addObject(new ShapeGenerator(cut2, cutColour2, direction, false), spawnX2Coord, spawnY2Coord);
+            outputShape.clear();
+            outputColour.clear();
+            cut1.clear();
+            cut2.clear();
+            cutColour1.clear();
+            cutColour2.clear();
+            for(int i = 0; i < 8; i++)
+            {
+                outputShape.add(0);
+            }
+            for(int i = 0; i < 8; i++)
+            {
+                outputColour.add(0);
+            }
+            for(int i = 0; i < 8; i++)
+            {
+                cut1.add(0);
+            }
+            for(int i = 0; i < 8; i++)
+            {
+                cut2.add(0);
+            }
+            for(int i = 0; i < 8; i++)
+            {
+                cutColour1.add(0);
+            }
+            for(int i = 0; i < 8; i++)
+            {
+                cutColour2.add(0);
+            }
             outputShape = null;
             occupied = false;
             timer.mark();
@@ -178,9 +236,9 @@ public class Cutter extends WideMachines
                 case 0:
                     inputXCoord = getX() + ((Utils.gridSize / 2) * mirrored);
                     inputYCoord = getY() - (Utils.gridSize / 2);
-                    spawnX1Coord = getX() - ((Utils.gridSize / 2) * mirrored);
+                    spawnX1Coord = getX() - (Utils.gridSize / 2);
                     spawnY1Coord = getY() + (Utils.gridSize / 2);
-                    spawnX2Coord = getX() + ((Utils.gridSize / 2) * mirrored);
+                    spawnX2Coord = getX() + (Utils.gridSize / 2);
                     spawnY2Coord = getY() + (Utils.gridSize / 2);
                     setDirection(0);
                     setRotation(180);
@@ -198,9 +256,9 @@ public class Cutter extends WideMachines
                 case 2:
                     inputXCoord = getX() - ((Utils.gridSize / 2) * mirrored);
                     inputYCoord = getY() + (Utils.gridSize / 2) - 1;
-                    spawnX1Coord = getX() - ((Utils.gridSize / 2) * mirrored);
+                    spawnX1Coord = getX() - (Utils.gridSize / 2);
                     spawnY1Coord = getY() - (Utils.gridSize / 2) - 1;
-                    spawnX2Coord = getX() + ((Utils.gridSize / 2) * mirrored);
+                    spawnX2Coord = getX() + (Utils.gridSize / 2);
                     spawnY2Coord = getY() - (Utils.gridSize / 2) - 1;
                     setDirection(2);
                     setRotation(0);

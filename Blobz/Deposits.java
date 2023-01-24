@@ -1,21 +1,22 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * Write a description of class Deposits here.
  * 
- * @author Andy
+ * @author Andy/Anson
  * @version (a version number or a date)
  */
 public class Deposits extends Resources
 {
     private String deposit;
-    private int[] circle = {1, 1, 1, 1, -1, -1, -1, -1};
-    private int[] square = {2, 2, 2, 2, -1, -1, -1, -1};
-    private int[] star = {3, 3, 3, 3, -1, -1, -1, -1};
-    private int[] grey = {-1, -1, -1, -1, -1, -1, -1, -1};
+    private ArrayList<Integer> circle = new ArrayList<Integer>();
+    private ArrayList<Integer> square = new ArrayList<Integer>();
+    private ArrayList<Integer> star = new ArrayList<Integer>();
+    private ArrayList<Integer> grey = new ArrayList<Integer>();
     
-    private int[] shapeID;
-    private int[] colourID;
+    private ArrayList<Integer> shapeID;
+    private ArrayList<Integer> colourID;
     private int rawColourID;
     
     private boolean isLabeled = false, colourDeposit;
@@ -24,6 +25,15 @@ public class Deposits extends Resources
     public Deposits(String deposit){
         this.deposit = deposit;
         getImage().scale(40, 40);
+        
+        setTarget(circle, 1);
+        setTarget(circle, -1);
+        setTarget(square, 2);
+        setTarget(square, -1);
+        setTarget(star, 3);
+        setTarget(star, -1);
+        setTarget(grey, -1);
+        setTarget(grey, -1);
     }
     
     public void act(){
@@ -61,6 +71,14 @@ public class Deposits extends Resources
         }
     }
     
+    public void setTarget(ArrayList<Integer> list, int value)
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            list.add(value);
+        }
+    }
+    
     public void updateGrid()
     {
         int gridPositionX = (int) (getX() - 200) / Utils.gridSize;
@@ -73,12 +91,12 @@ public class Deposits extends Resources
         return colourDeposit;
     }
     
-    public int[] getDepositShape()
+    public ArrayList<Integer> getDepositShape()
     {
         return shapeID;
     }
     
-    public int[] getDepositShapeColour()
+    public ArrayList<Integer> getDepositShapeColour()
     {
         return colourID;
     }

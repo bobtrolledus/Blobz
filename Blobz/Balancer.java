@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * Write a description of class Balancer here.
@@ -10,6 +11,8 @@ public class Balancer extends WideMachines
 {
     private boolean outputSide = false, inputSide = false;
     private int spawnX1Coord, spawnY1Coord, spawnX2Coord, spawnY2Coord, inputXCoord, inputYCoord;
+    private ArrayList<Integer> outputShape;
+    private ArrayList<Integer> outputColour;
     public Balancer()
     {
         setImage("images/Machines/balancer.png");

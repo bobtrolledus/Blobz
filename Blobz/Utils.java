@@ -42,7 +42,7 @@ public class Utils extends Actor
     private static String key;
     private static ArrayList<Integer> list;
     private static boolean mirrored;
-    public static int[][][] targetShapes = {
+    public static Integer[][][] targetShapes = {
         {
             {1, 1, 1, 1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1, -1}
@@ -80,7 +80,7 @@ public class Utils extends Actor
             {4, 4, -1, -1, -1, -1, -1, -1}
         },
         {
-            {-1, -1, 1, -1, -1, -1, -1, -1},
+            {-1, -1, 2, -1, -1, -1, -1, -1},
             {-1, -1, 1, -1, -1, -1, -1, -1}
         },
         {
@@ -124,7 +124,7 @@ public class Utils extends Actor
         bdUpgradeLevel = 1;
         paintUpgradeLevel = 1;
         extractUpgradeLevel = 1;
-        level = 7;
+        level = 14;
     }
 
     public void act()
@@ -168,12 +168,12 @@ public class Utils extends Actor
         return totalTargetShapes;
     }
     
-    public static int[] getTargetShape()
+    public static Integer[] getTargetShape()
     {
         return targetShapes[level][0];
     }
     
-    public static int[] getTargetShapeColour()
+    public static Integer[] getTargetShapeColour()
     {
         return targetShapes[level][1];
     }

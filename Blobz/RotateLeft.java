@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Arrays;
+import java.util.ArrayList;
+
 /**
  * Write a description of class RotateRight here.
  * 
@@ -8,13 +10,23 @@ import java.util.Arrays;
  */
 public class RotateLeft extends NarrowMachines
 {
-    private boolean occupied = false;
+    private boolean occupied = false, grabbedShape = false;
     private int direction;
     private int inputXCoord, inputYCoord, spawnXCoord, spawnYCoord;
+    private ArrayList<Integer> outputShape = new ArrayList<Integer>(8);
+    private ArrayList<Integer> outputColour = new ArrayList<Integer>(8);
     public RotateLeft()
     {
         setImage("images/Machines/rotateLeft.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
+        for(int i = 0; i < 8; i++)
+        {
+            outputShape.add(0);
+        }
+        for(int i = 0; i < 8; i++)
+        {
+            outputColour.add(0);
+        } 
         real = true;
     }
     
@@ -81,7 +93,7 @@ public class RotateLeft extends NarrowMachines
                 getColour();
             }
 
-            if(outputShape != null)
+            if(grabbedShape)
             {
                 spawnShape();
             }
@@ -112,18 +124,18 @@ public class RotateLeft extends NarrowMachines
             int i = 3, j =0;
             while(i != j)
             {
-              int temp = outputShape[i];
-              outputShape[i] = outputShape[j];
-              outputShape[j] = temp;
+              int temp = outputShape.get(i);
+              outputShape.set(i, outputShape.get(j));
+              outputShape.set(j, temp);
               i--;
             }
-            i = 7;
+            i = outputShape.size() - 1;
             j = 4;
             while(i != j)
             {
-              int temp = outputShape[i];
-              outputShape[i] = outputShape[j];
-              outputShape[j] = temp;
+              int temp = outputShape.get(i);
+              outputShape.set(i, outputShape.get(j));
+              outputShape.set(j, temp);
               i--;
             }
         }
@@ -139,21 +151,22 @@ public class RotateLeft extends NarrowMachines
             int i = 3, j = 0;
             while(i != j)
             {
-              int temp = outputColour[i];
-              outputColour[i] = outputColour[j];
-              outputColour[j] = temp;
+              int temp = outputColour.get(i);
+              outputColour.set(i, outputColour.get(j));
+              outputColour.set(j, temp);
               i--;
             }
-            i = 7;
+            i = outputShape.size() - 1;
             j = 4;
             while(i != j)
             {
-              int temp = outputColour[i];
-              outputColour[i] = outputColour[j];
-              outputColour[j] = temp;
+              int temp = outputColour.get(i);
+              outputColour.set(i, outputColour.get(j));
+              outputColour.set(j, temp);
               i--;
             }
             occupied = true;
+            grabbedShape = true;
         }
     }
     
@@ -162,9 +175,19 @@ public class RotateLeft extends NarrowMachines
         if(timer.millisElapsed() > Utils.getRotationDelay() && getWorld().getObjectsAt(spawnXCoord, spawnYCoord, Shapes.class).size() < 1) 
         {
             getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, false), spawnXCoord, spawnYCoord);
-            outputShape = null; 
+            outputShape.clear();
+            outputColour.clear();
+            for(int i = 0; i < 8; i++)
+            {
+                outputShape.add(0);
+            }
+            for(int i = 0; i < 8; i++)
+            {
+                outputColour.add(0);
+            } 
             timer.mark();
             occupied = false;
+            grabbedShape = false;
         }
     }
     

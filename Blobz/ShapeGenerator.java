@@ -1,25 +1,27 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Write a description of class ShapeGenerator here.
  * 
- * @author (your name) 
+ * @author Andy/Anson
  * @version (a version number or a date)
  */
 public class ShapeGenerator extends Resources
 {
     private int x = 0, y = 0, quadrant = 1, spawnX, spawnY, dir, layer = 1;
-    private int[] corners = new int[8];
-    private int[] colours = new int[8];
+    private Integer[] corners = new Integer[8];
+    private Integer[] colours = new Integer[8];
     private int rawColour;
     private FollowPoint point;
     private boolean isLabel, spawnColour;
     
-    public ShapeGenerator (int[] values, int[] colours, int dir, boolean label){
-        for(int i = 0; i < corners.length; i++){
-            corners[i] = values[i];
-            this.colours[i] = colours[i];
-        }
+    public ShapeGenerator (ArrayList<Integer> values, ArrayList<Integer> colour, int dir, boolean label){
+        corners = new Integer[values.size()];
+        corners = values.toArray(corners);
+        colours = new Integer[colour.size()];
+        colours = colour.toArray(colours);
         this.dir = dir;
         isLabel = label;
         spawnColour = false;
@@ -37,7 +39,8 @@ public class ShapeGenerator extends Resources
         if(!spawnColour)
         {
             for(int i = 0; i < corners.length; i++){
-                if(isLabel){
+                if(isLabel && quadrant > 4){
+                    quadrant = 1;
                     layer = 3;
                 } else if(quadrant > 4){
                     quadrant = 1;

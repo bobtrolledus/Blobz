@@ -162,23 +162,26 @@ public class MyWorld extends World
             int buttonNumber = Utils.getMouseButton();
             if(buttonNumber == 3)
             {
-                if(Utils.getSpaceMachine(gridPositionY, gridPositionX) != null)
+                if(gridPositionY < 20 && gridPositionY > -1 && gridPositionX < 20 && gridPositionX > -1)
                 {
-                    Machines tempMachine = (Machines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
-                    if(Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Belts.class)
+                    if(Utils.getSpaceMachine(gridPositionY, gridPositionX) != null)
                     {
-                        Belts temp = (Belts) Utils.getSpaceMachine(gridPositionY, gridPositionX);
-                        temp.deletePoints();
-                    }
-                    if(Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Balancer.class || Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Cutter.class || Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Stacker.class || Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Painter.class)
-                    {
-                        WideMachines temp = (WideMachines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
-                        temp.deleteWide();
-                        temp.deleteShapesWide();
-                    } else {
-                        NarrowMachines temp = (NarrowMachines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
-                        temp.deleteNarrow();
-                        tempMachine.deleteShapes();
+                        Machines tempMachine = (Machines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
+                        if(Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Belts.class)
+                        {
+                            Belts temp = (Belts) Utils.getSpaceMachine(gridPositionY, gridPositionX);
+                            temp.deletePoints();
+                        }
+                        if(Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Balancer.class || Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Cutter.class || Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Stacker.class || Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() == Painter.class)
+                        {
+                            WideMachines temp = (WideMachines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
+                            temp.deleteWide();
+                            temp.deleteShapesWide();
+                        } else {
+                            NarrowMachines temp = (NarrowMachines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
+                            temp.deleteNarrow();
+                            tempMachine.deleteShapes();
+                        }
                     }
                 }
             }    

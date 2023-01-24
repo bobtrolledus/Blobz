@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * Write a description of class Stacker here.
@@ -9,14 +10,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Stacker extends WideMachines
 {
     private int spawnX1Coord, spawnY1Coord, inputX1Coord, inputX2Coord, inputY1Coord, inputY2Coord;
-    private int[] shapeID1, shapeID2, colourID1, colourID2;
-    private int[] outputShape = new int[8];
-    private int[] outputColour = new int[8];
+    private ArrayList<Integer> shapeID1, shapeID2, colourID1, colourID2;
+    private ArrayList<Integer> outputShape = new ArrayList<Integer>(8);
+    private ArrayList<Integer> outputColour = new ArrayList<Integer>(8);
     private boolean grabbedShape1, grabbedShape2;
     public Stacker()
     {
         setImage("images/Machines/stacker.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
+        for(int i = 0; i < 8; i++)
+        {
+            outputShape.add(0);
+        }
+        for(int i = 0; i < 8; i++)
+        {
+            outputColour.add(0);
+        }
         real = true;
     }
     
@@ -85,7 +94,7 @@ public class Stacker extends WideMachines
                 }
             }
 
-            if(outputShape != null && grabbedShape1 && grabbedShape2)
+            if(grabbedShape1 && grabbedShape2)
             {
                 spawnShape();
             }
@@ -112,7 +121,7 @@ public class Stacker extends WideMachines
         {
             FollowPoint tempPoint = getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).get(0);
             shapeID1 = tempPoint.getShape();
-            if((shapeID1[4] != -1 || shapeID1[5] != -1 || shapeID1[6] != -1 || shapeID1[7] != -1))
+            if((shapeID1.get(4) != -1 || shapeID1.get(5) != -1 || shapeID1.get(6) != -1 || shapeID1.get(7) != -1))
             {
                 shapeID1 = null;
             } else {
@@ -128,7 +137,7 @@ public class Stacker extends WideMachines
         {
             FollowPoint tempPoint = getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).get(0);
             shapeID2 = tempPoint.getShape();
-            if((shapeID2[4] != -1 || shapeID2[5] != -1 || shapeID2[6] != -1 || shapeID2[7] != -1))
+            if((shapeID2.get(4) != -1 || shapeID2.get(5) != -1 || shapeID2.get(6) != -1 || shapeID2.get(7) != -1))
             {
                 shapeID2 = null;
             } else {
@@ -144,13 +153,19 @@ public class Stacker extends WideMachines
         {
             for(int i = 0; i < 4; i++)
             {
-                outputShape[i] = shapeID1[i];
-                outputColour[i] = colourID1[i];
+                outputShape.set(i, shapeID1.get(i));
+                outputColour.set(i, colourID1.get(i));
             }
             for(int i = 4; i < 8;  i++)
             {
-                outputShape[i] = shapeID2[i - 4];
-                outputColour[i] = colourID2[i -4];
+                if(outputShape.get(i - 4) == -1)
+                {
+                    outputShape.set(i - 4, shapeID2.get(i -4));
+                    outputColour.set(i, colourID2.get(i - 4));
+                } else {
+                    outputShape.set(i, shapeID2.get(i - 4));
+                    outputColour.set(i, colourID2.get(i - 4));
+                }
             }
             occupied = true;
         }
@@ -165,8 +180,16 @@ public class Stacker extends WideMachines
             shapeID2 = null;
             colourID1 = null;
             colourID2 = null;
-            outputShape = new int[8]; 
-            outputColour = new int[8];
+            outputShape.clear();
+            outputColour.clear();
+            for(int i = 0; i < 8; i++)
+            {
+                outputShape.add(0);
+            }
+            for(int i = 0; i < 8; i++)
+            {
+                outputColour.add(0);
+            }
             grabbedShape1 = false;
             grabbedShape2 = false;
             timer.mark();
