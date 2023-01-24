@@ -43,15 +43,17 @@ public abstract class Machines extends Actor
                         block = new ghostBlock(image, xSize);
                         getWorld().addObject(block, (gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2) - 20);
                     }
-                    
-                    if(gridPositionX != block.getXCoord() || gridPositionY != block.getYCoord())
+                    if(block != null)
                     {
-                        for(Arrows arrow : getWorld().getObjects(Arrows.class))
+                        if(gridPositionX != block.getXCoord() || gridPositionY != block.getYCoord())
                         {
-                            getWorld().removeObject(arrow);
+                            for(Arrows arrow : getWorld().getObjects(Arrows.class))
+                            {
+                                getWorld().removeObject(arrow);
+                            }
+                            getWorld().removeObject(block);
+                            getWorld().addObject(block, (gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2) - 20);
                         }
-                        getWorld().removeObject(block);
-                        getWorld().addObject(block, (gridPositionX * Utils.gridSize) + 220, (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2) - 20);
                     }
                 } else {
                     if(getWorld().getObjects(ghostBlock.class).isEmpty() == true)
