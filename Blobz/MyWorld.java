@@ -78,21 +78,21 @@ public class MyWorld extends World
         getBackground().setFont(comicFontMid);
         getBackground().setColor(Color.GRAY);
 
-        Button.drawCenteredText (getBackground(), "belt", width / 2, (int) ((height / 9) * 1 - offset));       
+        Button.drawCenteredText (getBackground(), "belt (1)", width / 2, (int) ((height / 9) * 1 - offset));       
         addObject(new Belts(true), width / 2, (int) ((height / 9) * 1)); // tool 1:
-        Button.drawCenteredText (getBackground(), "cutter", width / 2, (int) ((height / 9) * 2 - offset));       
+        Button.drawCenteredText (getBackground(), "cutter (2)", width / 2, (int) ((height / 9) * 2 - offset));       
         addObject(new Cutter(true), width / 2, (int) ((height / 9) * 2)); // tool 2:
-        Button.drawCenteredText (getBackground(), "extractor", width / 2, (int) ((height / 9) * 3 - offset)); 
+        Button.drawCenteredText (getBackground(), "extractor (3)", width / 2, (int) ((height / 9) * 3 - offset)); 
         addObject(new Extractor(true), width / 2, (int) ((height / 9) * 3)); // tool 3:
-        Button.drawCenteredText (getBackground(), "balancer", width / 2, (int) ((height / 9) * 4 - offset)); 
+        Button.drawCenteredText (getBackground(), "balancer (4)", width / 2, (int) ((height / 9) * 4 - offset)); 
         addObject(new Balancer(true), width / 2, (int) ((height / 9) * 4)); // tool 5:
-        Button.drawCenteredText (getBackground(), "rotate cw", width / 2, (int) ((height / 9) * 5 - offset)); 
+        Button.drawCenteredText (getBackground(), "rotate cw (5)", width / 2, (int) ((height / 9) * 5 - offset)); 
         addObject(new RotateRight(true), width / 2, (int) ((height / 9) * 5)); // tool 6:
-        Button.drawCenteredText (getBackground(), "rotate ccw", width / 2, (int) ((height / 9) * 6 - offset)); 
+        Button.drawCenteredText (getBackground(), "rotate ccw (6)", width / 2, (int) ((height / 9) * 6 - offset)); 
         addObject(new RotateLeft(true), width / 2, (int) ((height / 9) * 6)); // tool 7:
-        Button.drawCenteredText (getBackground(), "painter", width / 2, (int) ((height / 9) * 7 - offset)); 
+        Button.drawCenteredText (getBackground(), "painter (7)", width / 2, (int) ((height / 9) * 7 - offset)); 
         addObject(new Painter(true), width / 2, (int) ((height / 9) * 7)); // tool 8:
-        Button.drawCenteredText (getBackground(), "stacker", width / 2, (int) ((height / 9) * 8 - offset)); 
+        Button.drawCenteredText (getBackground(), "stacker (8)", width / 2, (int) ((height / 9) * 8 - offset)); 
         addObject(new Stacker(true), width / 2, (int) ((height / 9) * 8)); // tool 9:
 
         //Button.drawCenteredText (getBackground(), "money: ", width / 2, (int) ((height / 9) * 1 - offset));  
@@ -122,12 +122,35 @@ public class MyWorld extends World
         Button.drawCenteredText (getBackground(), "extraction speed", 1200 - width / 2, (int) ((height / 5) * 4 - rightLabelOffset)); 
         addObject(new UpgradeButton("extract"), 1200 - width / 2, (int) ((height / 5) * 4) + rightButtonOffset); 
 
-        addObject(new Deposits("red"), 220, 20);
-        addObject(new Deposits("blue"), 40 + 220, 20);
-        addObject(new Deposits("yellow"), 2 * 40 + 220, 20);
-        addObject(new Deposits("circle"), 220, 60);
-        addObject(new Deposits("square"), 40 + 220, 60);
-        addObject(new Deposits("blue"), 2 * 40 + 220, 60);
+        
+        addObject(new Deposits("circle"), 0 * 40 + 220, 0 * 40 + 20);
+        addObject(new Deposits("square"), 1 *40 + 220, 0 * 40 + 20);
+        addObject(new Deposits("star"), 2 * 40 + 220, 0 * 40 + 20);
+        addObject(new Deposits("red"), 3 * 40 + 220, 0 * 40 + 20);
+        addObject(new Deposits("blue"), 4 * 40 + 220, 0 * 40 + 20);
+        addObject(new Deposits("yellow"),5 * 40 + 220, 0 * 40 + 20);
+        
+        addObject(new Deposits("circle"), 14 * 40 + 220, 0 * 40 + 20);
+        addObject(new Deposits("square"), 15 *40 + 220, 0 * 40 + 20);
+        addObject(new Deposits("star"), 16 * 40 + 220, 0 * 40 + 20);
+        addObject(new Deposits("red"), 17 * 40 + 220, 0 * 40 + 20);
+        addObject(new Deposits("blue"), 18 * 40 + 220, 0 * 40 + 20);
+        addObject(new Deposits("yellow"),19 * 40 + 220, 0 * 40 + 20);
+        
+        addObject(new Deposits("circle"), 0 * 40 + 220, 19 * 40 + 20);
+        addObject(new Deposits("square"), 1 *40 + 220, 19 * 40 + 20);
+        addObject(new Deposits("star"), 2 * 40 + 220, 19 * 40 + 20);
+        addObject(new Deposits("red"), 3 * 40 + 220, 19 * 40 + 20);
+        addObject(new Deposits("blue"), 4 * 40 + 220, 19 * 40 + 20);
+        addObject(new Deposits("yellow"),5 * 40 + 220, 19 * 40 + 20);
+        
+        addObject(new Deposits("circle"), 14 * 40 + 220, 19 * 40 + 20);
+        addObject(new Deposits("square"), 15 *40 + 220, 19 * 40 + 20);
+        addObject(new Deposits("star"), 16 * 40 + 220, 19 * 40 + 20);
+        addObject(new Deposits("red"), 17 * 40 + 220, 19 * 40 + 20);
+        addObject(new Deposits("blue"), 18 * 40 + 220, 19 * 40 + 20);
+        addObject(new Deposits("yellow"),19 * 40 + 220, 19 * 40 + 20);
+        
     }
 
     public void delete()
