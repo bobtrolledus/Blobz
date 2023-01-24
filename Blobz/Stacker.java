@@ -11,8 +11,8 @@ public class Stacker extends WideMachines
 {
     private int spawnX1Coord, spawnY1Coord, inputX1Coord, inputX2Coord, inputY1Coord, inputY2Coord;
     private ArrayList<Integer> shapeID1, shapeID2, colourID1, colourID2;
-    private ArrayList<Integer> outputShape = new ArrayList<Integer>();
-    private ArrayList<Integer> outputColour = new ArrayList<Integer>();
+    private ArrayList<Integer> outputShape = new ArrayList<Integer>(8);
+    private ArrayList<Integer> outputColour = new ArrayList<Integer>(8);
     private boolean grabbedShape1, grabbedShape2;
     public Stacker()
     {
@@ -107,7 +107,7 @@ public class Stacker extends WideMachines
     
     public boolean checkDeselectKey()
     {
-        if(Greenfoot.isKeyDown("escape") || Greenfoot.isKeyDown("1") || Greenfoot.isKeyDown("2") || Greenfoot.isKeyDown("3") || Greenfoot.isKeyDown("4") || Greenfoot.isKeyDown("5") || Greenfoot.isKeyDown("6") || Greenfoot.isKeyDown("7"))
+        if(Greenfoot.isKeyDown("escape") || Greenfoot.isKeyDown("1") || Greenfoot.isKeyDown("2") || Greenfoot.isKeyDown("3") || Greenfoot.isKeyDown("4") || Greenfoot.isKeyDown("5") || Greenfoot.isKeyDown("6") || Greenfoot.isKeyDown("7") || Greenfoot.isKeyDown("9"))
         {
             return true;
         } else {
@@ -158,8 +158,14 @@ public class Stacker extends WideMachines
             }
             for(int i = 4; i < 8;  i++)
             {
-                outputShape.set(i, shapeID2.get(i - 4));
-                outputColour.set(i, colourID2.get(i - 4));
+                if(outputShape.get(i - 4) == -1)
+                {
+                    outputShape.set(i - 4, shapeID2.get(i -4));
+                    outputColour.set(i, colourID2.get(i - 4));
+                } else {
+                    outputShape.set(i, shapeID2.get(i - 4));
+                    outputColour.set(i, colourID2.get(i - 4));
+                }
             }
             occupied = true;
         }

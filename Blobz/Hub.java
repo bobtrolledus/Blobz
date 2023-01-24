@@ -4,14 +4,17 @@ import java.util.Arrays;
 /**
  * Write a description of class Hub here.
  *
- * @author Anson/Eric
+ * @author Anson/Eric/Andy
  * @version (a version number or a date)
  */
 public class Hub extends Machines
 {
     private ArrayList<Integer> outputShape = new ArrayList<Integer>();
     private ArrayList<Integer> outputColour = new ArrayList<Integer>();
-    
+    /**
+     * Act - do whatever the Hub wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public Hub()
     {
         setImage("images/hub.png");
@@ -70,12 +73,12 @@ public class Hub extends Machines
     
     public void updateImage()
     {
-        if(Arrays.asList(Utils.getTargetShape()) != outputShape)
+        if(!Arrays.asList(Utils.getTargetShape()).equals(outputShape))
         {
             setTargetShape();
             FollowPoint tempPoint = getWorld().getObjectsAt(600, 420, FollowPoint.class).get(0);
             getWorld().removeObject(tempPoint);
-            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, 2), 600, 420);
+            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, true), 600, 420);
         }
     }
     
@@ -83,6 +86,6 @@ public class Hub extends Machines
     {
         setTargetShape();
         fillGrid();
-        getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, 2), 600, 420);
+        getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, true), 600, 420);
     }
 }

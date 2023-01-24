@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class StartScreen extends World
 {
     private GreenfootImage background;
-    private boolean clicked = false;
+    private boolean clickedPlay = false, clickLoadgame = false;
     private boolean hover = false;
     private Font comicFontLarge = new Font ("Comic Sans MS", true, false, 77);
     
@@ -18,28 +18,29 @@ public class StartScreen extends World
         super(1200, 800, 1);
         addObject(new Utils(), 0, 0);
         
-        background = new GreenfootImage("start_screen.png");
+        background = new GreenfootImage("startscreen.png");
+        background.scale(1200, 800);
         setBackground(background);
         
-        background.setFont(comicFontLarge);
-        background.setColor(Color.GRAY.darker());
-        Button.drawCenteredText (background, "blobz", 600, 171);
         
-        addObject(new StartButton(455, 80, "click or press enter to start", 30), background.getWidth()/2, background.getHeight()*5/7);
+        addObject(new StartButton(455, 80, "Play Game (Enter)", 30), background.getWidth()/2, background.getHeight()*5/8);
+        addObject(new StartButton(455, 80, "Load game", 30), background.getWidth()/2, background.getHeight()*5/8 + 120);
     }
 
     public void act() {
         checkMouse();
-        
-        if (clicked || Greenfoot.isKeyDown("enter")) {
+        if (clickedPlay || Greenfoot.isKeyDown("enter")) {
             Greenfoot.setWorld(new InstructionsMenu());
+        } else if(clickLoadgame)
+        {
+            Greenfoot.setWorld(new MyWorld());
         }
     }
     
     public void checkMouse() {
-        ArrayList<StartButton> button = (ArrayList<StartButton>)getObjects(StartButton.class);
-        for (StartButton b : button) {
-            clicked = b.getClicked();
-        }
+        StartButton playButton = (StartButton) getObjectsAt(background.getWidth()/2, background.getHeight()*5/8, StartButton.class).get(0);
+        clickedPlay = playButton.getClicked();
+        StartButton loadButton = (StartButton) getObjectsAt(background.getWidth()/2, background.getHeight()*5/8 + 120, StartButton.class).get(0);
+        clickLoadgame = loadButton.getClicked();
     }
 }
