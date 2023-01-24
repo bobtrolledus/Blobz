@@ -14,6 +14,8 @@ public abstract class Machines extends Actor
     public int direction, lastRotation; 
     public Shapes shape;
     public SimpleTimer timer = new SimpleTimer();
+    public ArrayList<Integer> outputShape = new ArrayList<Integer>(8);
+    public ArrayList<Integer> outputColour = new ArrayList<Integer>(8);
 
     public void followMouse(int xSize)
     {

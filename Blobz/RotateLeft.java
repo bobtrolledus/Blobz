@@ -13,8 +13,7 @@ public class RotateLeft extends NarrowMachines
     private boolean occupied = false, grabbedShape = false;
     private int direction;
     private int inputXCoord, inputYCoord, spawnXCoord, spawnYCoord;
-    private ArrayList<Integer> outputShape = new ArrayList<Integer>(8);
-    private ArrayList<Integer> outputColour = new ArrayList<Integer>(8);
+
     public RotateLeft()
     {
         setImage("images/Machines/rotateLeft.png");

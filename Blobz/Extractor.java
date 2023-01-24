@@ -10,13 +10,9 @@ import java.util.Arrays;
 public class Extractor extends NarrowMachines
 {
     private int spawnXCoord, spawnYCoord;
-    
     private int[] corners = {3, -1, 2, -1, 2, 1, 3, 1};
     private int[] colours = {1, -1, 2, -1, 2, 1, 4, 2};
-    
     private int colour;
-    private ArrayList<Integer> shapeID;
-    private ArrayList<Integer> colourID;
     private boolean isColour;
     private FollowPoint point;
     
@@ -89,7 +85,7 @@ public class Extractor extends NarrowMachines
                 getShape();
             }
             
-            if(shapeID != null || colour != -1)
+            if(outputShape != null || colour != -1)
             {
                 spawnShape();
             }
@@ -130,8 +126,8 @@ public class Extractor extends NarrowMachines
             else if (!temp.isColourDeposit())
             {
                 isColour = false;
-                shapeID = temp.getDepositShape();
-                colourID = temp.getDepositShapeColour();
+                outputShape = temp.getDepositShape();
+                outputColour = temp.getDepositShapeColour();
             }  
         }
         occupied = true;
@@ -150,10 +146,10 @@ public class Extractor extends NarrowMachines
             }
             if(!isColour)
             {
-                getWorld().addObject(new ShapeGenerator(shapeID, colourID, direction, -1), spawnXCoord, spawnYCoord);
+                getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1), spawnXCoord, spawnYCoord);
                 timer.mark();
             }
-            shapeID = null;
+            outputShape = null;
             colour = -1;
             occupied = false;
         }

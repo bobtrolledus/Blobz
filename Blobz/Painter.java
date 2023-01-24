@@ -12,8 +12,6 @@ public class Painter extends WideMachines
     private int spawnX1Coord, spawnY1Coord, inputX1Coord, inputY1Coord, inputX2Coord, inputY2Coord;
     private int colour;
     private boolean grabbedShape, grabbedColour;
-    private ArrayList<Integer> outputShape;
-    private ArrayList<Integer> outputColour;
     public Painter()
     {
         setImage("images/Machines/painter.png");

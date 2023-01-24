@@ -11,8 +11,6 @@ public class Balancer extends WideMachines
 {
     private boolean outputSide = false, inputSide = false, isRawColour;
     private int spawnX1Coord, spawnY1Coord, spawnX2Coord, spawnY2Coord, inputXCoord, inputYCoord, colour;
-    private ArrayList<Integer> outputShape;
-    private ArrayList<Integer> outputColour;
     public Balancer()
     {
         setImage("images/Machines/balancer.png");
