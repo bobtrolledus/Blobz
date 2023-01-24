@@ -90,7 +90,7 @@ public class ghostBlock extends UtilsBlocks
     
     public void updateRotationImage()
     {
-        if(Utils.getDirection() != lastRotation)
+        if(Utils.getDirection() != lastRotation && Utils.getMouse() != null)
         {
             if(Utils.getMouseX() > 200 && Utils.getMouseX() < 1000)
             {
