@@ -19,9 +19,9 @@ public class Square extends Shapes
         orange = new GreenfootImage("Shapes/Square/orange.png");
         purple = new GreenfootImage("Shapes/Square/purple.png");
         green = new GreenfootImage("Shapes/Square/green.png");
-        
-        getImage().scale(scale, scale);
+
         setColour(colour);
+        getImage().scale(scale, scale);
         setRotation(q);
     }
 }

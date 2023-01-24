@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Shapes
-comment0.text=\n\ Write\ a\ description\ of\ class\ Shapes\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=q\ guide\ layer\ colour
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Shapes\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=q\ guide\ colour\ scale
 comment1.target=Shapes(int,\ FollowPoint,\ int,\ int)
 comment2.params=
 comment2.target=void\ act()
@@ -9,8 +9,6 @@ comment3.params=q
 comment3.target=void\ setRotation(int)
 comment4.params=
 comment4.target=void\ move()
-comment5.params=
-comment5.target=void\ layerScale()
-comment6.params=colour
-comment6.target=void\ setColour(int)
-numComments=7
+comment5.params=colour
+comment5.target=void\ setColour(int)
+numComments=6

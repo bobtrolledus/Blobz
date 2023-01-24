@@ -48,15 +48,15 @@ public class ShapeGenerator extends Resources
                     }
                 } else if (label == 1){
                     if (quadrant < 5){
-                        scale = 5;
+                        scale = 17;
                     } else {
-                        scale = 3;
+                        scale = 13;
                     }
                 } else if (label == 2){
                     if (quadrant < 5){
-                        scale = 5;
+                        scale = 21;
                     } else {
-                        scale = 5;
+                        scale = 17;
                     }
                 }
                 

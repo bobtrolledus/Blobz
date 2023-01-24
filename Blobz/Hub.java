@@ -78,7 +78,7 @@ public class Hub extends Machines
             setTargetShape();
             FollowPoint tempPoint = getWorld().getObjectsAt(600, 420, FollowPoint.class).get(0);
             getWorld().removeObject(tempPoint);
-            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, true), 600, 420);
+            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, 2), 600, 420);
         }
     }
     
@@ -86,6 +86,6 @@ public class Hub extends Machines
     {
         setTargetShape();
         fillGrid();
-        getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, true), 600, 420);
+        getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, 2), 600, 420);
     }
 }
