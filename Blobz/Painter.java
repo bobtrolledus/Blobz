@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * Write a description of class Painter here.
@@ -11,6 +12,8 @@ public class Painter extends WideMachines
     private int spawnX1Coord, spawnY1Coord, inputX1Coord, inputY1Coord, inputX2Coord, inputY2Coord;
     private int colour;
     private boolean grabbedShape, grabbedColour;
+    private ArrayList<Integer> outputShape;
+    private ArrayList<Integer> outputColour;
     public Painter()
     {
         setImage("images/Machines/painter.png");
@@ -88,7 +91,7 @@ public class Painter extends WideMachines
                 }
             }
 
-            if(outputShape != null && grabbedShape && grabbedColour)
+            if(grabbedShape && grabbedColour)
             {
                 spawnShape();
             }
@@ -139,15 +142,15 @@ public class Painter extends WideMachines
             {
                 FollowPoint tempPoint = getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).get(0);
                 colour = tempPoint.getRawColour();
-                for(int i = 0; i < outputColour.length; i++)
+                for(int i = 0; i < outputColour.size(); i++)
                 {
-                    if(outputColour[i] == -1)
+                    if(outputColour.get(i) == -1)
                     {
-                        outputColour[i] = colour;
+                        outputColour.set(i, colour);
                     }
-                    else if(outputColour[i] != colour && (outputColour[i] != 3 && outputColour[i] != 5 && outputColour[i] != 6))
+                    else if(outputColour.get(i) != colour && (outputColour.get(i) != 3 && outputColour.get(i) != 5 && outputColour.get(i) != 6))
                     {
-                        outputColour[i] += colour;
+                        outputColour.set(i, outputColour.get(i) + colour);
                     }
                 }
                 grabbedColour = true;

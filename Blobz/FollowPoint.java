@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * Write a description of class FollowPoint here.
@@ -10,8 +11,8 @@ public class FollowPoint extends UtilsBlocks
 {
     private int dir = 0, x, y, colour;
     private RotationPoint rotation;
-    private int[] shapeID = new int[8];
-    private int[] shapeColour = new int[8];
+    private ArrayList<Integer> shapeID = new ArrayList<Integer>(8);
+    private ArrayList<Integer> shapeColour = new ArrayList<Integer>(8);
     private Belts belt;
     private Boolean stopped = false;
     private Shapes nearbyShape;
@@ -23,6 +24,14 @@ public class FollowPoint extends UtilsBlocks
         getImage().scale(1, 1);
         this.dir = dir;
         this.isLabel = isLabel;
+        for(int i = 0; i < 8; i++)
+        {
+            shapeID.add(0);
+        }
+        for(int i = 0; i < 8; i++)
+        {
+            shapeColour.add(0);
+        }
     }
     
     public void act() {
@@ -41,7 +50,7 @@ public class FollowPoint extends UtilsBlocks
                 break;
             case 1:
                 x--;
-                if(shapeID[2] == -1 && shapeID[3] == -1 && shapeID[6] == -1 && shapeID[7] == -1){
+                if(shapeID.get(2) == -1 && shapeID.get(3) == -1 && shapeID.get(6) == -1 && shapeID.get(7) == -1){
                     nearbyShape = (Shapes) getOneObjectAtOffset(-3, 0, Shapes.class);
                     nearbyMachine = (Machines) getOneObjectAtOffset(-3, 0, Machines.class);
                 } else {
@@ -56,7 +65,7 @@ public class FollowPoint extends UtilsBlocks
                 break;
             case 3:
                 x++;
-                if(shapeID[0] == -1 && shapeID[1] == -1 && shapeID[4] == -1 && shapeID[5] == -1){
+                if(shapeID.get(0) == -1 && shapeID.get(1) == -1 && shapeID.get(4) == -1 && shapeID.get(5) == -1){
                     nearbyShape = (Shapes) getOneObjectAtOffset(3, 0, Shapes.class);
                     nearbyMachine = (Machines) getOneObjectAtOffset(3, 0, Machines.class);
                 } else {
@@ -79,12 +88,12 @@ public class FollowPoint extends UtilsBlocks
     
     public void setID(int index, int shapeNum)
     {
-        shapeID[index] = shapeNum;
+        shapeID.set(index, shapeNum);
     }
     
     public void setColour(int index, int colourNum)
     {
-        shapeColour[index] = colourNum;
+        shapeColour.set(index, colourNum);
     }
     
     public void setRawColour(int colour)
@@ -92,12 +101,12 @@ public class FollowPoint extends UtilsBlocks
         this.colour = colour;
     }
     
-    public int[] getColour()
+    public ArrayList<Integer> getColour()
     {
         return shapeColour;
     }
     
-    public int[] getShape()
+    public ArrayList<Integer> getShape()
     {
         return shapeID;
     }

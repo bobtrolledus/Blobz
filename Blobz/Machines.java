@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.ArrayList;
 /**
  * Write a description of class Machines here.
  * 
@@ -12,8 +12,6 @@ public abstract class Machines extends Actor
     public boolean spawner = false, real = false, updatedImage = false, occupied = false, spawned = false, lastMirror = false;
     public int gridPositionX, gridPositionY;  
     public int direction, lastRotation; 
-    public int[] outputShape;
-    public int[] outputColour;
     public Shapes shape;
     public SimpleTimer timer = new SimpleTimer();
 
@@ -71,9 +69,9 @@ public abstract class Machines extends Actor
                         getWorld().removeObject(block);
                         getWorld().addObject(block, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
                     }
+                    block.setXGridCoord(gridPositionX);
+                    block.setYGridCoord(gridPositionY);
                 }
-                block.setXGridCoord(gridPositionX);
-                block.setYGridCoord(gridPositionY);
             }
             if(Utils.getMirrored() != lastMirror && xSize > 1 && block != null)
             {
@@ -143,9 +141,9 @@ public abstract class Machines extends Actor
                         }
                     } else {
                         try{ 
-                        Machines temp = (Machines) cls.newInstance();
-                        getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
-                        Utils.fillSpaceMachine(gridPositionY, gridPositionX, temp);
+                            Machines temp = (Machines) cls.newInstance();
+                            getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
+                            Utils.fillSpaceMachine(gridPositionY, gridPositionX, temp);
                         }
                             catch(Exception e){
                         }

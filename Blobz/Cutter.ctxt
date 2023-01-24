@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Cutter
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Cutter\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Cutter\ here.\r\n\ \r\n\ @author\ Anson\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Cutter()
 comment2.params=spawner

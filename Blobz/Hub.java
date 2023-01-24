@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 import java.util.Arrays;
 /**
  * Write a description of class Hub here.
@@ -8,8 +9,8 @@ import java.util.Arrays;
  */
 public class Hub extends Machines
 {
-    private int[] outputShape = new int[8];
-    private int[] outputColour = new int[8];
+    private ArrayList<Integer> outputShape;
+    private ArrayList<Integer> outputColour;
     /**
      * Act - do whatever the Hub wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -30,7 +31,7 @@ public class Hub extends Machines
     {
         for(FollowPoint point : getIntersectingObjects(FollowPoint.class))
         {
-            if(Arrays.equals(point.getShape(), Utils.getTargetShape()))
+            if(point.getShape().equals(Utils.getTargetShape()))
             {
                 if(!point.checkIfLabel())
                 {
@@ -66,13 +67,13 @@ public class Hub extends Machines
     
     public void setTargetShape()
     {
-        outputShape = Utils.getTargetShape();
-        outputColour = Utils.getTargetShapeColour();
+        outputShape = new ArrayList<Integer>(Arrays.asList(Utils.getTargetShape()));
+        outputColour = new ArrayList<Integer>(Arrays.asList(Utils.getTargetShapeColour()));
     }
     
     public void updateImage()
     {
-        if(Utils.getTargetShape() != outputShape)
+        if(Arrays.asList(Utils.getTargetShape()) != outputShape)
         {
             setTargetShape();
             FollowPoint tempPoint = getWorld().getObjectsAt(600, 420, FollowPoint.class).get(0);

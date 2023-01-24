@@ -42,7 +42,7 @@ public class Utils extends Actor
     private static String key;
     private static ArrayList<Integer> list;
     private static boolean mirrored;
-    public static int[][][] targetShapes = {
+    public static Integer[][][] targetShapes = {
         {
             {1, 1, 1, 1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1, -1}
@@ -168,12 +168,12 @@ public class Utils extends Actor
         return totalTargetShapes;
     }
     
-    public static int[] getTargetShape()
+    public static Integer[] getTargetShape()
     {
         return targetShapes[level][0];
     }
     
-    public static int[] getTargetShapeColour()
+    public static Integer[] getTargetShapeColour()
     {
         return targetShapes[level][1];
     }

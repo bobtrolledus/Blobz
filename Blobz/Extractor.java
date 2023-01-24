@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.ArrayList;
+import java.util.Arrays;
 /**
  * Write a description of class Extractor here.
  * 
@@ -14,8 +15,8 @@ public class Extractor extends NarrowMachines
     private int[] colours = {1, -1, 2, -1, 2, 1, 4, 2};
     
     private int colour;
-    private int[] shapeID;
-    private int[] colourID;
+    private ArrayList<Integer> shapeID;
+    private ArrayList<Integer> colourID;
     private boolean isColour;
     private FollowPoint point;
     
@@ -144,7 +145,7 @@ public class Extractor extends NarrowMachines
             }
             if(!isColour)
             {
-                getWorld().addObject(new ShapeGenerator(corners, colours, direction, false), spawnXCoord, spawnYCoord);
+                getWorld().addObject(new ShapeGenerator(shapeID, colourID, direction, false), spawnXCoord, spawnYCoord);
                 timer.mark();
             }
             shapeID = null;
@@ -162,7 +163,7 @@ public class Extractor extends NarrowMachines
             {
                 case 0:
                     spawnXCoord = getX();
-                    spawnYCoord = getY() + 21;
+                    spawnYCoord = getY() + 20;
                     direction = 0;
                     setRotation(180);
                     break;
@@ -174,7 +175,7 @@ public class Extractor extends NarrowMachines
                     break;
                 case 2:
                     spawnXCoord = getX();
-                    spawnYCoord = getY() - 21;
+                    spawnYCoord = getY() - 20;
                     direction = 2;
                     setRotation(0);
                     break;
