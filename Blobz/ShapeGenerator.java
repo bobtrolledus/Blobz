@@ -10,53 +10,66 @@ import java.util.List;
  */
 public class ShapeGenerator extends Resources
 {
-    private int x = 0, y = 0, quadrant = 1, spawnX, spawnY, dir, layer = 1;
+    private int x = 0, y = 0, quadrant = 1, spawnX, spawnY, dir, scale, label;
     private Integer[] corners = new Integer[8];
     private Integer[] colours = new Integer[8];
     private int rawColour;
     private FollowPoint point;
-    private boolean isLabel, spawnColour;
+    private boolean spawnColour;
     
-    public ShapeGenerator (ArrayList<Integer> values, ArrayList<Integer> colour, int dir, boolean label){
+    public ShapeGenerator (ArrayList<Integer> values, ArrayList<Integer> colour, int dir, int label){
         corners = new Integer[values.size()];
         corners = values.toArray(corners);
         colours = new Integer[colour.size()];
         colours = colour.toArray(colours);
         this.dir = dir;
-        isLabel = label;
+        this.label = label;
         spawnColour = false;
     }
     
-    public ShapeGenerator (int colour, int dir, boolean label){
+    public ShapeGenerator (int colour, int dir, int label){
         rawColour = colour;
         this.dir = dir;
-        isLabel = label;
+        this.label = label;
         spawnColour = true;
     }
     
     public void act(){
         spawnPoint();
+        
         if(!spawnColour)
         {
             for(int i = 0; i < corners.length; i++){
-                if(isLabel && quadrant > 4){
-                    quadrant = 1;
-                    layer = 3;
-                } else if(quadrant > 4){
-                    quadrant = 1;
-                    layer = 2;
+                if (label == -1){
+                    if (quadrant < 5){
+                        scale = 19;
+                    } else {
+                        scale = 15;
+                    }
+                } else if (label == 1){
+                    if (quadrant < 5){
+                        scale = 5;
+                    } else {
+                        scale = 3;
+                    }
+                } else if (label == 2){
+                    if (quadrant < 5){
+                        scale = 5;
+                    } else {
+                        scale = 5;
+                    }
                 }
                 
-                if(i == 0 || i == 1 || i == 4 || i == 5){
-                    x = getX() + (this.getImage().getWidth() / 2) - 1;
+                if(quadrant == 1 || quadrant == 2 || quadrant == 5 || quadrant == 6){
+                    x = point.getX() + (this.getImage().getWidth() / 2) - 1;
                 } else {
-                    x = getX() - (this.getImage().getWidth() / 2) + 1;
+                    x = point.getX() - (this.getImage().getWidth() / 2) + 1;
                 }
                 
-                if(i == 0 || i == 3 || i == 4 || i == 7){
-                    y = getY() - (this.getImage().getHeight() / 2) + 1;
+                if(quadrant == 1 || quadrant == 4 || quadrant == 5 || i == 8){
+                    y = point.getY() - (this.getImage().getHeight() / 2) + 1;
                 } else {
-                    y = getY() + (this.getImage().getHeight() / 2) - 1;
+                    y = point.getY() + (this.getImage().getHeight() / 2) - 1;
                 }
                 
                 switch(corners[i]){
@@ -64,15 +77,15 @@ public class ShapeGenerator extends Resources
                         point.setID(i, -1);
                         break;
                     case 1:
-                        getWorld().addObject(new Circle(quadrant, point, layer, colours[i]), x, y);
+                        getWorld().addObject(new Circle(quadrant, point, colours[i], scale), x, y);
                         point.setID(i, 1);
                         break;
                     case 2:
-                        getWorld().addObject(new Square(quadrant, point, layer, colours[i]), x, y);
+                        getWorld().addObject(new Square(quadrant, point, colours[i], scale), x, y);
                         point.setID(i, 2);
                         break;
                     case 3:
-                        getWorld().addObject(new Star(quadrant, point, layer, colours[i]), x, y);
+                        getWorld().addObject(new Star(quadrant, point, colours[i], scale), x, y);
                         point.setID(i, 3);
                         break;
                 }
@@ -80,19 +93,20 @@ public class ShapeGenerator extends Resources
                 quadrant++;
             }
         }
+        
         if(spawnColour)
         {
             switch (rawColour){
                 case (1):
-                    getWorld().addObject(new Red(isLabel, point), x, y);
+                    getWorld().addObject(new Red(label, point), x, y);
                     point.setRawColour(1);
                     break;
                 case (2):
-                    getWorld().addObject(new Yellow(isLabel, point), x, y);
+                    getWorld().addObject(new Yellow(label, point), x, y);
                     point.setRawColour(2);
                     break;
                 case (4):
-                    getWorld().addObject(new Blue(isLabel, point), x, y);
+                    getWorld().addObject(new Blue(label, point), x, y);
                     point.setRawColour(4);
                     break;
             }
@@ -102,10 +116,10 @@ public class ShapeGenerator extends Resources
     }
     
     public void spawnPoint(){
-        if(isLabel){
-            point = new FollowPoint(dir, true);
-        } else {
+        if(label == -1){
             point = new FollowPoint(dir, false);
+        } else {
+            point = new FollowPoint(dir, true);
         }
 
         getWorld().addObject(point, this.getX(), this.getY());

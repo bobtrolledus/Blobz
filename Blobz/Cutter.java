@@ -187,8 +187,8 @@ public class Cutter extends WideMachines
             cutColour2.set(1, outputColour.get(1));
             cutColour2.set(4, outputColour.get(4));
             cutColour2.set(5, outputColour.get(5));
-            getWorld().addObject(new ShapeGenerator(cut1, cutColour1, direction, false), spawnX1Coord, spawnY1Coord);
-            getWorld().addObject(new ShapeGenerator(cut2, cutColour2, direction, false), spawnX2Coord, spawnY2Coord);
+            getWorld().addObject(new ShapeGenerator(cut1, cutColour1, direction, -1), spawnX1Coord, spawnY1Coord);
+            getWorld().addObject(new ShapeGenerator(cut2, cutColour2, direction, -1), spawnX2Coord, spawnY2Coord);
             outputShape.clear();
             outputColour.clear();
             cut1.clear();

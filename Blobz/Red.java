@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Red extends Colours
 {
-    public Red(boolean isLabel, FollowPoint guide){
-        super(isLabel, guide);
+    public Red(int label, FollowPoint guide){
+        super(label, guide);
         colour = 1;
     }
 }

@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Circle extends Shapes
 {   
-    public Circle (int q, FollowPoint guide, int layer, int colour){
-        super(q, guide, layer, colour);
+    public Circle (int q, FollowPoint guide, int colour, int scale){
+        super(q, guide, colour, scale);
         
         setImage("Shapes/Circle/grey.png");
         
@@ -20,8 +20,8 @@ public class Circle extends Shapes
         purple = new GreenfootImage("Shapes/Circle/purple.png");
         green = new GreenfootImage("Shapes/Circle/green.png");
         
+        getImage().scale(scale, scale);
         setColour(colour);
-        layerScale();
         setRotation(q);
     }
 }
