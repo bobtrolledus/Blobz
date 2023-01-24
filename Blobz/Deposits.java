@@ -28,7 +28,7 @@ public class Deposits extends Resources
         
         setTarget(circle, 1);
         setTarget(circle, -1);
-        setTarget(square, 1);
+        setTarget(square, 2);
         setTarget(square, -1);
         setTarget(star, 3);
         setTarget(star, -1);
@@ -39,30 +39,30 @@ public class Deposits extends Resources
     public void act(){
         if (!isLabeled){
             if (deposit.equals("circle")){
-                getWorld().addObject(new ShapeGenerator(circle, grey, 0, true), getX(), getY());
+                getWorld().addObject(new ShapeGenerator(circle, grey, 0, 1), getX(), getY());
                 shapeID = circle;
                 colourID = grey;
                 colourDeposit = false;
             } else if (deposit.equals("square")){
-                getWorld().addObject(new ShapeGenerator(square, grey, 0, true), getX(), getY());
+                getWorld().addObject(new ShapeGenerator(square, grey, 0, 1), getX(), getY());
                 shapeID = square;
                 colourID = grey;
                 colourDeposit = false;
             } else if (deposit.equals("star")){
-                getWorld().addObject(new ShapeGenerator(star, grey, 0, true), getX(), getY());
+                getWorld().addObject(new ShapeGenerator(star, grey, 0, 1), getX(), getY());
                 shapeID = star;
                 colourID = grey;
                 colourDeposit = false;
             } else if (deposit.equals("red")){
-                getWorld().addObject(new Red(true, point), getX(), getY());
+                getWorld().addObject(new Red(1, point), getX(), getY());
                 rawColourID = 1;
                 colourDeposit = true;
             } else if (deposit.equals("blue")){
-                getWorld().addObject(new Blue(true, point), getX(), getY());
+                getWorld().addObject(new Blue(1, point), getX(), getY());
                 rawColourID = 4;
                 colourDeposit = true;
             } else if (deposit.equals("yellow")){
-                getWorld().addObject(new Yellow(true, point), getX(), getY());
+                getWorld().addObject(new Yellow(1, point), getX(), getY());
                 rawColourID = 2;
                 colourDeposit = true;
             }

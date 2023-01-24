@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Colours
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Colours\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=isLabel\ guide
-comment1.target=Colours(boolean,\ FollowPoint)
+comment1.params=label\ guide
+comment1.target=Colours(int,\ FollowPoint)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=

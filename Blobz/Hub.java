@@ -9,12 +9,9 @@ import java.util.Arrays;
  */
 public class Hub extends Machines
 {
-    private ArrayList<Integer> outputShape;
-    private ArrayList<Integer> outputColour;
-    /**
-     * Act - do whatever the Hub wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private ArrayList<Integer> outputShape = new ArrayList<Integer>();
+    private ArrayList<Integer> outputColour = new ArrayList<Integer>();
+    
     public Hub()
     {
         setImage("images/hub.png");
@@ -78,7 +75,7 @@ public class Hub extends Machines
             setTargetShape();
             FollowPoint tempPoint = getWorld().getObjectsAt(600, 420, FollowPoint.class).get(0);
             getWorld().removeObject(tempPoint);
-            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, true), 600, 420);
+            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, 2), 600, 420);
         }
     }
     
@@ -86,6 +83,6 @@ public class Hub extends Machines
     {
         setTargetShape();
         fillGrid();
-        getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 1, true), 600, 420);
+        getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, 2), 600, 420);
     }
 }

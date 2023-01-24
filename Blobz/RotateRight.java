@@ -174,7 +174,7 @@ public class RotateRight extends NarrowMachines
     {
         if(timer.millisElapsed() > Utils.getRotationDelay() && getWorld().getObjectsAt(spawnXCoord, spawnYCoord, Shapes.class).size() < 1) 
         {
-            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, false), spawnXCoord, spawnYCoord);
+            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1), spawnXCoord, spawnYCoord);
             outputShape.clear();
             outputColour.clear();
             for(int i = 0; i < 8; i++)

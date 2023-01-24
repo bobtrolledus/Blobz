@@ -8,15 +8,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Colours extends Material
 {
-    private boolean isLabel;
     public FollowPoint guide;
-    protected int colour;
+    protected int colour, label;
     private boolean firstRun = true;
     
-    public Colours(boolean isLabel, FollowPoint guide){
-        this.isLabel = isLabel;
+    public Colours(int label, FollowPoint guide){
+        this.label = label;
         this.guide = guide;
-        if (isLabel){
+        if (label == 1){
             getImage().scale(26, 26);
         } else {
             getImage().scale(38, 38);
@@ -24,13 +23,7 @@ public class Colours extends Material
     }
     
     public void act() {
-        if(isLabel)
-        {
-            if(firstRun){
-                firstRun = false;
-            }
-        }
-        if(!isLabel)
+        if(label == -1)
         {
             if (guide.getWorld() == null){
                 getWorld().removeObject(this);
