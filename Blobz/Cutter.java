@@ -63,7 +63,7 @@ public class Cutter extends WideMachines
     {
         if(!real)
         {
-            if(!spawned && spawner && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("2")))
+            if(!spawned && spawner && Utils.getMouse() != null && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("2")))
             {
                 Cutter mouseCutter = new Cutter(false);
                 getWorld().addObject(mouseCutter, Utils.getMouseX(), Utils.getMouseY());

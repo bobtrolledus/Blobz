@@ -44,7 +44,7 @@ public class Stacker extends WideMachines
     {
         if(!real)
         {
-            if(!spawned && spawner && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("8")))
+            if(!spawned && spawner && Utils.getMouse() != null && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("8")))
             {
                 Stacker mouseStacker = new Stacker(false);
                 getWorld().addObject(mouseStacker, Utils.getMouseX(), Utils.getMouseY());

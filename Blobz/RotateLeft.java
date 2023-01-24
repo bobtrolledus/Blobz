@@ -45,7 +45,7 @@ public class RotateLeft extends NarrowMachines
     {
         if(!real)
         {
-            if(!spawned && spawner && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("6")))
+            if(!spawned && spawner && Utils.getMouse() != null && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("6")))
             {
                 RotateLeft mouseRotateLeft = new RotateLeft(false);
                 getWorld().addObject(mouseRotateLeft, Utils.getMouseX(), Utils.getMouseY());

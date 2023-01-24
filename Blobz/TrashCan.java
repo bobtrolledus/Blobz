@@ -30,7 +30,7 @@ public class TrashCan extends NarrowMachines
     {
         if(!real)
         {
-            if(!spawned && spawner && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("9")))
+            if(!spawned && spawner && Utils.getMouse() != null && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("9")))
             {
                 TrashCan mouseRotateLeft = new TrashCan(false);
                 getWorld().addObject(mouseRotateLeft, Utils.getMouseX(), Utils.getMouseY());

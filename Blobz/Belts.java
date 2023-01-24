@@ -32,7 +32,7 @@ public class Belts extends NarrowMachines
     {
         if(!real)
         {
-            if(!spawned && spawner && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("1")))
+            if(!spawned && spawner && Utils.getMouse() != null && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("1")))
             {
                 Belts mouseBelt = new Belts(false);
                 getWorld().addObject(mouseBelt, Utils.getMouseX(), Utils.getMouseY());

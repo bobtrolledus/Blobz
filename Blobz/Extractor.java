@@ -42,7 +42,7 @@ public class Extractor extends NarrowMachines
     {
         if(!real)
         {
-            if(!spawned && spawner && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("3")))
+            if(!spawned && spawner && Utils.getMouse() != null && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("3")))
             {
                 Extractor mouseExtractor = new Extractor(false);
                 getWorld().addObject(mouseExtractor, Utils.getMouseX(), Utils.getMouseY());

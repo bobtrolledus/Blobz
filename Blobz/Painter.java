@@ -36,7 +36,7 @@ public class Painter extends WideMachines
     {
         if(!real)
         {
-            if(!spawned && spawner && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("7")))
+            if(!spawned && spawner && Utils.getMouse() != null && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("7")))
             {
                 Painter mousePainter = new Painter(false);
                 getWorld().addObject(mousePainter, Utils.getMouseX(), Utils.getMouseY());

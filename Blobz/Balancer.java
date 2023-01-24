@@ -35,7 +35,7 @@ public class Balancer extends WideMachines
     {
         if(!real)
         {
-            if(!spawned && spawner && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("4")))
+            if(!spawned && spawner && Utils.getMouse() != null && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("4")))
             {
                 Balancer mouseBalancer = new Balancer(false);
                 getWorld().addObject(mouseBalancer, Utils.getMouseX(), Utils.getMouseY());

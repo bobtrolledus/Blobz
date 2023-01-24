@@ -45,7 +45,7 @@ public class RotateRight extends NarrowMachines
     {
         if(!real)
         {
-            if(!spawned && spawner && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("5")))
+            if(!spawned && spawner && Utils.getMouse() != null && (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("5")))
             {
                 RotateRight mouseRotateRight = new RotateRight(false);
                 getWorld().addObject(mouseRotateRight, Utils.getMouseX(), Utils.getMouseY());
