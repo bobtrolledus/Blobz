@@ -162,7 +162,7 @@ public abstract class Machines extends Actor
     
     public void deleteShapes()
     {
-        for(FollowPoint point : getObjectsInRange(21, FollowPoint.class))
+        for(FollowPoint point : getObjectsInRange(25, FollowPoint.class))
         {
             if(!point.checkIfLabel())
             {

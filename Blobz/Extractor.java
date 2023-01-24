@@ -137,7 +137,7 @@ public class Extractor extends NarrowMachines
     {
         point = (FollowPoint)getOneIntersectingObject(FollowPoint.class);
         
-        if(timer.millisElapsed() > Utils.getExtractorDelay() && getObjectsInRange(21, FollowPoint.class).size() < 2)
+        if(timer.millisElapsed() > Utils.getExtractorDelay() && getObjectsInRange(25, FollowPoint.class).size() < 2)
         {
             if(isColour)
             {
