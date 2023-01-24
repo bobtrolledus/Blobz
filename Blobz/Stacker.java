@@ -165,8 +165,8 @@ public class Stacker extends WideMachines
             {
                 if(outputShape.get(i - 4) == -1)
                 {
-                    outputShape.set(i - 4, shapeID2.get(i -4));
-                    outputColour.set(i, colourID2.get(i - 4));
+                    outputShape.set(i - 4, shapeID2.get(i - 4));
+                    outputColour.set(i - 4, colourID2.get(i - 4));
                 } else {
                     outputShape.set(i, shapeID2.get(i - 4));
                     outputColour.set(i, colourID2.get(i - 4));
