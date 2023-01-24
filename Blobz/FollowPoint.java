@@ -50,8 +50,8 @@ public class FollowPoint extends UtilsBlocks
                     nearbyMaterial = (Material) getOneObjectAtOffset(0, 3, Material.class);
                     nearbyMachine = (Machines) getOneObjectAtOffset(0, 3, Machines.class);
                 } else {
-                    nearbyMaterial = (Material) getOneObjectAtOffset(0, 22, Material.class);
-                    nearbyMachine = (Machines) getOneObjectAtOffset(0, 22, Machines.class);
+                    nearbyMaterial = (Material) getOneObjectAtOffset(0, 21, Material.class);
+                    nearbyMachine = (Machines) getOneObjectAtOffset(0, 21, Machines.class);
                 }
                 break;
             case 1:
@@ -60,8 +60,8 @@ public class FollowPoint extends UtilsBlocks
                     nearbyMaterial = (Material) getOneObjectAtOffset(-3, 0, Material.class);
                     nearbyMachine = (Machines) getOneObjectAtOffset(-3, 0, Machines.class);
                 } else {
-                    nearbyMaterial = (Material) getOneObjectAtOffset(-22, 0, Material.class);
-                    nearbyMachine = (Machines) getOneObjectAtOffset(-22, 0, Machines.class);
+                    nearbyMaterial = (Material) getOneObjectAtOffset(-21, 0, Material.class);
+                    nearbyMachine = (Machines) getOneObjectAtOffset(-21, 0, Machines.class);
                 }
                 break;
             case 2:
@@ -70,8 +70,8 @@ public class FollowPoint extends UtilsBlocks
                     nearbyMaterial = (Material) getOneObjectAtOffset(0, -3, Material.class);
                     nearbyMachine = (Machines) getOneObjectAtOffset(0, -3, Machines.class);
                 } else {
-                    nearbyMaterial = (Material) getOneObjectAtOffset(0, -22, Material.class);
-                    nearbyMachine = (Machines) getOneObjectAtOffset(0, -22, Machines.class);
+                    nearbyMaterial = (Material) getOneObjectAtOffset(0, -21, Material.class);
+                    nearbyMachine = (Machines) getOneObjectAtOffset(0, -21, Machines.class);
                 }
                 break;
             case 3:
@@ -80,8 +80,8 @@ public class FollowPoint extends UtilsBlocks
                     nearbyMaterial = (Material) getOneObjectAtOffset(3, 0, Material.class);
                     nearbyMachine = (Machines) getOneObjectAtOffset(3, 0, Machines.class);
                 } else {
-                    nearbyMaterial = (Material) getOneObjectAtOffset(22, 0, Material.class);
-                    nearbyMachine = (Machines) getOneObjectAtOffset(22, 0, Machines.class);
+                    nearbyMaterial = (Material) getOneObjectAtOffset(21, 0, Material.class);
+                    nearbyMachine = (Machines) getOneObjectAtOffset(21, 0, Machines.class);
                 }
                 break;
         }
@@ -92,14 +92,11 @@ public class FollowPoint extends UtilsBlocks
             occupied = false;
         }
         
-        if((belt != null && belt.getReal()) && nearbyMaterial == null && !occupied && !isLabel){
-            setLocation(x, y);
-            /*
-            if(getOneObjectAtOffset(x, y, WideMachines.class) == null)
+        if((belt != null && belt.getReal()) && nearbyMaterial == null && !occupied && !isLabel){            
+            if(getOneObjectAtOffset(x, y, WideMachines.class) == null || getOneObjectAtOffset(x, y, Material.class) == null)
             {
                 setLocation(x, y);
             }
-            */
         }
     }
     

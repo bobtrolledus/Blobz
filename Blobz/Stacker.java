@@ -154,7 +154,7 @@ public class Stacker extends WideMachines
                 }
             }
         }
-        if(grabbedShape1 && grabbedShape2)
+        if(grabbedShape1 && grabbedShape2 && shapeID2 != null && colourID2 != null)
         {
             for(int i = 0; i < 4; i++)
             {
