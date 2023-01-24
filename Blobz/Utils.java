@@ -124,7 +124,7 @@ public class Utils extends Actor
         bdUpgradeLevel = 1;
         paintUpgradeLevel = 1;
         extractUpgradeLevel = 1;
-        level = 15;
+        level = 14;
     }
 
     public void act()

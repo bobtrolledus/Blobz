@@ -28,7 +28,7 @@ public class Deposits extends Resources
         
         setTarget(circle, 1);
         setTarget(circle, -1);
-        setTarget(square, 1);
+        setTarget(square, 2);
         setTarget(square, -1);
         setTarget(star, 3);
         setTarget(star, -1);
