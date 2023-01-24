@@ -18,7 +18,7 @@ public class Colours extends Material
         if (label == 1){
             getImage().scale(26, 26);
         } else {
-            getImage().scale(38, 38);
+            getImage().scale(36, 36);
         }
     }
     

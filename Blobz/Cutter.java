@@ -251,20 +251,20 @@ public class Cutter extends WideMachines
                 case 1:
                     inputXCoord = getX() + (Utils.gridSize / 2);
                     inputYCoord = getY() + ((Utils.gridSize / 2) * mirrored);
-                    spawnX1Coord = getX() - (Utils.gridSize / 2) - 1;
+                    spawnX1Coord = getX() - (Utils.gridSize / 2);
                     spawnY1Coord = getY() - ((Utils.gridSize / 2) * mirrored);
-                    spawnX2Coord = getX() - (Utils.gridSize / 2) - 1;
+                    spawnX2Coord = getX() - (Utils.gridSize / 2);
                     spawnY2Coord = getY() + ((Utils.gridSize / 2) * mirrored);
                     setDirection(1);
                     setRotation(-90);
                     break;
                 case 2:
                     inputXCoord = getX() - ((Utils.gridSize / 2) * mirrored);
-                    inputYCoord = getY() + (Utils.gridSize / 2) - 1;
+                    inputYCoord = getY() + (Utils.gridSize / 2);
                     spawnX1Coord = getX() - (Utils.gridSize / 2);
-                    spawnY1Coord = getY() - (Utils.gridSize / 2) - 1;
+                    spawnY1Coord = getY() - (Utils.gridSize / 2);
                     spawnX2Coord = getX() + (Utils.gridSize / 2);
-                    spawnY2Coord = getY() - (Utils.gridSize / 2) - 1;
+                    spawnY2Coord = getY() - (Utils.gridSize / 2);
                     setDirection(2);
                     setRotation(0);
                     break;
