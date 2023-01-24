@@ -9,8 +9,8 @@ import java.util.Arrays;
  */
 public class Hub extends Machines
 {
-    private ArrayList<Integer> outputShape;
-    private ArrayList<Integer> outputColour;
+    private ArrayList<Integer> outputShape = new ArrayList<Integer>();
+    private ArrayList<Integer> outputColour = new ArrayList<Integer>();
     /**
      * Act - do whatever the Hub wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -73,7 +73,7 @@ public class Hub extends Machines
     
     public void updateImage()
     {
-        if(Arrays.asList(Utils.getTargetShape()) != outputShape)
+        if(!Arrays.asList(Utils.getTargetShape()).equals(outputShape))
         {
             setTargetShape();
             FollowPoint tempPoint = getWorld().getObjectsAt(600, 420, FollowPoint.class).get(0);
