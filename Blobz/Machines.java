@@ -94,7 +94,7 @@ public abstract class Machines extends Actor
     {
         if(Utils.getMouse() != null)
         {
-            if(Utils.getMouseX() > 200 && Utils.getMouseX() < 1000)
+            if(Utils.getMouseX() > 200 && Utils.getMouseX() < 1000 && Utils.getMouseY() > 0 && Utils.getMouseY() < 800)
             {
                 int buttonNumber = Utils.getMouseButton();
                 if(buttonNumber == 1 && Utils.getSpaceMachine(gridPositionY, gridPositionX) == null)
