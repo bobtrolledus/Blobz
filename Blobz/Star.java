@@ -20,8 +20,8 @@ public class Star extends Shapes
         purple = new GreenfootImage("Shapes/Star/purple.png");
         green = new GreenfootImage("Shapes/Star/green.png");
         
-        getImage().scale(scale, scale);
         setColour(colour);
+        getImage().scale(scale, scale);
         setRotation(q);
     }
 }

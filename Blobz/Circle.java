@@ -20,8 +20,8 @@ public class Circle extends Shapes
         purple = new GreenfootImage("Shapes/Circle/purple.png");
         green = new GreenfootImage("Shapes/Circle/green.png");
         
-        getImage().scale(scale, scale);
         setColour(colour);
+        getImage().scale(scale, scale);
         setRotation(q);
     }
 }

@@ -10,6 +10,6 @@ public class Blue extends Colours
 {
     public Blue(int label, FollowPoint guide){
         super(label, guide);
-        colour = 4; 
+        colour = 4;
     }
 }
