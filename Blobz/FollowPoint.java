@@ -94,10 +94,12 @@ public class FollowPoint extends UtilsBlocks
         
         if((belt != null && belt.getReal()) && nearbyMaterial == null && !occupied && !isLabel){
             setLocation(x, y);
+            /*
             if(getOneObjectAtOffset(x, y, WideMachines.class) == null)
             {
                 setLocation(x, y);
             }
+            */
         }
     }
     

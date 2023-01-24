@@ -117,7 +117,7 @@ public class MyWorld extends World
         addObject(new Deposits("yellow"), 340, 20);
         addObject(new Deposits("circle"), 380, 20);
         addObject(new Deposits("square"), 420, 20);
-        addObject(new Deposits("star"), 460, 20);
+        addObject(new Deposits("blue"), 460, 20);
         
         addObject(new Deposits("red"), 220, 100);
         addObject(new Deposits("blue"), 220, 140);
