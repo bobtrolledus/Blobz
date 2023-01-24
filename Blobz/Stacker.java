@@ -209,9 +209,9 @@ public class Stacker extends WideMachines
                     spawnX1Coord = getX() + ((Utils.gridSize / 2) * mirrored);
                     spawnY1Coord = getY() + (Utils.gridSize / 2);
                     inputX1Coord = spawnX1Coord;
-                    inputY1Coord = getY() - (Utils.gridSize / 2);
+                    inputY1Coord = getY() - (Utils.gridSize / 2) - 1;
                     inputX2Coord = getX() - ((Utils.gridSize / 2) * mirrored);
-                    inputY2Coord = getY() - (Utils.gridSize / 2);
+                    inputY2Coord = getY() - (Utils.gridSize / 2) - 1;
                     setDirection(0);
                     setRotation(180);
                     break;
