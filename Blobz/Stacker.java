@@ -20,11 +20,11 @@ public class Stacker extends WideMachines
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         for(int i = 0; i < 8; i++)
         {
-            outputShape.add(0);
+            outputShape.add(-1);
         }
         for(int i = 0; i < 8; i++)
         {
-            outputColour.add(0);
+            outputColour.add(-1);
         }
         real = true;
     }
@@ -184,11 +184,11 @@ public class Stacker extends WideMachines
             outputColour.clear();
             for(int i = 0; i < 8; i++)
             {
-                outputShape.add(0);
+                outputShape.add(-1);
             }
             for(int i = 0; i < 8; i++)
             {
-                outputColour.add(0);
+                outputColour.add(-1);
             }
             grabbedShape1 = false;
             grabbedShape2 = false;
