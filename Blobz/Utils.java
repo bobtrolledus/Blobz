@@ -365,15 +365,6 @@ public class Utils extends Actor
     {
 
         try{
-            list.add(level);
-            list.add(mapNumber);
-            list.add(crsUpgradeLevel);
-            list.add(bdUpgradeLevel);
-            list.add(paintUpgradeLevel);
-            list.add(extractUpgradeLevel);
-            list.add(money);
-            list.add(timeM);
-            list.add(time);
             String lv = Integer.toString(level);
             String mapN = Integer.toString(mapNumber);
             String c = Integer.toString(crsUpgradeLevel);

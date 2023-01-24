@@ -197,7 +197,9 @@ public class MyWorld extends World
         while (moreLines)
         {
             try{
-                int a = fileScan.nextInt();
+                
+                int a = Integer.parseInt(fileScan.next());
+
                 lines.add(a);
             }
             catch(NoSuchElementException e)
@@ -205,6 +207,7 @@ public class MyWorld extends World
                 moreLines = false;
             }
         }
+        System.out.println(lines);
         Utils.setLevel(lines.get(0));
         Utils.setMap(lines.get(1));
         Utils.setMoney(lines.get(6));
