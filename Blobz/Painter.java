@@ -201,7 +201,7 @@ public class Painter extends WideMachines
                     spawnY1Coord = getY() - ((Utils.gridSize / 2) * mirrored);
                     inputX1Coord = getX() + (Utils.gridSize / 2) - 1;
                     inputY1Coord = spawnY1Coord;
-                    inputX2Coord = inputX1Coord - 1; 
+                    inputX2Coord = inputX1Coord; 
                     inputY2Coord = getY() + ((Utils.gridSize / 2) * mirrored);
                     setDirection(1);
                     setRotation(-90);
