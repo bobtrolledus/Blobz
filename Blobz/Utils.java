@@ -11,8 +11,8 @@ import java.util.ArrayList;
 /**
  * Class for all global variables
  * 
- * @author Anson/Eric
- * @version Jan 24, 2023
+ * @author Anson
+ * @version (a version number or a date)
  */
 public class Utils extends Actor
 {
@@ -34,6 +34,7 @@ public class Utils extends Actor
     private static Scanner fileScan;
     private static Scanner scan;
     private static int mapNumber;
+    private static boolean mapChange;
     private static int money;
     private static int crsUpgradeLevel;
     private static int bdUpgradeLevel;
@@ -44,72 +45,72 @@ public class Utils extends Actor
     private static ArrayList<Integer> list;
     private static boolean mirrored;
     public static Integer[][][] targetShapes = {
-            {
-                {1, 1, 1, 1, -1, -1, -1, -1},
-                {-1, -1, -1, -1, -1, -1, -1, -1}
-            },
-            {
-                {2, 2, 2, 2, -1, -1, -1, -1},
-                {-1, -1, -1, -1, -1, -1, -1, -1}
-            },
-            {
-                {-1, -1, 1, 1, -1, -1, -1, -1},
-                {-1, -1, -1, -1, -1, -1, -1, -1}
-            },
-            {
-                {2, 2, -1, -1, -1, -1, -1, -1},
-                {-1, -1, -1, -1, -1, -1, -1, -1}
-            },
-            {
-                {1, -1, -1, 1, -1, -1, -1, -1},
-                {-1, -1, -1, -1, -1, -1, -1, -1}
-            },
-            {
-                {-1, 2, 2, -1, -1, -1, -1, -1},
-                {-1, -1, -1, -1, -1, -1, -1, -1}
-            },
-            {
-                {3, 3, 3, 3, -1, -1, -1, -1},
-                {2, 2, 2, 2, -1, -1, -1, -1}
-            },
-            {
-                {1, 1, 1, 1, -1, -1, -1, -1},
-                {3, 3, 3, 3, -1, -1, -1, -1}
-            },
-            {
-                {3, 3, -1, -1, -1, -1, -1, -1},
-                {4, 4, -1, -1, -1, -1, -1, -1}
-            },
-            {
-                {-1, -1, 2, -1, -1, -1, -1, -1},
-                {-1, -1, 1, -1, -1, -1, -1, -1}
-            },
-            {
-                {2, 2, 2, 2, 1, 1, 1, 1},
-                {-1, -1, -1, -1, -1, -1, -1, -1}
-            },
-            {
-                {-1, 1, 1, -1, -1, 1, 1, -1},
-                {-1, 6, 6, -1, -1, 1, 1, -1}
-            },
-            {
-                {1, 2, 2, 1, 2, 1, 1, 2},
-                {2, 4, 4, 2, 5, 1, 1, 5}
-            },
-            {
-                {1, 3, 3, 1, 3, 1, 1, 3},
-                {5, 6, 6, 5, 3, 3, 3, 3}
-            },
-            {
-                {1, 2, 1, 2, 1, 2, 1, 2},
-                {-1, 4, -1, 4, 2, 5, 2, 5}
-            },
-            {
-                {3, 1, 2, 1, 1, 3, 2, 3},
-                {5, 6, 5, 6, 6, 5, 3, 5}
-            }
-        };
-
+        {
+            {1, 1, 1, 1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {2, 2, 2, 2, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {-1, -1, 1, 1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {2, 2, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {1, -1, -1, 1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {-1, 2, 2, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {3, 3, 3, 3, -1, -1, -1, -1},
+            {2, 2, 2, 2, -1, -1, -1, -1}
+        },
+        {
+            {1, 1, 1, 1, -1, -1, -1, -1},
+            {3, 3, 3, 3, -1, -1, -1, -1}
+        },
+        {
+            {3, 3, -1, -1, -1, -1, -1, -1},
+            {4, 4, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {-1, -1, 2, -1, -1, -1, -1, -1},
+            {-1, -1, 1, -1, -1, -1, -1, -1}
+        },
+        {
+            {2, 2, 2, 2, 1, 1, 1, 1},
+            {-1, -1, -1, -1, -1, -1, -1, -1}
+        },
+        {
+            {-1, 1, 1, -1, -1, 1, 1, -1},
+            {-1, 6, 6, -1, -1, 1, 1, -1}
+        },
+        {
+            {1, 2, 2, 1, 2, 1, 1, 2},
+            {2, 4, 4, 2, 5, 1, 1, 5}
+        },
+        {
+            {1, 3, 3, 1, 3, 1, 1, 3},
+            {5, 6, 6, 5, 3, 3, 3, 3}
+        },
+        {
+            {1, 2, 1, 2, 1, 2, 1, 2},
+            {-1, 4, -1, 4, 2, 5, 2, 5}
+        },
+        {
+            {3, 1, 2, 1, 1, 3, 2, 3},
+            {5, 6, 5, 6, 6, 5, 3, 5}
+        }
+    };
+    
     public Utils()
     {
         list = new ArrayList<Integer>();
@@ -119,6 +120,7 @@ public class Utils extends Actor
         rotation = 0;
         money = 0;
         mapNumber = 0;
+        mapChange = false;
         totalTargetShapes = 0;
         getImage().scale(10, 10);
         crsUpgradeLevel = 1;
@@ -136,14 +138,19 @@ public class Utils extends Actor
         {
             totalTargetShapes = 0;
             level++;
+            if (level == 4 || level == 8 || level == 12) {
+                mapChange = true;
+            }
+        } else {
+            mapChange = false;
         }
     }
-
+    
     public static String getLastKey()
     {
         return key;
     }
-
+    
     public static void changeMirrored()
     {
         if(!mirrored)
@@ -153,27 +160,27 @@ public class Utils extends Actor
             mirrored = false;
         }
     }
-
+    
     public static boolean getMirrored()
     {
         return mirrored;
     }
-
+    
     public static void addTargetShape()
     {
         totalTargetShapes++;
     }
-
+    
     public static int getTotalTargetShapes()
     {
         return totalTargetShapes;
     }
-
+    
     public static Integer[] getTargetShape()
     {
         return targetShapes[level][0];
     }
-
+    
     public static Integer[] getTargetShapeColour()
     {
         return targetShapes[level][1];
@@ -198,7 +205,7 @@ public class Utils extends Actor
     {
         balancerDelay = delay;
     }
-
+    
     public static int getCutterDelay()
     {
         return balancerDelay;
@@ -208,7 +215,7 @@ public class Utils extends Actor
     {
         cutterDelay = delay;
     }
-
+    
     public static int getRotationDelay()
     {
         return rotationDelay;
@@ -218,7 +225,7 @@ public class Utils extends Actor
     {
         rotationDelay = delay;
     }
-
+    
     public static int getPainterDelay()
     {
         return paintingDelay;
@@ -228,7 +235,7 @@ public class Utils extends Actor
     {
         paintingDelay = delay;
     }
-
+    
     public static int getStackingDelay()
     {
         return stackingDelay;
@@ -294,7 +301,7 @@ public class Utils extends Actor
     {
         return machineMap[x][y];
     }
-
+    
     public static void fillSpaceDeposit(int x, int y, Deposits object)
     {
         depositMap[x][y] = object;
@@ -319,65 +326,53 @@ public class Utils extends Actor
     {
         level--;
     }
-
+    
     public static int getCRSlevel() {
         return crsUpgradeLevel;
     }
-
+    
     public static void increaseCRSlevel() {
         crsUpgradeLevel++;
     }
-
+    
     public static int getBDlevel() {
         return bdUpgradeLevel;
     }
-
+    
     public static void increaseBDlevel() {
         bdUpgradeLevel++;
     }
-
+    
     public static int getPAINTlevel() {
         return paintUpgradeLevel;
     }
-
+    
     public static void increasePAINTlevel() {
         paintUpgradeLevel++;
     }
-
+    
     public static int getEXTRACTlevel() {
         return extractUpgradeLevel;
     }
-
+    
     public static void increaseEXTRACTlevel() {
         extractUpgradeLevel++;
     }
-    /**
-     * method to save stats by turning value ints in to strings then writing to file.
-     */
-    public static void save()
+    
+    private static void save()
     {
-
+        
         try{
-            String lv = Integer.toString(level); // turns int into string
-            String mapN = Integer.toString(mapNumber);
-            String c = Integer.toString(crsUpgradeLevel);
-            String b = Integer.toString(bdUpgradeLevel);
-            String p = Integer.toString(paintUpgradeLevel);
-            String e = Integer.toString(extractUpgradeLevel);
-            String m = Integer.toString(money);
-            String tm = Integer.toString(timeM);
-            String t = Integer.toString(time);
+            list.add(level);
+            list.add(mapNumber);
+            list.add(crsUpgradeLevel);
+            list.add(bdUpgradeLevel);
+            list.add(paintUpgradeLevel);
+            list.add(extractUpgradeLevel);
+            list.add(money);
             FileWriter out = new FileWriter("save.txt",false);
             PrintWriter output = new PrintWriter(out);
-            output.println(lv);
-            output.println(mapN);
-            output.println(c);
-            output.println(b);
-            output.println(p);
-            output.println(e);
-            output.println(m);
-            output.println(tm);
-            output.println(t);
+            output.println(list);
             out.close();
             output.close();
             list.clear();
@@ -387,17 +382,21 @@ public class Utils extends Actor
             System.out.println("Exception" +  e);
         }
     }
-
+    
     public static void setLevel(int x)
     {
         level = x;
     }
-
+    
     public static void setMap(int x)
     {
         mapNumber = x;
     }
-
+    
+    public static boolean mapChange() {
+        return mapChange;
+    }
+    
     public static void setTime(int x)
     {
         time = x;
@@ -417,54 +416,16 @@ public class Utils extends Actor
     {
         return timeM;
     }
-
+    
     public static void setUpgrade(int x)
     {
         //upgradeLevel = x;
     }
-
+    
     public static void setMoney(int x)
     {
         money = x;
     }
-
-    public static void setCrsUpgradeLevel(int x)
-    {
-        crsUpgradeLevel = x;
-    }
-
-    public static void setBdUpgradeLevel(int x)
-    {
-        bdUpgradeLevel =x;
-    }
-
-    public static void setPaintUpgradeLevel(int x)
-    {
-        paintUpgradeLevel = x;
-    }
-
-    public static void setExtractUpgradeLevel(int x)
-    {
-        extractUpgradeLevel = x;
-    }
-
-    public static int getCrsUpgradeLevel()
-    {
-        return crsUpgradeLevel;
-    }
-
-    public static int getBdUpgradeLevel()
-    {
-        return bdUpgradeLevel;
-    }
-
-    public static int getPaintUpgradeLevel()
-    {
-        return paintUpgradeLevel;
-    }
-
-    public static int getExtractUpgradeLevel()
-    {
-        return extractUpgradeLevel;
-    }
+    
+    
 }

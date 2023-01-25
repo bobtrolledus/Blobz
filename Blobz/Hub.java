@@ -26,14 +26,12 @@ public class Hub extends Machines
         collecting();
         updateImage();
     }
-    /**
-     * method to collect shapes transferred into the central hub.
-     */
+
     public void collecting()
     {
         for(FollowPoint point : getIntersectingObjects(FollowPoint.class))
         {
-            if(outputShape.equals(point.getShape()))
+            if(Arrays.asList(Utils.getTargetShape()).equals(outputShape))
             {
                 if(!point.checkIfLabel())
                 {
@@ -45,6 +43,7 @@ public class Hub extends Machines
                 getWorld().removeObject(point);
             }
         }
+        
     }
     
     public void fillGrid()

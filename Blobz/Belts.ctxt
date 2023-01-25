@@ -1,23 +1,19 @@
 #BlueJ class context
 comment0.target=Belts
-comment0.text=\r\n\ Machine\ that\ creates\ path\ for\ shapes\ to\ follow\r\n\ \r\n\ @author\ Anson\r\n\ @version\ Jan\ 24,\ 2023\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Belts\ here.\n\ \n\ @author\ Anson\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=Belts()
 comment2.params=spawner
 comment2.target=Belts(boolean)
 comment3.params=
 comment3.target=void\ act()
-comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ Belts\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.text=\n\ Act\ -\ do\ whatever\ the\ Belts\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment4.params=
 comment4.target=boolean\ checkDeselectKey()
-comment4.text=\r\n\ Returns\ boolean\ true\ if\ another\ hotkey\ is\ pressed\r\n\ \r\n\ @return\ boolean\r\n
 comment5.params=
 comment5.target=void\ deletePoints()
-comment5.text=\r\n\ Deletes\ rotation\ points\ of\ belt\ to\ remove\ pathfinding\ for\ shapes\r\n
 comment6.params=world
 comment6.target=void\ addedToWorld(greenfoot.World)
-comment6.text=\r\n\ Sets\ coordinates\ for\ rotation\ points\r\n
 comment7.params=
 comment7.target=java.lang.Boolean\ getReal()
-comment7.text=\r\n\ Return\ boolean\ true\ if\ machine\ is\ placed\ on\ the\ map\r\n\ \r\n\ @return\ boolean\r\n
 numComments=8

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Deposits
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Deposits\ here.\r\n\ \r\n\ @author\ Andy/Anson\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Deposits\ here.\n\ \n\ @author\ Andy/Anson\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=deposit
 comment1.target=Deposits(java.lang.String)
 comment2.params=
