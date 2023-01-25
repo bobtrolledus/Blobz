@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Buttons here.
+ * Abstract button class that holds all the different button types/UI.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Yuebai
+ * @version 1/24/2023 
  */
 public abstract class Button extends UI
 {
@@ -24,6 +24,10 @@ public abstract class Button extends UI
         // Add your action code here.
     }
     
+    /**
+     * Method that is shared with other buttons to draw hover feature
+     * 
+     */
     public void redraw() {
         if (Utils.getMouse() != null) {
             if (Utils.getMouseX() > getX() - width/2 && Utils.getMouseX() < getX() + width/2 && Utils.getMouseY() > getY() - height/2 && Utils.getMouseY() < getY() + height/2) {
@@ -39,8 +43,16 @@ public abstract class Button extends UI
         }
     }
     
+    /**
+     * Abstract method to draw a normal solid button
+     * 
+     */
     abstract void drawNormalButton();
     
+    /**
+     * Abstract method to draw a faint light button for hover or other effects
+     * 
+     */
     abstract void drawFaintButton();
     
     public boolean getClicked() {

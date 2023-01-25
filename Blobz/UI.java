@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class UI here.
+ * Main superclass that includes most of the user interface.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Yuebai
+ * @version 1/24/2023 
  */
 public class UI extends Actor
 {

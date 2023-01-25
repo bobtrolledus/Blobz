@@ -23,7 +23,7 @@ public abstract class Machines extends Actor
     
     /**
      * Refreshes place sound volume using util sound constant
-     * @param 
+     *
      */
     public void act() {
         placeSound.setVolume(90 * Utils.soundLevel());

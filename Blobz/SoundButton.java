@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SoundButton here.
+ * Toggles on and off all sound.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Yuebai 
+ * @version 1/24/2023
  */
 public class SoundButton extends Button
 {
@@ -16,7 +16,6 @@ public class SoundButton extends Button
         this.size = 20;
         comicFont = new Font ("Comic Sans MS", true, false, size);
     
-        // draws purple background
         background = new GreenfootImage(width, height);
         drawNormalButton();
     }

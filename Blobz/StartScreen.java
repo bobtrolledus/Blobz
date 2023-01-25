@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Write a description of class StartScreen here.
+ * Starting screen of the game.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Yuebai
+ * @version 1/24/2023 
  */
 public class StartScreen extends World
 {
@@ -23,7 +23,6 @@ public class StartScreen extends World
         background = new GreenfootImage("startscreen.png");
         background.scale(1200, 800);
         setBackground(background);
-        
         
         addObject(new GeneralButton(455, 80, "Play New Game (Enter)", 30), background.getWidth()/2, background.getHeight()*5/8);
         addObject(new GeneralButton(455, 80, "Load game", 30), background.getWidth()/2, background.getHeight()*5/8 + 120);

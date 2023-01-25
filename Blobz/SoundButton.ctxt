@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=SoundButton
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ SoundButton\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Toggles\ on\ and\ off\ all\ sound.\n\ \n\ @author\ Yuebai\ \n\ @version\ 1/24/2023\n
 comment1.params=
 comment1.target=SoundButton()
 comment2.params=
