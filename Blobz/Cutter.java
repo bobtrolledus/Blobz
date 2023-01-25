@@ -130,6 +130,8 @@ public class Cutter extends WideMachines
             {
                 getWorld().removeObject(this);
             }
+            
+            placeSound.setVolume(90 * Utils.soundLevel());
         }
     }
 
