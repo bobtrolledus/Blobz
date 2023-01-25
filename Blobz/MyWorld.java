@@ -21,7 +21,7 @@ public class MyWorld extends World
     private Font comicFontMid = new Font ("Comic Sans MS", true, false, 24);
     private Font comicFontSmoll = new Font ("Comic Sans MS", true, false, 20);
     private GreenfootImage background;
-    private Label levelLabel, itemLabel, timeLabel;
+    private Label levelLabel, itemLabel, timeLabel, moneyLabel;
     private static Scanner fileScan;
     private static Scanner scan;
     private static ArrayList<Integer> lines;
@@ -71,6 +71,7 @@ public class MyWorld extends World
         time();
         levelLabel.setValue(Utils.getLevel() + 1);
         itemLabel.setValue(Utils.getTotalTargetShapes() + " / 5");
+        moneyLabel.setValue("$" + Utils.getMoney());
         if(Utils.getLastKey() != null)
         {
             if(Utils.getLastKey().equals("r"))
@@ -110,12 +111,17 @@ public class MyWorld extends World
         addObject(new Hub(), 600,400);
         levelLabel = new Label(Utils.getLevel() + 1, 50);
         itemLabel = new Label(Utils.getTotalTargetShapes() + " / 5", 30);
+        moneyLabel = new Label("$" + Utils.getMoney(), 22);
         addObject(levelLabel, 656, 339);
         addObject(itemLabel, 600, 460);
+        addObject(moneyLabel, 1150, 25);
         levelLabel.setLineColor(yellow);
         levelLabel.setFillColor(yellow);
         itemLabel.setLineColor(yellow);
         itemLabel.setFillColor(yellow);
+        moneyLabel.setLineColor(new Color(171, 171, 171));
+        moneyLabel.setFillColor(new Color(171, 171, 171));
+
         
         
         int rightButtonOffset = 20;
@@ -123,7 +129,7 @@ public class MyWorld extends World
         getBackground().setFont(comicFontMid);
         getBackground().setColor(Color.MAGENTA);
         
-        
+        //addObject(new MoneyDisplay(), 1150, 40);
         addObject(new UpgradeButton("crs"), 1200 - width / 2, 150); 
         addObject(new UpgradeButton("bd"), 1200 - width / 2, 280); 
         addObject(new UpgradeButton("paint"), 1200 - width / 2, 410); 
@@ -202,10 +208,9 @@ public class MyWorld extends World
                 setMap4();
             } else {
                 // CHANGE TO END WORLD
-                Greenfoot.setWorld(new MyWorld());
+                Greenfoot.setWorld(new EndScreen());
             }
             reset();
-            
         }
     }
     

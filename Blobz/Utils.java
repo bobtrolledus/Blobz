@@ -21,12 +21,13 @@ public class Utils extends Actor
     private static int rotation;
     private static int arrowXCoord, arrowYCoord;
     private static MouseInfo mouse = Greenfoot.getMouseInfo();
-    private static int extractorDelay = 1000;
-    private static int balancerDelay = 2000;
-    private static int cutterDelay = 2000;
-    private static int rotationDelay = 2000;
-    private static int paintingDelay = 2000;
-    private static int stackingDelay = 2000;
+    private static int cutterDelay;
+    private static int rotationDelay;
+    private static int stackingDelay;
+    private static int balancerDelay;
+    private static int paintingDelay;
+    private static int extractorDelay;
+    
     private static int time, timeM;
 
     public static int gridSize = 40;
@@ -35,7 +36,7 @@ public class Utils extends Actor
     private static Scanner scan;
     private static int mapNumber;
     private static boolean mapChange;
-    private static double money = 0;
+    private static double money;
     private static boolean userApprovedLevelChange;
     private static int soundLevel;
     private static int crsUpgradeLevel;
@@ -113,20 +114,24 @@ public class Utils extends Actor
         }
     };
     
-    private static GreenfootSound upgrade = new GreenfootSound("upgrade.wav"), levelUp = new GreenfootSound("levelUp.wav");
-    
     public Utils()
     {
         list = new ArrayList<Integer>();
         machineMap = new Actor[20][20];
         depositMap = new Deposits[20][20];
+        cutterDelay = 2500;
+        rotationDelay = 2000;
+        stackingDelay= 4000;
+        balancerDelay = 2000;
+        paintingDelay = 4000;
+        extractorDelay = 3000;
         mirrored = false;
         rotation = 0;
         money = 0;
         mapNumber = 0;
         mapChange = false;
         userApprovedLevelChange = false;
-        soundLevel = 0;
+        soundLevel = 1;
         totalTargetShapes = 0;
         getImage().scale(10, 10);
         crsUpgradeLevel = 1;
@@ -141,13 +146,8 @@ public class Utils extends Actor
         key = Greenfoot.getKey();
         mouse = Greenfoot.getMouseInfo();
         if(totalTargetShapes >= 5) {
-            System.out.println("user approve status:" + userApprovedLevelChange);
-            if(level + 1 == 16)
-            {
-                Greenfoot.setWorld(new EndScreen());
-            }
-            else if (userApprovedLevelChange && level + 1 < 16) {
-                increaseLevel();
+            if (userApprovedLevelChange) {
+                level++;
                 totalTargetShapes = 0;
                 if ((level == 4 || level == 8 || level == 12)) {
                     mapChange = true;
@@ -158,6 +158,7 @@ public class Utils extends Actor
             mapChange = false;
         }
     }
+
     
     public static int soundLevel() {
         return soundLevel;
@@ -354,7 +355,6 @@ public class Utils extends Actor
 
     public static void increaseLevel()
     {
-        levelUp.play();
         level++;
     }
 
@@ -369,7 +369,9 @@ public class Utils extends Actor
     
     public static void increaseCRSlevel() {
         crsUpgradeLevel++;
-        upgrade.play();
+        cutterDelay -= 2500/9;
+        rotationDelay -= 2000/9;
+        stackingDelay -= 4000/9;
     }
     
     public static int getBDlevel() {
@@ -378,7 +380,7 @@ public class Utils extends Actor
     
     public static void increaseBDlevel() {
         bdUpgradeLevel++;
-        upgrade.play();
+        balancerDelay -= 2000/9;
     }
     
     public static int getPAINTlevel() {
@@ -387,7 +389,7 @@ public class Utils extends Actor
     
     public static void increasePAINTlevel() {
         paintUpgradeLevel++;
-        upgrade.play();
+        paintingDelay -= 4000/9;
     }
     
     public static int getEXTRACTlevel() {
@@ -396,7 +398,7 @@ public class Utils extends Actor
     
     public static void increaseEXTRACTlevel() {
         extractUpgradeLevel++;
-        upgrade.play();
+        extractorDelay -= 3000/9;
     }
     
     private static void save()
@@ -460,6 +462,14 @@ public class Utils extends Actor
     public static void setUpgrade(int x)
     {
         //upgradeLevel = x;
+    }
+    
+    public static int getMoney() {
+        return (int) money;
+    }
+    
+    public static void spendMoney(double x) {
+        money -= x;
     }
     
     public static void setMoney(double x)
