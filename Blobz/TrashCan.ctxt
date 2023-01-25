@@ -1,19 +1,19 @@
 #BlueJ class context
 comment0.target=TrashCan
-comment0.text=\n\ Machine\ to\ delete\ all\ touching\ shapes\ and\ colours\n\ \n\ @author\ Anson\ \n\ @version\ Jan\ 24,\ 2023\n
+comment0.text=\r\n\ Machine\ to\ delete\ all\ touching\ shapes\ and\ colours\r\n\ \r\n\ @author\ Anson\ \r\n\ @version\ Jan\ 24,\ 2023\r\n
 comment1.params=
 comment1.target=TrashCan()
 comment2.params=spawner
 comment2.target=TrashCan(boolean)
 comment3.params=
 comment3.target=void\ act()
-comment3.text=\n\ Act\ -\ do\ whatever\ the\ Extractor\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ Extractor\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment4.params=world
 comment4.target=void\ addedToWorld(greenfoot.World)
 comment5.params=
 comment5.target=void\ deleteShape()
-comment5.text=\n\ Deletes\ all\ touching\ shapes\n
+comment5.text=\r\n\ Deletes\ all\ touching\ shapes\r\n
 comment6.params=
 comment6.target=boolean\ checkDeselectKey()
-comment6.text=\n\ Checks\ if\ machine\ has\ been\ deselected\n\ @return\ boolean\ Boolean\n
+comment6.text=\r\n\ Checks\ if\ machine\ has\ been\ deselected\r\n\ @return\ boolean\ Boolean\r\n
 numComments=7
