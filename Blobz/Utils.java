@@ -44,72 +44,72 @@ public class Utils extends Actor
     private static ArrayList<Integer> list;
     private static boolean mirrored;
     public static Integer[][][] targetShapes = {
-        {
-            {1, 1, 1, 1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {2, 2, 2, 2, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {-1, -1, 1, 1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {2, 2, -1, -1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {1, -1, -1, 1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {-1, 2, 2, -1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {3, 3, 3, 3, -1, -1, -1, -1},
-            {2, 2, 2, 2, -1, -1, -1, -1}
-        },
-        {
-            {1, 1, 1, 1, -1, -1, -1, -1},
-            {3, 3, 3, 3, -1, -1, -1, -1}
-        },
-        {
-            {3, 3, -1, -1, -1, -1, -1, -1},
-            {4, 4, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {-1, -1, 2, -1, -1, -1, -1, -1},
-            {-1, -1, 1, -1, -1, -1, -1, -1}
-        },
-        {
-            {2, 2, 2, 2, 1, 1, 1, 1},
-            {-1, -1, -1, -1, -1, -1, -1, -1}
-        },
-        {
-            {-1, 1, 1, -1, -1, 1, 1, -1},
-            {-1, 6, 6, -1, -1, 1, 1, -1}
-        },
-        {
-            {1, 2, 2, 1, 2, 1, 1, 2},
-            {2, 4, 4, 2, 5, 1, 1, 5}
-        },
-        {
-            {1, 3, 3, 1, 3, 1, 1, 3},
-            {5, 6, 6, 5, 3, 3, 3, 3}
-        },
-        {
-            {1, 2, 1, 2, 1, 2, 1, 2},
-            {-1, 4, -1, 4, 2, 5, 2, 5}
-        },
-        {
-            {3, 1, 2, 1, 1, 3, 2, 3},
-            {5, 6, 5, 6, 6, 5, 3, 5}
-        }
-    };
-    
+            {
+                {1, 1, 1, 1, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {2, 2, 2, 2, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {-1, -1, 1, 1, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {2, 2, -1, -1, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {1, -1, -1, 1, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {-1, 2, 2, -1, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {3, 3, 3, 3, -1, -1, -1, -1},
+                {2, 2, 2, 2, -1, -1, -1, -1}
+            },
+            {
+                {1, 1, 1, 1, -1, -1, -1, -1},
+                {3, 3, 3, 3, -1, -1, -1, -1}
+            },
+            {
+                {3, 3, -1, -1, -1, -1, -1, -1},
+                {4, 4, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {-1, -1, 2, -1, -1, -1, -1, -1},
+                {-1, -1, 1, -1, -1, -1, -1, -1}
+            },
+            {
+                {2, 2, 2, 2, 1, 1, 1, 1},
+                {-1, -1, -1, -1, -1, -1, -1, -1}
+            },
+            {
+                {-1, 1, 1, -1, -1, 1, 1, -1},
+                {-1, 6, 6, -1, -1, 1, 1, -1}
+            },
+            {
+                {1, 2, 2, 1, 2, 1, 1, 2},
+                {2, 4, 4, 2, 5, 1, 1, 5}
+            },
+            {
+                {1, 3, 3, 1, 3, 1, 1, 3},
+                {5, 6, 6, 5, 3, 3, 3, 3}
+            },
+            {
+                {1, 2, 1, 2, 1, 2, 1, 2},
+                {-1, 4, -1, 4, 2, 5, 2, 5}
+            },
+            {
+                {3, 1, 2, 1, 1, 3, 2, 3},
+                {5, 6, 5, 6, 6, 5, 3, 5}
+            }
+        };
+
     public Utils()
     {
         list = new ArrayList<Integer>();
@@ -138,12 +138,12 @@ public class Utils extends Actor
             level++;
         }
     }
-    
+
     public static String getLastKey()
     {
         return key;
     }
-    
+
     public static void changeMirrored()
     {
         if(!mirrored)
@@ -153,27 +153,27 @@ public class Utils extends Actor
             mirrored = false;
         }
     }
-    
+
     public static boolean getMirrored()
     {
         return mirrored;
     }
-    
+
     public static void addTargetShape()
     {
         totalTargetShapes++;
     }
-    
+
     public static int getTotalTargetShapes()
     {
         return totalTargetShapes;
     }
-    
+
     public static Integer[] getTargetShape()
     {
         return targetShapes[level][0];
     }
-    
+
     public static Integer[] getTargetShapeColour()
     {
         return targetShapes[level][1];
@@ -198,7 +198,7 @@ public class Utils extends Actor
     {
         balancerDelay = delay;
     }
-    
+
     public static int getCutterDelay()
     {
         return balancerDelay;
@@ -208,7 +208,7 @@ public class Utils extends Actor
     {
         cutterDelay = delay;
     }
-    
+
     public static int getRotationDelay()
     {
         return rotationDelay;
@@ -218,7 +218,7 @@ public class Utils extends Actor
     {
         rotationDelay = delay;
     }
-    
+
     public static int getPainterDelay()
     {
         return paintingDelay;
@@ -228,7 +228,7 @@ public class Utils extends Actor
     {
         paintingDelay = delay;
     }
-    
+
     public static int getStackingDelay()
     {
         return stackingDelay;
@@ -294,7 +294,7 @@ public class Utils extends Actor
     {
         return machineMap[x][y];
     }
-    
+
     public static void fillSpaceDeposit(int x, int y, Deposits object)
     {
         depositMap[x][y] = object;
@@ -319,40 +319,39 @@ public class Utils extends Actor
     {
         level--;
     }
-    
+
     public static int getCRSlevel() {
         return crsUpgradeLevel;
     }
-    
+
     public static void increaseCRSlevel() {
         crsUpgradeLevel++;
     }
-    
+
     public static int getBDlevel() {
         return bdUpgradeLevel;
     }
-    
+
     public static void increaseBDlevel() {
         bdUpgradeLevel++;
     }
-    
+
     public static int getPAINTlevel() {
         return paintUpgradeLevel;
     }
-    
+
     public static void increasePAINTlevel() {
         paintUpgradeLevel++;
     }
-    
+
     public static int getEXTRACTlevel() {
         return extractUpgradeLevel;
     }
-    
+
     public static void increaseEXTRACTlevel() {
         extractUpgradeLevel++;
     }
-    
-     
+
     public static void save()
     {
 
@@ -387,17 +386,16 @@ public class Utils extends Actor
         }
     }
 
-    
     public static void setLevel(int x)
     {
         level = x;
     }
-    
+
     public static void setMap(int x)
     {
         mapNumber = x;
     }
-    
+
     public static void setTime(int x)
     {
         time = x;
@@ -417,16 +415,54 @@ public class Utils extends Actor
     {
         return timeM;
     }
-    
+
     public static void setUpgrade(int x)
     {
         //upgradeLevel = x;
     }
-    
+
     public static void setMoney(int x)
     {
         money = x;
     }
-    
-    
+
+    public static void setCrsUpgradeLevel(int x)
+    {
+        crsUpgradeLevel = x;
+    }
+
+    public static void setBdUpgradeLevel(int x)
+    {
+        bdUpgradeLevel =x;
+    }
+
+    public static void setPaintUpgradeLevel(int x)
+    {
+        paintUpgradeLevel = x;
+    }
+
+    public static void setExtractUpgradeLevel(int x)
+    {
+        extractUpgradeLevel = x;
+    }
+
+    public static int getCrsUpgradeLevel()
+    {
+        return crsUpgradeLevel;
+    }
+
+    public static int getBdUpgradeLevel()
+    {
+        return bdUpgradeLevel;
+    }
+
+    public static int getPaintUpgradeLevel()
+    {
+        return paintUpgradeLevel;
+    }
+
+    public static int getExtractUpgradeLevel()
+    {
+        return extractUpgradeLevel;
+    }
 }
