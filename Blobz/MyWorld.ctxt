@@ -1,22 +1,22 @@
 #BlueJ class context
 comment0.target=MyWorld
-comment0.text=\n\ <h1>Factory\ Simulation\ Game\ finished\ by\ Group\ 1.</h1>\n\ <p>\ Group\ member\:\ Peter\ Chen,\ Anson\ Ho,\ Andy\ Li,\ Eric\ Zheng</p>\n\ <h2>Credit\:</h2>\n\ \n\ @author\ (Group\ 1)\ \n\ @version\ Jan\ 24,\ 2023\n
+comment0.text=\r\n\ <h1>Factory\ Simulation\ Game\ finished\ by\ Group\ 1.</h1>\r\n\ <p>\ Group\ member\:\ Peter\ Chen,\ Anson\ Ho,\ Andy\ Li,\ Eric\ Zheng</p>\r\n\ <h2>Credit\:</h2>\r\n\ \r\n\ @author\ (Group\ 1)\ \r\n\ @version\ Jan\ 24,\ 2023\r\n
 comment1.params=
 comment1.target=MyWorld()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ MyWorld.\n\ \n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ MyWorld.\r\n\ \r\n
 comment10.params=
 comment10.target=void\ setMap4()
 comment11.params=
 comment11.target=void\ delete()
 comment12.params=
 comment12.target=void\ read()
-comment12.text=\n\ mehtod\ to\ read\ stats\ from\ file\ then\ sets\ the\ stats\ in\ the\ game\ to\ these\ values.\n
+comment12.text=\r\n\ mehtod\ to\ read\ stats\ from\ file\ then\ sets\ the\ stats\ in\ the\ game\ to\ these\ values.\r\n
 comment13.params=
 comment13.target=void\ time()
-comment13.text=\n\ method\ to\ keep\ track\ of\ game\ time\ that\ has\ passed,\ by\ counting\ each\ fps.\n
+comment13.text=\r\n\ method\ to\ keep\ track\ of\ game\ time\ that\ has\ passed,\ by\ counting\ each\ fps.\r\n
 comment14.params=
 comment14.target=void\ addTimeLabel()
-comment14.text=\n\ method\ to\ create\ the\ time\ visual\ in\ the\ game\n
+comment14.text=\r\n\ method\ to\ create\ the\ time\ visual\ in\ the\ game\r\n
 comment15.params=
 comment15.target=void\ playDelete()
 comment2.params=

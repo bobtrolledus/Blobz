@@ -451,7 +451,7 @@ public class MyWorld extends World
             if(gameTime == 59)
             {
                 gameTime = 0;
-                gameTimeM ++; // minutes increase
+                gameTimeM ++; // minutes increa se
                 Utils.setTime(gameTime);
                 Utils.setTimeM(gameTimeM);
             }
@@ -463,7 +463,9 @@ public class MyWorld extends World
     public void addTimeLabel()
     {
         timeLabel = new Label(gameTimeM + ": " + gameTime, 30);
-        addObject(timeLabel,600,50);
+        timeLabel.setLineColor(Color.DARK_GRAY);
+        timeLabel.setFillColor(Color.DARK_GRAY);
+        addObject(timeLabel,600,55);
     }
     
     public void playDelete(){
