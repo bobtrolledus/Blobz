@@ -35,7 +35,7 @@ public class Utils extends Actor
     private static Scanner scan;
     private static int mapNumber;
     private static boolean mapChange;
-    private static int money;
+    private static int money = 0;
     private static int crsUpgradeLevel;
     private static int bdUpgradeLevel;
     private static int paintUpgradeLevel;
@@ -432,5 +432,7 @@ public class Utils extends Actor
         money = x;
     }
     
-    
+    public static void addMoney(int x){
+        money += x;
+    }
 }
