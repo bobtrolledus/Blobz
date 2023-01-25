@@ -21,6 +21,9 @@ public class Extractor extends NarrowMachines
         setImage("images/Machines/extractor.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         real = true;
+        placeSound = new GreenfootSound("extractor.wav");
+        placeSound.setVolume(85);
+        setEffect(placeSound);
     }
     
     public Extractor(boolean spawner)
@@ -28,6 +31,11 @@ public class Extractor extends NarrowMachines
         setImage("images/Machines/extractor.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         this.spawner = spawner;
+        placeSound = new GreenfootSound("extractor.wav");
+        placeSound.setVolume(85);
+        placeSound = new GreenfootSound("extractor.wav");
+        placeSound.setVolume(85);
+        setEffect(placeSound);
     }
     
     /**
@@ -153,6 +161,7 @@ public class Extractor extends NarrowMachines
         
         if(timer.millisElapsed() > Utils.getExtractorDelay() && getObjectsInRange(25, FollowPoint.class).size() < 2)
         {
+            playEffect();
             if(isColour)
             {
                 getWorld().addObject(new ShapeGenerator(colour, direction, -1), spawnXCoord, spawnYCoord);
@@ -177,6 +186,7 @@ public class Extractor extends NarrowMachines
         timer.mark();
         if(real)
         {
+            playPlace();
             switch (Utils.getDirection())
             {
                 case 0:

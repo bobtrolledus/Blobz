@@ -27,6 +27,9 @@ public class RotateLeft extends NarrowMachines
             outputColour.add(0);
         } 
         real = true;
+        placeSound = new GreenfootSound("ccw.wav");
+        placeSound.setVolume(90);
+        setEffect(placeSound);
     }
     
     public RotateLeft(boolean spawner)
@@ -34,6 +37,9 @@ public class RotateLeft extends NarrowMachines
         setImage("images/Machines/rotateLeft.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         this.spawner = spawner;
+        placeSound = new GreenfootSound("ccw.wav");
+        placeSound.setVolume(90);
+        setEffect(placeSound);
     }
     
     /**
@@ -199,6 +205,7 @@ public class RotateLeft extends NarrowMachines
             getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1), spawnXCoord, spawnYCoord);
             outputShape.clear();
             outputColour.clear();
+            playEffect();
             for(int i = 0; i < 8; i++)
             {
                 outputShape.add(0);
@@ -221,6 +228,7 @@ public class RotateLeft extends NarrowMachines
         timer.mark();
         if(real)
         {
+            playPlace();
             switch (Utils.getDirection())
             {
                 case 0:

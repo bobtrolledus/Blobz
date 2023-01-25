@@ -12,11 +12,14 @@ public abstract class Machines extends Actor
     public boolean spawner = false, real = false, updatedImage = false, occupied = false, spawned = false, lastMirror = false;
     public int gridPositionX, gridPositionY;  
     public int direction, lastRotation; 
-    public Shapes shape;
     public SimpleTimer timer = new SimpleTimer();
     public ArrayList<Integer> outputShape = new ArrayList<Integer>(8);
     public ArrayList<Integer> outputColour = new ArrayList<Integer>(8);
-
+    protected GreenfootSound[] effects = new GreenfootSound[20];
+    protected GreenfootSound[] place = new GreenfootSound[20];
+    public GreenfootSound placeSound;
+    protected int effectsIndex = 0, placeIndex = 0;
+    
     /**
      * Allows an image of the seleted machine to follow mouse cursor
      * @param xSize Size of machine image
@@ -122,6 +125,7 @@ public abstract class Machines extends Actor
                             try{ 
                                 Machines temp = (Machines) cls.newInstance();
                                 Utils.fillSpaceMachine(gridPositionY, gridPositionX, temp);
+                                playPlace();
                                 switch(Utils.getDirection())
                                 {
                                     case 0:
@@ -156,6 +160,7 @@ public abstract class Machines extends Actor
                                 Machines temp = (Machines) cls.newInstance();
                                 getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
                                 Utils.fillSpaceMachine(gridPositionY, gridPositionX, temp);
+                                playPlace();
                             }
                                 catch(Exception e){        
                             }
@@ -165,6 +170,7 @@ public abstract class Machines extends Actor
                             Machines temp = (Machines) cls.newInstance();
                             getWorld().addObject(temp, (gridPositionX * Utils.gridSize) + (200 + getImage().getWidth() / 2), (gridPositionY * Utils.gridSize) + (getImage().getHeight() / 2));
                             Utils.fillSpaceMachine(gridPositionY, gridPositionX, temp);
+                            playPlace();
                         }
                             catch(Exception e){
                         }
@@ -241,6 +247,31 @@ public abstract class Machines extends Actor
             case 3:
                 setRotation(90);
                 break;
+        }
+    }
+    
+    public void setEffect(GreenfootSound effect){
+        for(int i = 0; i < 20; i++){
+            effects[i] = effect;
+            GreenfootSound placeSound = new GreenfootSound("place.wav");
+            placeSound.setVolume(90);
+            place[i] = placeSound;
+        }
+    }
+    
+    public void playEffect(){
+        effects[effectsIndex].play();
+        effectsIndex++;
+        if(effectsIndex > effects.length - 1){
+            effectsIndex = 0;
+        }
+    }
+    
+    public void playPlace(){
+        place[placeIndex].play();
+        placeIndex++;
+        if(placeIndex > place.length - 1){
+            placeIndex = 0;
         }
     }
 }

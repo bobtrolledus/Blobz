@@ -16,6 +16,9 @@ public class Balancer extends WideMachines
         setImage("images/Machines/balancer.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         real = true;
+        placeSound = new GreenfootSound("balancer.wav");
+        placeSound.setVolume(90);
+        setEffect(placeSound);
     }
     
     public Balancer(boolean spawner)
@@ -23,6 +26,9 @@ public class Balancer extends WideMachines
         setImage("images/Machines/balancer.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         this.spawner = spawner;
+        placeSound = new GreenfootSound("balancer.wav");
+        placeSound.setVolume(90);
+        setEffect(placeSound);
     }
     
     /**
@@ -174,6 +180,7 @@ public class Balancer extends WideMachines
                 outputShape = null;
                 outputSide = true;
                 occupied = false;
+                playEffect();
                 timer.mark();
             }
             else if(outputSide && getWorld().getObjectsAt(spawnX2Coord, spawnY2Coord, Shapes.class).size() < 1)
@@ -189,6 +196,7 @@ public class Balancer extends WideMachines
                 outputShape = null;
                 outputSide = false;
                 occupied = false;
+                playEffect();
                 timer.mark();
             }
         }
@@ -203,6 +211,7 @@ public class Balancer extends WideMachines
         timer.mark();
         if(real)
         {
+            playPlace();
             switch (Utils.getDirection())
             {
                 case 0:
