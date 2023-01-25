@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class saveButton here.
+ * Button to save game.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Yuebai
+ * @version 1/24/2023
  */
 public class SaveButton extends Button
 {
@@ -14,7 +14,6 @@ public class SaveButton extends Button
         this.size = 20;
         comicFont = new Font ("Comic Sans MS", true, false, size);
     
-        // draws purple background
         background = new GreenfootImage(width, height);
         drawNormalButton();
     }

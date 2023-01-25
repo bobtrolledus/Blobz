@@ -10,11 +10,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 /**
  * <h1>Factory Simulation Game finished by Group 1.</h1>
- * <p> Group member: Peter Chen, Anson Ho, Andy Li, Eric Zheng</p>
+ * <p> Group member: Yuebai Chen, Anson Ho, Andy Li, Eric Zheng</p>
  * <h2>Credit:</h2>
  * 
  * @author (Group 1) 
- * @version Jan 24, 2023
+ * @version 1/24/2023 
  */
 public class MyWorld extends World
 {
@@ -47,12 +47,12 @@ public class MyWorld extends World
         setBackground(background);
         getBackground().setColor(gray);
         
-        for(int x = 0; x <= 800; x++){
+        for (int x = 0; x <= 800; x++) {
             if(x % 40 == 0){
                 getBackground().drawLine(x + 200, 0, x + 200, 1000);
             }
         }
-        for(int x = 0; x < 1000; x++){
+        for (int x = 0; x < 1000; x++) {
             if(x % 40 == 0){
                 getBackground().drawLine(200, x, 1000, x);
             }
@@ -61,7 +61,7 @@ public class MyWorld extends World
         prepare();
         
         setMap1();
-        for(int i = 0; i < 20; i++){
+        for (int i = 0; i < 20; i++) {
             delete[i] = new GreenfootSound("delete.wav");
         }
         if (load) {
@@ -92,9 +92,13 @@ public class MyWorld extends World
         setLevel();
     }
 
+    /**
+     * Holds all basic preparation steps that is shared between new game and load game
+     * 
+     */
     public void prepare()
     {
-        // spawns left side bar UI stuff
+        // spawns left side bar UI 
         int width = 200;
         int height = 800; 
         int offset = 27;
@@ -111,6 +115,7 @@ public class MyWorld extends World
         addObject(new Stacker(true), width / 2, (int) ((height / 10) * 8)); // tool 9:
         addObject(new TrashCan(true), width / 2, (int) ((height / 10) * 9)); // tool 9:
 
+        // spawns hub and labels
         addObject(new Hub(), 600,400);
         levelLabel = new Label(Utils.getLevel() + 1, 50);
         itemLabel = new Label(Utils.getTotalTargetShapes() + " / 5", 30);
@@ -125,6 +130,7 @@ public class MyWorld extends World
         moneyLabel.setLineColor(new Color(77, 77, 77));
         moneyLabel.setFillColor(new Color(77, 77, 77));
         
+        // spawns right side bar UI
         int rightButtonOffset = 20;
         int rightLabelOffset = 40;
         getBackground().setFont(comicFontMid);
@@ -141,6 +147,10 @@ public class MyWorld extends World
         Utils.setLevel(0);
     }
 
+    /**
+     * Respawns left side bar UI machines and updates hub shape generator
+     * 
+     */
     public void reset() {
         int width = 200;
         int height = 800; 
@@ -160,7 +170,10 @@ public class MyWorld extends World
         }       
     }
     
-    
+    /**
+     * Method used to set the map every 4 levels
+     * 
+     */
     public void setLevel() {
         if (Utils.mapChange()) {
             for (Deposits v : (ArrayList<Deposits>) getObjects(Deposits.class)){
@@ -209,19 +222,23 @@ public class MyWorld extends World
             } else if (Utils.getLevel() == 12) {
                 setMap4();
             } else {
-                // CHANGE TO END WORLD
                 Greenfoot.setWorld(new EndScreen());
             }
             reset();
         }
     }
     
+    /**
+     * Cheats to jump through the game: 
+     * -u, i, o, and p to jump to map 1-4 respectively
+     * -press 0 to skip through levels
+     * 
+     */
     public void cheat() {
         if (Utils.getLastKey() != null && Utils.getLastKey().equals("0") && Utils.getLevel() < 15) {
             Utils.increaseLevel();
         }
         if (Utils.getLastKey() != null) {
-            // CHANGE LETTERS OR ELSE IT WONT GET REMOVED
             if (Utils.getLastKey().equals("u") || Utils.getLastKey().equals("i") || Utils.getLastKey().equals("o") || Utils.getLastKey().equals("p")) {
                 for (Deposits v : (ArrayList<Deposits>) getObjects(Deposits.class)){
                     removeObject(v);
@@ -281,12 +298,20 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Spawning pattern for map 1
+     * 
+     */
     public void setMap1() {
         addObject(new Deposits("circle"), 3 * 40 + 220, 4 * 40 + 20);
         addObject(new Deposits("square"), 14 * 40 + 220, 17 * 40 + 20);
         addObject(new Deposits("red"), 17 * 40 + 220, 11 * 40 + 20);
     }
     
+    /**
+     * Spawning pattern for map 2
+     * 
+     */
     public void setMap2() {
         int[][] eyebrows = {{2,1}, {3,2}, {4,3}, {5,4}, {6,4}, {7,4}, {17,1}, {16,2}, {15,3}, {14,4}, {13,4}, {12,4}};
         for (int i = 0; i < eyebrows.length; i++) {
@@ -316,6 +341,10 @@ public class MyWorld extends World
         }                   
     }
     
+    /**
+     * Spawning pattern for map 3
+     * 
+     */
     public void setMap3() {
         ArrayList<String> depositTypes = new ArrayList<String>();
         depositTypes.add("circle");
@@ -336,6 +365,10 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Spawning pattern for map 4
+     * 
+     */
     public void setMap4() {
         ArrayList<String> depositTypes = new ArrayList<String>();
         depositTypes.add("circle");
@@ -394,7 +427,8 @@ public class MyWorld extends World
     }
     
     /**
-     * method to read stats from file then sets the stats in the game to these values.
+     * Method to read and set game variables from saved file
+     * 
      */
     public void read()
     {
@@ -423,6 +457,7 @@ public class MyWorld extends World
         }
         System.out.println(lines);
         
+        // sets game data to saved data
         gameTimeM = lines.get(0);
         gameTime = lines.get(1);
         Utils.setLevel(lines.get(2));
@@ -435,7 +470,8 @@ public class MyWorld extends World
     }
 
     /**
-     * method to keep track of game time that has passed, by counting each fps.
+     * Method to keep track of game time that has passed, by counting each fps
+     * 
      */
     private void time()
     {
@@ -461,9 +497,10 @@ public class MyWorld extends World
         }
     }
     
-     /**
-      * method to create the time visual in the game
-      */   
+    /**
+     * Method to spawn time label
+     * 
+     */ 
     public void addTimeLabel()
     {
         timeLabel = new Label("time: " + gameTimeM + " mins " + gameTime + " secs", 20);

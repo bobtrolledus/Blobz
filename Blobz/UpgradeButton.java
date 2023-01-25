@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class UpgradeButton here.
+ * Button for machine upgrades.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Yuebai
+ * @version 1/24/2023
  */
 public class UpgradeButton extends Button
 {
@@ -24,12 +24,15 @@ public class UpgradeButton extends Button
     }
     
     public void act() {
-        //add edge case for max button level
         upgrade();
         refreshLevel();
         redraw();
     }
     
+    /**
+     * Carries out upgrades on utils
+     * 
+     */
     public void upgrade() {
         if (clicked && Utils.getMoney() > moneyReq) {
             if (upgradeLvl < 8) {
@@ -47,6 +50,10 @@ public class UpgradeButton extends Button
         }
     }
     
+    /**
+     * Refreshes required money for upgrade
+     * 
+     */
     public void refreshLevel() {
         if (upgradeType.equals("crs")) {
             upgradeLvl = Utils.getCRSlevel();

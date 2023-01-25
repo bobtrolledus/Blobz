@@ -11,8 +11,8 @@ import java.util.ArrayList;
 /**
  * Class for all global variables
  * 
- * @author Anson
- * @version (a version number or a date)
+ * @author Anson/Yuebai
+ * @version 1/24/2023
  */
 public class Utils extends Actor
 {
@@ -145,6 +145,14 @@ public class Utils extends Actor
     {
         key = Greenfoot.getKey();
         mouse = Greenfoot.getMouseInfo();
+        levelCheck();
+    }
+    
+    /**
+     * Checks for level advancement, taking into consideration the hub requirement and user decision
+     * 
+     */
+    public static void levelCheck() {
         if(totalTargetShapes >= 5) {
             if (userApprovedLevelChange) {
                 increaseLevel();
@@ -158,7 +166,6 @@ public class Utils extends Actor
             mapChange = false;
         }
     }
-
     
     public static int soundLevel() {
         return soundLevel;
