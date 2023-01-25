@@ -113,6 +113,8 @@ public class Utils extends Actor
         }
     };
     
+    private static GreenfootSound upgrade = new GreenfootSound("upgrade.wav"), levelUp = new GreenfootSound("levelUp.wav");
+    
     public Utils()
     {
         list = new ArrayList<Integer>();
@@ -145,7 +147,7 @@ public class Utils extends Actor
                 Greenfoot.setWorld(new EndScreen());
             }
             else if (userApprovedLevelChange && level + 1 < 16) {
-                level++;
+                increaseLevel();
                 totalTargetShapes = 0;
                 if ((level == 4 || level == 8 || level == 12)) {
                     mapChange = true;
@@ -352,6 +354,7 @@ public class Utils extends Actor
 
     public static void increaseLevel()
     {
+        levelUp.play();
         level++;
     }
 
@@ -366,6 +369,7 @@ public class Utils extends Actor
     
     public static void increaseCRSlevel() {
         crsUpgradeLevel++;
+        upgrade.play();
     }
     
     public static int getBDlevel() {
@@ -374,6 +378,7 @@ public class Utils extends Actor
     
     public static void increaseBDlevel() {
         bdUpgradeLevel++;
+        upgrade.play();
     }
     
     public static int getPAINTlevel() {
@@ -382,6 +387,7 @@ public class Utils extends Actor
     
     public static void increasePAINTlevel() {
         paintUpgradeLevel++;
+        upgrade.play();
     }
     
     public static int getEXTRACTlevel() {
@@ -390,6 +396,7 @@ public class Utils extends Actor
     
     public static void increaseEXTRACTlevel() {
         extractUpgradeLevel++;
+        upgrade.play();
     }
     
     private static void save()
