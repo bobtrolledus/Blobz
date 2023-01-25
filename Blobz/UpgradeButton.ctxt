@@ -1,16 +1,16 @@
 #BlueJ class context
 comment0.target=UpgradeButton
-comment0.text=\r\n\ Button\ for\ machine\ upgrades.\r\n\ \r\n\ @author\ Yuebai\r\n\ @version\ 1/24/2023\r\n
+comment0.text=\n\ Button\ for\ machine\ upgrades.\n\ \n\ @author\ Yuebai\n\ @version\ 1/24/2023\n
 comment1.params=upgradeType
 comment1.target=UpgradeButton(java.lang.String)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ upgrade()
-comment3.text=\r\n\ Carries\ out\ upgrades\ on\ utils\r\n\ \r\n
+comment3.text=\n\ Carries\ out\ upgrades\ on\ utils\n\ \n
 comment4.params=
 comment4.target=void\ refreshLevel()
-comment4.text=\r\n\ Refreshes\ required\ money\ for\ upgrade\r\n\ \r\n
+comment4.text=\n\ Refreshes\ required\ money\ for\ upgrade\n\ \n
 comment5.params=
 comment5.target=void\ drawNormalButton()
 comment6.params=

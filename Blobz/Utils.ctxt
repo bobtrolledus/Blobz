@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Utils
-comment0.text=\r\n\ Class\ for\ all\ global\ variables\r\n\ \r\n\ @author\ Anson/Yuebai\r\n\ @version\ 1/24/2023\r\n
+comment0.text=\n\ Class\ for\ all\ global\ variables\n\ \n\ @author\ Anson/Yuebai\n\ @version\ 1/24/2023\n
 comment1.params=
 comment1.target=Utils()
 comment10.params=
@@ -47,7 +47,7 @@ comment29.params=
 comment29.target=int\ getMouseButton()
 comment3.params=
 comment3.target=void\ levelCheck()
-comment3.text=\r\n\ Checks\ for\ level\ advancement,\ taking\ into\ consideration\ the\ hub\ requirement\ and\ user\ decision\r\n\ \r\n
+comment3.text=\n\ Checks\ for\ level\ advancement,\ taking\ into\ consideration\ the\ hub\ requirement\ and\ user\ decision\n\ \n
 comment30.params=
 comment30.target=greenfoot.MouseInfo\ getMouse()
 comment31.params=x\ y

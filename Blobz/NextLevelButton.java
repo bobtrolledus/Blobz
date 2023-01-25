@@ -21,7 +21,6 @@ public class NextLevelButton extends Button
     {
         redraw();
         if (Greenfoot.mouseClicked(this)) {
-            System.out.println("CLICKED");
             Utils.approveLevelChange();
         }
     }

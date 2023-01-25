@@ -59,13 +59,13 @@ public class MyWorld extends World
         }
         addObject(new Utils(), 0, 0);
         prepare();
-        
-        setMap1();
         for (int i = 0; i < 20; i++) {
             delete[i] = new GreenfootSound("delete.wav");
         }
         if (load) {
             read();
+        } else {
+            setMap1();
         }
         addTimeLabel();
     }
@@ -438,7 +438,6 @@ public class MyWorld extends World
      */
     public void read()
     {
-        System.out.println("reading");
         scan = new Scanner (System.in);
         lines = new ArrayList<Integer>();
         try{
@@ -446,7 +445,7 @@ public class MyWorld extends World
         }
         catch(FileNotFoundException e)
         {
-            System.out.println("there is no such file");
+            System.out.println("there is no saved file");
             System.exit(1);
         }
         boolean moreLines = true;
@@ -461,7 +460,6 @@ public class MyWorld extends World
                 moreLines = false;
             }
         }
-        System.out.println(lines);
         
         // sets game data to saved data
         gameTimeM = lines.get(0);
@@ -473,6 +471,15 @@ public class MyWorld extends World
         Utils.setEXTRACTlevel(lines.get(6));
         Utils.setMoney(lines.get(7));
         lines.clear();
+        if (Utils.getLevel() < 4) {
+            setMap1();
+        } else if (Utils.getLevel() < 8) {
+            setMap2();
+        } else if (Utils.getLevel() < 12) {
+            setMap3();
+        } else if (Utils.getLevel() < 16) {
+            setMap4();
+        }
     }
 
     /**
