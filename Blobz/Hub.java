@@ -33,7 +33,7 @@ public class Hub extends Machines
     {
         for(FollowPoint point : getIntersectingObjects(FollowPoint.class))
         {
-            if(point.getShape().equals(Utils.getTargetShape()))
+            if(outputShape.equals(point.getShape()))
             {
                 if(!point.checkIfLabel())
                 {

@@ -213,10 +213,10 @@ public class MyWorld extends World
         Utils.setLevel(lines.get(0));
         Utils.setMap(lines.get(1));
         Utils.setMoney(lines.get(6));
-        Utils.setCrsUpgradeLevel(lines.get(2));
-        Utils.setBdUpgradeLevel(lines.get(3));
-        Utils.setPaintUpgradeLevel(lines.get(4));
-        Utils.setExtractUpgradeLevel(lines.get(5));
+        //Utils.setCrsUpgradeLevel(lines.get(2));
+        //Utils.setBdUpgradeLevel(lines.get(3));
+        //Utils.setPaintUpgradeLevel(lines.get(4));
+        //Utils.setExtractUpgradeLevel(lines.get(5));
         gameTime = lines.get(8);
         gameTimeM = lines.get(7);
         lines.clear();
