@@ -172,11 +172,11 @@ public class Painter extends WideMachines
                 colour = tempPoint.getRawColour();
                 for(int i = 0; i < outputColour.size(); i++)
                 {
-                    if(outputColour.get(i) == -1)
+                    if(outputColour.get(i) == -1 && outputShape.get(i) != -1)
                     {
                         outputColour.set(i, colour);
                     }
-                    else if(outputColour.get(i) != colour && (outputColour.get(i) != 3 && outputColour.get(i) != 5 && outputColour.get(i) != 6))
+                    else if(outputShape.get(i) != -1 && outputColour.get(i) != colour && (outputColour.get(i) != 3 && outputColour.get(i) != 5 && outputColour.get(i) != 6))
                     {
                         outputColour.set(i, outputColour.get(i) + colour);
                     }

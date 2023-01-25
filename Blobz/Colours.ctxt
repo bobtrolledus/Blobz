@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=Colours
-comment0.text=\nClass\ deals\ with\ colour\ specific\ movement,\ image\ setting,\ and\ scaling.\n\ \n\ @author\ Andy\ \n\ @version\ Jan\ 24,\ 2023\n
+comment0.text=\r\nClass\ deals\ with\ colour\ specific\ movement,\ image\ setting,\ and\ scaling.\r\n\ \r\n\ @author\ Andy\ \r\n\ @version\ Jan\ 24,\ 2023\r\n
 comment1.params=colour\ guide
 comment1.target=Colours(int,\ FollowPoint)
 comment2.params=
 comment2.target=void\ move()
-comment2.text=\n\ Move\ method\ for\ colours\n
+comment2.text=\r\n\ Move\ method\ for\ colours\r\n
 numComments=3

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=FollowPoint
-comment0.text=\n\ A\ point\ that\ shapes\ and\ colours\ follow.\ Also\ contains\ information\ about\ shapes\ or\ colour\ that\ are\ following\ the\ point.\n\ \n\ @author\ Andy/Anson\n\ @version\ Jan\ 24,\ 2023\n
+comment0.text=\r\n\ A\ point\ that\ shapes\ and\ colours\ follow.\ Also\ contains\ information\ about\ shapes\ or\ colour\ that\ are\ following\ the\ point.\r\n\ \r\n\ @author\ Andy/Anson\r\n\ @version\ Jan\ 24,\ 2023\r\n
 comment1.params=dir\ isLabel\ value
 comment1.target=FollowPoint(int,\ boolean,\ double)
 comment10.params=machine
@@ -9,7 +9,7 @@ comment11.params=
 comment11.target=boolean\ machineOccupied()
 comment12.params=
 comment12.target=void\ setRotation()
-comment12.text=\n\ Checks\ and\ sets\ rotation\ of\ the\ FollowPoint\ based\ on\ RotationPoints,\n\ also\ changes\ offset\ for\ wait\ function\n
+comment12.text=\r\n\ Checks\ and\ sets\ rotation\ of\ the\ FollowPoint\ based\ on\ RotationPoints,\r\n\ also\ changes\ offset\ for\ wait\ function\r\n
 comment13.params=
 comment13.target=boolean\ checkIfLabel()
 comment14.params=
