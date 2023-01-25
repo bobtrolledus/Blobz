@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Utils
-comment0.text=\r\n\ Class\ for\ all\ global\ variables\r\n\ \r\n\ @author\ Anson\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Class\ for\ all\ global\ variables\r\n\ \r\n\ @author\ Anson/Eric\r\n\ @version\ Jan\ 24,\ 2023\r\n
 comment1.params=
 comment1.target=Utils()
 comment10.params=
@@ -79,6 +79,7 @@ comment43.params=
 comment43.target=void\ increaseEXTRACTlevel()
 comment44.params=
 comment44.target=void\ save()
+comment44.text=\r\n\ method\ to\ save\ stats\ by\ turning\ value\ ints\ in\ to\ strings\ then\ writing\ to\ file.\r\n
 comment45.params=x
 comment45.target=void\ setLevel(int)
 comment46.params=x

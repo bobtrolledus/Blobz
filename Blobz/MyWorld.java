@@ -181,7 +181,9 @@ public class MyWorld extends World
             }    
         }
     }
-
+    /**
+     * mehtod to read stats from file then sets the stats in the game to these values.
+     */
    public void read()
     {
         System.out.println("reading");
@@ -199,9 +201,7 @@ public class MyWorld extends World
         while (moreLines)
         {
             try{
-                
-                int a = Integer.parseInt(fileScan.next());
-
+                int a = Integer.parseInt(fileScan.next()); // turns strings into integers
                 lines.add(a);
             }
             catch(NoSuchElementException e)
@@ -222,16 +222,18 @@ public class MyWorld extends World
         lines.clear();
     }
 
-    
+    /**
+     * method to keep track of game time that has passed, by counting each fps.
+     */
     private void time()
     {
-        gameTimer = (gameTimer + 1) % 60; 
+        gameTimer = (gameTimer + 1) % 60; // 60 times a second, gametimer is 0 each second(60fps)
         if (gameTimer == 0) {
-            gameTime++;
+            gameTime++; // seconds increase
             Utils.setTime(gameTime);
             if(gameTime<10)
             {
-                timeLabel.setValue(gameTimeM + ": 0" + gameTime);
+                timeLabel.setValue(gameTimeM + ": 0" + gameTime); // to keep 2 digits format
             }
             else if(gameTime>=10)
             {
@@ -240,13 +242,15 @@ public class MyWorld extends World
             if(gameTime == 59)
             {
                 gameTime = 0;
-                gameTimeM ++;
+                gameTimeM ++; // minutes increase
                 Utils.setTime(gameTime);
                 Utils.setTimeM(gameTimeM);
             }
         }
     }
-        
+     /**
+      * method to create the time visual in the game
+      */   
     public void addTimeLabel()
     {
         timeLabel = new Label(gameTimeM + ": " + gameTime, 30);

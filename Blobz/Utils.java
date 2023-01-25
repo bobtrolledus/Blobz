@@ -11,8 +11,8 @@ import java.util.ArrayList;
 /**
  * Class for all global variables
  * 
- * @author Anson
- * @version (a version number or a date)
+ * @author Anson/Eric
+ * @version Jan 24, 2023
  */
 public class Utils extends Actor
 {
@@ -351,12 +351,14 @@ public class Utils extends Actor
     public static void increaseEXTRACTlevel() {
         extractUpgradeLevel++;
     }
-
+    /**
+     * method to save stats by turning value ints in to strings then writing to file.
+     */
     public static void save()
     {
 
         try{
-            String lv = Integer.toString(level);
+            String lv = Integer.toString(level); // turns int into string
             String mapN = Integer.toString(mapNumber);
             String c = Integer.toString(crsUpgradeLevel);
             String b = Integer.toString(bdUpgradeLevel);

@@ -26,7 +26,9 @@ public class Hub extends Machines
         collecting();
         updateImage();
     }
-
+    /**
+     * method to collect shapes transferred into the central hub.
+     */
     public void collecting()
     {
         for(FollowPoint point : getIntersectingObjects(FollowPoint.class))
