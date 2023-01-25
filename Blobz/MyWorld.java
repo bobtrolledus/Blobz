@@ -120,11 +120,17 @@ public class MyWorld extends World
         
         int rightButtonOffset = 20;
         int rightLabelOffset = 40;
-        getBackground().setFont(comicFontSmoll);
-        addObject(new UpgradeButton("crs"), 1200 - width / 2, (int) ((height / 5) * 1) + rightButtonOffset); 
-        addObject(new UpgradeButton("bd"), 1200 - width / 2, (int) ((height / 5) * 2) + rightButtonOffset); 
-        addObject(new UpgradeButton("paint"), 1200 - width / 2, (int) ((height / 5) * 3) + rightButtonOffset); 
-        addObject(new UpgradeButton("extract"), 1200 - width / 2, (int) ((height / 5) * 4) + rightButtonOffset);
+        getBackground().setFont(comicFontMid);
+        getBackground().setColor(Color.MAGENTA);
+        
+        
+        addObject(new UpgradeButton("crs"), 1200 - width / 2, 150); 
+        addObject(new UpgradeButton("bd"), 1200 - width / 2, 280); 
+        addObject(new UpgradeButton("paint"), 1200 - width / 2, 410); 
+        addObject(new UpgradeButton("extract"), 1200 - width / 2, 540);
+        addObject(new NextLevelButton(), 1200 - width / 2, 640);
+        addObject(new SoundButton(), 1200 - width / 2, 700);
+        addObject(new SaveButton(), 1200 - width / 2, 760);
     }
 
     public void reset() {
@@ -382,7 +388,7 @@ public class MyWorld extends World
     /**
      * mehtod to read stats from file then sets the stats in the game to these values.
      */
-   public void read()
+    public void read()
     {
         System.out.println("reading");
         scan = new Scanner (System.in);
@@ -440,7 +446,7 @@ public class MyWorld extends World
             if(gameTime == 59)
             {
                 gameTime = 0;
-                gameTimeM ++; // minutes increase
+                gameTimeM ++; // minutes increa se
                 Utils.setTime(gameTime);
                 Utils.setTimeM(gameTimeM);
             }
@@ -452,9 +458,13 @@ public class MyWorld extends World
     public void addTimeLabel()
     {
         timeLabel = new Label(gameTimeM + ": " + gameTime, 30);
-        addObject(timeLabel,600,50);
+        timeLabel.setLineColor(Color.DARK_GRAY);
+        timeLabel.setFillColor(Color.DARK_GRAY);
+        addObject(timeLabel,600,55);
     }
+    
     public void playDelete(){
+        delete[deleteIndex].setVolume(90 * Utils.soundLevel());
         delete[deleteIndex].play();
         deleteIndex++;
         if(deleteIndex > delete.length - 1){

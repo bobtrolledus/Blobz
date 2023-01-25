@@ -9,10 +9,7 @@ import java.util.Arrays;
  */
 public class Extractor extends NarrowMachines
 {
-    private int spawnXCoord, spawnYCoord;
-    private int[] corners = {3, -1, 2, -1, 2, 1, 3, 1};
-    private int[] colours = {1, -1, 2, -1, 2, 1, 4, 2};
-    private int colour;
+    private int spawnXCoord, spawnYCoord, colour;
     private boolean isColour;
     private FollowPoint point;
     
@@ -106,6 +103,7 @@ public class Extractor extends NarrowMachines
                 getWorld().removeObject(this);
             }
             
+            placeSound.setVolume(85 * Utils.soundLevel());
         }
     }
     

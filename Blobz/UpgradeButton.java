@@ -14,12 +14,11 @@ public class UpgradeButton extends Button
     
     public UpgradeButton(String upgradeType) {
         this.width = 160;
-        this.height = 100;
+        this.height = 80;
         this.size = 20;
         this.upgradeType = upgradeType;
         comicFont = new Font ("Comic Sans MS", true, false, size);
     
-        // draws purple background
         background = new GreenfootImage(width, height);
         
     }
@@ -61,10 +60,10 @@ public class UpgradeButton extends Button
     }
     
     public void drawNormalButton() {
-        background.setColor(new Color(193,183,255)); // add background colour
+        background.setColor(new Color(141, 141, 141)); // add background colour
         background.fillRect(0, 0, width, height); // fill Background    
         background.setFont(comicFont);
-        background.setColor(Color.WHITE);
+        background.setColor(new Color(255, 251, 170));
         setImage(background);
         if (upgradeLvl < 8) {
             Button.drawCenteredText(background, "LVL: " + upgradeLvl + " -> " + (upgradeLvl + 1), width/2, height/2 + size/3 - size);
@@ -75,10 +74,10 @@ public class UpgradeButton extends Button
     }
     
     public void drawFaintButton() {
-        background.setColor(new Color(220,210,255)); // add background colour
+        background.setColor(new Color(171, 171, 171)); // add background colour
         background.fillRect(0, 0, width, height); // fill Background    
         background.setFont(comicFont);
-        background.setColor(Color.CYAN);
+        background.setColor(new Color(250, 246, 165));
         setImage(background);
         if (upgradeLvl < 8) {
             Button.drawCenteredText(background, "LVL: " + upgradeLvl + " -> " + (upgradeLvl + 1), width/2, height/2 + size/3 - size);

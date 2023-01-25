@@ -36,6 +36,8 @@ public class Utils extends Actor
     private static int mapNumber;
     private static boolean mapChange;
     private static double money = 0;
+    private static boolean userApprovedLevelChange;
+    private static int soundLevel;
     private static int crsUpgradeLevel;
     private static int bdUpgradeLevel;
     private static int paintUpgradeLevel;
@@ -121,6 +123,8 @@ public class Utils extends Actor
         money = 0;
         mapNumber = 0;
         mapChange = false;
+        userApprovedLevelChange = false;
+        soundLevel = 0;
         totalTargetShapes = 0;
         getImage().scale(10, 10);
         crsUpgradeLevel = 1;
@@ -134,16 +138,40 @@ public class Utils extends Actor
     {
         key = Greenfoot.getKey();
         mouse = Greenfoot.getMouseInfo();
-        if(totalTargetShapes == 5)
-        {
-            totalTargetShapes = 0;
-            level++;
-            if (level == 4 || level == 8 || level == 12) {
-                mapChange = true;
+        if(totalTargetShapes >= 5) {
+            System.out.println("user approve status:" + userApprovedLevelChange);
+            if(level + 1 == 16)
+            {
+                Greenfoot.setWorld(new EndScreen());
+            }
+            else if (userApprovedLevelChange && level + 1 < 16) {
+                level++;
+                totalTargetShapes = 0;
+                if ((level == 4 || level == 8 || level == 12)) {
+                    mapChange = true;
+                }
+                userApprovedLevelChange = false;
             }
         } else {
             mapChange = false;
         }
+    }
+    
+    public static int soundLevel() {
+        return soundLevel;
+    }
+    
+    public static void turnOnSound() {
+        soundLevel = 1;
+    }
+    
+    public static void turnOffSound() {
+        soundLevel = 0;
+    }
+    
+    public static void approveLevelChange() {
+        System.out.println("approval method ran");
+        userApprovedLevelChange = true;
     }
     
     public static String getLastKey()

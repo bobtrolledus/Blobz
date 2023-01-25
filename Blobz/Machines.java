@@ -22,6 +22,14 @@ public abstract class Machines extends Actor
     protected double value;
     
     /**
+     * Refreshes place sound volume using util sound constant
+     * @param 
+     */
+    public void act() {
+        placeSound.setVolume(90 * Utils.soundLevel());
+    }
+    
+    /**
      * Allows an image of the seleted machine to follow mouse cursor
      * @param xSize Size of machine image
      */
@@ -29,11 +37,13 @@ public abstract class Machines extends Actor
     {
         if(Utils.getMouse() != null)
         {
-            if(xSize > 1 && (Utils.getDirection() == 1 || Utils.getDirection() == 3))
-            {
-                setLocation(Utils.getMouseX() + getImage().getWidth() / 2 - Utils.gridSize, Utils.getMouseY() + getImage().getHeight() / 2 - Utils.gridSize);
-            } else {
-                setLocation(Utils.getMouseX() + getImage().getWidth() / 2 - Utils.gridSize / 2, Utils.getMouseY() + getImage().getHeight() / 2 - Utils.gridSize / 2);
+            if (Utils.getMouseX() < 1000) {
+                if(xSize > 1 && (Utils.getDirection() == 1 || Utils.getDirection() == 3))
+                {
+                    setLocation(Utils.getMouseX() + getImage().getWidth() / 2 - Utils.gridSize, Utils.getMouseY() + getImage().getHeight() / 2 - Utils.gridSize);
+                } else {
+                    setLocation(Utils.getMouseX() + getImage().getWidth() / 2 - Utils.gridSize / 2, Utils.getMouseY() + getImage().getHeight() / 2 - Utils.gridSize / 2);
+                }
             }
         } 
     }
@@ -255,12 +265,13 @@ public abstract class Machines extends Actor
         for(int i = 0; i < 20; i++){
             effects[i] = effect;
             GreenfootSound placeSound = new GreenfootSound("place.wav");
-            placeSound.setVolume(90);
+            placeSound.setVolume(90 * Utils.soundLevel());
             place[i] = placeSound;
         }
     }
     
     public void playEffect(){
+        effects[effectsIndex].setVolume(90 * Utils.soundLevel());
         effects[effectsIndex].play();
         effectsIndex++;
         if(effectsIndex > effects.length - 1){
@@ -269,6 +280,7 @@ public abstract class Machines extends Actor
     }
     
     public void playPlace(){
+        place[placeIndex].setVolume(90 * Utils.soundLevel());
         place[placeIndex].play();
         placeIndex++;
         if(placeIndex > place.length - 1){

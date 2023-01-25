@@ -91,6 +91,8 @@ public class Belts extends NarrowMachines
             {
                 getWorld().removeObject(this);
             }
+            
+            placeSound.setVolume(85 * Utils.soundLevel());
         }
     }
     
