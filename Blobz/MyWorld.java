@@ -144,21 +144,43 @@ public class MyWorld extends World
     
     public void setLevel() {
         if (Utils.mapChange()) {
-            ArrayList<Deposits> deposits = (ArrayList<Deposits>) getObjects(Deposits.class);
-            for (Deposits v : deposits){
-                removeObject(v);
-            }
-            ArrayList<Material> materials = (ArrayList<Material>) getObjects(Material.class);
-            for (Material m : materials){
+            for (Deposits v : (ArrayList<Deposits>) getObjects(Deposits.class)){
+                    removeObject(v);
+                }
+            for (Material m : (ArrayList<Material>) getObjects(Material.class)){
                 removeObject(m);
             }
-            
-             
             for (NarrowMachines nm : getObjects(NarrowMachines.class)){
                 removeObject(nm);
             }
             for (WideMachines wm : getObjects(WideMachines.class)){
                 removeObject(wm);
+            }
+            for (FollowPoint fp : getObjects(FollowPoint.class)){
+                if(!fp.checkIfLabel())
+                {
+                    removeObject(fp);
+                }
+            }
+            for (ghostBlock gb : getObjects(ghostBlock.class)){
+                removeObject(gb);
+            }
+            for (Arrows a : getObjects(Arrows.class)){
+                removeObject(a);
+            }
+            Actor[][] machineMap = Utils.getMachineArray();
+            for (int i = 0; i < machineMap.length; i++)
+            {
+                for(int j = 0; j < machineMap[i].length; j++)
+                {
+                    if(machineMap[i][j] != null)
+                    {
+                        if(machineMap[i][j].getClass() != Hub.class)
+                        {
+                            Utils.fillSpaceMachine(i, j, null);
+                        }
+                    }
+                }
             }
             
             if (Utils.getLevel() == 4) {
@@ -183,12 +205,10 @@ public class MyWorld extends World
         if (Utils.getLastKey() != null) {
             // CHANGE LETTERS OR ELSE IT WONT GET REMOVED
             if (Utils.getLastKey().equals("u") || Utils.getLastKey().equals("i") || Utils.getLastKey().equals("o") || Utils.getLastKey().equals("p")) {
-                ArrayList<Deposits> deposits = (ArrayList<Deposits>) getObjects(Deposits.class);
-                for (Deposits v : deposits){
+                for (Deposits v : (ArrayList<Deposits>) getObjects(Deposits.class)){
                     removeObject(v);
                 }
-                ArrayList<Material> materials = (ArrayList<Material>) getObjects(Material.class);
-                for (Material m : materials){
+                for (Material m : (ArrayList<Material>) getObjects(Material.class)){
                     removeObject(m);
                 }
                 for (NarrowMachines nm : getObjects(NarrowMachines.class)){
