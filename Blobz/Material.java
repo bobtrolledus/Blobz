@@ -6,9 +6,27 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Material extends Resources
+public class Material extends Actor
 {
-    public Material()
+    protected FollowPoint guide;
+    
+    public Material(FollowPoint guide){
+        this.guide = guide;
+    }
+    
+    public void act()
     {
+        if(guide.getWorld() == null)
+        {
+            getWorld().removeObject(this);
+        }
+        else
+        {
+            move();
+        }
+    }
+    
+    public void move(){
+        this.setLocation(guide.getX(), guide.getY());
     }
 }

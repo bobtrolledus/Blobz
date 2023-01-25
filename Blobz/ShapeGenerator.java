@@ -8,7 +8,7 @@ import java.util.List;
  * @author Andy/Anson
  * @version (a version number or a date)
  */
-public class ShapeGenerator extends Resources
+public class ShapeGenerator extends Actor
 {
     private int x = 0, y = 0, quadrant = 1, spawnX, spawnY, dir, scale, label;
     private Integer[] corners = new Integer[8];

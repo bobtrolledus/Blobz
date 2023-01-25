@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Andy/Anson
  * @version (a version number or a date)
  */
-public class Deposits extends Resources
+public class Deposits extends Actor
 {
     private String deposit;
     private ArrayList<Integer> circle = new ArrayList<Integer>();
