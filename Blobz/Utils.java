@@ -291,6 +291,11 @@ public class Utils extends Actor
     {
         return rotation;
     }
+    
+    public static Actor[][] getMachineArray()
+    {
+        return machineMap;
+    }
 
     public static void fillSpaceMachine(int x, int y, Actor object)
     {

@@ -203,6 +203,26 @@ public class MyWorld extends World
                         removeObject(fp);
                     }
                 }
+                for (ghostBlock gb : getObjects(ghostBlock.class)){
+                    removeObject(gb);
+                }
+                for (Arrows a : getObjects(Arrows.class)){
+                    removeObject(a);
+                }
+                Actor[][] machineMap = Utils.getMachineArray();
+                for (int i = 0; i < machineMap.length; i++)
+                {
+                    for(int j = 0; j < machineMap[i].length; j++)
+                    {
+                        if(machineMap[i][j] != null)
+                        {
+                            if(machineMap[i][j].getClass() != Hub.class)
+                            {
+                                Utils.fillSpaceMachine(i, j, null);
+                            }
+                        }
+                    }
+                }
                 reset();
             }
             
