@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=Machines
-comment0.text=\r\n\ An\ abstract\ class\ for\ all\ machines.\ Contains\ methods\ for\ spawning,\ deletion,\ and\ ghost\ block.\r\n\ \r\n\ @author\ Anson\ \ \r\n\ @version\ Jan\ 24,\ 2023\r\n
+comment0.text=\n\ An\ abstract\ class\ for\ all\ machines.\ Contains\ methods\ for\ spawning,\ deletion,\ and\ ghost\ block.\n\ \n\ @author\ Anson\ \ \n\ @version\ Jan\ 24,\ 2023\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\r\n\ Refreshes\ place\ sound\ volume\ using\ util\ sound\ constant\r\n\r\n
+comment1.text=\n\ Refreshes\ place\ sound\ volume\ using\ util\ sound\ constant\n\n
 comment10.params=effect
 comment10.target=void\ setEffect(greenfoot.GreenfootSound)
 comment11.params=
@@ -12,26 +12,26 @@ comment12.params=
 comment12.target=void\ playPlace()
 comment2.params=xSize
 comment2.target=void\ followMouse(int)
-comment2.text=\r\n\ Allows\ an\ image\ of\ the\ seleted\ machine\ to\ follow\ mouse\ cursor\r\n\ @param\ xSize\ Size\ of\ machine\ image\r\n
+comment2.text=\n\ Allows\ an\ image\ of\ the\ seleted\ machine\ to\ follow\ mouse\ cursor\n\ @param\ xSize\ Size\ of\ machine\ image\n
 comment3.params=image\ xSize
 comment3.target=void\ gridSnap(greenfoot.GreenfootImage,\ int)
-comment3.text=\r\n\ Creates\ a\ GhostBlock\ class\ of\ machine\ that\ snaps\ to\ grid\r\n\ @param\ image\ Image\ of\ machine\r\n\ @param\ xSize\ Size\ of\ machine\r\n
+comment3.text=\n\ Creates\ a\ GhostBlock\ class\ of\ machine\ that\ snaps\ to\ grid\n\ @param\ image\ Image\ of\ machine\n\ @param\ xSize\ Size\ of\ machine\n
 comment4.params=cls\ xSize
 comment4.target=void\ place(java.lang.Class,\ int)
-comment4.text=\r\n\ Places\ an\ instance\ onto\ the\ map\ and\ updates\ the\ global\ 2D\ array\ of\ machines\r\n\ @param\ cls\ Class\ of\ machine\ to\ instantiate\r\n\ @param\ xSize\ Size\ of\ machine\r\n
+comment4.text=\n\ Places\ an\ instance\ onto\ the\ map\ and\ updates\ the\ global\ 2D\ array\ of\ machines\n\ @param\ cls\ Class\ of\ machine\ to\ instantiate\n\ @param\ xSize\ Size\ of\ machine\n
 comment5.params=
 comment5.target=void\ deleteShapes()
-comment5.text=\r\n\ Deletes\ all\ shapes\ in\ surronding\ area\ when\ machine\ is\ deleted\r\n
+comment5.text=\n\ Deletes\ all\ shapes\ in\ surronding\ area\ when\ machine\ is\ deleted\n
 comment6.params=
 comment6.target=void\ updateRotation()
-comment6.text=\r\n\ Updates\ image\ of\ machine\ when\ rotated\r\n
+comment6.text=\n\ Updates\ image\ of\ machine\ when\ rotated\n
 comment7.params=direction
 comment7.target=void\ setDirection(int)
-comment7.text=\r\n\ Sets\ spawn\ direction\ variable\ based\ on\ direction\ of\ machine\ placed\r\n\ @param\ direction\r\n
+comment7.text=\n\ Sets\ spawn\ direction\ variable\ based\ on\ direction\ of\ machine\ placed\n\ @param\ direction\n
 comment8.params=
 comment8.target=boolean\ isOccupied()
-comment8.text=\r\n\ Returns\ a\ boolean\ to\ check\ if\ machine\ is\ currently\ making\ a\ shape\r\n\ @return\ occupied\ Boolean\r\n
+comment8.text=\n\ Returns\ a\ boolean\ to\ check\ if\ machine\ is\ currently\ making\ a\ shape\n\ @return\ occupied\ Boolean\n
 comment9.params=direction
 comment9.target=void\ updateImage(int)
-comment9.text=\r\n\ Updates\ image\ rotation\ of\ machine\ <br>\r\n\ -\ 0\ \=\ Down\ <br>\r\n\ -\ 1\ \=\ Left\ <br>\r\n\ -\ 2\ \=\ Up\ <br>\r\n\ -\ 3\ \=\ Right\ <br>\r\n\ @param\ direction\ Direction\ that\ machine\ should\ face\r\n
+comment9.text=\n\ Updates\ image\ rotation\ of\ machine\ <br>\n\ -\ 0\ \=\ Down\ <br>\n\ -\ 1\ \=\ Left\ <br>\n\ -\ 2\ \=\ Up\ <br>\n\ -\ 3\ \=\ Right\ <br>\n\ @param\ direction\ Direction\ that\ machine\ should\ face\n
 numComments=13

@@ -180,7 +180,6 @@ public class Utils extends Actor
     }
     
     public static void approveLevelChange() {
-        System.out.println("approval method ran");
         userApprovedLevelChange = true;
     }
     
@@ -442,7 +441,6 @@ public class Utils extends Actor
             list.add((int)money);
             FileWriter out = new FileWriter("save.txt",false);
             PrintWriter output = new PrintWriter(out);
-            System.out.println("saved data: " + list);
             output.println(timeM);
             output.println(time);
             output.println(level);
