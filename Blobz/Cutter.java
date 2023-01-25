@@ -114,7 +114,7 @@ public class Cutter extends WideMachines
         {   
             if(!occupied)
             {
-                if(getWorld().getObjectsAt(inputXCoord, inputYCoord, Shapes.class).size() > 0)
+                if(getWorld().getObjectsAt(inputXCoord, inputYCoord, Shape.class).size() > 0)
                 {
                     getShape();
                     getColour();
@@ -197,7 +197,7 @@ public class Cutter extends WideMachines
      */
     public void spawnShape()
     {
-        if(timer.millisElapsed() > Utils.getCutterDelay() && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1 && getWorld().getObjectsAt(spawnX2Coord, spawnY2Coord, Shapes.class).size() < 1)
+        if(timer.millisElapsed() > Utils.getCutterDelay() && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shape.class).size() < 1 && getWorld().getObjectsAt(spawnX2Coord, spawnY2Coord, Shape.class).size() < 1)
         {
             cut1.set(2, outputShape.get(2));
             cut1.set(3, outputShape.get(3));

@@ -200,7 +200,7 @@ public class Stacker extends WideMachines
      */
     public void spawnShape()
     {
-        if(timer.millisElapsed() > Utils.getStackingDelay() && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1)
+        if(timer.millisElapsed() > Utils.getStackingDelay() && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shape.class).size() < 1)
         {
             getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1, value1 + value2), spawnX1Coord, spawnY1Coord);
             shapeID1 = null;

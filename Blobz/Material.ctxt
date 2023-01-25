@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Material
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Material\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ An\ abstract\ class\ dealing\ with\ the\ spawning\ and\ removing\ of\ shapes\ and\ colours.\r\n\ \r\n\ @author\ Andy\ \r\n\ @version\ Jan\ 24,\ 2023\r\n
 comment1.params=guide
 comment1.target=Material(FollowPoint)
 comment2.params=

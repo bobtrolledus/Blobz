@@ -136,7 +136,7 @@ public class Balancer extends WideMachines
                 getWorld().removeObject(tempPoint);
                 isRawColour = true;
             }
-            if(getWorld().getObjectsAt(inputXCoord, inputYCoord, Shapes.class).size() > 0)
+            if(getWorld().getObjectsAt(inputXCoord, inputYCoord, Shape.class).size() > 0)
             {
                 FollowPoint tempPoint = getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).get(0);
                 outputShape = tempPoint.getShape();
@@ -169,7 +169,7 @@ public class Balancer extends WideMachines
         if(timer.millisElapsed() > Utils.getBalancerDelay())
         {
             value = value * 1.2;
-            if(!outputSide && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1)
+            if(!outputSide && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shape.class).size() < 1)
             {
                 if(isRawColour)
                 {
@@ -185,7 +185,7 @@ public class Balancer extends WideMachines
                 playEffect();
                 timer.mark();
             }
-            else if(outputSide && getWorld().getObjectsAt(spawnX2Coord, spawnY2Coord, Shapes.class).size() < 1)
+            else if(outputSide && getWorld().getObjectsAt(spawnX2Coord, spawnY2Coord, Shape.class).size() < 1)
             {
                 if(isRawColour)
                 {

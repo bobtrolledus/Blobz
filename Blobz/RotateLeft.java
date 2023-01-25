@@ -201,7 +201,7 @@ public class RotateLeft extends NarrowMachines
      */
     public void spawnShape()
     {
-        if(timer.millisElapsed() > Utils.getRotationDelay() && getWorld().getObjectsAt(spawnXCoord, spawnYCoord, Shapes.class).size() < 1) 
+        if(timer.millisElapsed() > Utils.getRotationDelay() && getWorld().getObjectsAt(spawnXCoord, spawnYCoord, Shape.class).size() < 1) 
         {
             value = value * 1.2;
             getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1, value), spawnXCoord, spawnYCoord);
