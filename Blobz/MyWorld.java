@@ -77,9 +77,7 @@ public class MyWorld extends World
                 Utils.changeMirrored();
             }
         }
-        
         cheat();
-        
         setLevel();
     }
 
@@ -138,9 +136,9 @@ public class MyWorld extends World
         addObject(new Stacker(true), width / 2, (int) ((height / 10) * 8)); // tool 9:
         addObject(new TrashCan(true), width / 2, (int) ((height / 10) * 9)); // tool 9:
         ArrayList<Hub> hub = (ArrayList<Hub>) getObjects(Hub.class);
-            for (Hub h : hub){
-                h.updateImage(); 
-            }       
+        for (Hub h : hub){
+            h.updateImage(); 
+        }       
     }
     
     
@@ -154,16 +152,15 @@ public class MyWorld extends World
             for (Material m : materials){
                 removeObject(m);
             }
-            /*
-            ArrayList<NarrowMachines> narrowmachines = (ArrayList<NarrowMachines>) getObjects(NarrowMachines.class);
-            for (NarrowMachines nm : narrowmachines){
+            
+             
+            for (NarrowMachines nm : getObjects(NarrowMachines.class)){
                 removeObject(nm);
             }
-            ArrayList<WideMachines> widemachines = (ArrayList<WideMachines>) getObjects(WideMachines.class);
-            for (WideMachines wm : widemachines){
+            for (WideMachines wm : getObjects(WideMachines.class)){
                 removeObject(wm);
             }
-            */
+            
             if (Utils.getLevel() == 4) {
                 setMap2();
             } else if (Utils.getLevel() == 8) {
@@ -194,21 +191,18 @@ public class MyWorld extends World
                 for (Material m : materials){
                     removeObject(m);
                 }
-                
-                /*
-                ArrayList<NarrowMachines> narrowmachines = (ArrayList<NarrowMachines>) getObjects(NarrowMachines.class);
-                for (NarrowMachines nm : narrowmachines){
+                for (NarrowMachines nm : getObjects(NarrowMachines.class)){
                     removeObject(nm);
                 }
-                ArrayList<WideMachines> widemachines = (ArrayList<WideMachines>) getObjects(WideMachines.class);
-                for (WideMachines wm : widemachines){
+                for (WideMachines wm : getObjects(WideMachines.class)){
                     removeObject(wm);
                 }
-                ArrayList<FollowPoint> followpoints = (ArrayList<FollowPoint>) getObjects(FollowPoint.class);
-                for (FollowPoint fp : followpoints){
-                    removeObject(fp);
+                for (FollowPoint fp : getObjects(FollowPoint.class)){
+                    if(!fp.checkIfLabel())
+                    {
+                        removeObject(fp);
+                    }
                 }
-                */
                 reset();
             }
             
@@ -228,7 +222,6 @@ public class MyWorld extends World
             
         }
     }
-    
     
     public void setMap1() {
         addObject(new Deposits("circle"), 3 * 40 + 220, 4 * 40 + 20);
@@ -304,10 +297,6 @@ public class MyWorld extends World
             addObject(new Deposits(depositTypes.get(i%6)), 1200 - 340 - i * 40, 19 * 40 + 20);  
         }
     }
-
-    
-    
-    
 
     public void delete()
     {
