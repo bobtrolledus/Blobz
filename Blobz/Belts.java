@@ -9,12 +9,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Belts extends NarrowMachines
 {
     private RotationPoint point1, point2;
-    
     public Belts()
     {
         setImage("images/Machines/ConveyorBelt.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         real = true;
+        placeSound = new GreenfootSound("belt.wav");
+        placeSound.setVolume(85);
+        for(int i = 0; i < 20; i++){
+            place[i] = placeSound;
+        }
     }
     
     public Belts(boolean spawner)
@@ -22,6 +26,11 @@ public class Belts extends NarrowMachines
         setImage("images/Machines/ConveyorBelt.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         this.spawner = spawner;
+        placeSound = new GreenfootSound("belt.wav");
+        placeSound.setVolume(50);
+        for(int i = 0; i < 20; i++){
+            place[i] = placeSound;
+        }
     }
        
     /**
@@ -121,6 +130,7 @@ public class Belts extends NarrowMachines
     {
         if(real)
         {
+            playPlace();
             switch (Utils.getDirection())
             {
                 case 0:

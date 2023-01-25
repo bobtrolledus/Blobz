@@ -332,9 +332,12 @@ public class MyWorld extends World
             }    
         }
     }
-
-    public void read()
+    /**
+     * mehtod to read stats from file then sets the stats in the game to these values.
+     */
+   public void read()
     {
+        System.out.println("reading");
         scan = new Scanner (System.in);
         lines = new ArrayList<Integer>();
         try{
@@ -349,7 +352,7 @@ public class MyWorld extends World
         while (moreLines)
         {
             try{
-                int a = fileScan.nextInt();
+                int a = Integer.parseInt(fileScan.next()); // turns strings into integers
                 lines.add(a);
             }
             catch(NoSuchElementException e)
@@ -357,22 +360,31 @@ public class MyWorld extends World
                 moreLines = false;
             }
         }
+        System.out.println(lines);
         Utils.setLevel(lines.get(0));
         Utils.setMap(lines.get(1));
-        Utils.setUpgrade(lines.get(2));
-        Utils.setMoney(lines.get(3));
+        Utils.setMoney(lines.get(6));
+        //Utils.setCrsUpgradeLevel(lines.get(2));
+        //Utils.setBdUpgradeLevel(lines.get(3));
+        //Utils.setPaintUpgradeLevel(lines.get(4));
+        //Utils.setExtractUpgradeLevel(lines.get(5));
+        gameTime = lines.get(8);
+        gameTimeM = lines.get(7);
         lines.clear();
     }
-    
+
+    /**
+     * method to keep track of game time that has passed, by counting each fps.
+     */
     private void time()
     {
-        gameTimer = (gameTimer + 1) % 60; 
+        gameTimer = (gameTimer + 1) % 60; // 60 times a second, gametimer is 0 each second(60fps)
         if (gameTimer == 0) {
-            gameTime++;
+            gameTime++; // seconds increase
             Utils.setTime(gameTime);
             if(gameTime<10)
             {
-                timeLabel.setValue(gameTimeM + ": 0" + gameTime);
+                timeLabel.setValue(gameTimeM + ": 0" + gameTime); // to keep 2 digits format
             }
             else if(gameTime>=10)
             {
@@ -381,13 +393,15 @@ public class MyWorld extends World
             if(gameTime == 59)
             {
                 gameTime = 0;
-                gameTimeM ++;
+                gameTimeM ++; // minutes increase
                 Utils.setTime(gameTime);
                 Utils.setTimeM(gameTimeM);
             }
         }
     }
-        
+     /**
+      * method to create the time visual in the game
+      */   
     public void addTimeLabel()
     {
         timeLabel = new Label(gameTimeM + ": " + gameTime, 30);

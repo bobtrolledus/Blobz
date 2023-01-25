@@ -25,6 +25,9 @@ public class Stacker extends WideMachines
             outputColour.add(-1);
         }
         real = true;
+        placeSound = new GreenfootSound("stacker.wav");
+        placeSound.setVolume(100);
+        setEffect(placeSound);
     }
     
     public Stacker(boolean spawner)
@@ -32,6 +35,9 @@ public class Stacker extends WideMachines
         setImage("images/Machines/stacker.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         this.spawner = spawner;
+        placeSound = new GreenfootSound("stacker.wav");
+        placeSound.setVolume(100);
+        setEffect(placeSound);
     }
     
     /**
@@ -212,6 +218,7 @@ public class Stacker extends WideMachines
             grabbedShape2 = false;
             timer.mark();
             occupied = false;
+            playEffect();
         }
     }
     
@@ -224,6 +231,7 @@ public class Stacker extends WideMachines
         timer.mark();
         if(real)
         {
+            playPlace();
             switch (Utils.getDirection())
             {
                 case 0:

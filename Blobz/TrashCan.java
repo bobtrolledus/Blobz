@@ -13,6 +13,9 @@ public class TrashCan extends NarrowMachines
         setImage("images/Machines/trashcan.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         real = true;
+        placeSound = new GreenfootSound("trash.wav");
+        placeSound.setVolume(85);
+        setEffect(placeSound);
     }
     
     public TrashCan(boolean spawner)
@@ -20,6 +23,9 @@ public class TrashCan extends NarrowMachines
         setImage("images/Machines/trashcan.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         this.spawner = spawner;
+        placeSound = new GreenfootSound("trash.wav");
+        placeSound.setVolume(85);
+        setEffect(placeSound);
     }
     
     /**
@@ -84,6 +90,14 @@ public class TrashCan extends NarrowMachines
         }
     }
     
+    protected void addedToWorld(World world)
+    {
+        if(real)
+        {
+            playPlace();
+        }
+    }
+    
     /**
      * Deletes all touching shapes
      */
@@ -92,6 +106,7 @@ public class TrashCan extends NarrowMachines
         for(FollowPoint point : getIntersectingObjects(FollowPoint.class))
         {
             getWorld().removeObject(point);
+            playEffect();
         }
     }
     

@@ -43,6 +43,9 @@ public class Cutter extends WideMachines
             cutColour2.add(0);
         }
         real = true;
+        placeSound = new GreenfootSound("cutter.wav");
+        placeSound.setVolume(90);
+        setEffect(placeSound);
     }
     
     public Cutter(boolean spawner)
@@ -50,6 +53,9 @@ public class Cutter extends WideMachines
         setImage("images/Machines/cutter.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         this.spawner = spawner;
+        placeSound = new GreenfootSound("cutter.wav");
+        placeSound.setVolume(90);
+        setEffect(placeSound);
     }
     
     /**
@@ -242,6 +248,7 @@ public class Cutter extends WideMachines
             }
             outputShape = null;
             occupied = false;
+            playEffect();
             timer.mark();
         }
     }
@@ -255,6 +262,7 @@ public class Cutter extends WideMachines
         timer.mark();
         if(real)
         {
+            playPlace();
             switch (Utils.getDirection())
             {
                 case 0:
