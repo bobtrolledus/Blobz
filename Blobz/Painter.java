@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import greenfoot.GreenfootSound;
 
 /**
  * Uses arraylist manipualtion to change colour of shapes
@@ -17,6 +18,9 @@ public class Painter extends WideMachines
         setImage("images/Machines/painter.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         real = true;
+        placeSound = new GreenfootSound("painter.wav");
+        placeSound.setVolume(80);
+        setEffect(placeSound);
     }
     
     public Painter(boolean spawner)
@@ -24,6 +28,9 @@ public class Painter extends WideMachines
         setImage("images/Machines/painter.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         this.spawner = spawner;
+        placeSound = new GreenfootSound("painter.wav");
+        placeSound.setVolume(80);
+        setEffect(placeSound);
     }
     
     /**
@@ -191,6 +198,7 @@ public class Painter extends WideMachines
             grabbedColour = false;
             timer.mark();
             occupied = false;
+            playEffect();
         }
     }
     
@@ -203,6 +211,7 @@ public class Painter extends WideMachines
         timer.mark();
         if(real)
         {
+            playPlace();
             switch (Utils.getDirection())
             {
                 case 0:
