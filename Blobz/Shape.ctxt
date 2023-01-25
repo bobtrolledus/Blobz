@@ -1,16 +1,16 @@
 #BlueJ class context
 comment0.target=Shape
-comment0.text=\n\ Parent\ class\ that\ deals\ with\ the\ placement,\ image,\ and\ movement\ of\ each\ corner\ in\ the\ "blob".\n\ \n\ @author\ Andy\n\ @version\ Jan\ 24,\ 2023\n
+comment0.text=\r\n\ Parent\ class\ that\ deals\ with\ the\ placement,\ image,\ and\ movement\ of\ each\ corner\ in\ the\ "blob".\r\n\ \r\n\ @author\ Andy\r\n\ @version\ Jan\ 24,\ 2023\r\n
 comment1.params=shape\ q\ guide\ colour\ scale
 comment1.target=Shape(int,\ int,\ FollowPoint,\ int,\ int)
-comment1.text=\n\ Creates\ a\ shape\n\ @param\ \ \ shape\:\ the\ shape\ of\ the\ corner\n\ @param\ \ \ q\:\ the\ quadrant\ that\ this\ shape\ is\ in\n\ @param\ \ \ guide\:\ the\ FollowPoint\ that\ this\ shape\ is\ following\n\ @param\ \ \ scale\:\ the\ size\ of\ the\ shape\n
+comment1.text=\r\n\ Creates\ a\ shape\r\n\ @param\ \ \ shape\:\ the\ shape\ of\ the\ corner\r\n\ @param\ \ \ q\:\ the\ quadrant\ that\ this\ shape\ is\ in\r\n\ @param\ \ \ guide\:\ the\ FollowPoint\ that\ this\ shape\ is\ following\r\n\ @param\ \ \ scale\:\ the\ size\ of\ the\ shape\r\n
 comment2.params=
 comment2.target=void\ setRotation()
-comment2.text=\n\ Correctly\ setting\ the\ rotation\ of\ the\ corners.\n
+comment2.text=\r\n\ Correctly\ setting\ the\ rotation\ of\ the\ corners.\r\n
 comment3.params=
 comment3.target=void\ move()
-comment3.text=\n\ Based\ on\ quadrant,\ moves\ the\ shape\ to\ the\ correct\ corner\ and\ have\ it\ follow\ the\ guide\ point.\n
+comment3.text=\r\n\ Based\ on\ quadrant,\ moves\ the\ shape\ to\ the\ correct\ corner\ and\ have\ it\ follow\ the\ guide\ point.\r\n
 comment4.params=
 comment4.target=void\ setColour()
-comment4.text=\n\ Changes\ the\ image\ based\ on\ the\ colour\ of\ the\ shape\n
+comment4.text=\r\n\ Changes\ the\ image\ based\ on\ the\ colour\ of\ the\ shape\r\n
 numComments=5

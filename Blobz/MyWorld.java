@@ -200,6 +200,9 @@ public class MyWorld extends World
             for (Arrows a : getObjects(Arrows.class)){
                 removeObject(a);
             }
+            for (RotationPoint point : getObjects(RotationPoint.class)){
+                removeObject(point);
+            }
             Actor[][] machineMap = Utils.getMachineArray();
             for (int i = 0; i < machineMap.length; i++)
             {
@@ -263,6 +266,9 @@ public class MyWorld extends World
                 }
                 for (Arrows a : getObjects(Arrows.class)){
                     removeObject(a);
+                }
+                for (RotationPoint point : getObjects(RotationPoint.class)){
+                    removeObject(point);
                 }
                 Actor[][] machineMap = Utils.getMachineArray();
                 for (int i = 0; i < machineMap.length; i++)

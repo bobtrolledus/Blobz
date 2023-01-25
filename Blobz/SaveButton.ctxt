@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=SaveButton
-comment0.text=\n\ Button\ to\ save\ game.\n\ \n\ @author\ Yuebai\n\ @version\ 1/24/2023\n
+comment0.text=\r\n\ Button\ to\ save\ game.\r\n\ \r\n\ @author\ Yuebai\r\n\ @version\ 1/24/2023\r\n
 comment1.params=
 comment1.target=SaveButton()
 comment2.params=
