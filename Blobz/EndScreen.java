@@ -12,6 +12,8 @@ public class EndScreen extends World
     private boolean clickedPlay = false, clickLoadgame = false;
     private boolean hover = false;
     private Font comicFontLarge = new Font ("Comic Sans MS", true, false, 77);
+    private Label timeLabel;
+    private Color yellow = new Color(255, 255, 186);
     
     /**
      * Constructor for objects of class EndScreen.
@@ -28,6 +30,17 @@ public class EndScreen extends World
         addObject(new Utils(), 0, 0);
         addObject(new GeneralButton(400, 100, "Play Again", 40), 350, 600); 
         addObject(new GeneralButton(400, 100, "Start from Load", 40), 850, 600 ); 
+        if(Utils.getTime() < 10)
+        {
+            timeLabel = new Label(Utils.getTimeM() + ": 0" + Utils.getTime(), 250); // to keep 2 digits format
+        }
+        else if(Utils.getTime() >= 10)
+        {
+            timeLabel = new Label(Utils.getTimeM() + ":" + Utils.getTime(), 250);
+        }
+        timeLabel.setLineColor(yellow);
+        timeLabel.setFillColor(yellow);
+        addObject(timeLabel,600,400);
     }
     
     public void act() {

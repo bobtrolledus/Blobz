@@ -446,7 +446,7 @@ public class MyWorld extends World
             if(gameTime == 59)
             {
                 gameTime = 0;
-                gameTimeM ++; // minutes increase
+                gameTimeM ++; // minutes increa se
                 Utils.setTime(gameTime);
                 Utils.setTimeM(gameTimeM);
             }
