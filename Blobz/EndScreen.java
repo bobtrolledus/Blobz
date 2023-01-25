@@ -51,7 +51,7 @@ public class EndScreen extends World
             Greenfoot.setWorld(new InstructionsMenu());
         } else if(clickLoadgame)
         {
-            Greenfoot.setWorld(new MyWorld());
+            Greenfoot.setWorld(new MyWorld(true));
         }
     }
     

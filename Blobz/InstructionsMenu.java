@@ -43,7 +43,7 @@ public class InstructionsMenu extends World
                 index++;
                 if(index == 12)
                 {
-                    Greenfoot.setWorld(new MyWorld());
+                    Greenfoot.setWorld(new MyWorld(false));
                 } else {
                     setBackground(images[index]);
                 }

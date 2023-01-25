@@ -21,6 +21,10 @@ public class SaveButton extends Button
     
     public void act() {
         redraw();
+        if (clicked) {
+            Utils.save();
+            Greenfoot.setWorld(new StartScreen());
+        }
     }
     
     public void drawNormalButton() {

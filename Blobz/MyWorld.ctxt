@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=MyWorld
 comment0.text=\n\ <h1>Factory\ Simulation\ Game\ finished\ by\ Group\ 1.</h1>\n\ <p>\ Group\ member\:\ Peter\ Chen,\ Anson\ Ho,\ Andy\ Li,\ Eric\ Zheng</p>\n\ <h2>Credit\:</h2>\n\ \n\ @author\ (Group\ 1)\ \n\ @version\ Jan\ 24,\ 2023\n
-comment1.params=
-comment1.target=MyWorld()
+comment1.params=load
+comment1.target=MyWorld(boolean)
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ MyWorld.\n\ \n
 comment10.params=
 comment10.target=void\ setMap4()
@@ -10,7 +10,7 @@ comment11.params=
 comment11.target=void\ delete()
 comment12.params=
 comment12.target=void\ read()
-comment12.text=\n\ mehtod\ to\ read\ stats\ from\ file\ then\ sets\ the\ stats\ in\ the\ game\ to\ these\ values.\n
+comment12.text=\n\ method\ to\ read\ stats\ from\ file\ then\ sets\ the\ stats\ in\ the\ game\ to\ these\ values.\n
 comment13.params=
 comment13.target=void\ time()
 comment13.text=\n\ method\ to\ keep\ track\ of\ game\ time\ that\ has\ passed,\ by\ counting\ each\ fps.\n

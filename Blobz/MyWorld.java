@@ -36,7 +36,7 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    public MyWorld()
+    public MyWorld(boolean load)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1); 
@@ -59,11 +59,15 @@ public class MyWorld extends World
         }
         addObject(new Utils(), 0, 0);
         prepare();
-        addTimeLabel();
+        
         setMap1();
         for(int i = 0; i < 20; i++){
             delete[i] = new GreenfootSound("delete.wav");
         }
+        if (load) {
+            read();
+        }
+        addTimeLabel();
     }
 
     public void act()
@@ -106,8 +110,6 @@ public class MyWorld extends World
         addObject(new Painter(true), width / 2, (int) ((height / 10) * 7)); // tool 8:
         addObject(new Stacker(true), width / 2, (int) ((height / 10) * 8)); // tool 9:
         addObject(new TrashCan(true), width / 2, (int) ((height / 10) * 9)); // tool 9:
-        //Button.drawCenteredText (getBackground(), "money: ", width / 2, (int) ((height / 9) * 1 - offset));  
-        
 
         addObject(new Hub(), 600,400);
         levelLabel = new Label(Utils.getLevel() + 1, 50);
@@ -122,15 +124,12 @@ public class MyWorld extends World
         itemLabel.setFillColor(yellow);
         moneyLabel.setLineColor(new Color(77, 77, 77));
         moneyLabel.setFillColor(new Color(77, 77, 77));
-
-        
         
         int rightButtonOffset = 20;
         int rightLabelOffset = 40;
         getBackground().setFont(comicFontMid);
         getBackground().setColor(Color.MAGENTA);
         
-        //addObject(new MoneyDisplay(), 1150, 40);
         addObject(new UpgradeButton("crs"), 1200 - width / 2, 150); 
         addObject(new UpgradeButton("bd"), 1200 - width / 2, 280); 
         addObject(new UpgradeButton("paint"), 1200 - width / 2, 410); 
@@ -138,6 +137,8 @@ public class MyWorld extends World
         addObject(new NextLevelButton(), 1200 - width / 2, 640);
         addObject(new SoundButton(), 1200 - width / 2, 700);
         addObject(new SaveButton(), 1200 - width / 2, 760);
+        
+        Utils.setLevel(0);
     }
 
     public void reset() {
@@ -216,7 +217,7 @@ public class MyWorld extends World
     }
     
     public void cheat() {
-        if (Utils.getLastKey() != null && Utils.getLastKey().equals("space") && Utils.getLevel() < 15) {
+        if (Utils.getLastKey() != null && Utils.getLastKey().equals("0") && Utils.getLevel() < 15) {
             Utils.increaseLevel();
         }
         if (Utils.getLastKey() != null) {
@@ -391,8 +392,9 @@ public class MyWorld extends World
             }    
         }
     }
+    
     /**
-     * mehtod to read stats from file then sets the stats in the game to these values.
+     * method to read stats from file then sets the stats in the game to these values.
      */
     public void read()
     {
@@ -411,7 +413,7 @@ public class MyWorld extends World
         while (moreLines)
         {
             try{
-                int a = Integer.parseInt(fileScan.next()); // turns strings into integers
+                int a = Integer.parseInt(fileScan.nextLine()); // turns strings into integers
                 lines.add(a);
             }
             catch(NoSuchElementException e)
@@ -420,15 +422,15 @@ public class MyWorld extends World
             }
         }
         System.out.println(lines);
-        Utils.setLevel(lines.get(0));
-        Utils.setMap(lines.get(1));
-        Utils.setMoney(lines.get(6));
-        //Utils.setCrsUpgradeLevel(lines.get(2));
-        //Utils.setBdUpgradeLevel(lines.get(3));
-        //Utils.setPaintUpgradeLevel(lines.get(4));
-        //Utils.setExtractUpgradeLevel(lines.get(5));
-        gameTime = lines.get(8);
-        gameTimeM = lines.get(7);
+        
+        gameTimeM = lines.get(0);
+        gameTime = lines.get(1);
+        Utils.setLevel(lines.get(2));
+        Utils.setCRSlevel(lines.get(3));
+        Utils.setBDlevel(lines.get(4));
+        Utils.setPAINTlevel(lines.get(5));
+        Utils.setEXTRACTlevel(lines.get(6));
+        Utils.setMoney(lines.get(7));
         lines.clear();
     }
 
@@ -443,30 +445,31 @@ public class MyWorld extends World
             Utils.setTime(gameTime);
             if(gameTime<10)
             {
-                timeLabel.setValue(gameTimeM + ": 0" + gameTime); // to keep 2 digits format
+                timeLabel.setValue("time: " + gameTimeM + " mins " + gameTime + " secs"); // to keep 2 digits format
             }
             else if(gameTime>=10)
             {
-                timeLabel.setValue(gameTimeM + ": " + gameTime);
+                timeLabel.setValue("time: " + gameTimeM + " mins " + gameTime + " secs");
             }
-            if(gameTime == 59)
+            if(gameTime == 60)
             {
                 gameTime = 0;
-                gameTimeM ++; // minutes increa se
+                gameTimeM ++; // minutes increase
                 Utils.setTime(gameTime);
                 Utils.setTimeM(gameTimeM);
             }
         }
     }
+    
      /**
       * method to create the time visual in the game
       */   
     public void addTimeLabel()
     {
-        timeLabel = new Label(gameTimeM + ": " + gameTime, 30);
+        timeLabel = new Label("time: " + gameTimeM + " mins " + gameTime + " secs", 20);
         timeLabel.setLineColor(Color.DARK_GRAY);
         timeLabel.setFillColor(Color.DARK_GRAY);
-        addObject(timeLabel,600,55);
+        addObject(timeLabel,100,770);
     }
     
     public void playDelete(){
