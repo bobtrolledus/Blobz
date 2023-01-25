@@ -100,15 +100,15 @@ public class ShapeGenerator extends Actor
         {
             switch (rawColour){
                 case (1):
-                    getWorld().addObject(new Red(label, point), x, y);
+                    getWorld().addObject(new Red(point), x, y);
                     point.setRawColour(1);
                     break;
                 case (2):
-                    getWorld().addObject(new Yellow(label, point), x, y);
+                    getWorld().addObject(new Yellow(point), x, y);
                     point.setRawColour(2);
                     break;
                 case (4):
-                    getWorld().addObject(new Blue(label, point), x, y);
+                    getWorld().addObject(new Blue(point), x, y);
                     point.setRawColour(4);
                     break;
             }

@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Material extends Actor
 {
     protected FollowPoint guide;
+    protected int colour;
     
     public Material(FollowPoint guide){
         this.guide = guide;

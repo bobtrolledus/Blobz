@@ -54,15 +54,15 @@ public class Deposits extends Actor
                 colourID = grey;
                 colourDeposit = false;
             } else if (deposit.equals("red")){
-                getWorld().addObject(new Red(1, point), getX(), getY());
+                getWorld().addObject(new ShapeGenerator(1, 0, 1), getX(), getY());
                 rawColourID = 1;
                 colourDeposit = true;
             } else if (deposit.equals("blue")){
-                getWorld().addObject(new Blue(1, point), getX(), getY());
+                getWorld().addObject(new ShapeGenerator(4, 0, 1), getX(), getY());
                 rawColourID = 4;
                 colourDeposit = true;
             } else if (deposit.equals("yellow")){
-                getWorld().addObject(new Yellow(1, point), getX(), getY());
+                getWorld().addObject(new ShapeGenerator(2, 0, 1), getX(), getY());
                 rawColourID = 2;
                 colourDeposit = true;
             }
