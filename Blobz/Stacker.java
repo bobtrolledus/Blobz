@@ -139,7 +139,7 @@ public class Stacker extends WideMachines
      */
     public void getShape()
     {
-        if(getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).size() > 0)
+        if(getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).size() > 0 && !grabbedShape1) 
         {
             FollowPoint tempPoint = getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).get(0);
             shapeID1 = tempPoint.getShape();
@@ -156,7 +156,7 @@ public class Stacker extends WideMachines
                 }
             }
         }
-        if(getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).size() > 0)
+        if(getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).size() > 0 && !grabbedShape2)
         {
             FollowPoint tempPoint = getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).get(0);
             shapeID2 = tempPoint.getShape();
