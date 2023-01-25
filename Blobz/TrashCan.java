@@ -13,6 +13,7 @@ public class TrashCan extends NarrowMachines
         setImage("images/Machines/trashcan.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         real = true;
+        setEffect("trash.wav");
     }
     
     public TrashCan(boolean spawner)
@@ -20,6 +21,7 @@ public class TrashCan extends NarrowMachines
         setImage("images/Machines/trashcan.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         this.spawner = spawner;
+        setEffect("trash.wav");
     }
     
     /**
@@ -85,6 +87,7 @@ public class TrashCan extends NarrowMachines
         for(FollowPoint point : getIntersectingObjects(FollowPoint.class))
         {
             getWorld().removeObject(point);
+            playEffect();
         }
     }
     

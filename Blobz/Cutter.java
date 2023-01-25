@@ -46,6 +46,8 @@ public class Cutter extends WideMachines
             cutColour2.add(0);
         }
         real = true;
+        
+        setEffect("cutter.wav");
     }
     
     public Cutter(boolean spawner)
@@ -53,6 +55,7 @@ public class Cutter extends WideMachines
         setImage("images/Machines/cutter.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         this.spawner = spawner;
+        setEffect("cutter.wav");
     }
     
     /**
@@ -189,6 +192,7 @@ public class Cutter extends WideMachines
             cutColour2.set(5, outputColour.get(5));
             getWorld().addObject(new ShapeGenerator(cut1, cutColour1, direction, -1), spawnX1Coord, spawnY1Coord);
             getWorld().addObject(new ShapeGenerator(cut2, cutColour2, direction, -1), spawnX2Coord, spawnY2Coord);
+            playEffect();
             outputShape.clear();
             outputColour.clear();
             cut1.clear();

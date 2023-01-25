@@ -109,6 +109,8 @@ public class Utils extends Actor
         }
     };
     
+    private static GreenfootSound levelUp = new GreenfootSound("levelUp.wav"), upgrade = new GreenfootSound("upgrade.wav");
+    
     public Utils()
     {
         list = new ArrayList<Integer>();
@@ -311,6 +313,7 @@ public class Utils extends Actor
 
     public static void increaseLevel()
     {
+        levelUp.play();
         level++;
     }
 
@@ -324,6 +327,7 @@ public class Utils extends Actor
     }
     
     public static void increaseCRSlevel() {
+        upgrade.play();
         crsUpgradeLevel++;
     }
     
@@ -332,6 +336,7 @@ public class Utils extends Actor
     }
     
     public static void increaseBDlevel() {
+        upgrade.play();
         bdUpgradeLevel++;
     }
     
@@ -340,6 +345,7 @@ public class Utils extends Actor
     }
     
     public static void increasePAINTlevel() {
+        upgrade.play();
         paintUpgradeLevel++;
     }
     
@@ -348,6 +354,7 @@ public class Utils extends Actor
     }
     
     public static void increaseEXTRACTlevel() {
+        upgrade.play();
         extractUpgradeLevel++;
     }
     

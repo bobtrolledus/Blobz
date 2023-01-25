@@ -27,6 +27,8 @@ public class Stacker extends WideMachines
             outputColour.add(0);
         }
         real = true;
+        
+        setEffect("stacker.wav");
     }
     
     public Stacker(boolean spawner)
@@ -34,6 +36,7 @@ public class Stacker extends WideMachines
         setImage("images/Machines/stacker.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         this.spawner = spawner;
+        setEffect("stacker.wav");
     }
     
     /**
@@ -176,6 +179,7 @@ public class Stacker extends WideMachines
         if(timer.millisElapsed() > Utils.getStackingDelay() && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1)
         {
             getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1), spawnX1Coord, spawnY1Coord);
+            playEffect();
             shapeID1 = null;
             shapeID2 = null;
             colourID1 = null;

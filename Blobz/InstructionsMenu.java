@@ -11,7 +11,9 @@ public class InstructionsMenu extends World
     private GreenfootImage[] images = new GreenfootImage[10];
     private Label continueLabel = new Label("Space to Continue", 40);
     private Color yellow = new Color(255, 255, 186);
-    private int index = 0;
+    private int index = 0, clickIndex = 0;
+    
+    private GreenfootSound[] click = new GreenfootSound[20];
     /**
      * Constructor for objects of class InstructionsMenu.
      * 
@@ -25,6 +27,11 @@ public class InstructionsMenu extends World
             images[i] = new GreenfootImage("images/Instructions/instruction " + i + ".png");
             images[i].scale(1200, 800);
         }
+        
+        for(int i = 0; i < 20; i++){
+            click[i] = new GreenfootSound("select.wav");
+        }
+        
         setBackground(images[index]);
         addObject(new Utils(), 0, 0);
         addObject(continueLabel, 600, 770);
@@ -39,6 +46,7 @@ public class InstructionsMenu extends World
             if(Utils.getLastKey().equals("space"))
             {
                 index++;
+                playClick();
                 if(index == 10)
                 {
                     Greenfoot.setWorld(new MyWorld());
@@ -46,6 +54,14 @@ public class InstructionsMenu extends World
                     setBackground(images[index]);
                 }
             }
+        }
+    }
+    
+    public void playClick(){
+        click[clickIndex].play();
+        clickIndex++;
+        if(clickIndex > click.length - 1){
+            clickIndex = 0;
         }
     }
 }

@@ -14,6 +14,10 @@ public abstract class Machines extends Actor
     public int direction, lastRotation; 
     public Shapes shape;
     public SimpleTimer timer = new SimpleTimer();
+    
+    protected GreenfootSound[] effects = new GreenfootSound[20];
+    protected GreenfootSound[] place = new GreenfootSound[20];
+    protected int effectsIndex = 0, placeIndex = 0;
 
     public void followMouse(int xSize)
     {
@@ -148,6 +152,8 @@ public abstract class Machines extends Actor
                             catch(Exception e){
                         }
                     }
+                    
+                    playPlace();
                 }
             }
         }
@@ -198,6 +204,29 @@ public abstract class Machines extends Actor
             case 3:
                 setRotation(90);
                 break;
+        }
+    }
+    
+    public void setEffect(String effect){
+        for(int i = 0; i < 20; i++){
+            effects[i] = new GreenfootSound(effect);
+            place[i] = new GreenfootSound("place.wav");
+        }
+    }
+    
+    public void playEffect(){
+        effects[effectsIndex].play();
+        effectsIndex++;
+        if(effectsIndex > effects.length - 1){
+            effectsIndex = 0;
+        }
+    }
+    
+    public void playPlace(){
+        place[placeIndex].play();
+        placeIndex++;
+        if(placeIndex > place.length - 1){
+            placeIndex = 0;
         }
     }
 }

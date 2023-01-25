@@ -25,6 +25,8 @@ public class Extractor extends NarrowMachines
         setImage("images/Machines/extractor.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         real = true;
+        
+        setEffect("extractor.wav");
     }
     
     public Extractor(boolean spawner)
@@ -32,6 +34,7 @@ public class Extractor extends NarrowMachines
         setImage("images/Machines/extractor.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         this.spawner = spawner;
+        setEffect("extractor.wav");
     }
     
     /**
@@ -148,6 +151,7 @@ public class Extractor extends NarrowMachines
                 getWorld().addObject(new ShapeGenerator(shapeID, colourID, direction, -1), spawnXCoord, spawnYCoord);
                 timer.mark();
             }
+            playEffect();
             shapeID = null;
             colour = -1;
             occupied = false;

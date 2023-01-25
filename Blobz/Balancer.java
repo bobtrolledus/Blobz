@@ -18,6 +18,7 @@ public class Balancer extends WideMachines
         setImage("images/Machines/balancer.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         real = true;
+        setEffect("balancer.wav");
     }
     
     public Balancer(boolean spawner)
@@ -25,6 +26,7 @@ public class Balancer extends WideMachines
         setImage("images/Machines/balancer.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         this.spawner = spawner;
+        setEffect("balancer.wav");
     }
     
     /**
@@ -146,6 +148,8 @@ public class Balancer extends WideMachines
                 occupied = false;
                 timer.mark();
             }
+            
+            playEffect();
         }
     }
     

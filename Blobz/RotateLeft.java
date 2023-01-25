@@ -28,6 +28,7 @@ public class RotateLeft extends NarrowMachines
             outputColour.add(0);
         } 
         real = true;
+        setEffect("ccw.wav");
     }
     
     public RotateLeft(boolean spawner)
@@ -35,6 +36,7 @@ public class RotateLeft extends NarrowMachines
         setImage("images/Machines/rotateLeft.png");
         getImage().scale(Utils.gridSize, Utils.gridSize);
         this.spawner = spawner;
+        setEffect("ccw.wav");
     }
     
     /**
@@ -175,6 +177,7 @@ public class RotateLeft extends NarrowMachines
         if(timer.millisElapsed() > Utils.getRotationDelay() && getWorld().getObjectsAt(spawnXCoord, spawnYCoord, Shapes.class).size() < 1) 
         {
             getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1), spawnXCoord, spawnYCoord);
+            playEffect();
             outputShape.clear();
             outputColour.clear();
             for(int i = 0; i < 8; i++)

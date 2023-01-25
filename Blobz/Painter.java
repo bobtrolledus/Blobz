@@ -19,6 +19,7 @@ public class Painter extends WideMachines
         setImage("images/Machines/painter.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         real = true;
+        setEffect("painter.wav");
     }
     
     public Painter(boolean spawner)
@@ -26,6 +27,7 @@ public class Painter extends WideMachines
         setImage("images/Machines/painter.png");
         getImage().scale(Utils.gridSize * 2, Utils.gridSize);
         this.spawner = spawner;
+        setEffect("painter.wav");
     }
     
     /**
@@ -164,6 +166,7 @@ public class Painter extends WideMachines
         if(timer.millisElapsed() > Utils.getPainterDelay() && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1)
         {
             getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1), spawnX1Coord, spawnY1Coord);
+            playEffect();
             outputShape = null; 
             outputColour = null;
             grabbedShape = false;
