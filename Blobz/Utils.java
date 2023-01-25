@@ -140,7 +140,11 @@ public class Utils extends Actor
         mouse = Greenfoot.getMouseInfo();
         if(totalTargetShapes >= 5) {
             System.out.println("user approve status:" + userApprovedLevelChange);
-            if (userApprovedLevelChange) {
+            if(level + 1 == 16)
+            {
+                Greenfoot.setWorld(new EndScreen());
+            }
+            else if (userApprovedLevelChange && level + 1 < 16) {
                 level++;
                 totalTargetShapes = 0;
                 if ((level == 4 || level == 8 || level == 12)) {

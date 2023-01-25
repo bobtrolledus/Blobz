@@ -46,6 +46,8 @@ public class EndScreen extends World
     public void act() {
         checkMouse();
         if (clickedPlay || Greenfoot.isKeyDown("enter")) {
+            Utils.setTime(0);
+            Utils.setTimeM(0);
             Greenfoot.setWorld(new InstructionsMenu());
         } else if(clickLoadgame)
         {
