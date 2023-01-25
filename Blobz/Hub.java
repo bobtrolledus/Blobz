@@ -31,6 +31,7 @@ public class Hub extends Machines
     {
         for(FollowPoint point : getIntersectingObjects(FollowPoint.class))
         {
+            value = point.getValue();
             if(point.getShape().equals(outputShape))
             {
                 if(!point.checkIfLabel())
@@ -42,6 +43,8 @@ public class Hub extends Machines
             {
                 getWorld().removeObject(point);
             }
+            
+            Utils.addMoney(value);
         }
         
     }
@@ -79,14 +82,18 @@ public class Hub extends Machines
             setTargetShape();
             FollowPoint tempPoint = getWorld().getObjectsAt(600, 420, FollowPoint.class).get(0);
             getWorld().removeObject(tempPoint);
-            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, 2), 600, 420);
+            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, 2, 0), 600, 420);
         }
+    }
+    
+    public void calculateMoney(){
+        
     }
     
     protected void addedToWorld(World world)
     {
         setTargetShape();
         fillGrid();
-        getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, 2), 600, 420);
+        getWorld().addObject(new ShapeGenerator(outputShape, outputColour, 0, 2, 0), 600, 420);
     }
 }

@@ -12,6 +12,7 @@ public class Stacker extends WideMachines
     private int spawnX1Coord, spawnY1Coord, inputX1Coord, inputX2Coord, inputY1Coord, inputY2Coord;
     private ArrayList<Integer> shapeID1, shapeID2, colourID1, colourID2;
     private boolean grabbedShape1, grabbedShape2;
+    private int value1, value2;
     public Stacker()
     {
         setImage("images/Machines/stacker.png");
@@ -142,6 +143,7 @@ public class Stacker extends WideMachines
         {
             FollowPoint tempPoint = getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).get(0);
             shapeID1 = tempPoint.getShape();
+            value1 = tempPoint.getValue();
             if((shapeID1.get(4) != -1 || shapeID1.get(5) != -1 || shapeID1.get(6) != -1 || shapeID1.get(7) != -1))
             {
                 shapeID1 = null;
@@ -158,6 +160,7 @@ public class Stacker extends WideMachines
         {
             FollowPoint tempPoint = getWorld().getObjectsAt(inputX2Coord, inputY2Coord, FollowPoint.class).get(0);
             shapeID2 = tempPoint.getShape();
+            value2 = tempPoint.getValue();
             if((shapeID2.get(4) != -1 || shapeID2.get(5) != -1 || shapeID2.get(6) != -1 || shapeID2.get(7) != -1))
             {
                 shapeID2 = null;
@@ -199,7 +202,7 @@ public class Stacker extends WideMachines
     {
         if(timer.millisElapsed() > Utils.getStackingDelay() && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1)
         {
-            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1), spawnX1Coord, spawnY1Coord);
+            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1, value1 + value2), spawnX1Coord, spawnY1Coord);
             shapeID1 = null;
             shapeID2 = null;
             colourID1 = null;

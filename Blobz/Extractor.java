@@ -169,7 +169,7 @@ public class Extractor extends NarrowMachines
             }
             if(!isColour)
             {
-                getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1), spawnXCoord, spawnYCoord);
+                getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1, 1), spawnXCoord, spawnYCoord);
                 timer.mark();
             }
             outputShape = null;

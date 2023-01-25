@@ -141,6 +141,7 @@ public class Painter extends WideMachines
             FollowPoint tempPoint = getWorld().getObjectsAt(inputX1Coord, inputY1Coord, FollowPoint.class).get(0);
             outputShape = tempPoint.getShape();
             direction = tempPoint.getRotation();
+            value = tempPoint.getValue();
             grabbedShape = true;
         }
     }
@@ -191,7 +192,8 @@ public class Painter extends WideMachines
     {
         if(timer.millisElapsed() > Utils.getPainterDelay() && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1)
         {
-            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1), spawnX1Coord, spawnY1Coord);
+            value = value * 2;
+            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1, value), spawnX1Coord, spawnY1Coord);
             outputShape = null; 
             outputColour = null;
             grabbedShape = false;

@@ -20,7 +20,7 @@ public class Deposits extends Resources
     private int rawColourID;
     
     private boolean isLabeled = false, colourDeposit;
-    private FollowPoint point = new FollowPoint(1, false);
+    private FollowPoint point = new FollowPoint(1, false, 0);
     
     public Deposits(String deposit){
         this.deposit = deposit;
@@ -39,17 +39,17 @@ public class Deposits extends Resources
     public void act(){
         if (!isLabeled){
             if (deposit.equals("circle")){
-                getWorld().addObject(new ShapeGenerator(circle, grey, 0, 1), getX(), getY());
+                getWorld().addObject(new ShapeGenerator(circle, grey, 0, 1, 0), getX(), getY());
                 shapeID = circle;
                 colourID = grey;
                 colourDeposit = false;
             } else if (deposit.equals("square")){
-                getWorld().addObject(new ShapeGenerator(square, grey, 0, 1), getX(), getY());
+                getWorld().addObject(new ShapeGenerator(square, grey, 0, 1, 0), getX(), getY());
                 shapeID = square;
                 colourID = grey;
                 colourDeposit = false;
             } else if (deposit.equals("star")){
-                getWorld().addObject(new ShapeGenerator(star, grey, 0, 1), getX(), getY());
+                getWorld().addObject(new ShapeGenerator(star, grey, 0, 1, 0), getX(), getY());
                 shapeID = star;
                 colourID = grey;
                 colourDeposit = false;

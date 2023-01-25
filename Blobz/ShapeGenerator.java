@@ -16,8 +16,9 @@ public class ShapeGenerator extends Resources
     private int rawColour;
     private FollowPoint point;
     private boolean spawnColour;
+    private int value;
     
-    public ShapeGenerator (ArrayList<Integer> values, ArrayList<Integer> colour, int dir, int label){
+    public ShapeGenerator (ArrayList<Integer> values, ArrayList<Integer> colour, int dir, int label, int value){
         corners = new Integer[values.size()];
         corners = values.toArray(corners);
         colours = new Integer[colour.size()];
@@ -25,6 +26,7 @@ public class ShapeGenerator extends Resources
         this.dir = dir;
         this.label = label;
         spawnColour = false;
+        this.value = value;
     }
     
     public ShapeGenerator (int colour, int dir, int label){
@@ -117,9 +119,9 @@ public class ShapeGenerator extends Resources
     
     public void spawnPoint(){
         if(label == -1){
-            point = new FollowPoint(dir, false);
+            point = new FollowPoint(dir, false, value);
         } else {
-            point = new FollowPoint(dir, true);
+            point = new FollowPoint(dir, true, value);
         }
 
         getWorld().addObject(point, this.getX(), this.getY());

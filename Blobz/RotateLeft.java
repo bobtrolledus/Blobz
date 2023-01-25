@@ -143,6 +143,7 @@ public class RotateLeft extends NarrowMachines
             FollowPoint tempPoint = getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).get(0);
             outputShape = tempPoint.getShape();
             direction = tempPoint.getRotation();
+            value = tempPoint.getValue();
             int i = 3, j =0;
             while(i != j)
             {
@@ -202,7 +203,8 @@ public class RotateLeft extends NarrowMachines
     {
         if(timer.millisElapsed() > Utils.getRotationDelay() && getWorld().getObjectsAt(spawnXCoord, spawnYCoord, Shapes.class).size() < 1) 
         {
-            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1), spawnXCoord, spawnYCoord);
+            value = value * 2;
+            getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1, value), spawnXCoord, spawnYCoord);
             outputShape.clear();
             outputColour.clear();
             playEffect();

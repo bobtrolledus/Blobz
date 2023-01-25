@@ -12,6 +12,7 @@ public class FollowPoint extends UtilsBlocks
     private int dir = 0, x, y, colour;
     private RotationPoint rotation;
     private ArrayList<Integer> shapeID = new ArrayList<Integer>(8);
+    private ArrayList<Integer> oldShape = new ArrayList<Integer>(8);
     private ArrayList<Integer> shapeColour = new ArrayList<Integer>(8);
     private Belts belt;
     private Boolean stopped = false;
@@ -19,8 +20,9 @@ public class FollowPoint extends UtilsBlocks
     private Machines nearbyMachine;
     private boolean occupied = false;
     private boolean isLabel;
+    private int value;
     
-    public FollowPoint(int dir, boolean isLabel) {
+    public FollowPoint(int dir, boolean isLabel, int value) {
         getImage().scale(1, 1);
         getImage().setTransparency(0);
         this.dir = dir;
@@ -33,6 +35,8 @@ public class FollowPoint extends UtilsBlocks
         {
             shapeColour.add(0);
         }
+        
+        this.value = value;
     }
     
     public void act() {
@@ -100,6 +104,18 @@ public class FollowPoint extends UtilsBlocks
         }
     }
     
+    public void calculateValue(){
+        for(int i = 0; i < 8; i++){
+            oldShape.add(shapeID.get(i));
+        }
+        
+        for(int i = 0; i < 8; i++){
+            if(oldShape.get(i) != shapeID.get(i)){
+                value++;
+            }
+        }
+    }
+    
     public void setID(int index, int shapeNum)
     {
         shapeID.set(index, shapeNum);
@@ -149,5 +165,9 @@ public class FollowPoint extends UtilsBlocks
     
     public boolean checkIfLabel(){
         return isLabel;
+    }
+    
+    public int getValue(){
+        return value;
     }
 }

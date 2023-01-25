@@ -141,6 +141,7 @@ public class Balancer extends WideMachines
                 FollowPoint tempPoint = getWorld().getObjectsAt(inputXCoord, inputYCoord, FollowPoint.class).get(0);
                 outputShape = tempPoint.getShape();
                 direction = tempPoint.getRotation();
+                value = tempPoint.getValue();
                 isRawColour = false;
             }
         }
@@ -167,6 +168,7 @@ public class Balancer extends WideMachines
     {
         if(timer.millisElapsed() > Utils.getBalancerDelay())
         {
+            value = value * 2;
             if(!outputSide && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1)
             {
                 if(isRawColour)
@@ -175,7 +177,7 @@ public class Balancer extends WideMachines
                 }
                 if(!isRawColour && outputShape != null)
                 {
-                    getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1), spawnX1Coord, spawnY1Coord);
+                    getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1, value), spawnX1Coord, spawnY1Coord);
                 }
                 outputShape = null;
                 outputSide = true;
@@ -191,7 +193,7 @@ public class Balancer extends WideMachines
                 }
                 if(!isRawColour && outputShape != null)
                 {
-                    getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1), spawnX2Coord, spawnY2Coord);
+                    getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1, value), spawnX2Coord, spawnY2Coord);
                 }
                 outputShape = null;
                 outputSide = false;

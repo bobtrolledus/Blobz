@@ -19,6 +19,7 @@ public abstract class Machines extends Actor
     protected GreenfootSound[] place = new GreenfootSound[20];
     public GreenfootSound placeSound;
     protected int effectsIndex = 0, placeIndex = 0;
+    protected int value;
     
     /**
      * Allows an image of the seleted machine to follow mouse cursor
