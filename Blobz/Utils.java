@@ -403,7 +403,6 @@ public class Utils extends Actor
     
     private static void save()
     {
-        
         try{
             list.add(level);
             list.add(mapNumber);

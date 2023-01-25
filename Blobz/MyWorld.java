@@ -119,8 +119,8 @@ public class MyWorld extends World
         levelLabel.setFillColor(yellow);
         itemLabel.setLineColor(yellow);
         itemLabel.setFillColor(yellow);
-        moneyLabel.setLineColor(new Color(171, 171, 171));
-        moneyLabel.setFillColor(new Color(171, 171, 171));
+        moneyLabel.setLineColor(new Color(77, 77, 77));
+        moneyLabel.setFillColor(new Color(77, 77, 77));
 
         
         
