@@ -54,7 +54,10 @@ public class MyWorld extends World
                 getBackground().drawLine(200, x, 1000, x);
             }
         }
+        addObject(new Utils(), 0, 0);
         prepare();
+        addTimeLabel();
+        setMap1();
     }
 
     public void act()
@@ -62,7 +65,7 @@ public class MyWorld extends World
         delete();
         time();
         levelLabel.setValue(Utils.getLevel() + 1);
-        itemLabel.setValue(Utils.getTotalTargetShapes() + " / 250");
+        itemLabel.setValue(Utils.getTotalTargetShapes() + " / 5");
         if(Utils.getLastKey() != null)
         {
             if(Utils.getLastKey().equals("r"))
@@ -74,6 +77,10 @@ public class MyWorld extends World
                 Utils.changeMirrored();
             }
         }
+        
+        cheat();
+        
+        setLevel();
     }
 
     public void prepare()
@@ -95,11 +102,11 @@ public class MyWorld extends World
         addObject(new Stacker(true), width / 2, (int) ((height / 10) * 8)); // tool 9:
         addObject(new TrashCan(true), width / 2, (int) ((height / 10) * 9)); // tool 9:
         //Button.drawCenteredText (getBackground(), "money: ", width / 2, (int) ((height / 9) * 1 - offset));  
-        addObject(new Utils(), 0, 0);
+        
 
         addObject(new Hub(), 600,400);
         levelLabel = new Label(Utils.getLevel() + 1, 50);
-        itemLabel = new Label(Utils.getTotalTargetShapes() + " / 250", 30);
+        itemLabel = new Label(Utils.getTotalTargetShapes() + " / 5", 30);
         addObject(levelLabel, 656, 339);
         addObject(itemLabel, 600, 460);
         levelLabel.setLineColor(yellow);
@@ -114,38 +121,193 @@ public class MyWorld extends World
         addObject(new UpgradeButton("crs"), 1200 - width / 2, (int) ((height / 5) * 1) + rightButtonOffset); 
         addObject(new UpgradeButton("bd"), 1200 - width / 2, (int) ((height / 5) * 2) + rightButtonOffset); 
         addObject(new UpgradeButton("paint"), 1200 - width / 2, (int) ((height / 5) * 3) + rightButtonOffset); 
-        addObject(new UpgradeButton("extract"), 1200 - width / 2, (int) ((height / 5) * 4) + rightButtonOffset); 
-
-        addObject(new Deposits("red"), 260, 20);
-        addObject(new Deposits("blue"), 300, 20);
-        addObject(new Deposits("yellow"), 340, 20);
-        addObject(new Deposits("circle"), 380, 20);
-        addObject(new Deposits("square"), 420, 20);
-        addObject(new Deposits("blue"), 460, 20);
-        
-        addObject(new Deposits("red"), 220, 100);
-        addObject(new Deposits("blue"), 220, 140);
-        addObject(new Deposits("yellow"), 220, 180);
-        addObject(new Deposits("circle"), 220, 220);
-        addObject(new Deposits("square"), 220, 260);
-        addObject(new Deposits("star"), 220, 300);
-        
-        addObject(new Deposits("red"), 980, 100);
-        addObject(new Deposits("blue"), 980, 140);
-        addObject(new Deposits("yellow"), 980, 180);
-        addObject(new Deposits("circle"), 980, 220);
-        addObject(new Deposits("square"), 980, 260);
-        addObject(new Deposits("star"), 980, 300);
-        
-        addObject(new Deposits("red"), 940, 780);
-        addObject(new Deposits("blue"), 900, 780);
-        addObject(new Deposits("yellow"), 860, 780);
-        addObject(new Deposits("circle"), 820, 780);
-        addObject(new Deposits("square"), 780, 780);
-        addObject(new Deposits("star"), 740, 780);
-        
-        addTimeLabel();
+        addObject(new UpgradeButton("extract"), 1200 - width / 2, (int) ((height / 5) * 4) + rightButtonOffset);
     }
+
+    public void reset() {
+        int width = 200;
+        int height = 800; 
+        int offset = 27;
+        addObject(new Belts(true), width / 2, (int) ((height / 10) * 1)); // tool 1:
+        addObject(new Cutter(true), width / 2, (int) ((height / 10) * 2)); // tool 2:
+        addObject(new Extractor(true), width / 2, (int) ((height / 10) * 3)); // tool 3:
+        addObject(new Balancer(true), width / 2, (int) ((height / 10) * 4)); // tool 5:
+        addObject(new RotateRight(true), width / 2, (int) ((height / 10) * 5)); // tool 6:
+        addObject(new RotateLeft(true), width / 2, (int) ((height / 10) * 6)); // tool 7:
+        addObject(new Painter(true), width / 2, (int) ((height / 10) * 7)); // tool 8:
+        addObject(new Stacker(true), width / 2, (int) ((height / 10) * 8)); // tool 9:
+        addObject(new TrashCan(true), width / 2, (int) ((height / 10) * 9)); // tool 9:
+        ArrayList<Hub> hub = (ArrayList<Hub>) getObjects(Hub.class);
+            for (Hub h : hub){
+                h.updateImage(); 
+            }       
+    }
+    
+    
+    public void setLevel() {
+        if (Utils.mapChange()) {
+            ArrayList<Deposits> deposits = (ArrayList<Deposits>) getObjects(Deposits.class);
+            for (Deposits v : deposits){
+                removeObject(v);
+            }
+            ArrayList<Material> materials = (ArrayList<Material>) getObjects(Material.class);
+            for (Material m : materials){
+                removeObject(m);
+            }
+            /*
+            ArrayList<NarrowMachines> narrowmachines = (ArrayList<NarrowMachines>) getObjects(NarrowMachines.class);
+            for (NarrowMachines nm : narrowmachines){
+                removeObject(nm);
+            }
+            ArrayList<WideMachines> widemachines = (ArrayList<WideMachines>) getObjects(WideMachines.class);
+            for (WideMachines wm : widemachines){
+                removeObject(wm);
+            }
+            */
+            if (Utils.getLevel() == 4) {
+                setMap2();
+            } else if (Utils.getLevel() == 8) {
+                setMap3();
+            } else if (Utils.getLevel() == 12) {
+                setMap4();
+            } else {
+                // CHANGE TO END WORLD
+                Greenfoot.setWorld(new MyWorld());
+            }
+            reset();
+            
+        }
+    }
+    
+    public void cheat() {
+        if (Utils.getLastKey() != null && Utils.getLastKey().equals("space") && Utils.getLevel() < 15) {
+            Utils.increaseLevel();
+        }
+        if (Utils.getLastKey() != null) {
+            // CHANGE LETTERS OR ELSE IT WONT GET REMOVED
+            if (Utils.getLastKey().equals("u") || Utils.getLastKey().equals("i") || Utils.getLastKey().equals("o") || Utils.getLastKey().equals("p")) {
+                ArrayList<Deposits> deposits = (ArrayList<Deposits>) getObjects(Deposits.class);
+                for (Deposits v : deposits){
+                    removeObject(v);
+                }
+                ArrayList<Material> materials = (ArrayList<Material>) getObjects(Material.class);
+                for (Material m : materials){
+                    removeObject(m);
+                }
+                
+                /*
+                ArrayList<NarrowMachines> narrowmachines = (ArrayList<NarrowMachines>) getObjects(NarrowMachines.class);
+                for (NarrowMachines nm : narrowmachines){
+                    removeObject(nm);
+                }
+                ArrayList<WideMachines> widemachines = (ArrayList<WideMachines>) getObjects(WideMachines.class);
+                for (WideMachines wm : widemachines){
+                    removeObject(wm);
+                }
+                ArrayList<FollowPoint> followpoints = (ArrayList<FollowPoint>) getObjects(FollowPoint.class);
+                for (FollowPoint fp : followpoints){
+                    removeObject(fp);
+                }
+                */
+                reset();
+            }
+            
+            if (Utils.getLastKey().equals("u")) {
+                // map 1
+                setMap1();
+            } else if (Utils.getLastKey().equals("i")) {
+                // map 2
+                setMap2();
+            } else if (Utils.getLastKey().equals("o")) {
+                // map 3
+                setMap3();
+            } else if (Utils.getLastKey().equals("p")) {
+                // map 4
+                setMap4();
+            } 
+            
+        }
+    }
+    
+    
+    public void setMap1() {
+        addObject(new Deposits("circle"), 3 * 40 + 220, 4 * 40 + 20);
+        addObject(new Deposits("square"), 14 * 40 + 220, 17 * 40 + 20);
+        addObject(new Deposits("red"), 17 * 40 + 220, 11 * 40 + 20);
+    }
+    
+    public void setMap2() {
+        int[][] eyebrows = {{2,1}, {3,2}, {4,3}, {5,4}, {6,4}, {7,4}, {17,1}, {16,2}, {15,3}, {14,4}, {13,4}, {12,4}};
+        for (int i = 0; i < eyebrows.length; i++) {
+            addObject(new Deposits("star"), eyebrows[i][0] * 40 + 220, eyebrows[i][1] * 40 + 20);
+        }
+        int[][] eyes = {{3, 6}, {3, 7}, {3, 8}, {4, 6}, {5, 6}, {5, 7}, {5, 8}, {4, 8}, {16, 6}, {16, 7}, {16, 8}, {15, 6}, {14, 6}, {14, 7}, {14, 8}, {15, 8}};
+        for (int i = 0; i < eyes.length; i++) {
+            addObject(new Deposits("circle"), eyes[i][0] * 40 + 220, eyes[i][1] * 40 + 20);
+        }
+        addObject(new Deposits("red"), 4 * 40 + 220, 7 * 40 + 20);
+        addObject(new Deposits("red"), 15 * 40 + 220, 7 * 40 + 20);
+        addObject(new Deposits("yellow"), 0 * 40 + 220, 19 * 40 + 20);
+        addObject(new Deposits("yellow"), 19 * 40 + 220, 19 * 40 + 20);
+        int[][] mouth = {{1,12}, {2,11}, {1,13}, {2,14}, {3,15}, {4,16}, {3,11}, {4,12}, {5,13}, {6,14}, 
+                        {7,14}, {8,14}, {9,14}, {10,14}, {11,14}, {12,14}, {6,17}, {7,17}, {8,17}, {9,17}, {10,17}, {11,17}, {12,17}, {13,17},
+                        {18,12}, {17,11}, {18,13}, {17,14}, {16,15}, {15,16}, {16,11}, {15,12}, {14,13}, {13,14}};
+        for (int i = 0; i < mouth.length; i++) {
+            addObject(new Deposits("square"), mouth[i][0] * 40 + 220, mouth[i][1] * 40 + 20);
+        }
+        int[][] mouthInside = {{2,12}, {3,12}, {16,12}, {17,12},
+                                {2,13}, {3,13}, {4,13}, {15,13}, {16,13}, {17,13},
+                                {3,14}, {4,14}, {5,14}, {14,14}, {15,14}, {16,14},
+                                {4,15}, {5,15}, {6,15}, {7,15}, {8,15}, {9,15}, {10,15}, {11,15}, {12,15}, {13,15}, {14,15}, {15,15},
+                                {5,16}, {6,16}, {7,16}, {8,16}, {9,16}, {10,16}, {11,16}, {12,16}, {13,16}, {14,16}};
+        for (int i = 0; i < mouthInside.length; i++) {
+            addObject(new Deposits("red"), mouthInside[i][0] * 40 + 220, mouthInside[i][1] * 40 + 20);
+        }                   
+    }
+    
+    public void setMap3() {
+        ArrayList<String> depositTypes = new ArrayList<String>();
+        depositTypes.add("circle");
+        depositTypes.add("square");
+        depositTypes.add("star");
+        depositTypes.add("blue");
+        depositTypes.add("yellow");
+        depositTypes.add("red");
+        for (int i = 0; i < 6; i++) {
+            addObject(new Deposits(depositTypes.get(i%6)), 9 * 40 + 220, i * 40 + 20);  
+            addObject(new Deposits(depositTypes.get(i%6)), 10 * 40 + 220, i * 40 + 20); 
+            addObject(new Deposits(depositTypes.get(i%6)), 9 * 40 + 220, 780 - i * 40);  
+            addObject(new Deposits(depositTypes.get(i%6)), 10 * 40 + 220, 780 - i * 40);  
+            addObject(new Deposits(depositTypes.get(i%6)), i * 40 + 220, 9 * 40 + 20);  
+            addObject(new Deposits(depositTypes.get(i%6)), i * 40 + 220, 10 * 40 + 20);  
+            addObject(new Deposits(depositTypes.get(i%6)), 1200 - 220 - i * 40, 9 * 40 + 20);  
+            addObject(new Deposits(depositTypes.get(i%6)), 1200 - 220 - i * 40, 10 * 40 + 20);
+        }
+    }
+    
+    public void setMap4() {
+        ArrayList<String> depositTypes = new ArrayList<String>();
+        depositTypes.add("circle");
+        depositTypes.add("square");
+        depositTypes.add("star");
+        depositTypes.add("blue");
+        depositTypes.add("yellow");
+        depositTypes.add("red");
+        for (int i = 0; i < 18; i++) {
+            addObject(new Deposits(depositTypes.get(i%6)), 0 * 40 + 220, i * 40 + 60);
+            addObject(new Deposits(depositTypes.get(i%6)), 19 * 40 + 220, i * 40 + 60);
+        }
+        for (int i = 0; i < 6; i++) {
+            addObject(new Deposits(depositTypes.get(i%6)), i * 40 + 220 + 120, 0 * 40 + 20);
+            addObject(new Deposits(depositTypes.get(i%6)), i * 40 + 220 + 120, 19 * 40 + 20);  
+            addObject(new Deposits(depositTypes.get(i%6)), 1200 - 340 - i * 40, 0 * 40 + 20);
+            addObject(new Deposits(depositTypes.get(i%6)), 1200 - 340 - i * 40, 19 * 40 + 20);  
+        }
+    }
+
+    
+    
+    
 
     public void delete()
     {

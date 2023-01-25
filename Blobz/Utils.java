@@ -34,6 +34,7 @@ public class Utils extends Actor
     private static Scanner fileScan;
     private static Scanner scan;
     private static int mapNumber;
+    private static boolean mapChange;
     private static int money;
     private static int crsUpgradeLevel;
     private static int bdUpgradeLevel;
@@ -119,13 +120,14 @@ public class Utils extends Actor
         rotation = 0;
         money = 0;
         mapNumber = 0;
+        mapChange = false;
         totalTargetShapes = 0;
         getImage().scale(10, 10);
         crsUpgradeLevel = 1;
         bdUpgradeLevel = 1;
         paintUpgradeLevel = 1;
         extractUpgradeLevel = 1;
-        level = 15;
+        level = 0;
     }
 
     public void act()
@@ -136,6 +138,11 @@ public class Utils extends Actor
         {
             totalTargetShapes = 0;
             level++;
+            if (level == 4 || level == 8 || level == 12) {
+                mapChange = true;
+            }
+        } else {
+            mapChange = false;
         }
     }
     
@@ -384,6 +391,10 @@ public class Utils extends Actor
     public static void setMap(int x)
     {
         mapNumber = x;
+    }
+    
+    public static boolean mapChange() {
+        return mapChange;
     }
     
     public static void setTime(int x)

@@ -31,7 +31,7 @@ public class Hub extends Machines
     {
         for(FollowPoint point : getIntersectingObjects(FollowPoint.class))
         {
-            if(point.getShape().equals(Utils.getTargetShape()))
+            if(Arrays.asList(Utils.getTargetShape()).equals(outputShape))
             {
                 if(!point.checkIfLabel())
                 {
@@ -43,6 +43,7 @@ public class Hub extends Machines
                 getWorld().removeObject(point);
             }
         }
+        
     }
     
     public void fillGrid()
