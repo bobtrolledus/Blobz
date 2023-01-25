@@ -168,7 +168,7 @@ public class Balancer extends WideMachines
     {
         if(timer.millisElapsed() > Utils.getBalancerDelay())
         {
-            value = value * 2;
+            value = value * 1.2;
             if(!outputSide && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1)
             {
                 if(isRawColour)

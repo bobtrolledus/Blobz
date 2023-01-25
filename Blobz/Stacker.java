@@ -12,7 +12,7 @@ public class Stacker extends WideMachines
     private int spawnX1Coord, spawnY1Coord, inputX1Coord, inputX2Coord, inputY1Coord, inputY2Coord;
     private ArrayList<Integer> shapeID1, shapeID2, colourID1, colourID2;
     private boolean grabbedShape1, grabbedShape2;
-    private int value1, value2;
+    private double value1, value2;
     public Stacker()
     {
         setImage("images/Machines/stacker.png");

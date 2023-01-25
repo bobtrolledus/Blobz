@@ -16,9 +16,9 @@ public class ShapeGenerator extends Resources
     private int rawColour;
     private FollowPoint point;
     private boolean spawnColour;
-    private int value;
+    private double value;
     
-    public ShapeGenerator (ArrayList<Integer> values, ArrayList<Integer> colour, int dir, int label, int value){
+    public ShapeGenerator (ArrayList<Integer> values, ArrayList<Integer> colour, int dir, int label, double value){
         corners = new Integer[values.size()];
         corners = values.toArray(corners);
         colours = new Integer[colour.size()];

@@ -2,7 +2,7 @@
 comment0.target=ShapeGenerator
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ ShapeGenerator\ here.\r\n\ \r\n\ @author\ Andy/Anson\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=values\ colour\ dir\ label\ value
-comment1.target=ShapeGenerator(java.util.ArrayList,\ java.util.ArrayList,\ int,\ int,\ int)
+comment1.target=ShapeGenerator(java.util.ArrayList,\ java.util.ArrayList,\ int,\ int,\ double)
 comment2.params=colour\ dir\ label
 comment2.target=ShapeGenerator(int,\ int,\ int)
 comment3.params=

@@ -203,7 +203,7 @@ public class RotateRight extends NarrowMachines
         if(timer.millisElapsed() > Utils.getRotationDelay() && getWorld().getObjectsAt(spawnXCoord, spawnYCoord, Shapes.class).size() < 1) 
         {
             playEffect();
-            value = value * 2;
+            value = value * 1.2;
             getWorld().addObject(new ShapeGenerator(outputShape, outputColour, direction, -1, value), spawnXCoord, spawnYCoord);
             outputShape.clear();
             outputColour.clear();

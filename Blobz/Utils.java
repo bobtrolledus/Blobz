@@ -35,7 +35,7 @@ public class Utils extends Actor
     private static Scanner scan;
     private static int mapNumber;
     private static boolean mapChange;
-    private static int money = 0;
+    private static double money = 0;
     private static int crsUpgradeLevel;
     private static int bdUpgradeLevel;
     private static int paintUpgradeLevel;
@@ -374,7 +374,7 @@ public class Utils extends Actor
             list.add(bdUpgradeLevel);
             list.add(paintUpgradeLevel);
             list.add(extractUpgradeLevel);
-            list.add(money);
+            list.add((int)money);
             FileWriter out = new FileWriter("save.txt",false);
             PrintWriter output = new PrintWriter(out);
             output.println(list);
@@ -427,12 +427,12 @@ public class Utils extends Actor
         //upgradeLevel = x;
     }
     
-    public static void setMoney(int x)
+    public static void setMoney(double x)
     {
         money = x;
     }
     
-    public static void addMoney(int x){
+    public static void addMoney(double x){
         money += x;
     }
 }

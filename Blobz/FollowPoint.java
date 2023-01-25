@@ -20,9 +20,9 @@ public class FollowPoint extends UtilsBlocks
     private Machines nearbyMachine;
     private boolean occupied = false;
     private boolean isLabel;
-    private int value;
+    private double value;
     
-    public FollowPoint(int dir, boolean isLabel, int value) {
+    public FollowPoint(int dir, boolean isLabel, double value) {
         getImage().scale(1, 1);
         getImage().setTransparency(0);
         this.dir = dir;
@@ -167,7 +167,7 @@ public class FollowPoint extends UtilsBlocks
         return isLabel;
     }
     
-    public int getValue(){
+    public double getValue(){
         return value;
     }
 }
