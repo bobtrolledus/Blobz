@@ -14,6 +14,8 @@ public class StartScreen extends World
     private boolean hover = false;
     private Font comicFontLarge = new Font ("Comic Sans MS", true, false, 77);
     
+    private GreenfootSound click = new GreenfootSound("select.wav");
+    
     public StartScreen() {    
         super(1200, 800, 1);
         addObject(new Utils(), 0, 0);
@@ -31,9 +33,11 @@ public class StartScreen extends World
         checkMouse();
         if (clickedPlay || Greenfoot.isKeyDown("enter")) {
             Greenfoot.setWorld(new InstructionsMenu());
+            click.play();
         } else if(clickLoadgame)
         {
             Greenfoot.setWorld(new MyWorld());
+            click.play();
         }
     }
     

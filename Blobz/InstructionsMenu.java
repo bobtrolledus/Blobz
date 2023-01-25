@@ -12,6 +12,8 @@ public class InstructionsMenu extends World
     private Label continueLabel = new Label("Space to Continue", 40);
     private Color yellow = new Color(255, 255, 186);
     private int index = 0;
+    
+    private GreenfootSound click = new GreenfootSound("select.wav");
     /**
      * Constructor for objects of class InstructionsMenu.
      * 
@@ -45,6 +47,8 @@ public class InstructionsMenu extends World
                 } else {
                     setBackground(images[index]);
                 }
+                
+                click.play();
             }
         }
     }

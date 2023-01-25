@@ -31,6 +31,7 @@ public class MyWorld extends World
     private int gameTimer, gameTimeM, gameTime;
     private GreenfootSound[] delete = new GreenfootSound[20];
     private int deleteIndex = 0;
+
     /**
      * Constructor for objects of class MyWorld.
      * 
