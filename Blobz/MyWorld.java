@@ -29,6 +29,8 @@ public class MyWorld extends World
     private Color gray = new Color(171, 171, 171);
     private Color yellow = new Color(255, 255, 186);
     private int gameTimer, gameTimeM, gameTime;
+    private GreenfootSound[] delete = new GreenfootSound[20];
+    private int deleteIndex = 0;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -58,6 +60,9 @@ public class MyWorld extends World
         prepare();
         addTimeLabel();
         setMap1();
+        for(int i = 0; i < 20; i++){
+            delete[i] = new GreenfootSound("delete.wav");
+        }
     }
 
     public void act()
@@ -362,10 +367,12 @@ public class MyWorld extends World
                             WideMachines temp = (WideMachines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
                             temp.deleteWide();
                             temp.deleteShapesWide();
+                            playDelete();
                         } else if(Utils.getSpaceMachine(gridPositionY, gridPositionX).getClass() != Hub.class) {
                             NarrowMachines temp = (NarrowMachines) Utils.getSpaceMachine(gridPositionY, gridPositionX);
                             temp.deleteNarrow();
                             tempMachine.deleteShapes();
+                            playDelete();
                         }
                     }
                 }
@@ -446,5 +453,12 @@ public class MyWorld extends World
     {
         timeLabel = new Label(gameTimeM + ": " + gameTime, 30);
         addObject(timeLabel,600,50);
+    }
+    public void playDelete(){
+        delete[deleteIndex].play();
+        deleteIndex++;
+        if(deleteIndex > delete.length - 1){
+            deleteIndex = 0;
+        }
     }
 }
