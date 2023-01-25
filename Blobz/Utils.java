@@ -21,17 +21,12 @@ public class Utils extends Actor
     private static int rotation;
     private static int arrowXCoord, arrowYCoord;
     private static MouseInfo mouse = Greenfoot.getMouseInfo();
-    
-    
-    private static int cutterDelay = 2500;
-    private static int rotationDelay = 2000;
-    private static int stackingDelay = 4000;
-    
-    private static int balancerDelay = 2000;
-    
-    private static int paintingDelay = 4000;
-    
-    private static int extractorDelay = 3000;
+    private static int cutterDelay;
+    private static int rotationDelay;
+    private static int stackingDelay;
+    private static int balancerDelay;
+    private static int paintingDelay;
+    private static int extractorDelay;
     
     private static int time, timeM;
 
@@ -41,7 +36,7 @@ public class Utils extends Actor
     private static Scanner scan;
     private static int mapNumber;
     private static boolean mapChange;
-    private static double money = 0;
+    private static double money;
     private static boolean userApprovedLevelChange;
     private static int soundLevel;
     private static int crsUpgradeLevel;
@@ -124,6 +119,12 @@ public class Utils extends Actor
         list = new ArrayList<Integer>();
         machineMap = new Actor[20][20];
         depositMap = new Deposits[20][20];
+        cutterDelay = 2500;
+        rotationDelay = 2000;
+        stackingDelay= 4000;
+        balancerDelay = 2000;
+        paintingDelay = 4000;
+        extractorDelay = 3000;
         mirrored = false;
         rotation = 0;
         money = 0;
