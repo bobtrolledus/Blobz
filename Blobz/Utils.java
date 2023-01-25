@@ -21,12 +21,18 @@ public class Utils extends Actor
     private static int rotation;
     private static int arrowXCoord, arrowYCoord;
     private static MouseInfo mouse = Greenfoot.getMouseInfo();
-    private static int extractorDelay = 1000;
-    private static int balancerDelay = 2000;
-    private static int cutterDelay = 2000;
+    
+    
+    private static int cutterDelay = 2500;
     private static int rotationDelay = 2000;
-    private static int paintingDelay = 2000;
-    private static int stackingDelay = 2000;
+    private static int stackingDelay = 4000;
+    
+    private static int balancerDelay = 2000;
+    
+    private static int paintingDelay = 4000;
+    
+    private static int extractorDelay = 3000;
+    
     private static int time, timeM;
 
     public static int gridSize = 40;
@@ -124,7 +130,7 @@ public class Utils extends Actor
         mapNumber = 0;
         mapChange = false;
         userApprovedLevelChange = false;
-        soundLevel = 0;
+        soundLevel = 1;
         totalTargetShapes = 0;
         getImage().scale(10, 10);
         crsUpgradeLevel = 1;
@@ -139,7 +145,6 @@ public class Utils extends Actor
         key = Greenfoot.getKey();
         mouse = Greenfoot.getMouseInfo();
         if(totalTargetShapes >= 5) {
-            System.out.println("user approve status:" + userApprovedLevelChange);
             if (userApprovedLevelChange) {
                 level++;
                 totalTargetShapes = 0;
@@ -152,6 +157,7 @@ public class Utils extends Actor
             mapChange = false;
         }
     }
+
     
     public static int soundLevel() {
         return soundLevel;
@@ -362,6 +368,9 @@ public class Utils extends Actor
     
     public static void increaseCRSlevel() {
         crsUpgradeLevel++;
+        cutterDelay -= 2500/9;
+        rotationDelay -= 2000/9;
+        stackingDelay -= 4000/9;
     }
     
     public static int getBDlevel() {
@@ -370,6 +379,7 @@ public class Utils extends Actor
     
     public static void increaseBDlevel() {
         bdUpgradeLevel++;
+        balancerDelay -= 2000/9;
     }
     
     public static int getPAINTlevel() {
@@ -378,6 +388,7 @@ public class Utils extends Actor
     
     public static void increasePAINTlevel() {
         paintUpgradeLevel++;
+        paintingDelay -= 4000/9;
     }
     
     public static int getEXTRACTlevel() {
@@ -386,6 +397,7 @@ public class Utils extends Actor
     
     public static void increaseEXTRACTlevel() {
         extractUpgradeLevel++;
+        extractorDelay -= 3000/9;
     }
     
     private static void save()
@@ -449,6 +461,14 @@ public class Utils extends Actor
     public static void setUpgrade(int x)
     {
         //upgradeLevel = x;
+    }
+    
+    public static int getMoney() {
+        return (int) money;
+    }
+    
+    public static void spendMoney(double x) {
+        money -= x;
     }
     
     public static void setMoney(double x)

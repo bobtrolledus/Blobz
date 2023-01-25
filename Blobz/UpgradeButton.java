@@ -10,7 +10,7 @@ public class UpgradeButton extends Button
 {
     private String upgradeType;
     private int upgradeLvl = 0;
-    private int moneyReq = 100;
+    private int moneyReq;
     
     public UpgradeButton(String upgradeType) {
         this.width = 160;
@@ -31,7 +31,7 @@ public class UpgradeButton extends Button
     }
     
     public void upgrade() {
-        if (clicked) {
+        if (clicked && Utils.getMoney() > moneyReq) {
             if (upgradeLvl < 8) {
                 if (upgradeType.equals("crs")) {
                     Utils.increaseCRSlevel();
@@ -43,6 +43,7 @@ public class UpgradeButton extends Button
                     Utils.increaseEXTRACTlevel();
                 }
             }
+            Utils.spendMoney(moneyReq);
         }
     }
     
@@ -56,7 +57,7 @@ public class UpgradeButton extends Button
         } else if (upgradeType.equals("extract")) {
             upgradeLvl = Utils.getEXTRACTlevel();
         }
-        moneyReq = (int) Math.round((Math.pow(2, upgradeLvl) * 25 + 60) / 100) * 100;
+        moneyReq = (int) Math.round((Math.pow(2, upgradeLvl) * 7 + 11) / 10) * 10;
     }
     
     public void drawNormalButton() {
