@@ -34,10 +34,6 @@ public class NextLevelButton extends Button
         }
     }
     
-    public void changeLevel() {
-        
-    }
-    
     public void drawNormalButton() {
         background.setColor(new Color(141, 141, 141)); // add background colour
         background.fillRect(0, 0, width, height); // fill Background    

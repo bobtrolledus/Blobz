@@ -34,7 +34,6 @@ public class Utils extends Actor
     private static int level;
     private static Scanner fileScan;
     private static Scanner scan;
-    private static int mapNumber;
     private static boolean mapChange;
     private static double money;
     private static boolean userApprovedLevelChange;
@@ -130,7 +129,6 @@ public class Utils extends Actor
         mirrored = false;
         rotation = 0;
         money = 0;
-        mapNumber = 0;
         mapChange = false;
         userApprovedLevelChange = false;
         soundLevel = 1;
@@ -370,6 +368,10 @@ public class Utils extends Actor
         return crsUpgradeLevel;
     }
     
+    public static void setCRSlevel(int x) {
+        crsUpgradeLevel = x;
+    }
+    
     public static void increaseCRSlevel() {
         crsUpgradeLevel++;
         cutterDelay -= 2500/9;
@@ -382,6 +384,10 @@ public class Utils extends Actor
         return bdUpgradeLevel;
     }
     
+    public static void setBDlevel(int x) {
+        bdUpgradeLevel = x;
+    }
+    
     public static void increaseBDlevel() {
         bdUpgradeLevel++;
         balancerDelay -= 2000/9;
@@ -390,6 +396,10 @@ public class Utils extends Actor
     
     public static int getPAINTlevel() {
         return paintUpgradeLevel;
+    }
+    
+    public static void setPAINTlevel(int x) {
+        paintUpgradeLevel = x;
     }
     
     public static void increasePAINTlevel() {
@@ -402,17 +412,22 @@ public class Utils extends Actor
         return extractUpgradeLevel;
     }
     
+    public static void setEXTRACTlevel(int x) {
+        extractUpgradeLevel = x;
+    }
+    
     public static void increaseEXTRACTlevel() {
         extractUpgradeLevel++;
         extractorDelay -= 3000/9;
         upgrade.play();
     }
     
-    private static void save()
+    public static void save()
     {
         try{
+            list.add(timeM);
+            list.add(time);
             list.add(level);
-            list.add(mapNumber);
             list.add(crsUpgradeLevel);
             list.add(bdUpgradeLevel);
             list.add(paintUpgradeLevel);
@@ -420,7 +435,15 @@ public class Utils extends Actor
             list.add((int)money);
             FileWriter out = new FileWriter("save.txt",false);
             PrintWriter output = new PrintWriter(out);
-            output.println(list);
+            System.out.println("saved data: " + list);
+            output.println(timeM);
+            output.println(time);
+            output.println(level);
+            output.println(crsUpgradeLevel);
+            output.println(bdUpgradeLevel);
+            output.println(paintUpgradeLevel);
+            output.println(extractUpgradeLevel);
+            output.println((int)money);
             out.close();
             output.close();
             list.clear();
@@ -435,12 +458,7 @@ public class Utils extends Actor
     {
         level = x;
     }
-    
-    public static void setMap(int x)
-    {
-        mapNumber = x;
-    }
-    
+        
     public static boolean mapChange() {
         return mapChange;
     }

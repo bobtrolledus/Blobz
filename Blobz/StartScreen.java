@@ -24,7 +24,8 @@ public class StartScreen extends World
         background.scale(1200, 800);
         setBackground(background);
         
-        addObject(new GeneralButton(455, 80, "Play Game (Enter)", 30), background.getWidth()/2, background.getHeight()*5/8);
+        
+        addObject(new GeneralButton(455, 80, "Play New Game (Enter)", 30), background.getWidth()/2, background.getHeight()*5/8);
         addObject(new GeneralButton(455, 80, "Load game", 30), background.getWidth()/2, background.getHeight()*5/8 + 120);
     }
 
@@ -35,11 +36,10 @@ public class StartScreen extends World
             click.play();
         } else if(clickLoadgame)
         {
-            Greenfoot.setWorld(new MyWorld());
+            Greenfoot.setWorld(new MyWorld(true));
             click.play();
         }
     }
-
     
     public void checkMouse() {
         GeneralButton playButton = (GeneralButton) getObjectsAt(background.getWidth()/2, background.getHeight()*5/8, GeneralButton.class).get(0);
