@@ -8,31 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Shapes extends Material
 {
-    public FollowPoint guide;
     private int q, x, y, layer, colour, scale;
     protected GreenfootImage red, blue, yellow, orange, purple, green;
-    private boolean firstRun = true;
     
     public Shapes(int q, FollowPoint guide, int colour, int scale)
     {
+        super(guide);
         this.q = q;
-        this.guide = guide;
         this.colour = colour;
         this.scale = scale;
     }
-    
-    public void act()
-    {
-        if(guide.getWorld() == null)
-        {
-            getWorld().removeObject(this);
-        }
-        else
-        {
-            move();
-        }
-    }
-    
+        
     public void setRotation (int q) {
         if(q == 1 || q == 5){
             getImage().rotate(0);
