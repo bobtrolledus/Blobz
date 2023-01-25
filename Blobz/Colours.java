@@ -10,7 +10,7 @@ public class Colours extends Material
 {
     protected int colour, label;
     
-    public Colours(int label, FollowPoint guide){
+    public Colours(FollowPoint guide){
         super(guide);
         this.label = label;
         
