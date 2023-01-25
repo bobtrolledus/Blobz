@@ -37,7 +37,9 @@ public class FollowPoint extends UtilsBlocks
         }
         
         this.value = value;
-        calculateValue();
+        if(value > 50){
+            value = 50;
+        }
     }
     
     public void act() {
@@ -102,22 +104,6 @@ public class FollowPoint extends UtilsBlocks
             {
                 setLocation(x, y);
             }
-        }
-    }
-    
-    public void calculateValue(){
-        for(int i = 0; i < 8; i++){
-            oldShape.add(shapeID.get(i));
-        }
-        
-        for(int i = 0; i < 8; i++){
-            if(oldShape.get(i) != shapeID.get(i)){
-                value++;
-            }
-        }
-        
-        if(value > 50){
-            value = 50;
         }
     }
     
