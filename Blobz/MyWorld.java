@@ -238,7 +238,7 @@ public class MyWorld extends World
      * 
      */
     public void cheat() {
-        if (Utils.getLastKey() != null && Utils.getLastKey().equals("0") && Utils.getLevel() < 15) {
+        if (Utils.getLastKey() != null && Utils.getLastKey().equals("0")) {
             Utils.increaseLevel();
         }
         if (Utils.getLastKey() != null) {

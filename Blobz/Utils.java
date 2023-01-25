@@ -146,6 +146,9 @@ public class Utils extends Actor
         key = Greenfoot.getKey();
         mouse = Greenfoot.getMouseInfo();
         levelCheck();
+        if (level == 16) {
+            Greenfoot.setWorld(new EndScreen());
+        }
     }
     
     /**

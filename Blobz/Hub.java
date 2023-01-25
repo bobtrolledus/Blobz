@@ -24,7 +24,9 @@ public class Hub extends Machines
     public void act()
     {
         collecting();
-        updateImage();
+        if (Utils.getLevel() < 16) {
+            updateImage();
+        }
     }
 
     public void collecting()
