@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=Hub
-comment0.text=\n\ Machine\ acting\ like\ a\ center\ receptacle\ for\ all\ shapes,\ checks\ for\ target\ shapes\ \n\n\ @author\ Anson/Eric/Andy\n\ @version\ Jan\ 24,\ 2023\n
+comment0.text=\r\n\ Machine\ acting\ like\ a\ center\ receptacle\ for\ all\ shapes,\ checks\ for\ target\ shapes\ \r\n\r\n\ @author\ Anson/Eric/Andy\r\n\ @version\ Jan\ 24,\ 2023\r\n
 comment1.params=
 comment1.target=Hub()
-comment1.text=\n\ Act\ -\ do\ whatever\ the\ Hub\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Hub\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment2.params=
 comment2.target=void\ act()
 comment3.params=

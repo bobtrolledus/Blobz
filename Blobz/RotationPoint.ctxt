@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=RotationPoint
-comment0.text=\n\ A\ point\ that\ is\ spawned\ in\ by\ the\ belt\ for\ followpoints\ to\ change\ direction\n\ \n\ @author\ Anson\ \n\ @version\ Jan\ 24,\ 2023\n
+comment0.text=\r\n\ A\ point\ that\ is\ spawned\ in\ by\ the\ belt\ for\ followpoints\ to\ change\ direction\r\n\ \r\n\ @author\ Anson\ \r\n\ @version\ Jan\ 24,\ 2023\r\n
 comment1.params=degree
 comment1.target=RotationPoint(int)
 comment2.params=
