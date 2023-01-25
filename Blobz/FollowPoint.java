@@ -44,11 +44,11 @@ public class FollowPoint extends UtilsBlocks
     
     public void act() {
         belt = (Belts) getOneIntersectingObject(Belts.class);
-        
-        setRotation();
-        
+                
         y = getY();
         x = getX();
+        
+        setRotation();
         
         occupied = machineOccupied();
         
