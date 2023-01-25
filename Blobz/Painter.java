@@ -108,6 +108,8 @@ public class Painter extends WideMachines
             {
                 getWorld().removeObject(this);
             }
+            
+            placeSound.setVolume(80 * Utils.soundLevel());
         }
     }
     

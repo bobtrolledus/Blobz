@@ -110,6 +110,8 @@ public class RotateLeft extends NarrowMachines
             {
                 getWorld().removeObject(this);
             }
+            
+            placeSound.setVolume(90 * Utils.soundLevel());
         }
     }
     

@@ -109,6 +109,8 @@ public class RotateRight extends NarrowMachines
             {
                 getWorld().removeObject(this);
             }
+            
+            placeSound.setVolume(90 * Utils.soundLevel());
         }
     }
     

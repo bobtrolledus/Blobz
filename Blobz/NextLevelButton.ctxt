@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=NextLevelButton
+comment0.text=\n\ Write\ a\ description\ of\ class\ NextLevelButton\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=NextLevelButton()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ redraw()
+comment4.params=
+comment4.target=void\ changeLevel()
+comment5.params=
+comment5.target=void\ drawNormalButton()
+comment6.params=
+comment6.target=void\ drawFaintButton()
+numComments=7

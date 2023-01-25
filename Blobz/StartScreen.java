@@ -23,8 +23,8 @@ public class StartScreen extends World
         setBackground(background);
         
         
-        addObject(new StartButton(455, 80, "Play Game (Enter)", 30), background.getWidth()/2, background.getHeight()*5/8);
-        addObject(new StartButton(455, 80, "Load game", 30), background.getWidth()/2, background.getHeight()*5/8 + 120);
+        addObject(new GeneralButton(455, 80, "Play Game (Enter)", 30), background.getWidth()/2, background.getHeight()*5/8);
+        addObject(new GeneralButton(455, 80, "Load game", 30), background.getWidth()/2, background.getHeight()*5/8 + 120);
     }
 
     public void act() {
@@ -38,9 +38,9 @@ public class StartScreen extends World
     }
     
     public void checkMouse() {
-        StartButton playButton = (StartButton) getObjectsAt(background.getWidth()/2, background.getHeight()*5/8, StartButton.class).get(0);
+        GeneralButton playButton = (GeneralButton) getObjectsAt(background.getWidth()/2, background.getHeight()*5/8, GeneralButton.class).get(0);
         clickedPlay = playButton.getClicked();
-        StartButton loadButton = (StartButton) getObjectsAt(background.getWidth()/2, background.getHeight()*5/8 + 120, StartButton.class).get(0);
+        GeneralButton loadButton = (GeneralButton) getObjectsAt(background.getWidth()/2, background.getHeight()*5/8 + 120, GeneralButton.class).get(0);
         clickLoadgame = loadButton.getClicked();
     }
 }

@@ -111,6 +111,7 @@ public class Stacker extends WideMachines
             {
                 getWorld().removeObject(this);
             }
+            placeSound.setVolume(100 * Utils.soundLevel());
         }
     }
     
