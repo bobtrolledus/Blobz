@@ -192,7 +192,7 @@ public class Painter extends WideMachines
      */
     public void spawnShape()
     {
-        if(timer.millisElapsed() > Utils.getPainterDelay() && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shapes.class).size() < 1)
+        if(timer.millisElapsed() > Utils.getPainterDelay() && getWorld().getObjectsAt(spawnX1Coord, spawnY1Coord, Shape.class).size() < 1)
         {
             value++;
             value = value * 1.2;

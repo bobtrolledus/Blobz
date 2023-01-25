@@ -1,12 +1,21 @@
 #BlueJ class context
 comment0.target=ShapeGenerator
-comment0.text=\n\ Write\ a\ description\ of\ class\ ShapeGenerator\ here.\n\ \n\ @author\ Andy/Anson\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ The\ actor\ called\ to\ generate\ a\ Material\ object\r\n\ \r\n\ @author\ Andy/Anson\r\n\ @version\ Jan\ 23\ 2023\r\n
 comment1.params=values\ colour\ dir\ label\ value
 comment1.target=ShapeGenerator(java.util.ArrayList,\ java.util.ArrayList,\ int,\ int,\ double)
+comment1.text=\r\n\ Constructor\ for\ shapes\r\n
 comment2.params=colour\ dir\ label
 comment2.target=ShapeGenerator(int,\ int,\ int)
+comment2.text=\r\n\ Constructor\ for\ colours\r\n
 comment3.params=
 comment3.target=void\ act()
 comment4.params=
 comment4.target=void\ spawnPoint()
-numComments=5
+comment4.text=\r\n\ Spawns\ the\ follow\ point\ that\ the\ object\ follows\r\n
+comment5.params=
+comment5.target=void\ spawnShape()
+comment5.text=\r\n\ Spawns\ the\ shape\r\n
+comment6.params=
+comment6.target=void\ spawnColour()
+comment6.text=\r\n\ Spawns\ the\ colour\ blob\r\n
+numComments=7

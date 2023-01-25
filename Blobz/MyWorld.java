@@ -39,7 +39,7 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1); 
-        setPaintOrder(Label.class, Machines.class, Colours.class, Shapes.class, Hub.class, Belts.class, ghostBlock.class);
+        setPaintOrder(Label.class, Machines.class, Colours.class, Shape.class, Hub.class, Belts.class, ghostBlock.class);
         
         background = new GreenfootImage("gamebackground.png");
         background.scale(1200, 800);

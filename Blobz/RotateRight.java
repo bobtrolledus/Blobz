@@ -202,7 +202,7 @@ public class RotateRight extends NarrowMachines
      */
     public void spawnShape()
     {
-        if(timer.millisElapsed() > Utils.getRotationDelay() && getWorld().getObjectsAt(spawnXCoord, spawnYCoord, Shapes.class).size() < 1) 
+        if(timer.millisElapsed() > Utils.getRotationDelay() && getWorld().getObjectsAt(spawnXCoord, spawnYCoord, Shape.class).size() < 1) 
         {
             playEffect();
             value = value * 1.2;

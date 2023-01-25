@@ -44,60 +44,13 @@ public class FollowPoint extends UtilsBlocks
     
     public void act() {
         belt = (Belts) getOneIntersectingObject(Belts.class);
+                
+        y = getY();
+        x = getX();
         
         setRotation();
         
-        y = this.getY();
-        x = this.getX();
-        
-        switch (dir){
-            case 0:
-                y++;
-                if(shapeID.get(1) == -1 && shapeID.get(2) == -1 && shapeID.get(5) == -1 && shapeID.get(6) == -1){
-                    nearbyMaterial = (Material) getOneObjectAtOffset(0, 3, Material.class);
-                    nearbyMachine = (Machines) getOneObjectAtOffset(0, 3, Machines.class);
-                } else {
-                    nearbyMaterial = (Material) getOneObjectAtOffset(0, 21, Material.class);
-                    nearbyMachine = (Machines) getOneObjectAtOffset(0, 21, Machines.class);
-                }
-                break;
-            case 1:
-                x--;
-                if(shapeID.get(2) == -1 && shapeID.get(3) == -1 && shapeID.get(6) == -1 && shapeID.get(7) == -1){
-                    nearbyMaterial = (Material) getOneObjectAtOffset(-3, 0, Material.class);
-                    nearbyMachine = (Machines) getOneObjectAtOffset(-3, 0, Machines.class);
-                } else {
-                    nearbyMaterial = (Material) getOneObjectAtOffset(-21, 0, Material.class);
-                    nearbyMachine = (Machines) getOneObjectAtOffset(-21, 0, Machines.class);
-                }
-                break;
-            case 2:
-                y--;
-                if(shapeID.get(0) == -1 && shapeID.get(3) == -1 && shapeID.get(4) == -1 && shapeID.get(7) == -1){
-                    nearbyMaterial = (Material) getOneObjectAtOffset(0, -3, Material.class);
-                    nearbyMachine = (Machines) getOneObjectAtOffset(0, -3, Machines.class);
-                } else {
-                    nearbyMaterial = (Material) getOneObjectAtOffset(0, -21, Material.class);
-                    nearbyMachine = (Machines) getOneObjectAtOffset(0, -21, Machines.class);
-                }
-                break;
-            case 3:
-                x++;
-                if(shapeID.get(0) == -1 && shapeID.get(1) == -1 && shapeID.get(4) == -1 && shapeID.get(5) == -1){
-                    nearbyMaterial = (Material) getOneObjectAtOffset(3, 0, Material.class);
-                    nearbyMachine = (Machines) getOneObjectAtOffset(3, 0, Machines.class);
-                } else {
-                    nearbyMaterial = (Material) getOneObjectAtOffset(21, 0, Material.class);
-                    nearbyMachine = (Machines) getOneObjectAtOffset(21, 0, Machines.class);
-                }
-                break;
-        }
-        
-        if(nearbyMachine != null && nearbyMachine.isOccupied()){
-            occupied = true;
-        } else {
-            occupied = false;
-        }
+        occupied = machineOccupied();
         
         if((belt != null && belt.getReal()) && nearbyMaterial == null && !occupied && !isLabel){            
             if(getOneObjectAtOffset(x, y, WideMachines.class) == null || getOneObjectAtOffset(x, y, Material.class) == null)
@@ -147,10 +100,65 @@ public class FollowPoint extends UtilsBlocks
         return intersects(machine);
     }
     
+    public boolean machineOccupied(){
+        if(nearbyMachine != null && nearbyMachine.isOccupied()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Checks and sets rotation of the FollowPoint based on RotationPoints,
+     * also changes offset for wait function
+     */
     public void setRotation(){
         rotation = (RotationPoint) getOneIntersectingObject(RotationPoint.class);
         if(rotation != null){
             dir = rotation.getRotation();   
+        }
+        
+        switch (dir){
+            case 0:
+                y++;
+                if(shapeID.get(1) == -1 && shapeID.get(2) == -1 && shapeID.get(5) == -1 && shapeID.get(6) == -1){
+                    nearbyMaterial = (Material) getOneObjectAtOffset(0, 3, Material.class);
+                    nearbyMachine = (Machines) getOneObjectAtOffset(0, 3, Machines.class);
+                } else {
+                    nearbyMaterial = (Material) getOneObjectAtOffset(0, 21, Material.class);
+                    nearbyMachine = (Machines) getOneObjectAtOffset(0, 21, Machines.class);
+                }
+                break;
+            case 1:
+                x--;
+                if(shapeID.get(2) == -1 && shapeID.get(3) == -1 && shapeID.get(6) == -1 && shapeID.get(7) == -1){
+                    nearbyMaterial = (Material) getOneObjectAtOffset(-3, 0, Material.class);
+                    nearbyMachine = (Machines) getOneObjectAtOffset(-3, 0, Machines.class);
+                } else {
+                    nearbyMaterial = (Material) getOneObjectAtOffset(-21, 0, Material.class);
+                    nearbyMachine = (Machines) getOneObjectAtOffset(-21, 0, Machines.class);
+                }
+                break;
+            case 2:
+                y--;
+                if(shapeID.get(0) == -1 && shapeID.get(3) == -1 && shapeID.get(4) == -1 && shapeID.get(7) == -1){
+                    nearbyMaterial = (Material) getOneObjectAtOffset(0, -3, Material.class);
+                    nearbyMachine = (Machines) getOneObjectAtOffset(0, -3, Machines.class);
+                } else {
+                    nearbyMaterial = (Material) getOneObjectAtOffset(0, -21, Material.class);
+                    nearbyMachine = (Machines) getOneObjectAtOffset(0, -21, Machines.class);
+                }
+                break;
+            case 3:
+                x++;
+                if(shapeID.get(0) == -1 && shapeID.get(1) == -1 && shapeID.get(4) == -1 && shapeID.get(5) == -1){
+                    nearbyMaterial = (Material) getOneObjectAtOffset(3, 0, Material.class);
+                    nearbyMachine = (Machines) getOneObjectAtOffset(3, 0, Machines.class);
+                } else {
+                    nearbyMaterial = (Material) getOneObjectAtOffset(21, 0, Material.class);
+                    nearbyMachine = (Machines) getOneObjectAtOffset(21, 0, Machines.class);
+                }
+                break;
         }
     }
     

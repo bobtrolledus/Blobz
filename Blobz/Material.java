@@ -1,12 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Material here.
+ * An abstract class dealing with the spawning and removing of shapes and colours.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Andy 
+ * @version Jan 24, 2023
  */
-public class Material extends Actor
+public abstract class Material extends Actor
 {
     protected FollowPoint guide;
     protected int colour;
@@ -27,7 +27,5 @@ public class Material extends Actor
         }
     }
     
-    public void move(){
-        this.setLocation(guide.getX(), guide.getY());
-    }
+    protected abstract void move();
 }
