@@ -352,20 +352,31 @@ public class Utils extends Actor
         extractUpgradeLevel++;
     }
     
-    private static void save()
+     
+    public static void save()
     {
-        
+
         try{
-            list.add(level);
-            list.add(mapNumber);
-            list.add(crsUpgradeLevel);
-            list.add(bdUpgradeLevel);
-            list.add(paintUpgradeLevel);
-            list.add(extractUpgradeLevel);
-            list.add(money);
+            String lv = Integer.toString(level);
+            String mapN = Integer.toString(mapNumber);
+            String c = Integer.toString(crsUpgradeLevel);
+            String b = Integer.toString(bdUpgradeLevel);
+            String p = Integer.toString(paintUpgradeLevel);
+            String e = Integer.toString(extractUpgradeLevel);
+            String m = Integer.toString(money);
+            String tm = Integer.toString(timeM);
+            String t = Integer.toString(time);
             FileWriter out = new FileWriter("save.txt",false);
             PrintWriter output = new PrintWriter(out);
-            output.println(list);
+            output.println(lv);
+            output.println(mapN);
+            output.println(c);
+            output.println(b);
+            output.println(p);
+            output.println(e);
+            output.println(m);
+            output.println(tm);
+            output.println(t);
             out.close();
             output.close();
             list.clear();
@@ -375,6 +386,7 @@ public class Utils extends Actor
             System.out.println("Exception" +  e);
         }
     }
+
     
     public static void setLevel(int x)
     {

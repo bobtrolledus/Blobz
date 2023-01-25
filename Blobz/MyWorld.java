@@ -182,8 +182,9 @@ public class MyWorld extends World
         }
     }
 
-    public void read()
+   public void read()
     {
+        System.out.println("reading");
         scan = new Scanner (System.in);
         lines = new ArrayList<Integer>();
         try{
@@ -198,7 +199,9 @@ public class MyWorld extends World
         while (moreLines)
         {
             try{
-                int a = fileScan.nextInt();
+                
+                int a = Integer.parseInt(fileScan.next());
+
                 lines.add(a);
             }
             catch(NoSuchElementException e)
@@ -206,12 +209,19 @@ public class MyWorld extends World
                 moreLines = false;
             }
         }
+        System.out.println(lines);
         Utils.setLevel(lines.get(0));
         Utils.setMap(lines.get(1));
-        Utils.setUpgrade(lines.get(2));
-        Utils.setMoney(lines.get(3));
+        Utils.setMoney(lines.get(6));
+        Utils.setCrsUpgradeLevel(lines.get(2));
+        Utils.setBdUpgradeLevel(lines.get(3));
+        Utils.setPaintUpgradeLevel(lines.get(4));
+        Utils.setExtractUpgradeLevel(lines.get(5));
+        gameTime = lines.get(8);
+        gameTimeM = lines.get(7);
         lines.clear();
     }
+
     
     private void time()
     {
